@@ -18,19 +18,12 @@ extension IMQA {
         public init(
             serviceKey: String,
             endpoints: IMQA.Endpoints? = nil
-//            config: IMQAConfigurable = DefaultConfig()
         ){
             self.serviceKey = serviceKey
-//            self.appGroupId = nil
-//            self.platform = .default
             self.endpoints = endpoints
             self.services = .basic
             self.crashReporter = IMQACrashReporter()
-//            self.logLevel = .default
-//            self.export = nil
-//            self.runtimeConfiguration = config
         }
-
     }
 }
 

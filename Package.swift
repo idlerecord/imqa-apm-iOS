@@ -11,10 +11,7 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "imqa-apm-iOS", targets: ["imqa-apm-iOS"]),
-        .library(name: "imqa-apm-iOS", targets: ["IMQACore"]),
-        .library(name: "imqa-apm-iOS", targets: ["IMQAOtelInternal"]),
-        .library(name: "imqa-apm-iOS", targets: ["IMQACommonInternal"]),
+        .library(name: "imqa-apm-iOS", targets: ["imqa-apm-iOS"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -37,15 +34,12 @@ let package = Package(
                     dependencies: [
                         "IMQACaptureService",
                         "IMQAOtelInternal",
-                        "IMQACommonInternal",
                         "IMQACollectDeviceInfo",
                         .byName(name: "MMKV"),
                         "IMQAObjCUtilsInternal",
                         .product(name: "Installations", package: "KSCrash"),
                         .product(name: "OpenTelemetryProtocolExporterHTTP", package: "opentelemetry-swift"),
                         .product(name: "ResourceExtension", package: "opentelemetry-swift"),
-                        .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
-                        .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift"),
                     ],
                     path: "Sources/IMQACore"
                    ),
@@ -53,8 +47,7 @@ let package = Package(
         // IMQACaptureService -----------------------------------------------------------
         .target(name: "IMQACaptureService",
                     dependencies: [
-                        "IMQAOtelInternal",
-                        .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift")
+                        "IMQAOtelInternal"
                     ]),
                 
         // IMQAObjCUtilsInternal -----------------------------------------------------------
@@ -69,11 +62,7 @@ let package = Package(
                         .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
                         .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift")
                     ],
-                    path: "./Sources/IMQAOtelInternal",
-                linkerSettings: [
-                    // 添加 UIKit 作为系统框架依赖
-                    .linkedFramework("UIKit")
-                ]
+                path: "./Sources/IMQAOtelInternal"
                ),
         
         
@@ -83,19 +72,13 @@ let package = Package(
                 dependencies: [
                     
                 ],
-                path: "./Sources/IMQACommonInternal",
-                
-                linkerSettings: [
-                    // 添加 UIKit 作为系统框架依赖
-                    .linkedFramework("UIKit")
-                ]
+                path: "./Sources/IMQACommonInternal"                
                ),
         
         // MMKV  -----------------------------------------------------------
         .binaryTarget(
             name: "MMKV",
             path: "./Sources/Frameworks/MMKV.xcframework" )
-    ]//,
-//    swiftLanguageModes:[.version("5.9")]
-    
+    ]
+    //,swiftLanguageVersions: [.version("5.9")]
 )

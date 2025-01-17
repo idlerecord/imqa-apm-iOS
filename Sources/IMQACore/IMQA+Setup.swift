@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQACommonInternal
 import IMQACollectDeviceInfo

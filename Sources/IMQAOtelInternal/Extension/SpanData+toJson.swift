@@ -5,8 +5,8 @@
 //  Created by Hunta Park on 1/10/25.
 //
 import Foundation
-import OpenTelemetrySdk
 import IMQACommonInternal
+import OpenTelemetrySdk
 
 extension SpanData {
     
