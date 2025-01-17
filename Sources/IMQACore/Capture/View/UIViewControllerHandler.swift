@@ -106,10 +106,6 @@ class UIViewControllerHandler{
                                                  type: IMQASpanType.RENDER)
             self.parentSpans[id] = parentSpan
             self.viewWillAppearSpans[id] = span
-            
-            IMQA.logger.traceLog(message: viewWillAppearSpanName,
-                                 spanContext: span.context,
-                                 logType: IMQALogType.RENDER, attributes: [:])
         }
     }
     
@@ -140,11 +136,6 @@ class UIViewControllerHandler{
                                                  startTime: Date(),
                                                  type: IMQASpanType.RENDER)
             self.viewDidAppearSpans[id] = span
-            
-            IMQA.logger.traceLog(message: viewDidAppearSpanName,
-                                 spanContext: span.context,
-                                 logType: IMQALogType.RENDER,
-                                 attributes: [:])
         }
     }
     

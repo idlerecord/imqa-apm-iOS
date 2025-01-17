@@ -13,8 +13,8 @@ public struct VersionSemantics {
     static let defaultKey: String = Bundle.appIdentifier
 }
 
-class IMQAStore {
-    public static var shared = IMQAStore()
+class IMQAStorageUnit {
+    public static var shared = IMQAStorageUnit()
 
     var mmkvID: String = ""
     
@@ -33,14 +33,14 @@ class IMQAStore {
                 logger: InternalLogger) {
         
         mmkv = MMKV.custom(mmkvID: mmkvID, cryptKey: cryptKey, mode: mode)
-        guard let savedVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStore.savedVersionKey) else{
-            UserDefaults(suiteName: suitName)?.set(IMQAStore.currentVersion, forKey: IMQAStore.savedVersionKey)
+        guard let savedVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedVersionKey) else{
+            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedVersionKey)
             UserDefaults(suiteName: suitName)?.synchronize()
             return
         }
-        if savedVersion != IMQAStore.currentVersion{
+        if savedVersion != IMQAStorageUnit.currentVersion{
             clear(path: MMKV.rootDir.appending("/\(savedVersion)"))
-            UserDefaults(suiteName: suitName)?.set(IMQAStore.currentVersion, forKey: IMQAStore.savedVersionKey)
+            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedVersionKey)
             UserDefaults(suiteName: suitName)?.synchronize()
         }
         
@@ -67,7 +67,7 @@ extension MMKV {
     }()
 
     static let rootDir = MMKV.path.appending("/IMQA")
-    static let currentSubDir = MMKV.rootDir.appending("/\(IMQAStore.currentVersion)")
+    static let currentSubDir = MMKV.rootDir.appending("/\(IMQAStorageUnit.currentVersion)")
     private static let didInitialize = false
 
     public static func custom(mmkvID: String? = "default", cryptKey: Data?, mode: MMKVMode = .singleProcess) -> MMKV {

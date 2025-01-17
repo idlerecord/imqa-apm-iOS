@@ -169,22 +169,6 @@ class UnsentDataHandler {
         let spanException = IMQACrashError(message: exceptionMessage, type: exceptionType, stackTrace: stackTrace)
         var attributes:[String: AttributeValue] = [:]
         
-//#if DEBUG
-//        var type = ["TypeA", "TypeB", "TypeC", "TypeD"]
-//        var message = ["messageA", "messageB", "messageC", "messageD", "messageE"]
-//        let typeIndex = arc4random() % 4
-//        let messageIndex = arc4random() % 5
-//        
-//        attributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(type[Int(typeIndex)])
-//        attributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(message[Int(messageIndex)])
-//        attributes[SemanticAttributes.exceptionStacktrace.rawValue] = AttributeValue(spanException.stackTrace)
-//
-//#else
-//        attributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(spanException.type)
-//        attributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(spanException.message)
-//        attributes[SemanticAttributes.exceptionStacktrace.rawValue] = AttributeValue(spanException.stackTrace)
-//#endif
-
         attributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(spanException.type)
         if let message = spanException.message{
             attributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(message)
@@ -215,20 +199,6 @@ class UnsentDataHandler {
                              attributes: stringAttributes,
                              severity: .error)
 
-//        if let data = report.spanRecord?.data{
-//            let spanData = try? JSONDecoder().decode(SpanData.self, from: data)
-//            if let spanData = spanData {
-//                let spanContext = SpanContext.create(traceId: spanData.traceId,
-//                                                     spanId: spanData.spanId,
-//                                                     traceFlags: spanData.traceFlags,
-//                                                     traceState: spanData.traceState)
-//                
-//                IMQA.logger.traceLog(message: exceptionType,
-//                                     spanContext: spanContext,
-//                                     logType: .CRASH,
-//                                     attributes: [:])
-//            }
-//        }
     }
 
     static public func sendCrashLog(

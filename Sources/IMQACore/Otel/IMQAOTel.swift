@@ -9,12 +9,12 @@ import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
 import ResourceExtension
-//import UIKit
 import OpenTelemetryApi
 import OpenTelemetrySdk
 import OpenTelemetryProtocolExporterHttp
 import OpenTelemetryProtocolExporterCommon
 import IMQACollectDeviceInfo
+
 
 
 public class IMQAOTel{

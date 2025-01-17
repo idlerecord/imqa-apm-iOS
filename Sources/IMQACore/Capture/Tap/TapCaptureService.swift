@@ -119,12 +119,7 @@ public final class TapCaptureService: CaptureService {
                                        startTime: Date(),
                                        type: IMQASpanType.EVENT,
                                        attributes: attributes)
-        clickSpan.end()
-        IMQA.logger.traceLog(message: spanName,
-                             spanContext: clickSpan.context,
-                             logType: IMQALogType.EVENT,
-                             attributes: [:])
-        
+        clickSpan.end()        
         TapCaptureService.tapSpan = clickSpan
     }
     

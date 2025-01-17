@@ -35,7 +35,6 @@ protocol URLSessionTaskHandlerDataSource: AnyObject {
 final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
 
     private var spans: [URLSessionTask: Span] = [:]
-    private var responseSpans: [URLSessionTask: Span] = [:]
     
     
     private let queue: DispatchQueue
@@ -145,31 +144,6 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                 span.setAttribute(key: "imqa.w3c_traceparent", value: .string(tracingHader))
             }
 
-            //request span
-            let requestSpanBuilder = otel.buildSpan(
-                name: "Request : \(absoluteString)",
-                type: IMQASpanType.XHR,
-                attributes: attributes
-            )
-            requestSpanBuilder.setParent(span)
-            let requestSpan = requestSpanBuilder.startSpan()
-            requestSpan.end(time: Date())
-            IMQA.logger.traceLog(message: requestSpan.name,
-                                 spanContext: requestSpan.context,
-                                 logType: .XHR,
-                                 attributes: [:])
-            
-            
-            //response span
-            let responseSpanBuilder = otel.buildSpan(
-                name: "Response : \(absoluteString)",
-                type: IMQASpanType.XHR,
-                attributes: [:]
-            )  
-            responseSpanBuilder.setParent(span)
-            let responseSpan = responseSpanBuilder.startSpan()
-            self.responseSpans[task] = responseSpan
-
             handled = true
         }
 
@@ -201,9 +175,6 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                 return
             }
             
-            guard let responseSpan = self.responseSpans.removeValue(forKey: task) else {
-                return
-            }
             
             // generate attributes from response
             if let response = task.response as? HTTPURLResponse {
@@ -211,25 +182,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                     key: SemanticAttributes.httpResponseStatusCode.rawValue,
                     value: response.statusCode
                 )
-                
-                responseSpan.setAttribute(
-                    key: SemanticAttributes.httpResponseStatusCode.rawValue,
-                    value: response.statusCode
-                )
             }
-
-//            if let data = data {
-//                let totalData = task.imqaData ?? data
-//                span.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyResponseSize,
-//                    value: totalData.count
-//                )
-//                
-//                responseSpan.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyResponseSize,
-//                    value: totalData.count
-//                )
-//            }
 
             if let error = error ?? task.error {
                 // Should this be something else?
@@ -238,47 +191,11 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                     key: SpanSemantics.XHR.errorType,
                     value: nsError.domain
                 )
-                responseSpan.setAttribute(
-                    key: SpanSemantics.XHR.errorType,
-                    value: nsError.domain
-                )
-//                span.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyErrorCode,
-//                    value: nsError.code
-//                )
-//                responseSpan.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyErrorCode,
-//                    value: nsError.code
-//                )
-//
-//                span.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyErrorMessage,
-//                    value: error.localizedDescription
-//                )
-//                responseSpan.setAttribute(
-//                    key: SpanSemantics.NetworkRequest.keyErrorMessage,
-//                    value: error.localizedDescription
-//                )
-//                
                 span.status = .error(description: error.localizedDescription)
-                responseSpan.status = .error(description: error.localizedDescription)
             }else{
                 span.status = .ok
-                responseSpan.status = .ok
             }
-            
-            responseSpan.end(time: Date())
             span.end()
-
-            IMQA.logger.traceLog(message: responseSpan.name,
-                                 spanContext: responseSpan.context,
-                                 logType: .XHR,
-                                 attributes: [:])
-            
-            IMQA.logger.traceLog(message: span.name,
-                                 spanContext: span.context,
-                                 logType: .XHR,
-                                 attributes: [:])
 
             // internal notification with the captured request
             IMQA.notificationCenter.post(name: .networkRequestCaptured, object: task)

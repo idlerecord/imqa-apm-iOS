@@ -29,7 +29,7 @@ public class IMQAStorage: Storage{
         self.options = options
         self.logger = logger
         self.appId = appId
-        IMQAStore.shared.create(mmkvID: "IMQAStorage",
+        IMQAStorageUnit.shared.create(mmkvID: "IMQAStorage",
                                 mode: MMKVMode.multiProcess,
                                 logger: logger)
 #if canImport(UIKit)
@@ -41,7 +41,7 @@ public class IMQAStorage: Storage{
 
     /// Deletes the database and recreates it from scratch
     func reset() {
-        IMQAStore.shared.mmkv.close()
+        IMQAStorageUnit.shared.mmkv.close()
     }
     
 }

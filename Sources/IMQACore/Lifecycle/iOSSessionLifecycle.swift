@@ -104,14 +104,9 @@ extension iOSSessionLifecycle {
         let span = SpanUtils.span(name: name,
                                   startTime: Date(),
                                   type: IMQASpanType.APPLIFECYCLE,
-                                  attributes: [AppStatusSemantics.lifeCycle: AttributeValue(SessionState.foreground.rawValue)])
+                                  attributes: [AppStatusSemantics.lifeCycle:
+                                                AttributeValue(SessionState.foreground.rawValue)])
         span.end()
-        
-        IMQA.logger.traceLog(message: name,
-                             spanContext: span.context,
-                             logType: IMQALogType.APPLIFECYCLE,
-                             attributes: [:])
-        
     }
 
     /// Application state is now in the background
@@ -126,12 +121,9 @@ extension iOSSessionLifecycle {
         let span = SpanUtils.span(name: name,
                                   startTime: Date(),
                                   type: IMQASpanType.APPLIFECYCLE,
-                                  attributes: [AppStatusSemantics.lifeCycle: AttributeValue(SessionState.background.rawValue)])
+                                  attributes: [AppStatusSemantics.lifeCycle:
+                                                AttributeValue(SessionState.background.rawValue)])
         span.end()
-        IMQA.logger.traceLog(message: name,
-                             spanContext: span.context,
-                             logType: .APPLIFECYCLE,
-                             attributes: [:])
     }
 
     /// User has terminated the app. This will not end the current session as the app

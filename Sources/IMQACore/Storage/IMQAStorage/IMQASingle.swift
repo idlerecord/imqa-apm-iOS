@@ -19,28 +19,28 @@ class IMQASingle<T: Codable> {
         lock.lock()
         defer { lock.unlock() }
         if let data = try? encoder.encode(item) {
-            IMQAStore.shared.mmkv.set(data, forKey: key)
+            IMQAStorageUnit.shared.mmkv.set(data, forKey: key)
         } else {
-            IMQAStore.shared.mmkv.removeValue(forKey: key)
+            IMQAStorageUnit.shared.mmkv.removeValue(forKey: key)
         }
     }
 
     func get() -> T? {
         lock.lock()
         defer { lock.unlock() }
-        if let data = IMQAStore.shared.mmkv.data(forKey: key), let value = try? decoder.decode(T.self, from: data) {
+        if let data = IMQAStorageUnit.shared.mmkv.data(forKey: key), let value = try? decoder.decode(T.self, from: data) {
             return value
         }
         return nil
     }
 
     func remove() {
-        IMQAStore.shared.mmkv.removeValue(forKey: key)
+        IMQAStorageUnit.shared.mmkv.removeValue(forKey: key)
     }
     
     @discardableResult
     func size()->Int{
-        return IMQAStore.shared.mmkv.valueSize(forKey: key, actualSize: true)
+        return IMQAStorageUnit.shared.mmkv.valueSize(forKey: key, actualSize: true)
     }
 
 }

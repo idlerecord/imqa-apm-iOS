@@ -21,9 +21,9 @@ class IMQAMuti<T: Codable & VVIdenti> {
         defer { lock.unlock() }
         
         if let data = try? encoder.encode(ts) {
-            IMQAStore.shared.mmkv.set(data, forKey: key)
+            IMQAStorageUnit.shared.mmkv.set(data, forKey: key)
         } else {
-            IMQAStore.shared.mmkv.removeValue(forKey: key)
+            IMQAStorageUnit.shared.mmkv.removeValue(forKey: key)
         }
     }
 
@@ -31,7 +31,7 @@ class IMQAMuti<T: Codable & VVIdenti> {
         lock.lock()
         defer { lock.unlock() }
 
-        if let data = IMQAStore.shared.mmkv.data(forKey: key), let values = try? decoder.decode([T].self, from: data) {
+        if let data = IMQAStorageUnit.shared.mmkv.data(forKey: key), let values = try? decoder.decode([T].self, from: data) {
             return values
         }
         return []
@@ -55,7 +55,7 @@ class IMQAMuti<T: Codable & VVIdenti> {
         lock.lock()
         defer { lock.unlock() }
 
-        if let data = IMQAStore.shared.mmkv.data(forKey: key), let values = try? decoder.decode([T].self, from: data) {
+        if let data = IMQAStorageUnit.shared.mmkv.data(forKey: key), let values = try? decoder.decode([T].self, from: data) {
             let filterValues = values.filter{$0.vvid == vvid }
             return filterValues.first
         }
@@ -67,7 +67,7 @@ class IMQAMuti<T: Codable & VVIdenti> {
         lock.lock()
         defer { lock.unlock() }
 
-        IMQAStore.shared.mmkv.removeValue(forKey: key)
+        IMQAStorageUnit.shared.mmkv.removeValue(forKey: key)
     }
 
     func count() -> Int {
@@ -108,6 +108,6 @@ class IMQAMuti<T: Codable & VVIdenti> {
     
     @discardableResult
     func size()->Int{
-        return IMQAStore.shared.mmkv.valueSize(forKey: key, actualSize: true)
+        return IMQAStorageUnit.shared.mmkv.valueSize(forKey: key, actualSize: true)
     }
 }

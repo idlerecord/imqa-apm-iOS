@@ -30,7 +30,7 @@ final class CaptureServices {
         // create context for crash reporter
         let partitionIdentifier = IMQAFileSystem.defaultPartitionId
         context = CrashReporterContext(
-            appId: Bundle.appName,
+            appId: Bundle.appIdentifier,
             sdkVersion: IMQAMeta.sdkVersion,
             filePathProvider: IMQAFilePathProvider(
                 partitionId: partitionIdentifier,
