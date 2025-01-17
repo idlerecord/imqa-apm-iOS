@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// redirecting them to a different object.
 ///
 /// - Note: The target object must implement the appropriate `NSURLSession` delegate methods for the forwarding to work.
-@interface EMBURLSessionDelegateForwarder : NSObject
+@interface IMQAURLSessionDelegateForwarder : NSObject
 
 - (void)forwardToObject:(NSObject *)object
              URLSession:(nonnull NSURLSession *)session

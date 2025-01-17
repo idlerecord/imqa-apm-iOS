@@ -6,23 +6,23 @@
 //
 import MachO
 import Foundation
+import IMQACollectDeviceInfo
 
 struct MemoryModel {
     
     static var memoryAllocated: String{
-        return "\(MemoryManager.getAppRAMUsage())"
+        return "\(FSRAMUsage.getAppRAMUsage())"
     }
     
     static var systemRAMUsage: String{
-        return "\(MemoryManager.getSystemRAMUsage())"
+        return "\(FSRAMUsage.getSystemRAMUsage())"
     }
     
     static var memoryFree: String {
-        return "\(MemoryManager.getSystemRAMAvailable())"
+        return "\(FSRAMUsage.getSystemRAMAvailable())"
     }
     
     static var memoryTotal: String{
-        return "\(MemoryManager.getSystemRAMTotal())"
+        return "\(FSRAMUsage.getSystemRAMTotal())"
     }
-    
 }

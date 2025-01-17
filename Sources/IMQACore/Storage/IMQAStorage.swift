@@ -11,10 +11,9 @@ import IMQACommonInternal
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
-
+#endif
 
 public typealias Storage = IMQAStorageMetadataFetcher & LogRepository
-
 
 public class IMQAStorage: Storage{
     
@@ -33,9 +32,11 @@ public class IMQAStorage: Storage{
         IMQAStore.shared.create(mmkvID: "IMQAStorage",
                                 mode: MMKVMode.multiProcess,
                                 logger: logger)
+#if canImport(UIKit)
         NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification, object: nil, queue: nil) { notifiation in
             MMKV.onAppTerminate()
         }
+#endif
     }
 
     /// Deletes the database and recreates it from scratch
@@ -44,6 +45,7 @@ public class IMQAStorage: Storage{
     }
     
 }
+
 
 // MARK: - Sync operations
 extension IMQAStorage {
@@ -130,4 +132,3 @@ extension IMQAStorage{
         }
     }
 }
-#endif

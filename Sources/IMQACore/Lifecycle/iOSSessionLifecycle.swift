@@ -6,12 +6,14 @@
 //
 
 
-#if os(iOS)
+
 import Foundation
-import UIKit
 import IMQACommonInternal
 import IMQAOtelInternal
 import OpenTelemetryApi
+#if canImport(UIKit) && !os(watchOS)
+import UIKit
+#endif
 
 public struct AppStatusSemantics{
     static let lifeCycle: String = "device.app.lifecycle"
@@ -21,7 +23,7 @@ public struct AppStatusSemantics{
 // since we want to use 'iOS'...
 
 // swiftlint:disable type_name
-final class iOSSessionLifecycle: SessionLifecycle {
+public final class iOSSessionLifecycle: SessionLifecycle {
 // swiftlint:enable type_name
 
     weak var controller: SessionControllable?
@@ -38,9 +40,10 @@ final class iOSSessionLifecycle: SessionLifecycle {
         guard Thread.isMainThread else {
             return
         }
-
+#if canImport(UIKit) && !os(watchOS)
         let appState = UIApplication.shared.applicationState
         currentState = appState == .background ? .background : .foreground
+#endif
     }
 
     func start() {
@@ -65,6 +68,7 @@ final class iOSSessionLifecycle: SessionLifecycle {
 extension iOSSessionLifecycle {
 
     private func listenForUIApplication() {
+#if canImport(UIKit) && !os(watchOS)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(appDidBecomeActive),
@@ -85,6 +89,7 @@ extension iOSSessionLifecycle {
             name: UIApplication.willTerminateNotification,
             object: nil
         )
+#endif
     }
 
     /// Application state is now in foreground
@@ -136,4 +141,3 @@ extension iOSSessionLifecycle {
         controller?.update(appTerminated: true)
     }
 }
-#endif

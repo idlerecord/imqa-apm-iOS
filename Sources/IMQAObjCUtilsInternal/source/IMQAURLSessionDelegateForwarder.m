@@ -3,9 +3,9 @@
 //
     
 
-#import "EMBURLSessionDelegateForwarder.h"
+#import "IMQAURLSessionDelegateForwarder.h"
 
-@implementation EMBURLSessionDelegateForwarder
+@implementation IMQAURLSessionDelegateForwarder
 
 #pragma mark - Forwarding of NSURLSessionDelegate methods
 

@@ -5,7 +5,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMBDevice : NSObject
+@interface IMQADevice : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 

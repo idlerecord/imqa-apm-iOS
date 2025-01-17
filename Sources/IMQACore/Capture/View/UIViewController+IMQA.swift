@@ -8,6 +8,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
+
 extension UIViewController {
     private struct AssociatedKeys {
         static var imqaIdentifier: Int = 0
@@ -53,4 +54,5 @@ extension UIViewController {
         return String(describing: type(of: self))
     }
 }
+
 #endif

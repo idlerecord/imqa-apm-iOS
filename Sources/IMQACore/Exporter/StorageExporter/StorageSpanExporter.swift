@@ -70,7 +70,7 @@ extension StorageSpanExporter {
             id: spanData.spanId.hexString,
             name: spanData.name,
             traceId: spanData.traceId.hexString,
-            type: spanData.imqaSpanType,
+            type: spanData.spanType,
             data: data,
             startTime: spanData.startTime,
             endTime: endTime )

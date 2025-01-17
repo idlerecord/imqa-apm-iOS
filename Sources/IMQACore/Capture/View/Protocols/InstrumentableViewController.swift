@@ -10,11 +10,17 @@ import OpenTelemetryApi
 import IMQAOtelInternal
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
 
-
+#if canImport(UIKit) && !os(watchOS)
 public protocol InstrumentableViewController: UIViewController {
 
 }
+#else
+public protocol InstrumentableViewController{
+    
+}
+#endif
 
 public extension InstrumentableViewController {
 
@@ -29,6 +35,7 @@ public extension InstrumentableViewController {
     /// - Throws: `ViewCaptureService.firstRenderInstrumentationDisabled` if this functionallity was not enabled when setting up the `ViewCaptureService`.
     /// - Throws: `ViewCaptureService.parentSpanNotFound` if no parent span was found for this `UIViewController`.
     ///           This could mean the `UIViewController` was already rendered / deemed interactive, or the `UIViewController` has already disappeared.
+#if canImport(UIKit) && !os(watchOS)
     func buildChildSpan(
         name: String,
         type: IMQASpanType = .RENDER,
@@ -43,7 +50,7 @@ public extension InstrumentableViewController {
             attributes: attributes
         )
     }
-
+#endif
     /// Method used to record a completed span to be included as a child span to the parent span being handled by the `ViewCaptureService`.
     /// - Parameters:
     ///    - name: The name of the span.
@@ -55,6 +62,8 @@ public extension InstrumentableViewController {
     /// - Throws: `ViewCaptureService.firstRenderInstrumentationDisabled` if this functionallity was not enabled when setting up the `ViewCaptureService`.
     /// - Throws: `ViewCaptureService.parentSpanNotFound` if no parent span was found for this `UIViewController`.
     ///           This could mean the `UIViewController` was already rendered / deemed interactive, or the `UIViewController` has already disappeared.
+    ///
+#if canImport(UIKit) && !os(watchOS)
     func recordCompletedChildSpan(
         name: String,
         type: IMQASpanType = .RENDER,
@@ -71,6 +80,7 @@ public extension InstrumentableViewController {
             attributes: attributes
         )
     }
+#endif
 }
 
-#endif
+

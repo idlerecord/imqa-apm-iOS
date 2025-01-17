@@ -9,7 +9,7 @@ import Foundation
 import OpenTelemetrySdk
 import OpenTelemetryApi
 import IMQACommonInternal
-
+import IMQAOtelInternal
 
 public struct LogRecord: Codable, VVIdenti {
     public var identifier: LogIdentifier

@@ -9,14 +9,18 @@ import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQACommonInternal
 import IMQACaptureService
+import Foundation
+
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
 
 /// Service that generates OpenTelemetry span events for taps on the screen.
 /// Note that any taps done on a keyboard view will be automatically ignored.
 @objc(IMQATapCaptureService)
 public final class TapCaptureService: CaptureService {
+#if canImport(UIKit) && !os(watchOS)
 
     public let options: TapCaptureService.Options
 
@@ -123,7 +127,7 @@ public final class TapCaptureService: CaptureService {
         
         TapCaptureService.tapSpan = clickSpan
     }
-
+    
     func shouldRecordCoordinates(from target: UIView) -> Bool {
         let shouldCapture =
             options.delegate?.shouldCaptureTapCoordinates(onView: target) ??
@@ -140,11 +144,15 @@ public final class TapCaptureService: CaptureService {
 
         return !(target.isKind(of: keyboardViewClass) || target.isKind(of: keyboardWindowClass))
     }
-    
+
+#endif
     /// spanContext저장
     static var tapSpan:Span?
+
 }
 
+
+#if canImport(UIKit) && !os(watchOS)
 class UIWindowSendEventSwizzler: Swizzlable {
     typealias ImplementationType = @convention(c) (UIWindow, Selector, UIEvent) -> Void
     typealias BlockImplementationType = @convention(block) (UIWindow, UIEvent) -> Void
@@ -164,5 +172,4 @@ class UIWindowSendEventSwizzler: Swizzlable {
         }
     }
 }
-
 #endif

@@ -3,7 +3,7 @@
 //
     
 
-#import "EMBBinaryImageProvider.h"
+#import "IMQABinaryImageProvider.h"
 #include <mach-o/dyld.h>
 #include <dlfcn.h>
 

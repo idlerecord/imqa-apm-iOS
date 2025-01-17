@@ -10,7 +10,7 @@
 #import <mach-o/dyld.h>
 #import <mach-o/ldsyms.h>
 #import <sys/sysctl.h>
-#import "EMBDevice.h"
+#import "IMQADevice.h"
 
 #if __has_include(<WatchKit/WatchKit.h>)
 #define WATCHKIT_AVAILABLE 1

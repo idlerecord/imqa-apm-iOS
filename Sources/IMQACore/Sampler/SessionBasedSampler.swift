@@ -7,7 +7,7 @@
 
 import OpenTelemetrySdk
 import OpenTelemetryApi
-
+import IMQAOtelInternal
 class SessionBasedSampler: Sampler {
     let storage: IMQAStorage
     static var sampler: Bool = true
@@ -19,7 +19,7 @@ class SessionBasedSampler: Sampler {
                       attributes: [String : OpenTelemetryApi.AttributeValue],
                       parentLinks: [OpenTelemetrySdk.SpanData.Link]) -> any OpenTelemetrySdk.Decision {
         
-        if let sessionId = attributes[CommonSpanSemantics.sessionId]?.toString(){
+        if let sessionId = attributes[SpanSemantics.Common.sessionId]?.toString(){
             if let sessionSamplerRecord = storage.getSamplerRecord(sessionId){
                 SessionBasedSampler.sampler = sessionSamplerRecord.sampler
                 return SampleResult(isSampled: sessionSamplerRecord.sampler)

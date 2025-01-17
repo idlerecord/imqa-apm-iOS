@@ -6,9 +6,9 @@
 //
 import Foundation
 import IMQACommonInternal
-
-#if canImport(UIKit) && !os(watchOS)
-import UIKit
+import IMQAOtelInternal
+//#if canImport(UIKit) && !os(watchOS)
+//import UIKit
 
 public class SessionRecord: Codable, VVIdenti {
     
@@ -109,4 +109,4 @@ public class SessionRecord: Codable, VVIdenti {
         self.appTerminated = try container.decode(Bool.self, forKey: .appTerminated)
     }
 }
-#endif
+//#endif

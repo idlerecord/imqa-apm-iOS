@@ -7,13 +7,14 @@ let package = Package(
     name: "imqa-apm-iOS",
     platforms: [
         .iOS(.v13),
-        .macOS(.v10_15)
+        .macOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "imqa-apm-iOS",
-            targets: ["imqa-apm-iOS"]),
+        .library(name: "imqa-apm-iOS", targets: ["imqa-apm-iOS"]),
+        .library(name: "imqa-apm-iOS", targets: ["IMQACore"]),
+        .library(name: "imqa-apm-iOS", targets: ["IMQAOtelInternal"]),
+        .library(name: "imqa-apm-iOS", targets: ["IMQACommonInternal"]),
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -28,10 +29,7 @@ let package = Package(
         .target(
             name: "imqa-apm-iOS",
             dependencies: [
-                "IMQACaptureService",
-                "IMQAOtelInternal",
-                "IMQACommonInternal",
-                .byName(name: "MMKV")
+                "IMQACore"
             ]),
         
         // core service -----------------------------------------------------------
@@ -41,16 +39,15 @@ let package = Package(
                         "IMQAOtelInternal",
                         "IMQACommonInternal",
                         "IMQACollectDeviceInfo",
-                        "MMKV",
+                        .byName(name: "MMKV"),
                         "IMQAObjCUtilsInternal",
                         .product(name: "Installations", package: "KSCrash"),
                         .product(name: "OpenTelemetryProtocolExporterHTTP", package: "opentelemetry-swift"),
                         .product(name: "ResourceExtension", package: "opentelemetry-swift"),
                         .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
                         .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift"),
-                    ]
-                    
-
+                    ],
+                    path: "Sources/IMQACore"
                    ),
         
         // IMQACaptureService -----------------------------------------------------------
@@ -62,7 +59,9 @@ let package = Package(
                 
         // IMQAObjCUtilsInternal -----------------------------------------------------------
         .target(name: "IMQAObjCUtilsInternal"),
+        
         .target(name: "IMQACollectDeviceInfo"),
+        
         // IMQAOtelInternal  -----------------------------------------------------------
         .target(name: "IMQAOtelInternal",
                     dependencies: [

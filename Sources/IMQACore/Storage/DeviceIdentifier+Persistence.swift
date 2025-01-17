@@ -8,13 +8,13 @@
 
 import Foundation
 import IMQACommonInternal
-
+import IMQAOtelInternal
 
 extension DeviceIdentifier {
     static let resourceKey = "imqa.device_id"
 
     static func retrieve(from storage: IMQAStorage?) -> DeviceIdentifier {
-#error("fix me")
+//#error("fix me")
         // retrieve from storage
 //        if let storage = storage {
 //            if let resource = storage.fetchRequiredPermanentResource(key: resourceKey) {
@@ -47,7 +47,7 @@ extension DeviceIdentifier {
 
 
 extension DeviceIdentifier: VVIdenti {
-    var vvid: String {
+    public var vvid: String {
         return hex
     }
 }

@@ -8,9 +8,11 @@ import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQACommonInternal
 import IMQACaptureService
+import Foundation
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
 
 protocol UIViewControllerHandlerDataSource: AnyObject {
     var state: CaptureServiceState { get }
@@ -22,6 +24,7 @@ protocol UIViewControllerHandlerDataSource: AnyObject {
 
 class UIViewControllerHandler{
     weak var dataSource: UIViewControllerHandlerDataSource?
+#if canImport(UIKit) && !os(watchOS)
     private let queue: DispatchableQueue = DispatchQueue(label: "com.imqa.UIViewControllerHandler", qos: .utility)
     @ThreadSafe var parentSpans:[String: Span] = [:]
     @ThreadSafe var viewDidLoadSpans:[String: Span] = [:]
@@ -209,6 +212,7 @@ class UIViewControllerHandler{
         
         vc?.imqa_identifier = nil
     }
+#endif
 }
 
 extension Span {
@@ -220,4 +224,3 @@ extension Span {
         return name.contains("time-to-interactive")
     }
 }
-#endif

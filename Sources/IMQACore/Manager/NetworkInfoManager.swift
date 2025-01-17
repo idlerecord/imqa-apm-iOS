@@ -47,7 +47,6 @@ class NetworkInfoManager: NSObject {
     var publicIP: String = ""
     var localIpAddress: String = ""
     
-    @discardableResult
     static let sharedInstance: NetworkInfoManager = NetworkInfoManager()
     
     /// 인터넷 상태 책크

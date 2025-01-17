@@ -7,15 +7,24 @@ import Foundation
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
-
+#endif
 
 struct DeviceModel {
     static var systemName: String {
+#if canImport(UIKit) && !os(watchOS)
         return UIDevice.current.systemName
+#else
+        return ""
+#endif
+        
     }
     
     static var systemVersion: String {
+#if canImport(UIKit) && !os(watchOS)
         return UIDevice.current.systemVersion
+#else
+        return ""
+#endif
     }
             
     static var manufacturer: String{
@@ -27,8 +36,12 @@ struct DeviceModel {
     }
     
     static var model: String {
+#if canImport(UIKit) && !os(watchOS)
         return UIDevice.current.model
+#else
+        return ""
+#endif
     }
     
 }
-#endif
+

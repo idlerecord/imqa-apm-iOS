@@ -8,15 +8,17 @@
 import Foundation
 import OpenTelemetryApi
 import IMQACaptureService
-
+import IMQAOtelInternal
+import IMQAObjCUtilsInternal
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
 
 extension Notification.Name {
     static let networkRequestCaptured = Notification.Name("networkRequestCaptured")
 }
 
-protocol URLSessionTaskHandler: AnyObject {
+public protocol URLSessionTaskHandler: AnyObject {
     @discardableResult
     func create(task: URLSessionTask) -> Bool
     func finish(task: URLSessionTask, data: Data?, error: (any Error)?)
@@ -54,8 +56,6 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
         }
         
         var handled = false
-        let currentVC = UIViewController.currentVCClassName
-        let currentVCLatestClickTraceId = UIViewController.currentVCLatestClickTraceId
         queue.sync {
             // don't capture if this task was already handled
             guard task.imqaCaptured == false else {
@@ -99,7 +99,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
             if request.allHTTPHeaderFields != nil {
                 if let jsonData = try? JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields, options: .prettyPrinted),
                    let jsonString = String(data: jsonData, encoding: .utf8) {
-                    attributes[SpanSemantics.SpanXHRSemantics.httpRequestHeaders] = jsonString
+                    attributes[SpanSemantics.XHR.httpRequestHeaders] = jsonString
                 }
             }
             
@@ -107,7 +107,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
             if request.httpBody != nil {
                 if let jsonData = try? JSONSerialization.data(withJSONObject: request.httpBody, options: .prettyPrinted),
                    let jsonString = String(data: jsonData, encoding: .utf8) {
-                    attributes[SpanSemantics.SpanXHRSemantics.httpRequestBody] = jsonString
+                    attributes[SpanSemantics.XHR.httpRequestBody] = jsonString
                 }
             }
             
@@ -235,11 +235,11 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                 // Should this be something else?
                 let nsError = error as NSError
                 span.setAttribute(
-                    key: SpanSemantics.SpanXHRSemantics.errorType,
+                    key: SpanSemantics.XHR.errorType,
                     value: nsError.domain
                 )
                 responseSpan.setAttribute(
-                    key: SpanSemantics.SpanXHRSemantics.errorType,
+                    key: SpanSemantics.XHR.errorType,
                     value: nsError.domain
                 )
 //                span.setAttribute(
@@ -302,7 +302,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
         if task.injectHeader(withKey: W3C.traceparentHeaderName, value: value) {
             return value
         }
-
+        
         return nil
     }
 }
@@ -330,4 +330,4 @@ extension DefaultURLSessionTaskHandler{
         return false
     }
 }
-#endif
+

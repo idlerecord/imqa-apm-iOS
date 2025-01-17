@@ -22,9 +22,9 @@ public struct SpanSemantics{
     }
 
     public struct XHR {
-        static let httpRequestHeaders = "http.request.headers"
-        static let httpRequestBody = "http.request.body"
-        static let errorType = "error.type"
+        public static let httpRequestHeaders = "http.request.headers"
+        public static let httpRequestBody = "http.request.body"
+        public static let errorType = "error.type"
     }
 
     public struct Session {

@@ -9,6 +9,7 @@ import Foundation
 import Security
 import CryptoKit
 import CommonCrypto
+import IMQACommonInternal
 
 struct EncryptedNetworkPayload: Encodable {
 

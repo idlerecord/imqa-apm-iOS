@@ -27,7 +27,7 @@ class DefaultIMQALoggerProvider: IMQALoggerProvider {
         logger
     }
 
-    func update(_ config: any IMQALoggerConfig) {
+    public func update(_ config: any IMQALoggerConfig) {
         sharedState.update(config)
     }
 

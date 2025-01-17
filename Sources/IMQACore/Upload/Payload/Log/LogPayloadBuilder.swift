@@ -8,13 +8,16 @@
 import Foundation
 import OpenTelemetrySdk
 import OpenTelemetryApi
+import IMQACommonInternal
+import IMQAOtelInternal
 
 struct LogPayloadBuilder {
     static func build(log: LogRecord) -> LogPayload {
         var finalAttributes: [LogAttribute] = log.attributes.map { entry in
             LogAttribute(key: entry.key, value: LogAttribute.Value(stringValue: entry.value.description))
         }
-        finalAttributes.append(.init(key: LogSemantics.keyId, value: LogAttribute.Value(stringValue: log.identifier.toString)))
+        finalAttributes.append(.init(key: SemanticAttributes.logRecordUid.rawValue,
+                                     value: LogAttribute.Value(stringValue: log.identifier.toString)))
 
                                
         return .init(timeUnixNano: String(Int(log.timestamp.nanosecondsSince1970)),

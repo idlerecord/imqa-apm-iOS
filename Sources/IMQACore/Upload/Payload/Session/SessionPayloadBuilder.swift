@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import OpenTelemetryProtocolExporterCommon
+import IMQAOtelInternal
+import IMQACommonInternal
 
 class SessionPayloadBuilder {
 
@@ -34,8 +35,8 @@ class SessionPayloadBuilder {
                 resource = try storage.addMetadata(
                     key: resourceName,
                     value: "1",
-                    type: .requiredResource,
-                    lifespan: .permanent
+                    type: MetadataRecordType.requiredResource,
+                    lifespan: MetadataRecordLifespan.permanent
                 )
                 counter = 1
             }
@@ -57,7 +58,7 @@ class SessionPayloadBuilder {
 //        } catch {
 //            IMQA.logger.error("Error fetching resources for session \(sessionRecord.id.toString)")
 //        }
-        let resourcePayload =  ResourcePayload(from: resources)
+//        let resourcePayload =  ResourcePayload(from: resources)
 
         // build metadata payload
         var metadata: [MetadataRecord] = []
@@ -69,7 +70,7 @@ class SessionPayloadBuilder {
 //        } catch {
 //            IMQA.logger.error("Error fetching custom properties for session \(sessionRecord.id.toString)")
 //        }
-        let metadataPayload =  MetadataPayload(from: metadata)
+//        let metadataPayload =  MetadataPayload(from: metadata)
 
         // build payload
         return PayloadEnvelope<SpanPayload>.requestSpanProtobufData(spans: spans)

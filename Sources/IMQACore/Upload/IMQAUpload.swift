@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import IMQAOtelInternal
 
 public protocol IMQALogUploader: AnyObject {
     func uploadLog(id: String, data: Data, completion: ((Result<(), Error>) -> Void)?)

@@ -9,6 +9,7 @@ import ResourceExtension
 import Foundation
 import OpenTelemetrySdk
 import IMQAOtelInternal
+import IMQACommonInternal
 
 extension IMQA{
     func createProcessStartSpan() -> Span {
@@ -30,7 +31,7 @@ extension IMQA{
     /// - Parameter startTime: 시간
     func recordSetupSpan(startTime: Date) {
         buildSpan(name: "imqa-setup", type: IMQASpanType.DEFAULT)
-            .markAsPrivate()
+//            .markAsPrivate()
             .setStartTime(time: startTime)
             .startSpan()
             .end()

@@ -8,7 +8,6 @@
 import UIKit
 
 public extension UIViewController {
-//    static var currentVCClassName: String?
     static var currentVCLatestClickTraceId: String?
 }
 
@@ -28,4 +27,5 @@ public extension UIView {
         return nil
     }
 }
+
 #endif

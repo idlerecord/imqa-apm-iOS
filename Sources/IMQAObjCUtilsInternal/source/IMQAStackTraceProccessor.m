@@ -2,8 +2,8 @@
 //  Copyright © 2024 Embrace Mobile, Inc. All rights reserved.
 //
 
-#import "EMBStackTraceProccessor.h"
-#import "EMBBinaryImageProvider.h"
+#import "IMQAStackTraceProccessor.h"
+#import "IMQABinaryImageProvider.h"
 
 static NSString *const EMBStackTraceModuleNameKey = @"m";
 static NSString *const EMBStackTraceModulePathKey = @"p";
@@ -13,7 +13,7 @@ static NSString *const EMBStackTraceInstructionAddressKey = @"a";
 static NSString *const EMBStackTraceSymbolNameKey = @"s";
 static NSString *const EMBStackTraceSymbolOffsetKey = @"so";
 
-@implementation EMBStackTraceProccessor
+@implementation IMQAStackTraceProccessor
 
 + (NSArray<NSDictionary<NSString *, id> *> *)processStackTrace:(NSArray<NSString *> *)rawStackTrace
 {

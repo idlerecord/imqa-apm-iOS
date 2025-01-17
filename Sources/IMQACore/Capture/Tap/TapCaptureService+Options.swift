@@ -8,7 +8,7 @@ import Foundation
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
-
+#endif
 extension TapCaptureService {
     /// Class used to setup a TapCaptureService.
     @objc(IMQATapCaptureServiceOptions)
@@ -37,4 +37,4 @@ extension TapCaptureService {
         }
     }
 }
-#endif
+

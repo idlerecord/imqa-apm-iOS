@@ -34,7 +34,7 @@ extension DefaultInternalLogger{
     }
     
     private func sendOTelLog(level: LogLevel, message: String, attributes: [String: String]) {
-#error("attributes의 로그타입을 통해서 type에 값을 설정해주세요 ")
+//#error("attributes의 로그타입을 통해서 type에 값을 설정해주세요 ")
         // send log
         otel?.log(
             message,
@@ -104,7 +104,11 @@ extension DefaultInternalLogger{
 
 extension DefaultInternalLogger{
     
-    func traceLog(message: String, spanContext: SpanContext, logType: IMQALogType, attributes: [String : String]){
+    func traceLog(message: String,
+                  spanContext: SpanContext,
+                  logType: IMQALogType,
+                  attributes: [String : String],
+                  severity: LogSeverity = .debug){
         var attributes:[String: String] = [:]
         if let userId = UserModel.id {
             attributes[SpanSemantics.Common.userId] = userId
@@ -114,7 +118,7 @@ extension DefaultInternalLogger{
         }
         
         otel?.log(message,
-                  severity: .error,
+                  severity: severity,
                   type: logType,
                   spanContext: spanContext,
                   timestamp: Date(),

@@ -8,6 +8,7 @@
 
 import Foundation
 import OpenTelemetrySdk
+import IMQAOtelInternal
 
 struct ResourcePayload: Codable {
     var jailbroken: Bool?
@@ -36,9 +37,9 @@ struct ResourcePayload: Codable {
     var additionalResources: [String: String] = [:]
 
     private let excludedKeys: Set<String> = [
-        DeviceResourceKey.locale.rawValue,
-        DeviceResourceKey.timezone.rawValue,
-        DeviceResourceKey.osDescription.rawValue,
+//        DeviceResourceKey.locale.rawValue,
+//        DeviceResourceKey.timezone.rawValue,
+//        DeviceResourceKey.osDescription.rawValue,
 //        DeviceIdentifier.resourceKey,
 //        SessionPayloadBuilder.resourceName
     ]
@@ -109,73 +110,73 @@ struct ResourcePayload: Codable {
         // bundle_id is constant and won't change over app install lifetime
         self.appBundleId = Bundle.main.bundleIdentifier
 
-        resources.forEach { resource in
-            guard !excludedKeys.contains(resource.key) else {
-                return
-            }
-
-            if let key = AppResourceKey(rawValue: resource.key) {
-                switch key {
-                case .bundleVersion:
-                    self.bundleVersion = resource.stringValue
-                case .environment:
-                    self.environment = resource.stringValue
-                case .detailedEnvironment:
-                    self.environmentDetail = resource.stringValue
-                case .framework:
-                    self.appFramework = resource.integerValue
-                case .launchCount:
-                    self.launchCount = resource.integerValue
-                case .sdkVersion:
-                    self.sdkVersion = resource.stringValue
-                case .appVersion:
-                    self.appVersion = resource.stringValue
-                case .processIdentifier:
-                    self.processIdentifier = resource.stringValue
-                case .buildID:
-                    self.buildId = resource.stringValue
-                case .processStartTime:
-                    self.processStartTime = resource.integerValue
-                case .processPreWarm:
-                    self.processPreWarm = resource.boolValue
-                }
-
-            } else if let key = DeviceResourceKey(rawValue: resource.key) {
-                switch key {
-                case .isJailbroken:
-                    self.jailbroken = resource.boolValue
-                case .totalDiskSpace:
-                    self.diskTotalCapacity = resource.integerValue
-                case .architecture:
-                    self.deviceArchitecture = resource.stringValue
-                case .screenResolution:
-                    self.screenResolution = resource.stringValue
-                case .osBuild:
-                    self.osBuild = resource.stringValue
-                case .osVariant:
-                    self.osAlternateType = resource.stringValue
-                default:
-                    break
-                }
-            } else if let key = ResourceAttributes(rawValue: resource.key) {
-                switch key {
-                case .deviceModelIdentifier:
-                    self.deviceModel = resource.stringValue
-                case .deviceManufacturer:
-                    self.deviceManufacturer = resource.stringValue
-                case .osVersion:
-                    self.osVersion = resource.stringValue
-                case .osType:
-                    self.osType = resource.stringValue
-                case .osName:
-                    self.osName = resource.stringValue
-                default:
-                    break
-                }
-            } else if let value = resource.stringValue {
-                self.additionalResources[resource.key] = value
-            }
-        }
+//        resources.forEach { resource in
+//            guard !excludedKeys.contains(resource.key) else {
+//                return
+//            }
+//
+//            if let key = AppResourceKey(rawValue: resource.key) {
+//                switch key {
+//                case .bundleVersion:
+//                    self.bundleVersion = resource.stringValue
+//                case .environment:
+//                    self.environment = resource.stringValue
+//                case .detailedEnvironment:
+//                    self.environmentDetail = resource.stringValue
+//                case .framework:
+//                    self.appFramework = resource.integerValue
+//                case .launchCount:
+//                    self.launchCount = resource.integerValue
+//                case .sdkVersion:
+//                    self.sdkVersion = resource.stringValue
+//                case .appVersion:
+//                    self.appVersion = resource.stringValue
+//                case .processIdentifier:
+//                    self.processIdentifier = resource.stringValue
+//                case .buildID:
+//                    self.buildId = resource.stringValue
+//                case .processStartTime:
+//                    self.processStartTime = resource.integerValue
+//                case .processPreWarm:
+//                    self.processPreWarm = resource.boolValue
+//                }
+//
+//            } else if let key = DeviceResourceKey(rawValue: resource.key) {
+//                switch key {
+//                case .isJailbroken:
+//                    self.jailbroken = resource.boolValue
+//                case .totalDiskSpace:
+//                    self.diskTotalCapacity = resource.integerValue
+//                case .architecture:
+//                    self.deviceArchitecture = resource.stringValue
+//                case .screenResolution:
+//                    self.screenResolution = resource.stringValue
+//                case .osBuild:
+//                    self.osBuild = resource.stringValue
+//                case .osVariant:
+//                    self.osAlternateType = resource.stringValue
+//                default:
+//                    break
+//                }
+//            } else if let key = ResourceAttributes(rawValue: resource.key) {
+//                switch key {
+//                case .deviceModelIdentifier:
+//                    self.deviceModel = resource.stringValue
+//                case .deviceManufacturer:
+//                    self.deviceManufacturer = resource.stringValue
+//                case .osVersion:
+//                    self.osVersion = resource.stringValue
+//                case .osType:
+//                    self.osType = resource.stringValue
+//                case .osName:
+//                    self.osName = resource.stringValue
+//                default:
+//                    break
+//                }
+//            } else if let value = resource.stringValue {
+//                self.additionalResources[resource.key] = value
+//            }
+//        }
     }
 }
 

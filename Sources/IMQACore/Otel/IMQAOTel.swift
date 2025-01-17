@@ -158,7 +158,6 @@ public class IMQAOTel{
 
     
     static func setUp(option: IMQA.Options,
-                      config: IMQAConfig,
                       storage: IMQAStorage,
                       logController: LogControllable){
         

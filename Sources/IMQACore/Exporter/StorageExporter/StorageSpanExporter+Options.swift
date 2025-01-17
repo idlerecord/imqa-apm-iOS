@@ -5,6 +5,8 @@
 //  Created by Hunta on 2024/11/11.
 //
 
+import IMQAOtelInternal
+
 extension StorageSpanExporter {
     class Options {
 

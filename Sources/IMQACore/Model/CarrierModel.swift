@@ -6,12 +6,16 @@
 //
 
 import Foundation
+
+#if canImport(CoreTelephony) && !os(macOS)
 import CoreTelephony
+#endif
 
 struct CarrierModel{
     static var carrierName: String = ""
 
     static func getCarrierInfo() {
+#if canImport(CoreTelephony) && !os(macOS)
         if #available(iOS 12.0, *) {
             let networkInfo = CTTelephonyNetworkInfo()
             if let carrier = networkInfo.serviceSubscriberCellularProviders?.first?.value {
@@ -22,5 +26,6 @@ struct CarrierModel{
                 self.carrierName = carrier.carrierName ?? ""
             }
         }
+#endif
     }
 }

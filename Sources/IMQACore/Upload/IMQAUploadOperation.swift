@@ -8,7 +8,10 @@
 
 import Foundation
 import OpenTelemetryApi
+import OpenTelemetrySdk
 import OpenTelemetryProtocolExporterCommon
+import IMQAOtelInternal
+
 
 typealias IMQAUploadOperationCompletion = (_ cancelled: Bool, _ attemptCount: Int, _ error: Error?) -> Void
 

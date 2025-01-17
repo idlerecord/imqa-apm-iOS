@@ -5,10 +5,10 @@
 #ifndef EmbraceObjCUtilsInternal_h
 #define EmbraceObjCUtilsInternal_h
 
-#import "EMBBinaryImageProvider.h"
-#import "EMBDevice.h"
-#import "EMBStackTraceProccessor.h"
-#import "NSURLSessionTask+Embrace.h"
-#import "EMBURLSessionDelegateForwarder.h"
+#import "IMQABinaryImageProvider.h"
+#import "IMQADevice.h"
+#import "IMQAStackTraceProccessor.h"
+#import "NSURLSessionTask+IMQA.h"
+#import "IMQAURLSessionDelegateForwarder.h"
 
 #endif /* EmbraceObjCUtilsInternal_h */

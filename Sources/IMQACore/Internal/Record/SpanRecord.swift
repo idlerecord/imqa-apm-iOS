@@ -7,6 +7,7 @@
 
 import Foundation
 import IMQACommonInternal
+import IMQAOtelInternal
 
 /// Represents a span in the storage
 public class SpanRecord: Codable, VVIdenti {

@@ -8,6 +8,7 @@
 import OpenTelemetryApi
 import OpenTelemetrySdk
 import Foundation
+import IMQAOtelInternal
 
 class IMQALogRecordBuilder: EventBuilder {
 

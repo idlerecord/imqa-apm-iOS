@@ -9,6 +9,7 @@ import Foundation
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
+
 public protocol InteractableViewController: UIViewController {
 
 }
@@ -21,5 +22,4 @@ public extension InteractableViewController {
         try IMQA.client?.captureServices.onInteractionReady(for: self)
     }
 }
-
 #endif

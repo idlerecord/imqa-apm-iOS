@@ -7,9 +7,12 @@
 import Foundation
 import OpenTelemetryApi
 import IMQACaptureService
+import IMQAOtelInternal
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
+
 
 extension CaptureServices {
 
@@ -41,7 +44,7 @@ extension CaptureServices {
 
         return viewCaptureService
     }
-
+#if canImport(UIKit) && !os(watchOS)
     func onInteractionReady(for vc: UIViewController) throws {
         guard let viewCaptureService = try validateCaptureService() else {
             return
@@ -49,7 +52,8 @@ extension CaptureServices {
 
         viewCaptureService.onViewBecameInteractive(vc)
     }
-
+#endif
+#if canImport(UIKit) && !os(watchOS)
     func buildChildSpan(
         for vc: UIViewController,
         name: String,
@@ -77,7 +81,9 @@ extension CaptureServices {
 
         return builder
     }
-
+#endif
+    
+#if canImport(UIKit) && !os(watchOS)
     func recordCompletedChildSpan(
         for vc: UIViewController,
         name: String,
@@ -108,6 +114,7 @@ extension CaptureServices {
         let span = builder.startSpan()
         span.end(time: endTime)
     }
+#endif
 }
 
-#endif
+

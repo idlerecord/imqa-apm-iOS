@@ -7,9 +7,11 @@
 import OpenTelemetryApi
 import IMQACaptureService
 import IMQACommonInternal
+import Foundation
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
+#endif
 
 /// Service that generates OpenTelemetry spans for `UIViewControllers`.
 @objc(IMQAViewCaptureService)
@@ -45,7 +47,7 @@ public final class ViewCaptureService: CaptureService, UIViewControllerHandlerDa
         self.lock = lock
         self.handler = handler
     }
-
+#if canImport(UIKit) && !os(watchOS)
     func onViewBecameInteractive(_ vc: UIViewController) {
         handler.onViewBecameInteractive(vc)
     }
@@ -53,7 +55,7 @@ public final class ViewCaptureService: CaptureService, UIViewControllerHandlerDa
     func parentSpan(for vc: UIViewController) -> Span? {
         return handler.parentSpan(for: vc)
     }
-
+#endif
     override public func onInstall() {
         lock.lock()
         defer {
@@ -81,13 +83,16 @@ public final class ViewCaptureService: CaptureService, UIViewControllerHandlerDa
     }
 
     private func initializeSwizzlers() {
+#if canImport(UIKit) && !os(watchOS)
         swizzlers.append(UIViewControllerViewDidLoadSwizzler(handler: handler))
         swizzlers.append(UIViewControllerViewWillAppearSwizzler(handler: handler))
         swizzlers.append(UIViewControllerViewDidAppearSwizzler(handler: handler))
         swizzlers.append(UIViewControllerViewDidDisappearSwizzler(handler: handler))
+#endif
     }
 }
 
+#if canImport(UIKit) && !os(watchOS)
 class UIViewControllerViewDidLoadSwizzler: Swizzlable {
     typealias ImplementationType = @convention(c) (UIViewController, Selector) -> Void
     typealias BlockImplementationType = @convention(block) (UIViewController) -> Void
@@ -110,7 +115,9 @@ class UIViewControllerViewDidLoadSwizzler: Swizzlable {
         }
     }
 }
+#endif
 
+#if canImport(UIKit) && !os(watchOS)
 class UIViewControllerViewWillAppearSwizzler: Swizzlable {
     typealias ImplementationType = @convention(c) (UIViewController, Selector, Bool) -> Void
     typealias BlockImplementationType = @convention(block) (UIViewController, Bool) -> Void
@@ -133,7 +140,9 @@ class UIViewControllerViewWillAppearSwizzler: Swizzlable {
         }
     }
 }
+#endif
 
+#if canImport(UIKit) && !os(watchOS)
 class UIViewControllerViewDidAppearSwizzler: Swizzlable {
     typealias ImplementationType = @convention(c) (UIViewController, Selector, Bool) -> Void
     typealias BlockImplementationType = @convention(block) (UIViewController, Bool) -> Void
@@ -156,7 +165,9 @@ class UIViewControllerViewDidAppearSwizzler: Swizzlable {
         }
     }
 }
+#endif
 
+#if canImport(UIKit) && !os(watchOS)
 class UIViewControllerViewDidDisappearSwizzler: Swizzlable {
     typealias ImplementationType = @convention(c) (UIViewController, Selector, Bool) -> Void
     typealias BlockImplementationType = @convention(block) (UIViewController, Bool) -> Void
@@ -178,5 +189,6 @@ class UIViewControllerViewDidDisappearSwizzler: Swizzlable {
         }
     }
 }
-
 #endif
+
+

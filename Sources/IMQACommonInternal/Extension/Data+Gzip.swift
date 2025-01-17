@@ -8,14 +8,14 @@
 import struct Foundation.Data
 import zlib
 
-enum Gzip {
+public enum Gzip {
 
     /// Maximum value for windowBits (`MAX_WBITS`)
     public static let maxWindowBits = MAX_WBITS
 }
 
 /// Compression level whose rawValue is based on the zlib's constants.
-struct CompressionLevel: RawRepresentable, Sendable {
+public struct CompressionLevel: RawRepresentable, Sendable {
 
     /// Compression level in the range of `0` (no compression) to `9` (maximum compression).
     public let rawValue: Int32
@@ -38,7 +38,7 @@ struct CompressionLevel: RawRepresentable, Sendable {
 }
 
 /// Errors on gzipping/gunzipping based on the zlib error codes.
-struct GzipError: Swift.Error, Sendable {
+public struct GzipError: Swift.Error, Sendable {
     // cf. http://www.zlib.net/manual.html
 
     public enum Kind: Equatable, Sendable {
@@ -113,7 +113,7 @@ private extension GzipError.Kind {
     }
 }
 
-extension Data {
+public extension Data {
 
     /// Whether the receiver is compressed in gzip format.
     var isGzipped: Bool {

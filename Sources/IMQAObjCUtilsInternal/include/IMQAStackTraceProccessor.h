@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMBStackTraceProccessor : NSObject
+@interface IMQAStackTraceProccessor : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 

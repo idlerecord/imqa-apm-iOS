@@ -4,13 +4,14 @@
 //
 //  Created by Hunta Park on 1/10/25.
 //
+import IMQAOtelInternal
 
 public class SessionSamplerRecord: Codable, VVIdenti {
     var sessionId: String
     //쌤플링 하는가 않하는가
     var sampler: Bool
     
-    var vvid: String {
+    public var vvid: String {
         sessionId
     }
     

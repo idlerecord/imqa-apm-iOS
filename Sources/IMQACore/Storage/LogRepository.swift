@@ -4,6 +4,7 @@
 //
 //  Created by Hunta on 2024/10/29.
 //
+import IMQACommonInternal
 
 public protocol LogRepository {
     func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void)

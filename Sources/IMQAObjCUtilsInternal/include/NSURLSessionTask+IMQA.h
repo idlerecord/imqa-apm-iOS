@@ -1,13 +1,15 @@
 //
-//  Copyright © 2024 Embrace Mobile, Inc. All rights reserved.
+//  NSURLSessionTask+IMQA.h
+//  Imqa-sdk-ios
 //
-    
+//  Created by Hunta on 2024/11/5.
+//
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSURLSessionTask (Embrace)
+@interface NSURLSessionTask (IMQA)
 
 - (BOOL)injectHeaderWithKey:(NSString *)key value:(NSString *)value;
 

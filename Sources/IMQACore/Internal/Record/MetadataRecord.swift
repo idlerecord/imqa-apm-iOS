@@ -7,6 +7,7 @@
 //import GRDB
 import OpenTelemetryApi
 import Foundation
+import IMQAOtelInternal
 
 public enum MetadataRecordType: String, Codable {
     /// Resource that is attached to session and logs data

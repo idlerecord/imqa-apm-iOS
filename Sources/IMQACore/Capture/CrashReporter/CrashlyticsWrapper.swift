@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import IMQACommonInternal
 
 class CrashlyticsWrapper {
 

@@ -1,11 +1,13 @@
 //
-//  Copyright © 2024 Embrace Mobile, Inc. All rights reserved.
+//  NSURLSessionTask+IMQA.m
+//  Imqa-sdk-ios
 //
-    
+//  Created by Hunta on 2024/11/5.
+//
 
-#import "NSURLSessionTask+Embrace.h"
+#import "NSURLSessionTask+IMQA.h"
 
-@implementation NSURLSessionTask (Embrace)
+@implementation NSURLSessionTask (IMQA)
 
 - (BOOL)injectHeaderWithKey:(NSString *)key value:(NSString *)value {
     if (key == nil || value == nil) {
