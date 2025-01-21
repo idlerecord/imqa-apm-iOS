@@ -18,7 +18,9 @@ let package = Package(
                  exact: "1.12.1"
                 ),
         .package(url: "https://github.com/kstenerud/KSCrash.git",
-                 exact: "2.0.0-rc.8")
+                 exact: "2.0.0-rc.8"),
+        .package(url: "https://github.com/apple/swift-log.git",
+                 from: "1.6.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

@@ -173,7 +173,7 @@ public class IMQAOTel{
 
         
         //tracer
-        var baseUrl = IMQADevice.isDebuggerAttached ? option.endpoints?.developmentBaseURL : option.endpoints?.baseURL
+        let baseUrl = IMQADevice.isDebuggerAttached ? option.endpoints?.developmentBaseURL : option.endpoints?.baseURL
         let uploadUrl:String = baseUrl!
         
         let tracerUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.tracer(uploadUrl).baseUrl()
@@ -191,11 +191,13 @@ public class IMQAOTel{
 
         
         let opentelemetryExporter = OpenTelemetryExport(spanExporter: tracerExporter,
-                                                        logExporter: logsExporter)        
+                                                        logExporter: logsExporter)
         
+        let sampler = SessionBasedSampler(probability: option.sampleRate, storage: storage)
         OpenTelemetry.registerTracerProvider(
             tracerProvider:TracerProviderBuilder()
                 .with(resource: resource)
+                .with(sampler: sampler)
                 .add(spanProcessors: .processors(for: storage, export: opentelemetryExporter))
                 .build()
         )

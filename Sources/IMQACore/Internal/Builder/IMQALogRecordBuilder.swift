@@ -71,6 +71,14 @@ class IMQALogRecordBuilder: EventBuilder {
             spanContext = OpenTelemetry.instance.contextProvider.activeSpan?.context
         }
 
+        var attributes = attributes
+        if let userId = UserModel.id {
+            attributes[SpanSemantics.Common.userId] = .string(userId)
+        }
+        if let areaCode = AreaCodeModel.areaCode {
+            attributes[SpanSemantics.Common.areaCode] = .string(areaCode)
+        }
+
         sharedState.processors.forEach {
             let now = Date()
             let log = ReadableLogRecord(resource: resource,

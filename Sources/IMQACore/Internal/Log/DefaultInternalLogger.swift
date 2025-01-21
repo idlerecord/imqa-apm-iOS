@@ -109,7 +109,7 @@ extension DefaultInternalLogger{
                   logType: IMQALogType,
                   attributes: [String : String],
                   severity: LogSeverity = .debug){
-        var attributes:[String: String] = [:]
+        var attributes:[String: String] = attributes
         if let userId = UserModel.id {
             attributes[SpanSemantics.Common.userId] = userId
         }

@@ -31,7 +31,7 @@ struct LogPayloadBuilder {
     static func buildReadableLogRecord(log: LogRecord,
                                        resource: [String : AttributeValue]) -> ReadableLogRecord{
         let severity = Severity(rawValue: log.severity.number)
-        let resource = Resource(attributes: resource)
+        let resource = IMQAOTel.resources ?? Resource(attributes: resource)
         let date = log.timestamp
         let body = AttributeValue(log.body)
         let spanContext = log.spanContext
