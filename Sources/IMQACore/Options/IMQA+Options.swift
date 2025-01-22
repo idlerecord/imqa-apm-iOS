@@ -14,12 +14,12 @@ extension IMQA {
         public let endpoints: IMQA.Endpoints?
         public let services: [CaptureService]
         public let crashReporter: CrashReporter?
-        public var sampleRate: Double = 0.5
+        public var sampleRate: Double = 1.0
         
         public init(
             serviceKey: String,
             endpoints: IMQA.Endpoints? = nil,
-            sampleRate: Double = 0.5
+            sampleRate: Double = 1.0
         ){
             self.serviceKey = serviceKey
             self.endpoints = endpoints
