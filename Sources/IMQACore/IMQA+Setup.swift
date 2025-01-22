@@ -30,7 +30,7 @@ extension IMQA {
             return nil
         }
         
-        let baseUrl = IMQADevice.isDebuggerAttached ? endpoints.developmentBaseURL : endpoints.baseURL
+        let baseUrl = endpoints.baseURL
         guard let spansURL = URL.spansEndpoint(basePath: baseUrl),
               let logsURL = URL.logsEndpoint(basePath: baseUrl) else {
             IMQA.logger.error("Failed to initialize endpoints!")

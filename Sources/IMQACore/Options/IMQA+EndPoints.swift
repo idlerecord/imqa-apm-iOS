@@ -13,14 +13,11 @@ extension IMQA{
 
         /// The base URL to upload session data
         @objc public let baseURL: String
-
-        /// The base URL to upload session data while a debugger is attached
-        @objc public let developmentBaseURL: String
-
-        @objc public init(baseURL: String, developmentBaseURL: String) {
-            self.baseURL = baseURL
-            self.developmentBaseURL = developmentBaseURL
+        
+        @objc public init(collectorURL: String) {
+            self.baseURL = collectorURL
         }
+
         
         public enum OpentelemetryBaseUrl{
             case tracer(String)

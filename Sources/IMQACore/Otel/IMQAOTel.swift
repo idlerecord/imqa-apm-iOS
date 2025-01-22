@@ -173,7 +173,7 @@ public class IMQAOTel{
 
         
         //tracer
-        let baseUrl = IMQADevice.isDebuggerAttached ? option.endpoints?.developmentBaseURL : option.endpoints?.baseURL
+        let baseUrl = option.endpoints?.baseURL
         let uploadUrl:String = baseUrl!
         
         let tracerUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.tracer(uploadUrl).baseUrl()
