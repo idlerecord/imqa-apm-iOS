@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "imqa-apm-iOS",
+    name: "IMQAIO",
     platforms: [
         .iOS(.v13),
         .macOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "imqa-apm-iOS", type: .static, targets: ["IMQACore"])
+        .library(name: "IMQAIO", type: .static, targets: ["IMQAIO"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -19,18 +19,15 @@ let package = Package(
                 ),
         .package(url: "https://github.com/kstenerud/KSCrash.git",
                  exact: "2.0.0-rc.8")
-  //      ,
-//        .package(url: "https://github.com/apple/swift-log.git",
-    //             exact: "1.4.4")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-//        .target(
-//            name: "imqa-apm-iOS",
-//            dependencies: [
-//                "IMQACore"
-//            ]),
+        .target(
+            name: "IMQAIO",
+            dependencies: [
+                "IMQACore"
+            ]),
         
         // core service -----------------------------------------------------------
             .target(name: "IMQACore",
