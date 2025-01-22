@@ -11,7 +11,7 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "IMQAIO", type: .static, targets: ["IMQAIO"])
+        .library(name: "IMQAIO", type: .dynamic, targets: ["IMQAIO"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -41,7 +41,10 @@ let package = Package(
                         .product(name: "OpenTelemetryProtocolExporterHTTP", package: "opentelemetry-swift"),
                         .product(name: "ResourceExtension", package: "opentelemetry-swift"),
                     ],
-                    path: "Sources/IMQACore"
+                    path: "Sources/IMQACore",
+                    resources: [
+                        .copy("PrivacyInfo.xcprivacy")
+                    ]
                    ),
         
         // IMQACaptureService -----------------------------------------------------------
