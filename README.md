@@ -54,7 +54,7 @@ IMQA SDK 사용을 시작하기 위한 간략한 개요는 다음과 같습니�
 다음은 코드 조각입니다.
 
 ```swift
-import Imqa-sdk-ios
+import IMQAIO
 // ...
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
