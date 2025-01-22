@@ -166,11 +166,18 @@ extension IMQA{
     }
 }
 
-public class IMQALog {
-    func customLog(level: LogLevel, message: String, attributes: [String : String]){
-        IMQA.logger.log(level: level, message: message, attributes: attributes)
+public extension IMQA {
+    static func customLog(level: LogLevel, message: String){
+        IMQA.logger.log(level: level, message: message, attributes: [:])
     }
 }
+
+public extension IMQA {
+    static func setUserId(id: String?) {
+        UserModel.setUserId(id)
+    }
+}
+
 
 extension IMQA{
     static func createSessionLifecycle(controller: SessionControllable) -> SessionLifecycle {
