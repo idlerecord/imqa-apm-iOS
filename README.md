@@ -53,21 +53,32 @@ IMQA SDK 사용을 시작하기 위한 간략한 개요는 다음과 같습니�
 
 다음은 코드 조각입니다.
 
-```swift
-import IMQAIO
-// ...
+```
+import IMQACore
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-    do {
-      try IMQA.setup(options: .init(appId: "myApp"))
-      try IMQA.client?.start()
-    } catch {
-      // Unable to start Embrace
-    }
-
-    return true
-}
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        
+            let endpoint = IMQA.Endpoints(collectorURL: "https://otel-test.collector.imqa.io")
+            let serviceKey = "mSQE39offARH4SX9nxEVZDSkkXPbpG9zXSOgmJjE9FuwdYN9JsGxIEYcq_Memzlm5A2j1wFa3v6Z35lIhDvbFtNPkZtHX3-H5mjecBQ9Mg.gsJOcu8CiF1JaHV9ZEBGha"
+            let option = IMQA.Options(serviceKey: serviceKey,
+                                      endpoints: endpoint ,
+                                      sampleRate: 1.0)
+            do{
+                try IMQA
+                    .setup(options: option)
+                    .start()
+            }catch (let error){
+                print("\(error.localizedDescription)")
+            }
+            
+            ...
+    {
+    
 ```
 
 **span 만들기:**
