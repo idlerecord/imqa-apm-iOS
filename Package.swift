@@ -11,25 +11,26 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "imqa-apm-iOS", targets: ["imqa-apm-iOS"])
+        .library(name: "imqa-apm-iOS", type: .static, targets: ["IMQACore"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
                  exact: "1.12.1"
                 ),
         .package(url: "https://github.com/kstenerud/KSCrash.git",
-                 exact: "2.0.0-rc.8"),
-        .package(url: "https://github.com/apple/swift-log.git",
-                 from: "1.6.0")
+                 exact: "2.0.0-rc.8")
+  //      ,
+//        .package(url: "https://github.com/apple/swift-log.git",
+    //             exact: "1.4.4")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "imqa-apm-iOS",
-            dependencies: [
-                "IMQACore"
-            ]),
+//        .target(
+//            name: "imqa-apm-iOS",
+//            dependencies: [
+//                "IMQACore"
+//            ]),
         
         // core service -----------------------------------------------------------
             .target(name: "IMQACore",

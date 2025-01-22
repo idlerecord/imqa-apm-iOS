@@ -132,14 +132,20 @@ class UnsentDataHandler {
         let reportDict = convertStringToDictionary(jsonString: report.payload)
         if let crashInfo = reportDict?["crash"] as? [String: Any] {
             if let crashError = crashInfo["error"] as? [String : Any]{
-                if let matchDict = crashError["match"] as? [String: Any]{
+                if let matchDict = crashError["mach"] as? [String: Any]{
                     if let exceptionName = matchDict["exception_name"] as? String   {
                         exceptionMessage = "Crash occurred with exception:\(exceptionName)"
                     }
                 }
+                
                 if let type = crashError["type"] as? String {
                     exceptionType = type
                 }
+                
+                if let exceptionName = crashError["reason"] as? String {
+                    exceptionMessage = "Crash occurred with exception:\(exceptionName)"
+                }
+                
             }
             if let threads = crashInfo["threads"] as? [Any] {
                 let crashedItem = threads.filter{
