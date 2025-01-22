@@ -62,11 +62,11 @@ bool process_binary_image(const char * __unused name, const void *header, struct
 
 #pragma mark - EMBBinaryImageManager implementation
 
-@interface EMBBinaryImageProvider ()
+@interface IMQABinaryImageProvider ()
 
 @end
 
-@implementation EMBBinaryImageProvider
+@implementation IMQABinaryImageProvider
 
 #pragma mark - Initialization
 

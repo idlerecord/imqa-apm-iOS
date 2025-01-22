@@ -87,7 +87,7 @@ static NSString *const EMBStackTraceSymbolOffsetKey = @"so";
         __block NSString *modulePath;
         __block NSString *moduleUUID;
         __block NSNumber *addr;
-        [[EMBBinaryImageProvider new] binaryImageForAddress:ptr
+        [[IMQABinaryImageProvider new] binaryImageForAddress:ptr
                                                     completion:^(NSString * _Nonnull path,
                                                                  NSString * _Nonnull uuid,
                                                                  NSNumber * _Nonnull baseAddress) {

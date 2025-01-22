@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EMBBinaryImageProvider : NSObject
+@interface IMQABinaryImageProvider : NSObject
 
 - (void)binaryImageForAddress:(uintptr_t)ptr completion:(void (^)(NSString *path, NSString *uuid, NSNumber *baseAddress))completion;
 
