@@ -1,0 +1,6 @@
+framework module IMQACollectDeviceInfo {
+  umbrella header "IMQACollectDeviceInfo.h"
+  export *
+
+  module * { export * }
+}

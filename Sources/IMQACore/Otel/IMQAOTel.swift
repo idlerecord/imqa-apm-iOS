@@ -24,7 +24,7 @@ public class IMQAOTel{
     
     private var serviceVersion: String = Bundle.appVersion
     
-    private var instrumentationName: String = "imqa.sdk.iOS"
+    private var instrumentationName: String = "imqa.sdk.ios"
     
     private var instrumentationVersion: String = IMQAMeta.sdkVersion
 

@@ -33,10 +33,10 @@ let package = Package(
             .target(name: "IMQACore",
                     dependencies: [
                         "IMQACaptureService",
-                        "IMQAOtelInternal",
-                        "IMQACollectDeviceInfo",
+                        .byName(name: "IMQAOtelInternal"),
+                        .byName(name: "IMQACollectDeviceInfo"),
                         .byName(name: "MMKV"),
-                        "IMQAObjCUtilsInternal",
+                        .byName(name: "IMQAObjCUtilsInternal"),
                         .product(name: "Installations", package: "KSCrash"),
                         .product(name: "OpenTelemetryProtocolExporterHTTP", package: "opentelemetry-swift"),
                         .product(name: "ResourceExtension", package: "opentelemetry-swift"),
@@ -50,18 +50,20 @@ let package = Package(
         // IMQACaptureService -----------------------------------------------------------
         .target(name: "IMQACaptureService",
                     dependencies: [
-                        "IMQAOtelInternal"
+                        .byName(name: "IMQAOtelInternal")
                     ]),
                 
         // IMQAObjCUtilsInternal -----------------------------------------------------------
-        .target(name: "IMQAObjCUtilsInternal"),
+        .binaryTarget(name: "IMQAObjCUtilsInternal",
+                      path: "./Sources/IMQAObjCUtilsInternal/IMQAObjCUtilsInternal.xcframework"),
         
-        .target(name: "IMQACollectDeviceInfo"),
+        .binaryTarget(name: "IMQACollectDeviceInfo",
+                      path: "./Sources/IMQACollectDeviceInfo/IMQACollectDeviceInfo.xcframework"),
         
         // IMQAOtelInternal  -----------------------------------------------------------
         .target(name: "IMQAOtelInternal",
                     dependencies: [
-                        "IMQACommonInternal",
+                        .byName(name: "IMQACommonInternal"),
                         .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
                         .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift")
                     ],
@@ -69,13 +71,9 @@ let package = Package(
                ),
         
         
-        
         // IMQACommonInternal  -----------------------------------------------------------
-        .target(name: "IMQACommonInternal",
-                dependencies: [
-                    
-                ],
-                path: "./Sources/IMQACommonInternal"                
+        .binaryTarget(name: "IMQACommonInternal",
+                path: "./Sources/IMQACommonInternal/IMQACommonInternal.xcframework"
                ),
         
         // MMKV  -----------------------------------------------------------

@@ -1,0 +1,310 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
+// swift-module-flags: -target x86_64-apple-ios13-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name IMQACommonInternal
+import Foundation
+import Foundation/*.Data*/
+@_exported import IMQACommonInternal
+import Security
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import zlib
+public enum SessionState : Swift.String {
+  case foreground
+  case background
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension IMQACommonInternal.SessionState {
+  public init?(appState: UIKit.UIApplication.State)
+}
+public protocol Swizzlable {
+  associatedtype ImplementationType
+  associatedtype BlockImplementationType
+  static var selector: ObjectiveC.Selector { get }
+  var baseClass: Swift.AnyClass { get }
+  func install() throws
+  func swizzleInstanceMethod(_ block: (Self.ImplementationType) -> Self.BlockImplementationType) throws
+  func swizzleClassMethod(_ block: (Self.ImplementationType) -> Self.BlockImplementationType) throws
+}
+extension IMQACommonInternal.Swizzlable {
+  public func swizzleInstanceMethod(_ block: (Self.ImplementationType) -> Self.BlockImplementationType) throws
+  public func swizzleClassMethod(_ block: (Self.ImplementationType) -> Self.BlockImplementationType) throws
+}
+extension Foundation.Date {
+  public var millisecondsSince1970: Swift.Double {
+    get
+  }
+  public var millisecondsSince1970Truncated: Swift.Int {
+    get
+  }
+  public var nanosecondsSince1970: Swift.Double {
+    get
+  }
+  public var nanosecondsSince1970Truncated: Swift.Int {
+    get
+  }
+  public var serializedInterval: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public static var currentVCLatestClickTraceId: Swift.String?
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public func findTitle() -> Swift.String?
+}
+public struct DeviceIdentifier : Swift.Equatable {
+  public init(value: Foundation.UUID)
+  public init?(string: Swift.String?)
+  public var hex: Swift.String {
+    get
+  }
+  public static func == (a: IMQACommonInternal.DeviceIdentifier, b: IMQACommonInternal.DeviceIdentifier) -> Swift.Bool
+}
+extension IMQACommonInternal.DeviceIdentifier {
+  public func intValue(digitCount: Swift.UInt) -> Swift.UInt64
+}
+extension Foundation.UUID {
+  public init?(withoutHyphen: Swift.String)
+  public var withoutHyphen: Swift.String {
+    get
+  }
+}
+extension Swift.Encodable {
+  public func toString() -> Swift.String?
+}
+public enum StackTraceBehavior : Swift.Int {
+  case notIncluded
+  case `default`
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol DispatchableQueue : AnyObject {
+  func async(_ block: @escaping () -> Swift.Void)
+  func sync(execute block: () -> Swift.Void)
+}
+extension Dispatch.DispatchQueue : IMQACommonInternal.DispatchableQueue {
+  public func async(_ block: @escaping () -> Swift.Void)
+}
+extension CoreFoundation.CGPoint {
+  public func toString() -> Swift.String
+}
+@propertyWrapper final public class ThreadSafe<Value> {
+  public init(wrappedValue: Value)
+  final public var wrappedValue: Value {
+    get
+    set
+  }
+  final public func modify(_ operation: (inout Value) -> Swift.Void)
+  @objc deinit
+}
+final public class UnfairLock {
+  public init()
+  @objc deinit
+  final public func locked<ReturnValue>(_ f: () throws -> ReturnValue) rethrows -> ReturnValue
+}
+public struct LogIdentifier : Swift.Codable, Swift.Equatable {
+  public let value: Foundation.UUID
+  public init(value: Foundation.UUID)
+  public init()
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public var toString: Swift.String {
+    get
+  }
+  public static func == (a: IMQACommonInternal.LogIdentifier, b: IMQACommonInternal.LogIdentifier) -> Swift.Bool
+}
+extension IMQACommonInternal.LogIdentifier {
+  public static var random: IMQACommonInternal.LogIdentifier {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class KeychainAccess {
+  public static var deviceId: Foundation.UUID {
+    get
+  }
+  @objc deinit
+}
+extension Dispatch.DispatchQueue {
+  public class func once(token: Swift.String, block: () -> Swift.Void)
+}
+public enum PersistableValue : Swift.Equatable, Swift.CustomStringConvertible, Swift.Hashable, Swift.Codable {
+  case string(Swift.String)
+  case bool(Swift.Bool)
+  case int(Swift.Int)
+  case double(Swift.Double)
+  case stringArray([Swift.String])
+  case boolArray([Swift.Bool])
+  case intArray([Swift.Int])
+  case doubleArray([Swift.Double])
+  public var description: Swift.String {
+    get
+  }
+  public init?(_ value: Any)
+  public static func == (a: IMQACommonInternal.PersistableValue, b: IMQACommonInternal.PersistableValue) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension IMQACommonInternal.PersistableValue {
+  public init(_ value: Swift.String)
+  public init(_ value: Swift.Bool)
+  public init(_ value: Swift.Int)
+  public init(_ value: Swift.Double)
+  public init(_ value: [Swift.String])
+  public init(_ value: [Swift.Int])
+  public init(_ value: [Swift.Double])
+}
+public enum ErrorCode : Swift.String {
+  case failure
+  case userAbandon
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SessionIdentifier : Swift.Equatable {
+  public init(value: Foundation.UUID)
+  public init?(string: Swift.String?)
+  public var toString: Swift.String {
+    get
+  }
+  public static func == (a: IMQACommonInternal.SessionIdentifier, b: IMQACommonInternal.SessionIdentifier) -> Swift.Bool
+}
+extension IMQACommonInternal.SessionIdentifier : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension IMQACommonInternal.SessionIdentifier {
+  public static var random: IMQACommonInternal.SessionIdentifier {
+    get
+  }
+}
+extension IMQACommonInternal.SessionIdentifier : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public enum Gzip {
+  public static let maxWindowBits: Swift.Int32
+}
+public struct CompressionLevel : Swift.RawRepresentable, Swift.Sendable {
+  public let rawValue: Swift.Int32
+  public static let noCompression: IMQACommonInternal.CompressionLevel
+  public static let bestSpeed: IMQACommonInternal.CompressionLevel
+  public static let bestCompression: IMQACommonInternal.CompressionLevel
+  public static let defaultCompression: IMQACommonInternal.CompressionLevel
+  public init(rawValue: Swift.Int32)
+  public init(_ rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+}
+public struct GzipError : Swift.Error, Swift.Sendable {
+  public enum Kind : Swift.Equatable, Swift.Sendable {
+    case stream
+    case data
+    case memory
+    case buffer
+    case version
+    case unknown(code: Swift.Int)
+    public static func == (a: IMQACommonInternal.GzipError.Kind, b: IMQACommonInternal.GzipError.Kind) -> Swift.Bool
+  }
+  public let kind: IMQACommonInternal.GzipError.Kind
+  public let message: Swift.String
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Foundation.Data {
+  public var isGzipped: Swift.Bool {
+    get
+  }
+  public func gzipped(level: IMQACommonInternal.CompressionLevel = .defaultCompression, wBits: Swift.Int32 = Gzip.maxWindowBits + 16) throws -> Foundation.Data
+  public func gunzipped(wBits: Swift.Int32 = Gzip.maxWindowBits + 32) throws -> Foundation.Data
+}
+public struct ProcessIdentifier : Swift.Equatable {
+  public let value: Swift.UInt32
+  public init?(hex: Swift.String)
+  public init(value: Swift.UInt32)
+  public var hex: Swift.String {
+    get
+  }
+  public static func == (a: IMQACommonInternal.ProcessIdentifier, b: IMQACommonInternal.ProcessIdentifier) -> Swift.Bool
+}
+extension IMQACommonInternal.ProcessIdentifier {
+  public static let current: IMQACommonInternal.ProcessIdentifier
+}
+extension IMQACommonInternal.ProcessIdentifier {
+  public static var random: IMQACommonInternal.ProcessIdentifier {
+    get
+  }
+}
+extension IMQACommonInternal.ProcessIdentifier : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public class SessionHeartbeat {
+  public static let defaultInterval: Swift.Double
+  public var callback: (() -> Swift.Void)?
+  public init(queue: Dispatch.DispatchQueue, interval: Foundation.TimeInterval)
+  public func start()
+  public func stop()
+  @objc deinit
+}
+public enum IMQASwizzableError : Swift.Error, Swift.Equatable {
+  case methodNotFound(selectorName: Swift.String, className: Swift.String)
+  public static func == (a: IMQACommonInternal.IMQASwizzableError, b: IMQACommonInternal.IMQASwizzableError) -> Swift.Bool
+}
+extension IMQACommonInternal.IMQASwizzableError : Foundation.LocalizedError, Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Foundation.Bundle {
+  public class var appIdentifier: Swift.String {
+    get
+  }
+  public class var appVersion: Swift.String {
+    get
+  }
+  public class var appBuildVersion: Swift.String {
+    get
+  }
+  public class var appName: Swift.String {
+    get
+  }
+  public var isUIKit: Swift.Bool {
+    get
+  }
+}
+extension IMQACommonInternal.SessionState : Swift.Equatable {}
+extension IMQACommonInternal.SessionState : Swift.Hashable {}
+extension IMQACommonInternal.SessionState : Swift.RawRepresentable {}
+extension IMQACommonInternal.StackTraceBehavior : Swift.Equatable {}
+extension IMQACommonInternal.StackTraceBehavior : Swift.Hashable {}
+extension IMQACommonInternal.StackTraceBehavior : Swift.RawRepresentable {}
+extension IMQACommonInternal.ErrorCode : Swift.Equatable {}
+extension IMQACommonInternal.ErrorCode : Swift.Hashable {}
+extension IMQACommonInternal.ErrorCode : Swift.RawRepresentable {}

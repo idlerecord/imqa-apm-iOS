@@ -1,0 +1,6 @@
+framework module IMQACommonInternal {
+  umbrella header "IMQACommonInternal.h"
+  export *
+
+  module * { export * }
+}

@@ -85,6 +85,6 @@ extension MMKV {
         }
 
         try? FileManager.default.createDirectory(atPath: currentSubDir, withIntermediateDirectories: true)
-        MMKV.initialize(rootDir: currentSubDir, logLevel: .none)
+        MMKV.initialize(rootDir: currentSubDir)
     }
 }

@@ -1,9 +1,0 @@
-//
-//  Copyright © 2024 Embrace Mobile, Inc. All rights reserved.
-//
-
-module IMQAObjCUtilsInternal {
-    umbrella header "IMQAObjCUtilsInternal.h"
-    export *
-    module * { export * }
-}

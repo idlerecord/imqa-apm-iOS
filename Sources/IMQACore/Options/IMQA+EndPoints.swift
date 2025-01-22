@@ -17,7 +17,6 @@ extension IMQA{
         @objc public init(collectorURL: String) {
             self.baseURL = collectorURL
         }
-
         
         public enum OpentelemetryBaseUrl{
             case tracer(String)

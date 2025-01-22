@@ -1,0 +1,6 @@
+framework module IMQAObjCUtilsInternal {
+  umbrella header "IMQAObjCUtilsInternal.h"
+  export *
+
+  module * { export * }
+}
