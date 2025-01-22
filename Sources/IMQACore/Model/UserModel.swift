@@ -15,15 +15,15 @@ public struct UserSemantics {
 
 public struct UserModel{
     
-    static var id: String? {
+    public static var id: String? {
         UserDefaults(suiteName: UserSemantics.userProfileUserDefaultKey)?.string(forKey: "id")
     }
     
-    static var name: String? {
+    public static var name: String? {
         UserDefaults(suiteName: UserSemantics.userProfileUserDefaultKey)?.string(forKey: "name")
     }
     
-    static var email: String? {
+    public static var email: String? {
         UserDefaults(suiteName: UserSemantics.userProfileUserDefaultKey)?.string(forKey: "email")
     }
     

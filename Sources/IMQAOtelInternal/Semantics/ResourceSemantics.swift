@@ -22,9 +22,9 @@ public struct ResourceSemantics {
     /// 디바이스 아이디 UUID
     public static let deviceId = "device.id"
     /// 제좌사
-    public static let deviceManufacturer = "devcie.manufacturer"
+    public static let deviceManufacturer = "device.manufacturer"
     /// 브랜드
-    public static let deviceBrand = "devcie.brand"
+    public static let deviceBrand = "device.brand"
     /// 모델
     public static let deviceModelIdentifier = "device.model.identifier"
 }
