@@ -180,7 +180,8 @@ public class IMQAOTel{
         guard let tracerUrl = URL(string: tracerUrlStr) else{
             return
         }
-        let tracerExporter = OtlpHttpTraceExporter(endpoint: tracerUrl)
+        
+        let tracerExporter:CustomOtlpHttpTraceExporter? = nil//OtlpHttpTraceExporter(endpoint: tracerUrl)
         
         //logs
         let logsUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.logs(uploadUrl).baseUrl()
