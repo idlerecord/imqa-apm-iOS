@@ -21,7 +21,7 @@ public class SessionSamplerRecord: Codable, VVIdenti {
     }
 }
 
-public extension IMQAStorage {
+internal extension IMQAStorage {
     func addSamplerRecord(_ record: SessionSamplerRecord) {
         let storage = IMQAMuti<SessionSamplerRecord>()
        storage.save(record)

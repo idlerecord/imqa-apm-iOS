@@ -5,7 +5,7 @@
 //  Created by Hunta on 2024/11/21.
 //
 import OpenTelemetrySdk
-import OpenTelemetryProtocolExporterCommon
+internal import OpenTelemetryProtocolExporterCommon
 
 struct RequestLogPayload: Codable {
     let resourceLogs: [ResourceLog]

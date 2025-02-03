@@ -7,7 +7,6 @@
 
 import Foundation
 import IMQACommonInternal
-import IMQACaptureService
 import IMQAOtelInternal
 
 

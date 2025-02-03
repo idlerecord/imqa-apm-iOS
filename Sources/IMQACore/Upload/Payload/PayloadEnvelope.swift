@@ -7,7 +7,7 @@
 
 
 import Foundation
-import OpenTelemetryProtocolExporterCommon
+internal import OpenTelemetryProtocolExporterCommon
 import OpenTelemetrySdk
 
 struct PayloadEnvelope<T: Encodable>: Encodable {

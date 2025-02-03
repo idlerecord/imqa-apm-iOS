@@ -1,0 +1,12 @@
+//
+//  module.swift
+//  IMQAIO
+//
+//  Created by Hunta Park on 1/31/25.
+//
+module IMQACollectDeviceInfo {
+    umbrella header "IMQACollectDeviceInfo.h"
+    export *
+    module * { export * }
+}
+

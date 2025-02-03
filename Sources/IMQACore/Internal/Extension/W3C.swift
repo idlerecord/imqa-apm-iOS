@@ -10,7 +10,7 @@ public struct W3C {
     private init() { }
 }
 
-public extension W3C {
+internal extension W3C {
     static let traceparentHeaderName = "traceparent"
 
     /// Creates a W3C [traceparent](https://www.w3.org/TR/trace-context/#traceparent-header) header value.

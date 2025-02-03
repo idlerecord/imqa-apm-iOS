@@ -8,7 +8,7 @@
 import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import ResourceExtension
+internal import ResourceExtension
 import IMQACommonInternal
 
 protocol SessionLifecycle {

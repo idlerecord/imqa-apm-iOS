@@ -1,0 +1,88 @@
+name: IMQAIO
+options:
+  bundleIdPrefix: com.onycom
+  deploymentTarget:
+    iOS: 13.0
+    macOS: 13.0
+  usesSwiftLint: false
+  usesXCFrameworks: true
+
+settings:
+  base:
+    GENERATE_INFOPLIST_FILE: YES
+    BUILD_LIBRARY_FOR_DISTRIBUTION: YES
+    SKIP_INSTALL: NO
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: 5.9
+
+targets:
+  IMQAIO:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQAIO]
+    dependencies:
+      - target: IMQACore
+    settings:
+      base:
+        MACH_O_TYPE: mh_dylib
+
+  IMQACore:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQACore]
+    resources:
+      - path: Sources/IMQACore/PrivacyInfo.xcprivacy
+    dependencies:
+      - target: IMQAOtelInternal
+      - target: IMQACollectDeviceInfo
+      - target: IMQAObjCUtilsInternal
+      - target: IMQACommonInternal
+      - framework: Sources/Frameworks/MMKV.xcframework
+      - package: opentelemetry-swift
+        product: OpenTelemetryApi
+      - package: opentelemetry-swift
+        product: OpenTelemetrySdk
+      - package: opentelemetry-swift
+        product: OpenTelemetryProtocolExporterHTTP
+      - package: opentelemetry-swift
+        product: ResourceExtension
+      - package: KSCrash
+        product: Installations
+    settings:
+        base:
+        OTHER_LDFLAGS: ["-lopentelemetry", "-lkscrash"]  # 将 opentelemetry 和 kscrash 动态库链接到静态库中
+        MACH_O_TYPE: "staticlib"  # 关键！让 framework 变成静态库
+
+  IMQAObjCUtilsInternal:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQAObjCUtilsInternal]
+
+  IMQACollectDeviceInfo:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQACollectDeviceInfo]
+
+  IMQAOtelInternal:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQAOtelInternal]
+
+  IMQACommonInternal:
+    type: framework
+    platform: iOS
+    sources: [Sources/IMQACommonInternal]
+
+  MMKV:
+    type: framework
+    platform: iOS
+    dependencies:
+      - framework: Sources/Frameworks/MMKV.xcframework
+
+packages:
+  KSCrash:
+    url: https://github.com/kstenerud/KSCrash.git
+    exactVersion: 2.0.0-rc.8
+  opentelemetry-swift:
+    url: https://github.com/open-telemetry/opentelemetry-swift
+    exactVersion: 1.12.1

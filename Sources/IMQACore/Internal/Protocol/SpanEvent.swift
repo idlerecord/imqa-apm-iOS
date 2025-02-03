@@ -9,7 +9,7 @@ import OpenTelemetryApi
 import OpenTelemetrySdk
 
 
-public protocol SpanEvent {
+internal protocol SpanEvent {
     var name: String { get }
     var timestamp: Date { get }
     var attributes: [String: AttributeValue] { get }

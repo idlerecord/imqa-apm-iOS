@@ -9,12 +9,11 @@
 import Foundation
 import WebKit
 import OpenTelemetryApi
-import IMQACaptureService
 import IMQACommonInternal
 
 /// Service that generates OpenTelemetry span events when a `WKWebView` loads an URL or throws an error.
 @objc(IMQAWebViewCaptureService)
-public final class WebViewCaptureService: CaptureService {
+internal final class WebViewCaptureService: CaptureService {
 
     @objc public let options: WebViewCaptureService.Options
     private let lock: NSLocking

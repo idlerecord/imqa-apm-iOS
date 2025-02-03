@@ -7,7 +7,7 @@
 import Foundation
 import IMQAOtelInternal
 
-public extension IMQAStorage {
+internal extension IMQAStorage {
     enum StorageMechanism {
         case inMemory(name: String)
         case onDisk(baseURL: URL, fileName: String)

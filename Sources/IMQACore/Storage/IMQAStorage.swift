@@ -13,9 +13,9 @@ import IMQACommonInternal
 import UIKit
 #endif
 
-public typealias Storage = IMQAStorageMetadataFetcher & LogRepository
+internal typealias Storage = IMQAStorageMetadataFetcher & LogRepository
 
-public class IMQAStorage: Storage{
+internal class IMQAStorage: Storage{
     
     public private(set) var options: Options
     public private(set) var appId: String
@@ -101,7 +101,7 @@ extension IMQAStorage{
         storage.save(log)
     }
 
-    public func fetchAll(excludingProcessIdentifier processIdentifier: ProcessIdentifier) throws -> [LogRecord] {
+    internal func fetchAll(excludingProcessIdentifier processIdentifier: ProcessIdentifier) throws -> [LogRecord] {
         let storage = IMQAMuti<LogRecord>()
         return storage.get().filter{$0.processIdentifier.value != processIdentifier.value}
     }
@@ -111,19 +111,19 @@ extension IMQAStorage{
         storage.remove()
     }
 
-    public func remove(logs: [LogRecord]) {
+    internal func remove(logs: [LogRecord]) {
         let storage = IMQAMuti<LogRecord>()
         logs.forEach { reocord in
             storage.remove(reocord.vvid)
         }
     }
 
-    public func getAll() -> [LogRecord] {
+    internal func getAll() -> [LogRecord] {
         let storage = IMQAMuti<LogRecord>()
         return storage.get()
     }
 
-    public func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void) {
+    internal func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void) {
         do {
             try writeLog(log)
             completion(.success(log))

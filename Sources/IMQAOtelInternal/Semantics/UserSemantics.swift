@@ -7,5 +7,10 @@
 import Foundation
 
 public struct UserSemantics {
-    public static let userProfileUserDefaultKey: String = Bundle.appIdentifier + ".userdefault"
+    public static var userProfileUserDefaultKey: String {
+        if let value = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String {
+            return value + ".userdefault"
+        }
+        return "" + ".userdefault"
+    }
 }

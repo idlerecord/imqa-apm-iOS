@@ -7,10 +7,11 @@
 import Foundation
 import IMQACommonInternal
 import OpenTelemetrySdk
+import IMQAOtelInternal
 
 extension SpanData {
     
-    public var spanType: IMQASpanType {
+    internal var spanType: IMQASpanType {
         if let raw = attributes[SpanSemantics.spanType] {
             switch raw {
             case let .string(val):
@@ -22,14 +23,14 @@ extension SpanData {
         return IMQASpanType.DEFAULT
     }
 
-    public var errorCode: ErrorCode? {
+    internal var errorCode: ErrorCode? {
         guard let value = attributes["imqa.error_code"] else {
             return nil
         }
         return ErrorCode(rawValue: value.description)
     }
 
-    public func toJSON() throws -> Data {
+    internal func toJSON() throws -> Data {
         let encoder = JSONEncoder()
         return try encoder.encode(self)
     }

@@ -9,7 +9,7 @@
 import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import OpenTelemetryProtocolExporterCommon
+internal import OpenTelemetryProtocolExporterCommon
 import IMQAOtelInternal
 
 

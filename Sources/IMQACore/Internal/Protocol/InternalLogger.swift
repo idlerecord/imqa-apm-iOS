@@ -5,6 +5,7 @@
 //  Created by Hunta Park on 1/10/25.
 //
 import Foundation
+import IMQAOtelInternal
 
 @objc public protocol InternalLogger: AnyObject {
     @discardableResult @objc func log(level: LogLevel, message: String, attributes: [String: String]) -> Bool

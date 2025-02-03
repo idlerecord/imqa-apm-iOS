@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import IMQACaptureService
 import IMQACommonInternal
 
 typealias URLSessionCompletion = (Data?, URLResponse?, Error?) -> Void
@@ -18,7 +17,7 @@ protocol URLSessionSwizzler: Swizzlable {
 
 /// Service that generates OpenTelemetry spans for network requests that use `URLSession`.
 @objc(IMQAURLSessionCaptureService)
-public final class URLSessionCaptureService: CaptureService, URLSessionTaskHandlerDataSource {
+internal final class URLSessionCaptureService: CaptureService, URLSessionTaskHandlerDataSource {
 
     public let options: URLSessionCaptureService.Options
     private let lock: NSLocking

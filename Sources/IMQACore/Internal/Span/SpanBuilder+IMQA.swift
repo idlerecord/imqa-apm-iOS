@@ -23,7 +23,7 @@ extension SpanBuilder {
 //        setAttribute(key: SpanSemantics.keyIsKeySpan, value: "true")
 //    }
 
-    @discardableResult public func error(errorCode: ErrorCode) -> Self {
+    @discardableResult internal func error(errorCode: ErrorCode) -> Self {
         setAttribute(key: "imqa.error_code", value: errorCode.rawValue)
     }
 

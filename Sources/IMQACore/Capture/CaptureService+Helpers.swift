@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import IMQACaptureService
 
-@objc public extension CaptureService {
+@objc internal extension CaptureService {
     /// Returns a `URLSessionCaptureService` with the given `URLSessionCaptureService.Options`.
     /// - Parameter options: `URLSessionCaptureService.Options` used to configure the service.
     static func urlSession(

@@ -6,7 +6,6 @@
 #define EmbraceObjCUtilsInternal_h
 
 #import "IMQABinaryImageProvider.h"
-#import "IMQADevice.h"
 #import "IMQAStackTraceProccessor.h"
 #import "NSURLSessionTask+IMQA.h"
 #import "IMQAURLSessionDelegateForwarder.h"

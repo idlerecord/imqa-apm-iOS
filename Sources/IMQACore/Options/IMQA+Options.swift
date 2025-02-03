@@ -5,14 +5,14 @@
 //  Created by Hunta Park on 1/10/25.
 //
 import Foundation
-import IMQACaptureService
 
 extension IMQA {
     /// Class used to setup the IMQA SDK.
+    @objc(IMQAOptions)
     public final class Options: NSObject {
         public let serviceKey: String
         public let endpoints: IMQA.Endpoints?
-        public let services: [CaptureService]
+        internal let services: [CaptureService]
         public let crashReporter: CrashReporter?
         public var sampleRate: Double = 1.0
         
@@ -30,7 +30,7 @@ extension IMQA {
     }
 }
 
-public extension Array where Element == CaptureService {
+internal extension Array where Element == CaptureService {
     static var all: [CaptureService] {
         return CaptureServiceBuilder()
             .addAll()

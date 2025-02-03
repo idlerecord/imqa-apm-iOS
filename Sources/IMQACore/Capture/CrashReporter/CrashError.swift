@@ -7,7 +7,7 @@
 import OpenTelemetryApi
 import OpenTelemetrySdk
 
-public struct IMQACrashError: SpanException {
+struct IMQACrashError: SpanException {
     public var type: String
     
     public var message: String?

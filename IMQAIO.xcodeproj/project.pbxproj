@@ -1,0 +1,2462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009C04FDB8587A7298A88F28 /* IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E972B202C498B29337C8DAFA /* IMQA.swift */; };
+		00FFFC1C22302B3F74C864BF /* IMQANotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E0840DABF1FB63E319BD4 /* IMQANotification.swift */; };
+		015271C8A1E8843A9E53E7A5 /* DeviceIdentifier+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903D66F6A347BF9A99FEBBC2 /* DeviceIdentifier+Persistence.swift */; };
+		01DAB79664135170190DE916 /* MMKV.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF20AA802EE342446AF317D /* MMKV.xcframework */; };
+		0441714A74C2C32D46303417 /* OpenTelemetryProtocolExporterHTTP in Frameworks */ = {isa = PBXBuildFile; productRef = B33181DE9D4F2E0EFF4C733F /* OpenTelemetryProtocolExporterHTTP */; };
+		05F9F88E8CA49821715BB6AA /* MemoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F292FBB10C13E84756A3861 /* MemoryModel.swift */; };
+		06BF789CA21EE1F5822807B7 /* CaptureServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C7D80E73F25E5FD8752A9D /* CaptureServiceBuilder.swift */; };
+		06CFC6CD120EC9D91D080A3C /* ViewCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B935AB85882A1B5E648915 /* ViewCaptureService.swift */; };
+		079C63FCBF6AA742C0C9BCCA /* UUID+WithoutHyphen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F781642D57E81917A6F55 /* UUID+WithoutHyphen.swift */; };
+		08453F128709F37999A6F6CC /* LogSeverity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4CD25E9C0C62E914AAB608 /* LogSeverity.swift */; };
+		090D4D345357AC9BCB65B1CE /* SpanLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8385D5FF63E7EB341C7EE4F /* SpanLink.swift */; };
+		096CB53C17CA96CE996B1794 /* LogDataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56C8CD33983283FB130025 /* LogDataValidation.swift */; };
+		0A8912F0C55B99F601C32230 /* InstrumentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD5014EA60CADB13453BE0 /* InstrumentableViewController.swift */; };
+		0BCCE7CED7FCC680256BA62E /* IMQAUpload+EndpointOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B4092E87C948605B46B85B /* IMQAUpload+EndpointOptions.swift */; };
+		0C67E426FA1ED61559F428CD /* StorageIMQALogExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C4B373D071E283BABE669 /* StorageIMQALogExporter.swift */; };
+		0D008A1FD79961F3234F9559 /* DefaultInternalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FD34D66AA5D9B2FC51947 /* DefaultInternalLogger.swift */; };
+		0D460942CE239524CBDF567E /* IMQAUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AAEFF6C7E1E8D8111BD967 /* IMQAUploadOperation.swift */; };
+		0D4C06E2AD3484780F53C77A /* SwizzleCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840B89B1B3C4E544300851A /* SwizzleCache.swift */; };
+		0D6C0AEA940298F0A8C1E14B /* IMQAStorage+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEC443A5D9F38B2A8178FA0 /* IMQAStorage+Options.swift */; };
+		0FE6D72A2547699328BFA011 /* NSURLSessionTask+IMQA.m in Sources */ = {isa = PBXBuildFile; fileRef = 01426B775923C9FF336D8DE1 /* NSURLSessionTask+IMQA.m */; };
+		10269D25FBE42F0D0B610F7F /* URLSessionCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456603B9E6FFAB64A1A5A5C5 /* URLSessionCaptureService+Options.swift */; };
+		107EEB8AA62D657291F57A0B /* StackTraceBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209B7F7D2C5C13A078F928A /* StackTraceBehavior.swift */; };
+		10A2A3A1F2698E2DBFB1E7D1 /* OpenTelemetryExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC2FDAE5BD6BF4E0EDA8CEC /* OpenTelemetryExport.swift */; };
+		16565968DE73F1F87D263C0D /* SingleLogRecordProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC1B43D66EF1E2BF11A668C /* SingleLogRecordProcessor.swift */; };
+		169DF89A5FBC9E4C6F9165D8 /* ResourceCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573905B8357BE5990B3C59DB /* ResourceCaptureService.swift */; };
+		16CF9067ED3E5C77D3DA53D5 /* CaptureServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C441F3B62E78D72F7E2A8D9B /* CaptureServiceFactory.swift */; };
+		1AB4B9098C62F4F7E5049D95 /* URLSessionRequestsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9788A01E73AB4263FDB80A34 /* URLSessionRequestsDataSource.swift */; };
+		1BFB70665314838D58EC7E43 /* SpanData+toJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB1A39146013D76464C6703 /* SpanData+toJson.swift */; };
+		1C231D92EA459F30D8C19357 /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6A02142801C66777E90AA5 /* LogRepository.swift */; };
+		1C7958C13D2801318D9F454F /* DeviceIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99B83F364A4330FCBA5C4A3 /* DeviceIdentifier.swift */; };
+		1D13D6D8B4F1908F4DABAC83 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A3E921317B9B8BD22DFB0 /* Reachability.swift */; };
+		1DD10BB6062EB95920984415 /* Span+IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3AE5C8F6EC25432E413A81 /* Span+IMQA.swift */; };
+		1F4E445A8721410B1967ADE6 /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4A70B44B4E2CF3BF585922 /* PushNotificationEvent.swift */; };
+		205395BD9206003CB044EFD3 /* URLSessionDelegateProxy+DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3E536ACADB7739845C9589 /* URLSessionDelegateProxy+DataDelegate.swift */; };
+		21F0A3C8DBBAD382CCB6B12C /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F951B4C87DACD0FE0210846 /* DispatchQueue+Extension.swift */; };
+		2203A4B11A28765EEBDF3C67 /* SessionControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D03E2EC3C0EC8812BFAC597 /* SessionControllable.swift */; };
+		23BEDEDB3638387206CB5885 /* IMQAFileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380E24F374FC42CBB2929C63 /* IMQAFileSystem.swift */; };
+		242750C060FF3D55FC66D68E /* CGPoint+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547865039E77B1118DC29AF /* CGPoint+toString.swift */; };
+		247355A2AC32708D9B9911D0 /* IMQALoggerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C7A7588DBCAD0C78B8A29 /* IMQALoggerBuilder.swift */; };
+		247BC77BB9ABB2DFB92FACC7 /* PowerModeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF0C737CBE6A044C0C8B957 /* PowerModeProvider.swift */; };
+		25834AAB18ADA2137E8DD9FD /* UserSemantics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4D97DCA15CC241D5A41691 /* UserSemantics.swift */; };
+		26346F4549AF3CDF5B086215 /* URLSessionCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087DF88A62A0E945237078B8 /* URLSessionCaptureService.swift */; };
+		29FCF9C9F44DC8AAE860B3BB /* ProcessMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF62C35DAC6BD1FAF9159C0 /* ProcessMetadata.swift */; };
+		2A49A07534146BCF14058CCD /* BatteryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858E5C89D71EB96EA082261A /* BatteryModel.swift */; };
+		2A8F9111DBEDE327B826FCE8 /* LogBatchLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CB2C41B6541AB4B84719B0 /* LogBatchLimits.swift */; };
+		2B78E6A3DC5C2613E4B16A45 /* URLSessionTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFC1DFAF7C642ECBF3C991 /* URLSessionTaskHandler.swift */; };
+		2BEC2EA466FE1F789BF65DAE /* VVIdenti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F8AB93BEB975F177F6DFF /* VVIdenti.swift */; };
+		2E043E1BD2742A9D0A91F680 /* DefaultLogBatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E965AF92517491966A82E07 /* DefaultLogBatcher.swift */; };
+		2EA6D365F2C8BF19B4F8866F /* IMQALoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385392E47DDED4678392DD2 /* IMQALoggerConfig.swift */; };
+		2F010F4B4C71914D38AEBB17 /* SpanDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B342D3C4E43D12E5C739C /* SpanDataValidator.swift */; };
+		307F58F956ACD849E0B99FDA /* SpanBuilder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D4F883F0F3F6627E4CB673 /* SpanBuilder+Extension.swift */; };
+		30C6B922BCD8DCAE8681B2FF /* DispatchableQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1A38B4682D9524B120F250 /* DispatchableQueue.swift */; };
+		321A06B93BB9009F4166470C /* W3C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA9769A869A022AA4380215 /* W3C.swift */; };
+		327FF168C5E445FEA97D5040 /* CaptureServices+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7715EF6809B264F2A2088DB3 /* CaptureServices+UIViewController.swift */; };
+		372ED198FCB26EC1D5B72B6A /* ResourceSemantics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C67ABE225429AED6D2EF7 /* ResourceSemantics.swift */; };
+		3807EBD5DBCFF27EE248C0F6 /* ProcessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD5FEECB48C2086E00AA867 /* ProcessModel.swift */; };
+		3A44EB47C9A02348438DB6BE /* OpenTelemetrySdk in Frameworks */ = {isa = PBXBuildFile; productRef = 11E761A2AEA60861D6C4C293 /* OpenTelemetrySdk */; };
+		3B0529E96B77BE763B5823E1 /* PushNotificationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E29A0A1CA6DA7B9F97193 /* PushNotificationError.swift */; };
+		3E9BF72AA15E2D2E4957FDE1 /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADD5240B7B620997355A281 /* ErrorCode.swift */; };
+		421598DBEEA296B190DF1A8D /* IMQAUploadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903ED43952F8FDE56D425697 /* IMQAUploadType.swift */; };
+		47B711F58786BE37DA90EAFE /* CarrierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE8D16095FA4E10DFFF64FF /* CarrierModel.swift */; };
+		4839BE89B903CB3D04B015A9 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67941F2EC1A42B38D6F8CE7 /* SessionController.swift */; };
+		49FA9C1D9ACDA4B63AC1EC33 /* MetadataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD38E487C36658EBEE776D /* MetadataRecord.swift */; };
+		4A9DD20C8D78235E0BC98CAA /* SpanBuilder+IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D6D80EDC564C922605112 /* SpanBuilder+IMQA.swift */; };
+		4C335FE0106DDC56AC7DABBA /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B68F32EAD606CF0EDD4ADA /* NetworkModel.swift */; };
+		4C36F7ED261444A3F037B637 /* SpanEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E59E64BBC325BB7038E98 /* SpanEvent.swift */; };
+		4D54DF0A040D3EB3B9CC81CA /* SpanLinkPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D859AF096FD97502AB786F /* SpanLinkPayload.swift */; };
+		50938A5B036EC47EC179981A /* IMQACollectDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 400F47631133CCFADCDE8246 /* IMQACollectDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51429988C717D4245099E889 /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B6B632EA8552438D08F99C /* LogController.swift */; };
+		52EDE74BEB898E63C57D7D06 /* URLSessionDelegateProxy+TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F07941263A39AC9F741024 /* URLSessionDelegateProxy+TaskDelegate.swift */; };
+		52F9682ABB7210E7966F4059 /* IMQAURLSessionDelegateForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = A636725FF150F65D921D1484 /* IMQAURLSessionDelegateForwarder.m */; };
+		53C61BD35F109A3B9C567440 /* IMQACrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AD0B3192AE06EB030FB847 /* IMQACrashReporter.swift */; };
+		546118A70AAA6F1390E1D38D /* Data+Gzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3D624F844AA0B807BA55A /* Data+Gzip.swift */; };
+		555E7F48D7BF999BA70D94F5 /* PushNotificationCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B703A482AF9F676FD8E7A4E /* PushNotificationCaptureService.swift */; };
+		57B7760508E86FEBF1B56158 /* IMQAStackTraceProccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AB6D7B645B3AD823E852D8 /* IMQAStackTraceProccessor.m */; };
+		57C0592229AD4B6EA58ACEE5 /* IMQACollectDeviceInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */; };
+		58128D61D990DDDFEC63BFA9 /* IMQALogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBF67AE0B108F8C166545BB /* IMQALogger.swift */; };
+		596BA8F488CD2DDAD2B9EF47 /* IMQAFilePathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C534C15620D0590BD72AC /* IMQAFilePathProvider.swift */; };
+		599995F690099480192BE749 /* WebViewCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2483B2F5014AE092FAE2A112 /* WebViewCaptureService.swift */; };
+		5A72DEE8D2F23D7010CE00B3 /* IMQAStorageUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA92DBC77DEFB42C69FF881 /* IMQAStorageUnit.swift */; };
+		5A814C7511D88B5A3224C860 /* SessionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0561DCAB7FCAF79F28B8F6 /* SessionRecord.swift */; };
+		5A9D4EE707BCA27322FC22D4 /* DefaultKeychainInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93C725F7ACE2C7DD73A8481 /* DefaultKeychainInterface.swift */; };
+		5AE3A4BDA374AD197FB446F9 /* FilePathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7956CA6467743F3E6AB276 /* FilePathProvider.swift */; };
+		5B16ED51C732787C3E70D475 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F9A9072C95EFCAA898E2E69F /* PrivacyInfo.xcprivacy */; };
+		604D08FA08B82BA899911EC4 /* SessionHeartbeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DD7B82EC10BD4C24055723 /* SessionHeartbeat.swift */; };
+		608B5F5485712116A011CD5C /* Collection+LogDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D693E1CE0AB29A2C5EC51D5E /* Collection+LogDataValidator.swift */; };
+		61791B8B4145F06EFA786B82 /* UnsentDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542ECDC69C9B0E3A86E6E2A /* UnsentDataHandler.swift */; };
+		61EF1E381E50E020F14615EA /* Installations in Frameworks */ = {isa = PBXBuildFile; productRef = C90F102500A2306126D28043 /* Installations */; };
+		628B21DA5B158CE1880C8C8D /* NetworkPayloadCaptureRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9025B05E8FBAD4DDFED9B81A /* NetworkPayloadCaptureRule.swift */; };
+		62A144E0499AB1A6946006E5 /* TapCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025849290ACBD544F1CE2A5E /* TapCaptureService+Options.swift */; };
+		6459C48037CB3268B107E3E7 /* SpanSemantics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B48A6FDE70271A4F047C /* SpanSemantics.swift */; };
+		646B6B9FF61E59957C1420FF /* IMQALogSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075CD5B14FD7E033FF0F91FA /* IMQALogSharedState.swift */; };
+		65455FA115BF6BD47D9B2F38 /* IMQA+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419A4C88E6D77178CD25C61C /* IMQA+Options.swift */; };
+		66DF191618A6560980ED4412 /* InternalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E7481E071057AB5196EC0 /* InternalLogger.swift */; };
+		674765415CA92AFECDC346A1 /* OpenTelemetryManager+Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B84C7C2088DF27E955A554C /* OpenTelemetryManager+Span.swift */; };
+		68E832B767273E32D9058DBA /* IMQAReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0530020AE959E35B1206794 /* IMQAReachabilityMonitor.swift */; };
+		698BEB7B36C1DC9F7E2A0673 /* URLSessionDelegateProxy+StreamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3F4E6011F292C174254C0 /* URLSessionDelegateProxy+StreamDelegate.swift */; };
+		699D7C2BDD6C13EAEDFBAF39 /* CrashlyticsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22585FDB996D27C2F00BEAB /* CrashlyticsWrapper.swift */; };
+		6AF8BB8E2CB04A7F9FDB6504 /* EncryptedNetworkPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2FFEBC2039ECD592A29247 /* EncryptedNetworkPayload.swift */; };
+		6C7A0316733834897C266F28 /* FSHardcodeDeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DAB104F0E3863E5F2B2A7BC /* FSHardcodeDeviceInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DA527F848D3ADDE59350F25 /* PayloadEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044A052A3582773366AF105 /* PayloadEnvelope.swift */; };
+		6DC34B76754C98131D5104E3 /* FSHardcodeDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 183D20E2EBA56D4D4A445048 /* FSHardcodeDeviceInfo.m */; };
+		6F1F217CBFE156B962A8A01E /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449654B2D1E7731E827A2827 /* SessionState.swift */; };
+		71C299B34AFAB232C29A5C70 /* IMQABinaryImageProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7067BB9C2219237FBFE58604 /* IMQABinaryImageProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		722DC240D331DCBA2B2A0DE3 /* IMQALogAttributesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D722E3037F93C222CB0C9 /* IMQALogAttributesBuilder.swift */; };
+		755EA3302F73DDD72B390231 /* IMQAMuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DDE5644D5FE7F4B4310D1A /* IMQAMuti.swift */; };
+		76485D5B3A65B44BD2B5CB64 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258DCA0FDDDAFD311B1DB20 /* URLRequest+Extension.swift */; };
+		76717DEF9E829E9EA4ACD832 /* iOSSessionLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7AF9B8A89F8A086D42948 /* iOSSessionLifecycle.swift */; };
+		76B4F394A68B4FA07C40928C /* NetworkPayloadCaptureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE62D71FAD19E13CC40F0EE /* NetworkPayloadCaptureHandler.swift */; };
+		76E79961B7ADFACC1454CE9C /* OpenTelemetryApi in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBE2688BF028A186EFDD893 /* OpenTelemetryApi */; };
+		779B1EF192FA35484A108A47 /* IMQAUpload+MetadataOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B828ADB4ABBF81BE952C67 /* IMQAUpload+MetadataOptions.swift */; };
+		792283A6A5AE79D4C68FE387 /* FSCPUUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4C9817C163F29CBF8E375 /* FSCPUUsage.m */; };
+		7ABCC298044AE8D4677ABBC9 /* IMQACommonInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936A3039949BADA9639F6700 /* IMQACommonInternal.framework */; };
+		7AC0311FEE0F7403E64629BF /* LogPayloadBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A4B00FBB2590D0D79466 /* LogPayloadBuilder.swift */; };
+		7B954187FB727E18FBF2CD0B /* CaptureServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFEAED97285863B894E40F /* CaptureServices.swift */; };
+		7BB4A8556A0BF39F17849E62 /* LowPowerModeCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CEB934B04A2D31E2683A37 /* LowPowerModeCaptureService.swift */; };
+		7BCAEF3819EDFD8711B305F8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E500BBC3FCB45D7D2DBCC9F /* UserModel.swift */; };
+		7C3269B9E9E590DDC89960E1 /* IMQAURLSessionDelegateForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = E417B2C5B21D8016BFF565FA /* IMQAURLSessionDelegateForwarder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C52CC04CFA6E23D5DAD69DB /* ResourceStorageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC1C09FF148DAA3A5AD7816 /* ResourceStorageExporter.swift */; };
+		7CB164AE28BE20473B2C4E0B /* IMQAUpload+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60DBD635943DE4A2E8A9985 /* IMQAUpload+Options.swift */; };
+		7DF4DAB4C526E7F65715BAAD /* CrashReporterContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F8274C022F16AF0BA81042 /* CrashReporterContext.swift */; };
+		7E9F1E7DD0B2D422C02E4C05 /* IMQASingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6008B6FE8F6FCD4FCB543 /* IMQASingle.swift */; };
+		7EB4D04996855107747CC8FF /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF3DF0360750880A27F4B39 /* Bundle+Extension.swift */; };
+		7EFCAD1EA57C4003F60B2704 /* SpansPayloadBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92B7CD84BF44813ACCDDF9 /* SpansPayloadBuilder.swift */; };
+		81C1A7C8C702B3130492B213 /* IMQAViewControllerCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A367A9009F264E0ED6149E76 /* IMQAViewControllerCustomization.swift */; };
+		832113822CCC15FED3E872E8 /* IMQABinaryImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D5533C6C9986F0B17577D41 /* IMQABinaryImageProvider.m */; };
+		832CFF51E308012C368CDC38 /* URLSessionDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCA67D3ABAE4F1B17BBCDD /* URLSessionDelegateProxy.swift */; };
+		83C1D169C621BE93494B972B /* IMQADevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C95C325145D4CBBE4334AA /* IMQADevice.m */; };
+		840248A23605F18AEC57226B /* LowMemoryWarningCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7D242C396F8EA32064E4BD /* LowMemoryWarningCaptureService.swift */; };
+		853FC29DC01E4477B2701882 /* StorageSpanExporter+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2890B8BABEE6080303A9D393 /* StorageSpanExporter+Options.swift */; };
+		8544CB13A63B5778D2BD3919 /* ResourcePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF5E3DDA68EB959EBE11311 /* ResourcePayload.swift */; };
+		85EBEA770A4D963DF6C0AFDC /* IMQASwizzableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9C6949B694367A77BE748F /* IMQASwizzableError.swift */; };
+		880C7AFBDEB0AFD24D34F327 /* IMQAResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C05E588C328B074077377BD /* IMQAResourceProvider.swift */; };
+		88D837FF6846ABCA0E7B25B8 /* IMQAMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18923F7B5B91116B8308DB2A /* IMQAMeta.swift */; };
+		8A8EF09BC5F7C30F7D807043 /* CrashlyticsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C8FB4BACC321ED25E403C7 /* CrashlyticsReporter.swift */; };
+		8C4A6CFC9EDE30AFDB59DBCD /* IMQAStorage+Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D8FC3EE9846EAF72E1B1B3 /* IMQAStorage+Sampler.swift */; };
+		8C694525A908E1E484009FF8 /* IMQAUploadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A3FAD8E13E3AD74C3D9C40 /* IMQAUploadError.swift */; };
+		8DFD728469DB0D8FBF12AC97 /* IMQAStorage+Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D1684830469C0F9C93E6CF /* IMQAStorage+Session.swift */; };
+		8F8A2BFF9741D31A53A3702B /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67647A48BE37C6A368FCA486 /* CaptureService.swift */; };
+		90442B9D54904042A703DE19 /* IMQAOTel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD93FB290E9A6694E4BD7E0 /* IMQAOTel.swift */; };
+		93C60D3524F26D440BAF259A /* IMQALogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133EC8A38D0CD1314B020A9 /* IMQALogType.swift */; };
+		94870F5CCC0B91A4B2C11D08 /* SessionBasedSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BD0189660D41123A0CDE61 /* SessionBasedSampler.swift */; };
+		94B538C0828600C9F2985A69 /* UIViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B310BECFCAFE97869F54 /* UIViewControllerHandler.swift */; };
+		95DA72807C08083D6E94F553 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72631B51C53073B5D33310F0 /* DeviceModel.swift */; };
+		967F9647C9A7C517EEDF4F56 /* IMQAStorage+Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532CFD73FB68F21469F7C771 /* IMQAStorage+Span.swift */; };
+		9829495338F5521D6AB0899F /* PersistableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604325148034C2DF2AC10625 /* PersistableValue.swift */; };
+		99CDB888B2A89DB92401DE31 /* SpanPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADA93F0AED68249E015B8C /* SpanPayload.swift */; };
+		9A3EC1AF5B50F1231E0A65F3 /* LengthOfBodyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697B7B809A6FA908B83B45E /* LengthOfBodyValidator.swift */; };
+		9A4A3048E8FE5B6E6EE96A7F /* ProcessIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130154A4E6353F9235B0EC /* ProcessIdentifier.swift */; };
+		9A9CCFB6822A191CE3ECD63D /* UNUserNotificationCenterDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6453DBD8EF0D2A29A0677B15 /* UNUserNotificationCenterDelegateProxy.swift */; };
+		9ACB60A46064BC4B0E82BC95 /* IMQAObjCUtilsInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */; };
+		9D279DE9B5783A7106E69D99 /* CpuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EFBBDA3BB702C28CCEAE /* CpuModel.swift */; };
+		9D803098E29D02DA89D56921 /* IMQASpanProcessor+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3E51D87C3F0868A2E22FA /* IMQASpanProcessor+Setup.swift */; };
+		9E0259CF8EE62722406D9CE0 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458396DC5426E9556086B46 /* LogLevel.swift */; };
+		9EC13A49AB90C6D2285B0787 /* WebViewCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31645C2E97F9011F05C660D5 /* WebViewCaptureService+Options.swift */; };
+		A0E14DC7E76CCBCCE8160734 /* IMQAUploadCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4BF8CB6DF756F26BAA2C44 /* IMQAUploadCache.swift */; };
+		A1F9C5B78EACB900F851BD53 /* IMQALogRecordProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714DBAB8EFC9EB589694BA33 /* IMQALogRecordProcessor.swift */; };
+		A296CBC0C5BC0D1FBA427881 /* IMQAStorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295D0FE76829B0129922CB3 /* IMQAStorageError.swift */; };
+		A356AA46C3DC70CB9A5012FD /* MetadataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737DEAFD3E5FA2880F06C398 /* MetadataPayload.swift */; };
+		A3B17A30A49D97676BEFDE3A /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A3FBB8F713F3955DD0CF4 /* CrashReporter.swift */; };
+		A3F10B26BE9D3C5E0B8C04F8 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D05C588DFA7E3BB8CB755 /* URL+Extension.swift */; };
+		A4A6A9521BCA7F10E866D0BF /* PayloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE16CE974F0FFD69F53A85 /* PayloadUtils.swift */; };
+		A4D6A48132242635794B1D50 /* NetworkInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB25D04315218286FFB8C64F /* NetworkInfoManager.swift */; };
+		A5B04E06BE2EC9CEC9A05A1D /* InteractableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5EDBF5F1074794E95EE659 /* InteractableViewController.swift */; };
+		A7533CB24B982502CB567BFA /* DefaultIMQALogSharedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BC7FA9775B6B0BAF85B721 /* DefaultIMQALogSharedState.swift */; };
+		A88EE86EA88C3AB70444AE0A /* StorageSpanExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058AB6CEE4F49C90DAEB1BAA /* StorageSpanExporter.swift */; };
+		A945C1FBCD2CF2D981FF17E8 /* IMQAStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872869A3DDFD939A8FBD4203 /* IMQAStorage+Metadata.swift */; };
+		A94CB1BEB62E823E5C6719CB /* URLSessionSwizzlerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D76FB3F0EBF26829A79C85 /* URLSessionSwizzlerProvider.swift */; };
+		AB694AA0232DB35EAEA51AFF /* TapCaptureServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403E21726A37AAA9A8369BF8 /* TapCaptureServiceDelegate.swift */; };
+		AD84B02CD7D385DB7C9C48A9 /* IMQASpanType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58D7B0E1EE82C09E6C6513D /* IMQASpanType.swift */; };
+		AE660E29A63BCC390FE590F7 /* IMQALoggerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAD422ADD47F8978C33763B /* IMQALoggerProvider.swift */; };
+		AE8B2304F0B84AD5AAEB2E5B /* SpanEventPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD79D780E5E9D0E0001F5D5D /* SpanEventPayload.swift */; };
+		B045475BBA87401AEC431FA0 /* SpanUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A9B1915BC76EBF26358CC /* SpanUtils.swift */; };
+		B3387D057C7D0BA3B74FC8A9 /* IMQAStackTraceProccessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 4988E4AE8BFD9FAC171E7790 /* IMQAStackTraceProccessor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B35ACF5584EEA95BAAD0C795 /* SessionPayloadBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885FAACAA6D8977D39FB5D4 /* SessionPayloadBuilder.swift */; };
+		B560741C822CDB2A87E79A67 /* LogsBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315B7106642A44146C6F62A6 /* LogsBatch.swift */; };
+		B6CE80041FF5068DA33424D5 /* Severity+LogSeverity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69802E0BDC8C814159C87ED2 /* Severity+LogSeverity.swift */; };
+		B8D57BACE73B3F7B89242E5A /* CrashError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E778E632BF52E95986112C05 /* CrashError.swift */; };
+		B94C6F01771EB0755EFD66E8 /* FSCPUUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 7984AD7F784D245B40E50A4D /* FSCPUUsage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B98B1EE21FD81204C617EA7F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7916E0BA89178432CE6FFF42 /* Date+Extension.swift */; };
+		BAE000F38BCC3DFB70DA09F2 /* KeychainAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF4E42173AB3F4D189C8351 /* KeychainAccess.swift */; };
+		BBA4E5DF885AFA6E65094E4C /* CaptureServiceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C2E6CD512A670F06BCFDD3 /* CaptureServiceState.swift */; };
+		BD2191FF8773BF3C9C83EC7C /* UploadDataRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A708CA56BF4F14B0FF47502E /* UploadDataRecord.swift */; };
+		BF4ED00F068C4FB88964E803 /* Collection+SpanDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53371ACD6E0DF5C9DD81193C /* Collection+SpanDataValidator.swift */; };
+		C028D9FA009A9270EE637BB2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAB9844F06C234A583AFC71 /* UIView+Extension.swift */; };
+		C19DF514D12A373EC966E348 /* ViewCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F33B91069E49C89C36DDEB /* ViewCaptureService+Options.swift */; };
+		C3656C6A2A3BB2005EB63072 /* URLSessionTask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85558B32C358DE5CBAD369AF /* URLSessionTask+Extension.swift */; };
+		C5BB5F47C5736B0C6707410F /* URLSessionDelegateProxy+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD11C99E2C0DBDB924B2FA3 /* URLSessionDelegateProxy+DownloadDelegate.swift */; };
+		C5C4821FCC64775676D640C6 /* EncryptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301FEADCAD05CF2A36B9E1D3 /* EncryptionHelper.swift */; };
+		C5EE84393FDFB326BF8C5349 /* CpuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724734FC03F9486AD05C556C /* CpuManager.swift */; };
+		C64984F82791C0B5467DC5B6 /* Swizzlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6256796D24A2ED83070D40 /* Swizzlable.swift */; };
+		C65C38A5A8597756FFEFBD3D /* SpanRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661EC5EC13588ADE5D9112FC /* SpanRecord.swift */; };
+		C695A039ECB0821CE7D8F342 /* IMQAStorageMetadataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B13F04F690E6BDBAF9EDB50 /* IMQAStorageMetadataFetcher.swift */; };
+		C6DF6BD2E76BF3B31FC79562 /* IMQA+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEC404BBA3402FE945364DA /* IMQA+Setup.swift */; };
+		C705A8C521B06CFFE09C21AA /* SessionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F933CFC06CA9BA6FDEA7BDC /* SessionIdentifier.swift */; };
+		C8B9ADBCDB2C9B52D6247E17 /* IMQASetupError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466147F7A57FFA395A7440A /* IMQASetupError.swift */; };
+		CB5EDDE775C53F6B53755256 /* ProcessInfo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F738CE73DB273A673B8421 /* ProcessInfo+Extension.swift */; };
+		CC64B22E5F41B79688A2C1FC /* TapCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AAD773FBD0A3017FB3F059 /* TapCaptureService.swift */; };
+		CD973E3C3C9DCB545D981D1F /* LogPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B93752B094BF2A10B30F2C /* LogPayload.swift */; };
+		CF37F68978A6C3352364876D /* ViewCaptureServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F00B79BCE917C5C33EC318F /* ViewCaptureServiceError.swift */; };
+		CF911BA8DF9CDB69BCF4C4C0 /* IMQAUpload+CacheOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6458D10CA9FA3DD94E595F84 /* IMQAUpload+CacheOptions.swift */; };
+		CFDB0B66A03E9AE320897BEE /* IMQAStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61ECECB7EC8644CBA1F8EB3 /* IMQAStorage.swift */; };
+		D0AC86F8ADC8BD0B5356509E /* IMQA+EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B894714AB03E94F80CED504 /* IMQA+EndPoints.swift */; };
+		D25B95C6C425D35A22C7A984 /* RecordingSpanEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8336D65B1952CC36004E2E /* RecordingSpanEvent.swift */; };
+		D5531CF22574C67400BDEC38 /* SessionLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28241D802926899BC3DDF3 /* SessionLifecycle.swift */; };
+		D5917ACE5F188940504E0EA5 /* IMQAUpload+RedundancyOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C324B5EEADC8B17567EBBD /* IMQAUpload+RedundancyOptions.swift */; };
+		D6A15CB0C13BF05099C089AE /* IMQAOpenTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C830609471C36D06D956E52 /* IMQAOpenTelemetry.swift */; };
+		D6C4BF4FE0DB91CE69FB6E1B /* IMQALogRecordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4154565C334B9843F32EC529 /* IMQALogRecordBuilder.swift */; };
+		D74149ECD8AB135127461C6F /* SingleSpanProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1F71A264881AE86CE30F37 /* SingleSpanProcessor.swift */; };
+		D8DCF6795F010AE18126A073 /* DefaultIMQALoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E84D46FFC92974612F751 /* DefaultIMQALoggerConfig.swift */; };
+		D9065897EA74C2B03EE80983 /* SpanDataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB63990A95CBE20540B1DAD /* SpanDataValidation.swift */; };
+		DC1C896C49A64E800F9E3612 /* URLSessionTaskCaptureRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F6160D3C0923F4F1B7DE6 /* URLSessionTaskCaptureRule.swift */; };
+		DCEF3591CC1436B9E58F95A6 /* WKNavigationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2F53CA70094AC25AC0C6C /* WKNavigationDelegateProxy.swift */; };
+		DE82FB22AE427EEC70240335 /* MMKV.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF20AA802EE342446AF317D /* MMKV.xcframework */; };
+		DFAD44A2321165DE7B6842AF /* IMQAObjCUtilsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 918AD6AFDE9209E43D60661A /* IMQAObjCUtilsInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0616CC589AEB92C088ED2DF /* IMQAOtelInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */; };
+		E46039664ECF9D7D8BA4B499 /* PushNotificationCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A73B60164C2AE0BAC53D099 /* PushNotificationCaptureService+Options.swift */; };
+		E6717588F9F4B212B53CB013 /* FSRAMUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D5832E8B042558C881C14D7 /* FSRAMUsage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D801C0ADC08723A6FFFA16 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BE0D00E1EA80CC02362FE /* AsyncOperation.swift */; };
+		EB38C2E5517A1D7C68C5371C /* ResourceExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 9B6306E346A5D6512D5B64CD /* ResourceExtension */; };
+		EE7AFA6A91046600535CD9A8 /* LogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66452CA8DED98E742434879 /* LogRecord.swift */; };
+		EF2084F51F7BE5979117FC8A /* NSURLSessionTask+IMQA.h in Headers */ = {isa = PBXBuildFile; fileRef = B1E213CF3D5F85ED45B2271E /* NSURLSessionTask+IMQA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0646784BCBEF2A1CC143E04 /* IMQAUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51714ED04962BA33FFECD5BE /* IMQAUpload.swift */; };
+		F0AFAE72761D913A4B7F1A43 /* IMQAScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AC8CBFFDEC87662CBA74D0 /* IMQAScreen.swift */; };
+		F13D2CD605607CC31FCE544E /* IMQADevice.h in Headers */ = {isa = PBXBuildFile; fileRef = A0F9506A897369A9206263F9 /* IMQADevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1B08BECAB0D2D63EB5D2DC5 /* RequestLogPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E92685579A9CBFE1D5981E8 /* RequestLogPayload.swift */; };
+		F350808073519D2F642EDC48 /* CaptureService+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36D1ACD561EC129A43034EA /* CaptureService+Helpers.swift */; };
+		F36E702C83C0BAEFFE4671C8 /* IMQA+OTEL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346A24B2602E5DD00190E22E /* IMQA+OTEL.swift */; };
+		F8AA211E1B5CE115EC297F32 /* IMQACore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */; };
+		FA305665578B575AB84E2D9E /* LogIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB2E25012529AB9A09AB9B7 /* LogIdentifier.swift */; };
+		FA801A2BC33E6B3A995EE101 /* UIViewController+IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2647F4321A25AB0ACF9E91E /* UIViewController+IMQA.swift */; };
+		FD0D1D83D0CDB7445C04063D /* FSRAMUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4C1D9E2B2CAE9092F4236 /* FSRAMUsage.m */; };
+		FD50B1311ECBE34EEE60E229 /* ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC7FCEDCA164F42AB2FDC5 /* ThreadSafe.swift */; };
+		FE589643DDB8BD98DA1A71BC /* IMQAResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D8D3396EF838041C66EAC9 /* IMQAResource.swift */; };
+		FF23355188C1B62FADEC7B85 /* IMQACore+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */; };
+		FFA035FC7BB56AE6B5E55771 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B9DBC4F4D33329644A871A /* Encodable+Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2899767BDD0A0452ED37DA94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E2CBC47D01351A078FAF83C;
+			remoteInfo = IMQACommonInternal;
+		};
+		475D3FEDF47564252791F9DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 611FF66040FC870AF0608EEE;
+			remoteInfo = IMQACore;
+		};
+		83D0726A97747D4105605E7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5FA60650335BB31C8F1D957;
+			remoteInfo = IMQACollectDeviceInfo;
+		};
+		ACD73C5C1BDE5FF3E5EB5C1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF2ED532F6619574599978F7;
+			remoteInfo = IMQAObjCUtilsInternal;
+		};
+		B5D6A780DCD1E96A50474B91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83DA8DE0BABB59470E478459;
+			remoteInfo = IMQAOtelInternal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01426B775923C9FF336D8DE1 /* NSURLSessionTask+IMQA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+IMQA.m"; sourceTree = "<group>"; };
+		025849290ACBD544F1CE2A5E /* TapCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapCaptureService+Options.swift"; sourceTree = "<group>"; };
+		02F33B91069E49C89C36DDEB /* ViewCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewCaptureService+Options.swift"; sourceTree = "<group>"; };
+		037E0840DABF1FB63E319BD4 /* IMQANotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQANotification.swift; sourceTree = "<group>"; };
+		058AB6CEE4F49C90DAEB1BAA /* StorageSpanExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSpanExporter.swift; sourceTree = "<group>"; };
+		05C2E6CD512A670F06BCFDD3 /* CaptureServiceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceState.swift; sourceTree = "<group>"; };
+		075CD5B14FD7E033FF0F91FA /* IMQALogSharedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogSharedState.swift; sourceTree = "<group>"; };
+		087DF88A62A0E945237078B8 /* URLSessionCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionCaptureService.swift; sourceTree = "<group>"; };
+		0A73B60164C2AE0BAC53D099 /* PushNotificationCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationCaptureService+Options.swift"; sourceTree = "<group>"; };
+		0B0561DCAB7FCAF79F28B8F6 /* SessionRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRecord.swift; sourceTree = "<group>"; };
+		0C05E588C328B074077377BD /* IMQAResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAResourceProvider.swift; sourceTree = "<group>"; };
+		0CE62D71FAD19E13CC40F0EE /* NetworkPayloadCaptureHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPayloadCaptureHandler.swift; sourceTree = "<group>"; };
+		0D5832E8B042558C881C14D7 /* FSRAMUsage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSRAMUsage.h; sourceTree = "<group>"; };
+		0F933CFC06CA9BA6FDEA7BDC /* SessionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIdentifier.swift; sourceTree = "<group>"; };
+		10B4092E87C948605B46B85B /* IMQAUpload+EndpointOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+EndpointOptions.swift"; sourceTree = "<group>"; };
+		12C7D80E73F25E5FD8752A9D /* CaptureServiceBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceBuilder.swift; sourceTree = "<group>"; };
+		12FD38E487C36658EBEE776D /* MetadataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRecord.swift; sourceTree = "<group>"; };
+		13DDE5644D5FE7F4B4310D1A /* IMQAMuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAMuti.swift; sourceTree = "<group>"; };
+		1466147F7A57FFA395A7440A /* IMQASetupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASetupError.swift; sourceTree = "<group>"; };
+		148C534C15620D0590BD72AC /* IMQAFilePathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAFilePathProvider.swift; sourceTree = "<group>"; };
+		158D05C588DFA7E3BB8CB755 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		17AAEFF6C7E1E8D8111BD967 /* IMQAUploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUploadOperation.swift; sourceTree = "<group>"; };
+		183D20E2EBA56D4D4A445048 /* FSHardcodeDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSHardcodeDeviceInfo.m; sourceTree = "<group>"; };
+		18923F7B5B91116B8308DB2A /* IMQAMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAMeta.swift; sourceTree = "<group>"; };
+		1A6A9B1915BC76EBF26358CC /* SpanUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanUtils.swift; sourceTree = "<group>"; };
+		1CF5E3DDA68EB959EBE11311 /* ResourcePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcePayload.swift; sourceTree = "<group>"; };
+		1DBCBE2B9E2DAD469F5C5FD6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		1EF4E42173AB3F4D189C8351 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
+		1F951B4C87DACD0FE0210846 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
+		1FF62C35DAC6BD1FAF9159C0 /* ProcessMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessMetadata.swift; sourceTree = "<group>"; };
+		22D2F53CA70094AC25AC0C6C /* WKNavigationDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKNavigationDelegateProxy.swift; sourceTree = "<group>"; };
+		2483B2F5014AE092FAE2A112 /* WebViewCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCaptureService.swift; sourceTree = "<group>"; };
+		276A3E921317B9B8BD22DFB0 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		2890B8BABEE6080303A9D393 /* StorageSpanExporter+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageSpanExporter+Options.swift"; sourceTree = "<group>"; };
+		28F3D624F844AA0B807BA55A /* Data+Gzip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Gzip.swift"; sourceTree = "<group>"; };
+		2A92B7CD84BF44813ACCDDF9 /* SpansPayloadBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpansPayloadBuilder.swift; sourceTree = "<group>"; };
+		2B13F04F690E6BDBAF9EDB50 /* IMQAStorageMetadataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAStorageMetadataFetcher.swift; sourceTree = "<group>"; };
+		2B1A38B4682D9524B120F250 /* DispatchableQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchableQueue.swift; sourceTree = "<group>"; };
+		2B703A482AF9F676FD8E7A4E /* PushNotificationCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationCaptureService.swift; sourceTree = "<group>"; };
+		2C7956CA6467743F3E6AB276 /* FilePathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePathProvider.swift; sourceTree = "<group>"; };
+		2CE7EFBBDA3BB702C28CCEAE /* CpuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuModel.swift; sourceTree = "<group>"; };
+		2E3AE5C8F6EC25432E413A81 /* Span+IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Span+IMQA.swift"; sourceTree = "<group>"; };
+		2E500BBC3FCB45D7D2DBCC9F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2F00B79BCE917C5C33EC318F /* ViewCaptureServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCaptureServiceError.swift; sourceTree = "<group>"; };
+		2F9C6949B694367A77BE748F /* IMQASwizzableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASwizzableError.swift; sourceTree = "<group>"; };
+		301FEADCAD05CF2A36B9E1D3 /* EncryptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionHelper.swift; sourceTree = "<group>"; };
+		30BFC1DFAF7C642ECBF3C991 /* URLSessionTaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTaskHandler.swift; sourceTree = "<group>"; };
+		311D6D80EDC564C922605112 /* SpanBuilder+IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanBuilder+IMQA.swift"; sourceTree = "<group>"; };
+		315B7106642A44146C6F62A6 /* LogsBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsBatch.swift; sourceTree = "<group>"; };
+		31645C2E97F9011F05C660D5 /* WebViewCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewCaptureService+Options.swift"; sourceTree = "<group>"; };
+		346A24B2602E5DD00190E22E /* IMQA+OTEL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQA+OTEL.swift"; sourceTree = "<group>"; };
+		380E24F374FC42CBB2929C63 /* IMQAFileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAFileSystem.swift; sourceTree = "<group>"; };
+		3B5EDBF5F1074794E95EE659 /* InteractableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableViewController.swift; sourceTree = "<group>"; };
+		3BC2FDAE5BD6BF4E0EDA8CEC /* OpenTelemetryExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTelemetryExport.swift; sourceTree = "<group>"; };
+		3CD5FEECB48C2086E00AA867 /* ProcessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessModel.swift; sourceTree = "<group>"; };
+		3DA92DBC77DEFB42C69FF881 /* IMQAStorageUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAStorageUnit.swift; sourceTree = "<group>"; };
+		3E6BE0D00E1EA80CC02362FE /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		3E8336D65B1952CC36004E2E /* RecordingSpanEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSpanEvent.swift; sourceTree = "<group>"; };
+		3E92685579A9CBFE1D5981E8 /* RequestLogPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogPayload.swift; sourceTree = "<group>"; };
+		400F47631133CCFADCDE8246 /* IMQACollectDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQACollectDeviceInfo.h; sourceTree = "<group>"; };
+		403E21726A37AAA9A8369BF8 /* TapCaptureServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCaptureServiceDelegate.swift; sourceTree = "<group>"; };
+		40D76FB3F0EBF26829A79C85 /* URLSessionSwizzlerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionSwizzlerProvider.swift; sourceTree = "<group>"; };
+		4154565C334B9843F32EC529 /* IMQALogRecordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogRecordBuilder.swift; sourceTree = "<group>"; };
+		419A4C88E6D77178CD25C61C /* IMQA+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQA+Options.swift"; sourceTree = "<group>"; };
+		427C4B373D071E283BABE669 /* StorageIMQALogExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageIMQALogExporter.swift; sourceTree = "<group>"; };
+		43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQACollectDeviceInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQACore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4458396DC5426E9556086B46 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		449654B2D1E7731E827A2827 /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
+		44AB6D7B645B3AD823E852D8 /* IMQAStackTraceProccessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQAStackTraceProccessor.m; sourceTree = "<group>"; };
+		456603B9E6FFAB64A1A5A5C5 /* URLSessionCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionCaptureService+Options.swift"; sourceTree = "<group>"; };
+		45F8274C022F16AF0BA81042 /* CrashReporterContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporterContext.swift; sourceTree = "<group>"; };
+		48B68F32EAD606CF0EDD4ADA /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		4988E4AE8BFD9FAC171E7790 /* IMQAStackTraceProccessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQAStackTraceProccessor.h; sourceTree = "<group>"; };
+		49CE16CE974F0FFD69F53A85 /* PayloadUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadUtils.swift; sourceTree = "<group>"; };
+		4B56C8CD33983283FB130025 /* LogDataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDataValidation.swift; sourceTree = "<group>"; };
+		4E28241D802926899BC3DDF3 /* SessionLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLifecycle.swift; sourceTree = "<group>"; };
+		51714ED04962BA33FFECD5BE /* IMQAUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUpload.swift; sourceTree = "<group>"; };
+		532CFD73FB68F21469F7C771 /* IMQAStorage+Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Span.swift"; sourceTree = "<group>"; };
+		53371ACD6E0DF5C9DD81193C /* Collection+SpanDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SpanDataValidator.swift"; sourceTree = "<group>"; };
+		5542ECDC69C9B0E3A86E6E2A /* UnsentDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsentDataHandler.swift; sourceTree = "<group>"; };
+		5550C371E06A5318FAD0CD24 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		55D1684830469C0F9C93E6CF /* IMQAStorage+Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Session.swift"; sourceTree = "<group>"; };
+		55D7AF9B8A89F8A086D42948 /* iOSSessionLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSessionLifecycle.swift; sourceTree = "<group>"; };
+		573905B8357BE5990B3C59DB /* ResourceCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCaptureService.swift; sourceTree = "<group>"; };
+		57F07941263A39AC9F741024 /* URLSessionDelegateProxy+TaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDelegateProxy+TaskDelegate.swift"; sourceTree = "<group>"; };
+		5AC1B43D66EF1E2BF11A668C /* SingleLogRecordProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLogRecordProcessor.swift; sourceTree = "<group>"; };
+		5B84C7C2088DF27E955A554C /* OpenTelemetryManager+Span.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenTelemetryManager+Span.swift"; sourceTree = "<group>"; };
+		5BD11C99E2C0DBDB924B2FA3 /* URLSessionDelegateProxy+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDelegateProxy+DownloadDelegate.swift"; sourceTree = "<group>"; };
+		5C2F8AB93BEB975F177F6DFF /* VVIdenti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VVIdenti.swift; sourceTree = "<group>"; };
+		5C830609471C36D06D956E52 /* IMQAOpenTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAOpenTelemetry.swift; sourceTree = "<group>"; };
+		604325148034C2DF2AC10625 /* PersistableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistableValue.swift; sourceTree = "<group>"; };
+		6380A4B00FBB2590D0D79466 /* LogPayloadBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPayloadBuilder.swift; sourceTree = "<group>"; };
+		63B6B632EA8552438D08F99C /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
+		6453DBD8EF0D2A29A0677B15 /* UNUserNotificationCenterDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterDelegateProxy.swift; sourceTree = "<group>"; };
+		6458D10CA9FA3DD94E595F84 /* IMQAUpload+CacheOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+CacheOptions.swift"; sourceTree = "<group>"; };
+		661EC5EC13588ADE5D9112FC /* SpanRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanRecord.swift; sourceTree = "<group>"; };
+		66DD7B82EC10BD4C24055723 /* SessionHeartbeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHeartbeat.swift; sourceTree = "<group>"; };
+		67647A48BE37C6A368FCA486 /* CaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureService.swift; sourceTree = "<group>"; };
+		67D0B310BECFCAFE97869F54 /* UIViewControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerHandler.swift; sourceTree = "<group>"; };
+		69802E0BDC8C814159C87ED2 /* Severity+LogSeverity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Severity+LogSeverity.swift"; sourceTree = "<group>"; };
+		6AFFEAED97285863B894E40F /* CaptureServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServices.swift; sourceTree = "<group>"; };
+		6C5C67ABE225429AED6D2EF7 /* ResourceSemantics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceSemantics.swift; sourceTree = "<group>"; };
+		6DA9769A869A022AA4380215 /* W3C.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = W3C.swift; sourceTree = "<group>"; };
+		6DAB104F0E3863E5F2B2A7BC /* FSHardcodeDeviceInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSHardcodeDeviceInfo.h; sourceTree = "<group>"; };
+		6DD93FB290E9A6694E4BD7E0 /* IMQAOTel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAOTel.swift; sourceTree = "<group>"; };
+		6EC1C09FF148DAA3A5AD7816 /* ResourceStorageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStorageExporter.swift; sourceTree = "<group>"; };
+		6EF0C737CBE6A044C0C8B957 /* PowerModeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerModeProvider.swift; sourceTree = "<group>"; };
+		7067BB9C2219237FBFE58604 /* IMQABinaryImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQABinaryImageProvider.h; sourceTree = "<group>"; };
+		714DBAB8EFC9EB589694BA33 /* IMQALogRecordProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogRecordProcessor.swift; sourceTree = "<group>"; };
+		71A4C1D9E2B2CAE9092F4236 /* FSRAMUsage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSRAMUsage.m; sourceTree = "<group>"; };
+		724734FC03F9486AD05C556C /* CpuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuManager.swift; sourceTree = "<group>"; };
+		72631B51C53073B5D33310F0 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		737DEAFD3E5FA2880F06C398 /* MetadataPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataPayload.swift; sourceTree = "<group>"; };
+		769E59E64BBC325BB7038E98 /* SpanEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanEvent.swift; sourceTree = "<group>"; };
+		770F781642D57E81917A6F55 /* UUID+WithoutHyphen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+WithoutHyphen.swift"; sourceTree = "<group>"; };
+		7715EF6809B264F2A2088DB3 /* CaptureServices+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureServices+UIViewController.swift"; sourceTree = "<group>"; };
+		78CB2C41B6541AB4B84719B0 /* LogBatchLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBatchLimits.swift; sourceTree = "<group>"; };
+		7916E0BA89178432CE6FFF42 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		7984AD7F784D245B40E50A4D /* FSCPUUsage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSCPUUsage.h; sourceTree = "<group>"; };
+		7A4D97DCA15CC241D5A41691 /* UserSemantics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSemantics.swift; sourceTree = "<group>"; };
+		7C6256796D24A2ED83070D40 /* Swizzlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzlable.swift; sourceTree = "<group>"; };
+		7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQACore+Export.swift"; sourceTree = "<group>"; };
+		7CF3DF0360750880A27F4B39 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		7D03E2EC3C0EC8812BFAC597 /* SessionControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllable.swift; sourceTree = "<group>"; };
+		7D5533C6C9986F0B17577D41 /* IMQABinaryImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQABinaryImageProvider.m; sourceTree = "<group>"; };
+		85558B32C358DE5CBAD369AF /* URLSessionTask+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+Extension.swift"; sourceTree = "<group>"; };
+		858E5C89D71EB96EA082261A /* BatteryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryModel.swift; sourceTree = "<group>"; };
+		8697B7B809A6FA908B83B45E /* LengthOfBodyValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthOfBodyValidator.swift; sourceTree = "<group>"; };
+		872869A3DDFD939A8FBD4203 /* IMQAStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Metadata.swift"; sourceTree = "<group>"; };
+		88A3FAD8E13E3AD74C3D9C40 /* IMQAUploadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUploadError.swift; sourceTree = "<group>"; };
+		8B7B342D3C4E43D12E5C739C /* SpanDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanDataValidator.swift; sourceTree = "<group>"; };
+		8DBF67AE0B108F8C166545BB /* IMQALogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogger.swift; sourceTree = "<group>"; };
+		8EEC404BBA3402FE945364DA /* IMQA+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQA+Setup.swift"; sourceTree = "<group>"; };
+		8F292FBB10C13E84756A3861 /* MemoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryModel.swift; sourceTree = "<group>"; };
+		8F8E84D46FFC92974612F751 /* DefaultIMQALoggerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIMQALoggerConfig.swift; sourceTree = "<group>"; };
+		9025B05E8FBAD4DDFED9B81A /* NetworkPayloadCaptureRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPayloadCaptureRule.swift; sourceTree = "<group>"; };
+		903D66F6A347BF9A99FEBBC2 /* DeviceIdentifier+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceIdentifier+Persistence.swift"; sourceTree = "<group>"; };
+		903ED43952F8FDE56D425697 /* IMQAUploadType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUploadType.swift; sourceTree = "<group>"; };
+		918AD6AFDE9209E43D60661A /* IMQAObjCUtilsInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQAObjCUtilsInternal.h; sourceTree = "<group>"; };
+		936A3039949BADA9639F6700 /* IMQACommonInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQACommonInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94AC8CBFFDEC87662CBA74D0 /* IMQAScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAScreen.swift; sourceTree = "<group>"; };
+		94C324B5EEADC8B17567EBBD /* IMQAUpload+RedundancyOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+RedundancyOptions.swift"; sourceTree = "<group>"; };
+		9547865039E77B1118DC29AF /* CGPoint+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+toString.swift"; sourceTree = "<group>"; };
+		9788A01E73AB4263FDB80A34 /* URLSessionRequestsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionRequestsDataSource.swift; sourceTree = "<group>"; };
+		98C8FB4BACC321ED25E403C7 /* CrashlyticsReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsReporter.swift; sourceTree = "<group>"; };
+		9B894714AB03E94F80CED504 /* IMQA+EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQA+EndPoints.swift"; sourceTree = "<group>"; };
+		9E965AF92517491966A82E07 /* DefaultLogBatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogBatcher.swift; sourceTree = "<group>"; };
+		9EB63990A95CBE20540B1DAD /* SpanDataValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanDataValidation.swift; sourceTree = "<group>"; };
+		A0B3F4E6011F292C174254C0 /* URLSessionDelegateProxy+StreamDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDelegateProxy+StreamDelegate.swift"; sourceTree = "<group>"; };
+		A0F9506A897369A9206263F9 /* IMQADevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQADevice.h; sourceTree = "<group>"; };
+		A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQAOtelInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A367A9009F264E0ED6149E76 /* IMQAViewControllerCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAViewControllerCustomization.swift; sourceTree = "<group>"; };
+		A36D1ACD561EC129A43034EA /* CaptureService+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureService+Helpers.swift"; sourceTree = "<group>"; };
+		A385392E47DDED4678392DD2 /* IMQALoggerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALoggerConfig.swift; sourceTree = "<group>"; };
+		A4A3E51D87C3F0868A2E22FA /* IMQASpanProcessor+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQASpanProcessor+Setup.swift"; sourceTree = "<group>"; };
+		A60DBD635943DE4A2E8A9985 /* IMQAUpload+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+Options.swift"; sourceTree = "<group>"; };
+		A636725FF150F65D921D1484 /* IMQAURLSessionDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQAURLSessionDelegateForwarder.m; sourceTree = "<group>"; };
+		A65A3FBB8F713F3955DD0CF4 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		A708CA56BF4F14B0FF47502E /* UploadDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataRecord.swift; sourceTree = "<group>"; };
+		A8B828ADB4ABBF81BE952C67 /* IMQAUpload+MetadataOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+MetadataOptions.swift"; sourceTree = "<group>"; };
+		A93C725F7ACE2C7DD73A8481 /* DefaultKeychainInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeychainInterface.swift; sourceTree = "<group>"; };
+		A9AD0B3192AE06EB030FB847 /* IMQACrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQACrashReporter.swift; sourceTree = "<group>"; };
+		A9F738CE73DB273A673B8421 /* ProcessInfo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+Extension.swift"; sourceTree = "<group>"; };
+		ADB2E25012529AB9A09AB9B7 /* LogIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogIdentifier.swift; sourceTree = "<group>"; };
+		ADF6008B6FE8F6FCD4FCB543 /* IMQASingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASingle.swift; sourceTree = "<group>"; };
+		AEAB9844F06C234A583AFC71 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B04E7481E071057AB5196EC0 /* InternalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalLogger.swift; sourceTree = "<group>"; };
+		B1C95C325145D4CBBE4334AA /* IMQADevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQADevice.m; sourceTree = "<group>"; };
+		B1E213CF3D5F85ED45B2271E /* NSURLSessionTask+IMQA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+IMQA.h"; sourceTree = "<group>"; };
+		B295D0FE76829B0129922CB3 /* IMQAStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAStorageError.swift; sourceTree = "<group>"; };
+		B3AAD773FBD0A3017FB3F059 /* TapCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCaptureService.swift; sourceTree = "<group>"; };
+		B531B48A6FDE70271A4F047C /* SpanSemantics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanSemantics.swift; sourceTree = "<group>"; };
+		B840B89B1B3C4E544300851A /* SwizzleCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwizzleCache.swift; sourceTree = "<group>"; };
+		B8ADA93F0AED68249E015B8C /* SpanPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanPayload.swift; sourceTree = "<group>"; };
+		B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQAObjCUtilsInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9B9DBC4F4D33329644A871A /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		BADD5240B7B620997355A281 /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		BEAD422ADD47F8978C33763B /* IMQALoggerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALoggerProvider.swift; sourceTree = "<group>"; };
+		BFF20AA802EE342446AF317D /* MMKV.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMKV.xcframework; path = Sources/Frameworks/MMKV.xcframework; sourceTree = "<group>"; };
+		C0530020AE959E35B1206794 /* IMQAReachabilityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAReachabilityMonitor.swift; sourceTree = "<group>"; };
+		C209B7F7D2C5C13A078F928A /* StackTraceBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackTraceBehavior.swift; sourceTree = "<group>"; };
+		C441F3B62E78D72F7E2A8D9B /* CaptureServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceFactory.swift; sourceTree = "<group>"; };
+		C5CEB934B04A2D31E2683A37 /* LowPowerModeCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPowerModeCaptureService.swift; sourceTree = "<group>"; };
+		C5D859AF096FD97502AB786F /* SpanLinkPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanLinkPayload.swift; sourceTree = "<group>"; };
+		C68C7A7588DBCAD0C78B8A29 /* IMQALoggerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALoggerBuilder.swift; sourceTree = "<group>"; };
+		C8385D5FF63E7EB341C7EE4F /* SpanLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanLink.swift; sourceTree = "<group>"; };
+		C99B83F364A4330FCBA5C4A3 /* DeviceIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIdentifier.swift; sourceTree = "<group>"; };
+		CA3E536ACADB7739845C9589 /* URLSessionDelegateProxy+DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDelegateProxy+DataDelegate.swift"; sourceTree = "<group>"; };
+		CC4BF8CB6DF756F26BAA2C44 /* IMQAUploadCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUploadCache.swift; sourceTree = "<group>"; };
+		CF6A02142801C66777E90AA5 /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
+		D133EC8A38D0CD1314B020A9 /* IMQALogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogType.swift; sourceTree = "<group>"; };
+		D1BD0189660D41123A0CDE61 /* SessionBasedSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBasedSampler.swift; sourceTree = "<group>"; };
+		D22585FDB996D27C2F00BEAB /* CrashlyticsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsWrapper.swift; sourceTree = "<group>"; };
+		D2B935AB85882A1B5E648915 /* ViewCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCaptureService.swift; sourceTree = "<group>"; };
+		D3C556AC30EF97761279DF97 /* IMQAIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQAIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D58D7B0E1EE82C09E6C6513D /* IMQASpanType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASpanType.swift; sourceTree = "<group>"; };
+		D67941F2EC1A42B38D6F8CE7 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		D693E1CE0AB29A2C5EC51D5E /* Collection+LogDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+LogDataValidator.swift"; sourceTree = "<group>"; };
+		D885FAACAA6D8977D39FB5D4 /* SessionPayloadBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPayloadBuilder.swift; sourceTree = "<group>"; };
+		DA130154A4E6353F9235B0EC /* ProcessIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessIdentifier.swift; sourceTree = "<group>"; };
+		DA2D722E3037F93C222CB0C9 /* IMQALogAttributesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogAttributesBuilder.swift; sourceTree = "<group>"; };
+		DA3E29A0A1CA6DA7B9F97193 /* PushNotificationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationError.swift; sourceTree = "<group>"; };
+		DADCA67D3ABAE4F1B17BBCDD /* URLSessionDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDelegateProxy.swift; sourceTree = "<group>"; };
+		DB25D04315218286FFB8C64F /* NetworkInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfoManager.swift; sourceTree = "<group>"; };
+		DC4CD25E9C0C62E914AAB608 /* LogSeverity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSeverity.swift; sourceTree = "<group>"; };
+		DCB1A39146013D76464C6703 /* SpanData+toJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanData+toJson.swift"; sourceTree = "<group>"; };
+		DCF75507939DA61BDC2C8390 /* MMKV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMKV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1F71A264881AE86CE30F37 /* SingleSpanProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSpanProcessor.swift; sourceTree = "<group>"; };
+		E044A052A3582773366AF105 /* PayloadEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadEnvelope.swift; sourceTree = "<group>"; };
+		E258DCA0FDDDAFD311B1DB20 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
+		E417B2C5B21D8016BFF565FA /* IMQAURLSessionDelegateForwarder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQAURLSessionDelegateForwarder.h; sourceTree = "<group>"; };
+		E49F6160D3C0923F4F1B7DE6 /* URLSessionTaskCaptureRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTaskCaptureRule.swift; sourceTree = "<group>"; };
+		E5BC7FA9775B6B0BAF85B721 /* DefaultIMQALogSharedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultIMQALogSharedState.swift; sourceTree = "<group>"; };
+		E61ECECB7EC8644CBA1F8EB3 /* IMQAStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAStorage.swift; sourceTree = "<group>"; };
+		E66452CA8DED98E742434879 /* LogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRecord.swift; sourceTree = "<group>"; };
+		E6D4F883F0F3F6627E4CB673 /* SpanBuilder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanBuilder+Extension.swift"; sourceTree = "<group>"; };
+		E778E632BF52E95986112C05 /* CrashError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashError.swift; sourceTree = "<group>"; };
+		E972B202C498B29337C8DAFA /* IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQA.swift; sourceTree = "<group>"; };
+		EDEC443A5D9F38B2A8178FA0 /* IMQAStorage+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Options.swift"; sourceTree = "<group>"; };
+		EEAC7FCEDCA164F42AB2FDC5 /* ThreadSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafe.swift; sourceTree = "<group>"; };
+		EF4A70B44B4E2CF3BF585922 /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
+		F1B4C9817C163F29CBF8E375 /* FSCPUUsage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSCPUUsage.m; sourceTree = "<group>"; };
+		F2647F4321A25AB0ACF9E91E /* UIViewController+IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+IMQA.swift"; sourceTree = "<group>"; };
+		F2B93752B094BF2A10B30F2C /* LogPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogPayload.swift; sourceTree = "<group>"; };
+		F7D8D3396EF838041C66EAC9 /* IMQAResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAResource.swift; sourceTree = "<group>"; };
+		F9A9072C95EFCAA898E2E69F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F9D8FC3EE9846EAF72E1B1B3 /* IMQAStorage+Sampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Sampler.swift"; sourceTree = "<group>"; };
+		FB7D242C396F8EA32064E4BD /* LowMemoryWarningCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowMemoryWarningCaptureService.swift; sourceTree = "<group>"; };
+		FB9FD34D66AA5D9B2FC51947 /* DefaultInternalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultInternalLogger.swift; sourceTree = "<group>"; };
+		FBE8D16095FA4E10DFFF64FF /* CarrierModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierModel.swift; sourceTree = "<group>"; };
+		FCAD5014EA60CADB13453BE0 /* InstrumentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentableViewController.swift; sourceTree = "<group>"; };
+		FD2FFEBC2039ECD592A29247 /* EncryptedNetworkPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptedNetworkPayload.swift; sourceTree = "<group>"; };
+		FD79D780E5E9D0E0001F5D5D /* SpanEventPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanEventPayload.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		558025709BE19B3851FFDC5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0616CC589AEB92C088ED2DF /* IMQAOtelInternal.framework in Frameworks */,
+				57C0592229AD4B6EA58ACEE5 /* IMQACollectDeviceInfo.framework in Frameworks */,
+				9ACB60A46064BC4B0E82BC95 /* IMQAObjCUtilsInternal.framework in Frameworks */,
+				7ABCC298044AE8D4677ABBC9 /* IMQACommonInternal.framework in Frameworks */,
+				01DAB79664135170190DE916 /* MMKV.xcframework in Frameworks */,
+				76E79961B7ADFACC1454CE9C /* OpenTelemetryApi in Frameworks */,
+				3A44EB47C9A02348438DB6BE /* OpenTelemetrySdk in Frameworks */,
+				0441714A74C2C32D46303417 /* OpenTelemetryProtocolExporterHTTP in Frameworks */,
+				EB38C2E5517A1D7C68C5371C /* ResourceExtension in Frameworks */,
+				61EF1E381E50E020F14615EA /* Installations in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		694A3579A8E61CF93E045F88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8AA211E1B5CE115EC297F32 /* IMQACore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9E2523E9908AC1012D807F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE82FB22AE427EEC70240335 /* MMKV.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03FFE0DBA7AA3EAF1FBD4EE2 /* IMQACore */ = {
+			isa = PBXGroup;
+			children = (
+				E972B202C498B29337C8DAFA /* IMQA.swift */,
+				8EEC404BBA3402FE945364DA /* IMQA+Setup.swift */,
+				F9A9072C95EFCAA898E2E69F /* PrivacyInfo.xcprivacy */,
+				B942A600BC338D523BB9CCCD /* Capture */,
+				9B732DD425C4FCD627C0545A /* Config */,
+				6C419B6582EBC4E84A16F8B8 /* DataRecovery */,
+				AD7B7EBD77FE04BE6E908792 /* Exporter */,
+				2439E9CEDD7320A1EDEF5484 /* Internal */,
+				DD902FB2C2FC376F70725256 /* Lifecycle */,
+				94C04392C3FBA69358AEB1EF /* Manager */,
+				876977F016C435D2DF71B3B4 /* Model */,
+				2F9CF9C17545DB0148B1E747 /* Options */,
+				910053B568F27B816748EA24 /* Otel */,
+				82C37282FEC54279B36F94CA /* Processor */,
+				685DC1E52952F8E8EE3E97E0 /* Sampler */,
+				BF3D2EBE0E60CB2ECD343D7F /* SpanCreator */,
+				500086413680B4EC58979E68 /* Storage */,
+				CFC5DFE107BDB87023920AD8 /* Upload */,
+			);
+			name = IMQACore;
+			path = Sources/IMQACore;
+			sourceTree = "<group>";
+		};
+		05F125C01E75A2548878CF81 /* FileSystem */ = {
+			isa = PBXGroup;
+			children = (
+				2C7956CA6467743F3E6AB276 /* FilePathProvider.swift */,
+				148C534C15620D0590BD72AC /* IMQAFilePathProvider.swift */,
+				380E24F374FC42CBB2929C63 /* IMQAFileSystem.swift */,
+			);
+			path = FileSystem;
+			sourceTree = "<group>";
+		};
+		0FB439C5CE910DA57726FA2F /* StorageExporter */ = {
+			isa = PBXGroup;
+			children = (
+				6EC1C09FF148DAA3A5AD7816 /* ResourceStorageExporter.swift */,
+				427C4B373D071E283BABE669 /* StorageIMQALogExporter.swift */,
+				058AB6CEE4F49C90DAEB1BAA /* StorageSpanExporter.swift */,
+				2890B8BABEE6080303A9D393 /* StorageSpanExporter+Options.swift */,
+			);
+			path = StorageExporter;
+			sourceTree = "<group>";
+		};
+		16E057E2A7620FE121C893A8 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				F1B4C9817C163F29CBF8E375 /* FSCPUUsage.m */,
+				183D20E2EBA56D4D4A445048 /* FSHardcodeDeviceInfo.m */,
+				71A4C1D9E2B2CAE9092F4236 /* FSRAMUsage.m */,
+				B1C95C325145D4CBBE4334AA /* IMQADevice.m */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		2439E9CEDD7320A1EDEF5484 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				1FF62C35DAC6BD1FAF9159C0 /* ProcessMetadata.swift */,
+				764F21D2D55CAAF0DDB07AB2 /* Builder */,
+				8219BACA63EAF9DD4ED15C2A /* Extension */,
+				BC9F33B382DAC8AFA70BA75D /* Limit */,
+				4190FF08EEC278EA026FA943 /* Log */,
+				3A1AC418C6E88B7F59F96BB1 /* Notification */,
+				5F1E8A9A2D73894C3083E11A /* Protocol */,
+				38D5BEAB4186F64BF05C1913 /* Record */,
+				F3A0A0B9A66DAEF43BA60955 /* Resource */,
+				E168AA6B34E8D086AA120467 /* Span */,
+				8A09035525301A2959EEB1D6 /* Validator */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		28BA66DF90C7B386643E9E1F /* IMQACommonInternal */ = {
+			isa = PBXGroup;
+			children = (
+				4D96EE468E9A5F4CE67FEA21 /* Class */,
+				F3349C3313F6C2F94F8F2AFA /* Enum */,
+				5C500F6CEB8DC4CD4301D3FD /* Extension */,
+				678372F8C7597D3DA3A8A129 /* Hook */,
+				DEF7BCC7B43C331D14C140D9 /* Identifiers */,
+				59F2094C4AD9F3F0F2D37A4A /* Keychain */,
+				CE3BB87FF8C787EEA306C2D9 /* Log */,
+				65DB0F63E0121B108EB8D97C /* PropertyWrappers */,
+				D9AEEE797D122E3BD4073252 /* Protocols */,
+			);
+			name = IMQACommonInternal;
+			path = Sources/IMQACommonInternal;
+			sourceTree = "<group>";
+		};
+		2F9CF9C17545DB0148B1E747 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				9B894714AB03E94F80CED504 /* IMQA+EndPoints.swift */,
+				419A4C88E6D77178CD25C61C /* IMQA+Options.swift */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		356A95FD44A5E4A2CA302928 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				2B703A482AF9F676FD8E7A4E /* PushNotificationCaptureService.swift */,
+				0A73B60164C2AE0BAC53D099 /* PushNotificationCaptureService+Options.swift */,
+				DA3E29A0A1CA6DA7B9F97193 /* PushNotificationError.swift */,
+				EF4A70B44B4E2CF3BF585922 /* PushNotificationEvent.swift */,
+				6453DBD8EF0D2A29A0677B15 /* UNUserNotificationCenterDelegateProxy.swift */,
+			);
+			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		37CDCA263AAACC419A0EB2BF /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7067BB9C2219237FBFE58604 /* IMQABinaryImageProvider.h */,
+				918AD6AFDE9209E43D60661A /* IMQAObjCUtilsInternal.h */,
+				4988E4AE8BFD9FAC171E7790 /* IMQAStackTraceProccessor.h */,
+				E417B2C5B21D8016BFF565FA /* IMQAURLSessionDelegateForwarder.h */,
+				5550C371E06A5318FAD0CD24 /* module.modulemap */,
+				B1E213CF3D5F85ED45B2271E /* NSURLSessionTask+IMQA.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		38D5BEAB4186F64BF05C1913 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				E66452CA8DED98E742434879 /* LogRecord.swift */,
+				12FD38E487C36658EBEE776D /* MetadataRecord.swift */,
+				0B0561DCAB7FCAF79F28B8F6 /* SessionRecord.swift */,
+				661EC5EC13588ADE5D9112FC /* SpanRecord.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		3A1AC418C6E88B7F59F96BB1 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				037E0840DABF1FB63E319BD4 /* IMQANotification.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		4190FF08EEC278EA026FA943 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				E5BC7FA9775B6B0BAF85B721 /* DefaultIMQALogSharedState.swift */,
+				FB9FD34D66AA5D9B2FC51947 /* DefaultInternalLogger.swift */,
+				9E965AF92517491966A82E07 /* DefaultLogBatcher.swift */,
+				8DBF67AE0B108F8C166545BB /* IMQALogger.swift */,
+				BEAD422ADD47F8978C33763B /* IMQALoggerProvider.swift */,
+				075CD5B14FD7E033FF0F91FA /* IMQALogSharedState.swift */,
+				63B6B632EA8552438D08F99C /* LogController.swift */,
+				315B7106642A44146C6F62A6 /* LogsBatch.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		4ACBBE4AFCC9236F74830A80 /* Tap */ = {
+			isa = PBXGroup;
+			children = (
+				B3AAD773FBD0A3017FB3F059 /* TapCaptureService.swift */,
+				025849290ACBD544F1CE2A5E /* TapCaptureService+Options.swift */,
+				403E21726A37AAA9A8369BF8 /* TapCaptureServiceDelegate.swift */,
+			);
+			path = Tap;
+			sourceTree = "<group>";
+		};
+		4D96EE468E9A5F4CE67FEA21 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				66DD7B82EC10BD4C24055723 /* SessionHeartbeat.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		500086413680B4EC58979E68 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				53371ACD6E0DF5C9DD81193C /* Collection+SpanDataValidator.swift */,
+				903D66F6A347BF9A99FEBBC2 /* DeviceIdentifier+Persistence.swift */,
+				E61ECECB7EC8644CBA1F8EB3 /* IMQAStorage.swift */,
+				872869A3DDFD939A8FBD4203 /* IMQAStorage+Metadata.swift */,
+				EDEC443A5D9F38B2A8178FA0 /* IMQAStorage+Options.swift */,
+				F9D8FC3EE9846EAF72E1B1B3 /* IMQAStorage+Sampler.swift */,
+				55D1684830469C0F9C93E6CF /* IMQAStorage+Session.swift */,
+				532CFD73FB68F21469F7C771 /* IMQAStorage+Span.swift */,
+				B295D0FE76829B0129922CB3 /* IMQAStorageError.swift */,
+				2B13F04F690E6BDBAF9EDB50 /* IMQAStorageMetadataFetcher.swift */,
+				CF6A02142801C66777E90AA5 /* LogRepository.swift */,
+				05F125C01E75A2548878CF81 /* FileSystem */,
+				E538C08566658688725E5ADC /* IMQAStorage */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		59F2094C4AD9F3F0F2D37A4A /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				A93C725F7ACE2C7DD73A8481 /* DefaultKeychainInterface.swift */,
+				1EF4E42173AB3F4D189C8351 /* KeychainAccess.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		5C2208DE4B4F7251079083A9 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				7D5533C6C9986F0B17577D41 /* IMQABinaryImageProvider.m */,
+				44AB6D7B645B3AD823E852D8 /* IMQAStackTraceProccessor.m */,
+				A636725FF150F65D921D1484 /* IMQAURLSessionDelegateForwarder.m */,
+				01426B775923C9FF336D8DE1 /* NSURLSessionTask+IMQA.m */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+		5C500F6CEB8DC4CD4301D3FD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7CF3DF0360750880A27F4B39 /* Bundle+Extension.swift */,
+				9547865039E77B1118DC29AF /* CGPoint+toString.swift */,
+				28F3D624F844AA0B807BA55A /* Data+Gzip.swift */,
+				7916E0BA89178432CE6FFF42 /* Date+Extension.swift */,
+				1F951B4C87DACD0FE0210846 /* DispatchQueue+Extension.swift */,
+				B9B9DBC4F4D33329644A871A /* Encodable+Extension.swift */,
+				AEAB9844F06C234A583AFC71 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5D7FC3429EAD4801F0E7CB81 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				D885FAACAA6D8977D39FB5D4 /* SessionPayloadBuilder.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		5D864FF3D1A2178C70EFC733 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2647F4321A25AB0ACF9E91E /* UIViewController+IMQA.swift */,
+				67D0B310BECFCAFE97869F54 /* UIViewControllerHandler.swift */,
+				D2B935AB85882A1B5E648915 /* ViewCaptureService.swift */,
+				02F33B91069E49C89C36DDEB /* ViewCaptureService+Options.swift */,
+				2F00B79BCE917C5C33EC318F /* ViewCaptureServiceError.swift */,
+				B20DD1D261498BB9F17EBC3F /* Protocols */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5F1E8A9A2D73894C3083E11A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B04E7481E071057AB5196EC0 /* InternalLogger.swift */,
+				3E8336D65B1952CC36004E2E /* RecordingSpanEvent.swift */,
+				8B7B342D3C4E43D12E5C739C /* SpanDataValidator.swift */,
+				769E59E64BBC325BB7038E98 /* SpanEvent.swift */,
+				C8385D5FF63E7EB341C7EE4F /* SpanLink.swift */,
+				5C2F8AB93BEB975F177F6DFF /* VVIdenti.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		65DB0F63E0121B108EB8D97C /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				EEAC7FCEDCA164F42AB2FDC5 /* ThreadSafe.swift */,
+			);
+			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
+		66AC6A340898CCC6C77DD15B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */,
+				936A3039949BADA9639F6700 /* IMQACommonInternal.framework */,
+				43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */,
+				D3C556AC30EF97761279DF97 /* IMQAIO.framework */,
+				B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */,
+				A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */,
+				DCF75507939DA61BDC2C8390 /* MMKV.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		678372F8C7597D3DA3A8A129 /* Hook */ = {
+			isa = PBXGroup;
+			children = (
+				2F9C6949B694367A77BE748F /* IMQASwizzableError.swift */,
+				7C6256796D24A2ED83070D40 /* Swizzlable.swift */,
+				B840B89B1B3C4E544300851A /* SwizzleCache.swift */,
+			);
+			path = Hook;
+			sourceTree = "<group>";
+		};
+		685DC1E52952F8E8EE3E97E0 /* Sampler */ = {
+			isa = PBXGroup;
+			children = (
+				D1BD0189660D41123A0CDE61 /* SessionBasedSampler.swift */,
+			);
+			path = Sampler;
+			sourceTree = "<group>";
+		};
+		6C419B6582EBC4E84A16F8B8 /* DataRecovery */ = {
+			isa = PBXGroup;
+			children = (
+				5542ECDC69C9B0E3A86E6E2A /* UnsentDataHandler.swift */,
+			);
+			path = DataRecovery;
+			sourceTree = "<group>";
+		};
+		6DC50CDF2A85BAFFF694FAB5 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				573905B8357BE5990B3C59DB /* ResourceCaptureService.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		702731F5EAA6906790E25E7A /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				737DEAFD3E5FA2880F06C398 /* MetadataPayload.swift */,
+			);
+			path = Metadata;
+			sourceTree = "<group>";
+		};
+		722DC56A827AE9957AA3D09D /* CrashReporter */ = {
+			isa = PBXGroup;
+			children = (
+				E778E632BF52E95986112C05 /* CrashError.swift */,
+				98C8FB4BACC321ED25E403C7 /* CrashlyticsReporter.swift */,
+				D22585FDB996D27C2F00BEAB /* CrashlyticsWrapper.swift */,
+				A65A3FBB8F713F3955DD0CF4 /* CrashReporter.swift */,
+				45F8274C022F16AF0BA81042 /* CrashReporterContext.swift */,
+				A9AD0B3192AE06EB030FB847 /* IMQACrashReporter.swift */,
+			);
+			path = CrashReporter;
+			sourceTree = "<group>";
+		};
+		764F21D2D55CAAF0DDB07AB2 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				DA2D722E3037F93C222CB0C9 /* IMQALogAttributesBuilder.swift */,
+				C68C7A7588DBCAD0C78B8A29 /* IMQALoggerBuilder.swift */,
+				4154565C334B9843F32EC529 /* IMQALogRecordBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		7E8C1E1DC4462A779F9B40CA /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				D133EC8A38D0CD1314B020A9 /* IMQALogType.swift */,
+				D58D7B0E1EE82C09E6C6513D /* IMQASpanType.swift */,
+			);
+			path = Type;
+			sourceTree = "<group>";
+		};
+		7F5FA102D3EE18BEBE8B9F23 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				2483B2F5014AE092FAE2A112 /* WebViewCaptureService.swift */,
+				31645C2E97F9011F05C660D5 /* WebViewCaptureService+Options.swift */,
+				22D2F53CA70094AC25AC0C6C /* WKNavigationDelegateProxy.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		8219BACA63EAF9DD4ED15C2A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				69802E0BDC8C814159C87ED2 /* Severity+LogSeverity.swift */,
+				DCB1A39146013D76464C6703 /* SpanData+toJson.swift */,
+				6DA9769A869A022AA4380215 /* W3C.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		82C37282FEC54279B36F94CA /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				714DBAB8EFC9EB589694BA33 /* IMQALogRecordProcessor.swift */,
+				A4A3E51D87C3F0868A2E22FA /* IMQASpanProcessor+Setup.swift */,
+				5AC1B43D66EF1E2BF11A668C /* SingleLogRecordProcessor.swift */,
+				DD1F71A264881AE86CE30F37 /* SingleSpanProcessor.swift */,
+			);
+			path = Processor;
+			sourceTree = "<group>";
+		};
+		876977F016C435D2DF71B3B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				858E5C89D71EB96EA082261A /* BatteryModel.swift */,
+				FBE8D16095FA4E10DFFF64FF /* CarrierModel.swift */,
+				2CE7EFBBDA3BB702C28CCEAE /* CpuModel.swift */,
+				72631B51C53073B5D33310F0 /* DeviceModel.swift */,
+				8F292FBB10C13E84756A3861 /* MemoryModel.swift */,
+				48B68F32EAD606CF0EDD4ADA /* NetworkModel.swift */,
+				3CD5FEECB48C2086E00AA867 /* ProcessModel.swift */,
+				2E500BBC3FCB45D7D2DBCC9F /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8A09035525301A2959EEB1D6 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				D693E1CE0AB29A2C5EC51D5E /* Collection+LogDataValidator.swift */,
+				8697B7B809A6FA908B83B45E /* LengthOfBodyValidator.swift */,
+				4B56C8CD33983283FB130025 /* LogDataValidation.swift */,
+				9EB63990A95CBE20540B1DAD /* SpanDataValidation.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		910053B568F27B816748EA24 /* Otel */ = {
+			isa = PBXGroup;
+			children = (
+				346A24B2602E5DD00190E22E /* IMQA+OTEL.swift */,
+				5C830609471C36D06D956E52 /* IMQAOpenTelemetry.swift */,
+				6DD93FB290E9A6694E4BD7E0 /* IMQAOTel.swift */,
+				5B84C7C2088DF27E955A554C /* OpenTelemetryManager+Span.swift */,
+			);
+			path = Otel;
+			sourceTree = "<group>";
+		};
+		94C04392C3FBA69358AEB1EF /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				724734FC03F9486AD05C556C /* CpuManager.swift */,
+				DB25D04315218286FFB8C64F /* NetworkInfoManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		9B732DD425C4FCD627C0545A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8F8E84D46FFC92974612F751 /* DefaultIMQALoggerConfig.swift */,
+				A385392E47DDED4678392DD2 /* IMQALoggerConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		9E8638B4DB50C383A32E8385 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFF20AA802EE342446AF317D /* MMKV.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2D536E8B141A30CB43EA850 /* LowMemory */ = {
+			isa = PBXGroup;
+			children = (
+				FB7D242C396F8EA32064E4BD /* LowMemoryWarningCaptureService.swift */,
+			);
+			path = LowMemory;
+			sourceTree = "<group>";
+		};
+		A68CCA954E045CB6853EC2F3 /* Payload */ = {
+			isa = PBXGroup;
+			children = (
+				E044A052A3582773366AF105 /* PayloadEnvelope.swift */,
+				49CE16CE974F0FFD69F53A85 /* PayloadUtils.swift */,
+				F6605084EFDA4E50B5908AB7 /* Log */,
+				702731F5EAA6906790E25E7A /* Metadata */,
+				B91BF4093A8893B980234276 /* Resource */,
+				5D7FC3429EAD4801F0E7CB81 /* Session */,
+				FF860314AA5EFA049A2E5FDB /* Span */,
+			);
+			path = Payload;
+			sourceTree = "<group>";
+		};
+		AD6B6D994C25797E6F7B6348 = {
+			isa = PBXGroup;
+			children = (
+				D9BF9C1C842B0B461012340A /* IMQACollectDeviceInfo */,
+				28BA66DF90C7B386643E9E1F /* IMQACommonInternal */,
+				03FFE0DBA7AA3EAF1FBD4EE2 /* IMQACore */,
+				BA7D912CFF94D25DD6A4A541 /* IMQAIO */,
+				DF5D40CE1043E50284B34C17 /* IMQAObjCUtilsInternal */,
+				CA13BC01272C3CFE555237E6 /* IMQAOtelInternal */,
+				9E8638B4DB50C383A32E8385 /* Frameworks */,
+				66AC6A340898CCC6C77DD15B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD7B7EBD77FE04BE6E908792 /* Exporter */ = {
+			isa = PBXGroup;
+			children = (
+				3BC2FDAE5BD6BF4E0EDA8CEC /* OpenTelemetryExport.swift */,
+				0FB439C5CE910DA57726FA2F /* StorageExporter */,
+			);
+			path = Exporter;
+			sourceTree = "<group>";
+		};
+		B18C65DC4181CD250AEB0F21 /* LowPower */ = {
+			isa = PBXGroup;
+			children = (
+				C5CEB934B04A2D31E2683A37 /* LowPowerModeCaptureService.swift */,
+				6EF0C737CBE6A044C0C8B957 /* PowerModeProvider.swift */,
+			);
+			path = LowPower;
+			sourceTree = "<group>";
+		};
+		B20DD1D261498BB9F17EBC3F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7715EF6809B264F2A2088DB3 /* CaptureServices+UIViewController.swift */,
+				A367A9009F264E0ED6149E76 /* IMQAViewControllerCustomization.swift */,
+				FCAD5014EA60CADB13453BE0 /* InstrumentableViewController.swift */,
+				3B5EDBF5F1074794E95EE659 /* InteractableViewController.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B91BF4093A8893B980234276 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1CF5E3DDA68EB959EBE11311 /* ResourcePayload.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		B942A600BC338D523BB9CCCD /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				67647A48BE37C6A368FCA486 /* CaptureService.swift */,
+				A36D1ACD561EC129A43034EA /* CaptureService+Helpers.swift */,
+				12C7D80E73F25E5FD8752A9D /* CaptureServiceBuilder.swift */,
+				C441F3B62E78D72F7E2A8D9B /* CaptureServiceFactory.swift */,
+				6AFFEAED97285863B894E40F /* CaptureServices.swift */,
+				05C2E6CD512A670F06BCFDD3 /* CaptureServiceState.swift */,
+				722DC56A827AE9957AA3D09D /* CrashReporter */,
+				A2D536E8B141A30CB43EA850 /* LowMemory */,
+				B18C65DC4181CD250AEB0F21 /* LowPower */,
+				E24BDC18EDFC0663C92321AB /* Network */,
+				356A95FD44A5E4A2CA302928 /* PushNotifications */,
+				6DC50CDF2A85BAFFF694FAB5 /* Resource */,
+				4ACBBE4AFCC9236F74830A80 /* Tap */,
+				5D864FF3D1A2178C70EFC733 /* View */,
+				7F5FA102D3EE18BEBE8B9F23 /* WebView */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		BA7D912CFF94D25DD6A4A541 /* IMQAIO */ = {
+			isa = PBXGroup;
+			children = (
+				7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */,
+			);
+			name = IMQAIO;
+			path = Sources/IMQAIO;
+			sourceTree = "<group>";
+		};
+		BA9CD36CBE5DADD58306F4A6 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				7984AD7F784D245B40E50A4D /* FSCPUUsage.h */,
+				6DAB104F0E3863E5F2B2A7BC /* FSHardcodeDeviceInfo.h */,
+				0D5832E8B042558C881C14D7 /* FSRAMUsage.h */,
+				400F47631133CCFADCDE8246 /* IMQACollectDeviceInfo.h */,
+				A0F9506A897369A9206263F9 /* IMQADevice.h */,
+				1DBCBE2B9E2DAD469F5C5FD6 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		BC9F33B382DAC8AFA70BA75D /* Limit */ = {
+			isa = PBXGroup;
+			children = (
+				78CB2C41B6541AB4B84719B0 /* LogBatchLimits.swift */,
+			);
+			path = Limit;
+			sourceTree = "<group>";
+		};
+		BE3C910B39AC760C8CF40366 /* Semantics */ = {
+			isa = PBXGroup;
+			children = (
+				6C5C67ABE225429AED6D2EF7 /* ResourceSemantics.swift */,
+				B531B48A6FDE70271A4F047C /* SpanSemantics.swift */,
+				7A4D97DCA15CC241D5A41691 /* UserSemantics.swift */,
+			);
+			path = Semantics;
+			sourceTree = "<group>";
+		};
+		BF3D2EBE0E60CB2ECD343D7F /* SpanCreator */ = {
+			isa = PBXGroup;
+			children = (
+				1A6A9B1915BC76EBF26358CC /* SpanUtils.swift */,
+			);
+			path = SpanCreator;
+			sourceTree = "<group>";
+		};
+		C5716B3B6012078DB2F83233 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1466147F7A57FFA395A7440A /* IMQASetupError.swift */,
+				4458396DC5426E9556086B46 /* LogLevel.swift */,
+				DC4CD25E9C0C62E914AAB608 /* LogSeverity.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		CA13BC01272C3CFE555237E6 /* IMQAOtelInternal */ = {
+			isa = PBXGroup;
+			children = (
+				C5716B3B6012078DB2F83233 /* Enum */,
+				D4352A75376697C4200E0AAC /* Extension */,
+				BE3C910B39AC760C8CF40366 /* Semantics */,
+				D59EE874E67CCD2D2D1EFC35 /* Static */,
+				7E8C1E1DC4462A779F9B40CA /* Type */,
+				E5E813567726E3B4158F134D /* Version */,
+			);
+			name = IMQAOtelInternal;
+			path = Sources/IMQAOtelInternal;
+			sourceTree = "<group>";
+		};
+		CE3BB87FF8C787EEA306C2D9 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				604325148034C2DF2AC10625 /* PersistableValue.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		CFC5DFE107BDB87023920AD8 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				3E6BE0D00E1EA80CC02362FE /* AsyncOperation.swift */,
+				C0530020AE959E35B1206794 /* IMQAReachabilityMonitor.swift */,
+				51714ED04962BA33FFECD5BE /* IMQAUpload.swift */,
+				6458D10CA9FA3DD94E595F84 /* IMQAUpload+CacheOptions.swift */,
+				10B4092E87C948605B46B85B /* IMQAUpload+EndpointOptions.swift */,
+				A8B828ADB4ABBF81BE952C67 /* IMQAUpload+MetadataOptions.swift */,
+				A60DBD635943DE4A2E8A9985 /* IMQAUpload+Options.swift */,
+				94C324B5EEADC8B17567EBBD /* IMQAUpload+RedundancyOptions.swift */,
+				CC4BF8CB6DF756F26BAA2C44 /* IMQAUploadCache.swift */,
+				88A3FAD8E13E3AD74C3D9C40 /* IMQAUploadError.swift */,
+				17AAEFF6C7E1E8D8111BD967 /* IMQAUploadOperation.swift */,
+				903ED43952F8FDE56D425697 /* IMQAUploadType.swift */,
+				A708CA56BF4F14B0FF47502E /* UploadDataRecord.swift */,
+				A68CCA954E045CB6853EC2F3 /* Payload */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		D4352A75376697C4200E0AAC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A9F738CE73DB273A673B8421 /* ProcessInfo+Extension.swift */,
+				158D05C588DFA7E3BB8CB755 /* URL+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D59EE874E67CCD2D2D1EFC35 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				94AC8CBFFDEC87662CBA74D0 /* IMQAScreen.swift */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		D9AEEE797D122E3BD4073252 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2B1A38B4682D9524B120F250 /* DispatchableQueue.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D9BF9C1C842B0B461012340A /* IMQACollectDeviceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				BA9CD36CBE5DADD58306F4A6 /* include */,
+				16E057E2A7620FE121C893A8 /* source */,
+			);
+			name = IMQACollectDeviceInfo;
+			path = Sources/IMQACollectDeviceInfo;
+			sourceTree = "<group>";
+		};
+		DD902FB2C2FC376F70725256 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				55D7AF9B8A89F8A086D42948 /* iOSSessionLifecycle.swift */,
+				7D03E2EC3C0EC8812BFAC597 /* SessionControllable.swift */,
+				D67941F2EC1A42B38D6F8CE7 /* SessionController.swift */,
+				4E28241D802926899BC3DDF3 /* SessionLifecycle.swift */,
+			);
+			path = Lifecycle;
+			sourceTree = "<group>";
+		};
+		DEF7BCC7B43C331D14C140D9 /* Identifiers */ = {
+			isa = PBXGroup;
+			children = (
+				C99B83F364A4330FCBA5C4A3 /* DeviceIdentifier.swift */,
+				ADB2E25012529AB9A09AB9B7 /* LogIdentifier.swift */,
+				DA130154A4E6353F9235B0EC /* ProcessIdentifier.swift */,
+				0F933CFC06CA9BA6FDEA7BDC /* SessionIdentifier.swift */,
+				770F781642D57E81917A6F55 /* UUID+WithoutHyphen.swift */,
+			);
+			path = Identifiers;
+			sourceTree = "<group>";
+		};
+		DF5D40CE1043E50284B34C17 /* IMQAObjCUtilsInternal */ = {
+			isa = PBXGroup;
+			children = (
+				37CDCA263AAACC419A0EB2BF /* include */,
+				5C2208DE4B4F7251079083A9 /* source */,
+			);
+			name = IMQAObjCUtilsInternal;
+			path = Sources/IMQAObjCUtilsInternal;
+			sourceTree = "<group>";
+		};
+		E168AA6B34E8D086AA120467 /* Span */ = {
+			isa = PBXGroup;
+			children = (
+				2E3AE5C8F6EC25432E413A81 /* Span+IMQA.swift */,
+				E6D4F883F0F3F6627E4CB673 /* SpanBuilder+Extension.swift */,
+				311D6D80EDC564C922605112 /* SpanBuilder+IMQA.swift */,
+			);
+			path = Span;
+			sourceTree = "<group>";
+		};
+		E24BDC18EDFC0663C92321AB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FD2FFEBC2039ECD592A29247 /* EncryptedNetworkPayload.swift */,
+				301FEADCAD05CF2A36B9E1D3 /* EncryptionHelper.swift */,
+				0CE62D71FAD19E13CC40F0EE /* NetworkPayloadCaptureHandler.swift */,
+				9025B05E8FBAD4DDFED9B81A /* NetworkPayloadCaptureRule.swift */,
+				276A3E921317B9B8BD22DFB0 /* Reachability.swift */,
+				E258DCA0FDDDAFD311B1DB20 /* URLRequest+Extension.swift */,
+				087DF88A62A0E945237078B8 /* URLSessionCaptureService.swift */,
+				456603B9E6FFAB64A1A5A5C5 /* URLSessionCaptureService+Options.swift */,
+				DADCA67D3ABAE4F1B17BBCDD /* URLSessionDelegateProxy.swift */,
+				CA3E536ACADB7739845C9589 /* URLSessionDelegateProxy+DataDelegate.swift */,
+				5BD11C99E2C0DBDB924B2FA3 /* URLSessionDelegateProxy+DownloadDelegate.swift */,
+				A0B3F4E6011F292C174254C0 /* URLSessionDelegateProxy+StreamDelegate.swift */,
+				57F07941263A39AC9F741024 /* URLSessionDelegateProxy+TaskDelegate.swift */,
+				9788A01E73AB4263FDB80A34 /* URLSessionRequestsDataSource.swift */,
+				40D76FB3F0EBF26829A79C85 /* URLSessionSwizzlerProvider.swift */,
+				85558B32C358DE5CBAD369AF /* URLSessionTask+Extension.swift */,
+				E49F6160D3C0923F4F1B7DE6 /* URLSessionTaskCaptureRule.swift */,
+				30BFC1DFAF7C642ECBF3C991 /* URLSessionTaskHandler.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E538C08566658688725E5ADC /* IMQAStorage */ = {
+			isa = PBXGroup;
+			children = (
+				13DDE5644D5FE7F4B4310D1A /* IMQAMuti.swift */,
+				ADF6008B6FE8F6FCD4FCB543 /* IMQASingle.swift */,
+				3DA92DBC77DEFB42C69FF881 /* IMQAStorageUnit.swift */,
+			);
+			path = IMQAStorage;
+			sourceTree = "<group>";
+		};
+		E5E813567726E3B4158F134D /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				18923F7B5B91116B8308DB2A /* IMQAMeta.swift */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		F3349C3313F6C2F94F8F2AFA /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				BADD5240B7B620997355A281 /* ErrorCode.swift */,
+				449654B2D1E7731E827A2827 /* SessionState.swift */,
+				C209B7F7D2C5C13A078F928A /* StackTraceBehavior.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		F3A0A0B9A66DAEF43BA60955 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F7D8D3396EF838041C66EAC9 /* IMQAResource.swift */,
+				0C05E588C328B074077377BD /* IMQAResourceProvider.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F6605084EFDA4E50B5908AB7 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				F2B93752B094BF2A10B30F2C /* LogPayload.swift */,
+				6380A4B00FBB2590D0D79466 /* LogPayloadBuilder.swift */,
+				3E92685579A9CBFE1D5981E8 /* RequestLogPayload.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		FF860314AA5EFA049A2E5FDB /* Span */ = {
+			isa = PBXGroup;
+			children = (
+				FD79D780E5E9D0E0001F5D5D /* SpanEventPayload.swift */,
+				C5D859AF096FD97502AB786F /* SpanLinkPayload.swift */,
+				B8ADA93F0AED68249E015B8C /* SpanPayload.swift */,
+				2A92B7CD84BF44813ACCDDF9 /* SpansPayloadBuilder.swift */,
+			);
+			path = Span;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		400891C2B3C562A055053EF7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71C299B34AFAB232C29A5C70 /* IMQABinaryImageProvider.h in Headers */,
+				DFAD44A2321165DE7B6842AF /* IMQAObjCUtilsInternal.h in Headers */,
+				B3387D057C7D0BA3B74FC8A9 /* IMQAStackTraceProccessor.h in Headers */,
+				7C3269B9E9E590DDC89960E1 /* IMQAURLSessionDelegateForwarder.h in Headers */,
+				EF2084F51F7BE5979117FC8A /* NSURLSessionTask+IMQA.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4E2554EC5176948D5500158 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B94C6F01771EB0755EFD66E8 /* FSCPUUsage.h in Headers */,
+				6C7A0316733834897C266F28 /* FSHardcodeDeviceInfo.h in Headers */,
+				E6717588F9F4B212B53CB013 /* FSRAMUsage.h in Headers */,
+				50938A5B036EC47EC179981A /* IMQACollectDeviceInfo.h in Headers */,
+				F13D2CD605607CC31FCE544E /* IMQADevice.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5A0B0570C13B80AAD9E39C41 /* MMKV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4CA0F03CE23ACC5DADB137D /* Build configuration list for PBXNativeTarget "MMKV" */;
+			buildPhases = (
+				B2310DFCAF9E8EBED4876D5B /* Sources */,
+				F9E2523E9908AC1012D807F5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MMKV;
+			productName = MMKV;
+			productReference = DCF75507939DA61BDC2C8390 /* MMKV.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		611FF66040FC870AF0608EEE /* IMQACore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AA4D8F073DE5110D97E21AD /* Build configuration list for PBXNativeTarget "IMQACore" */;
+			buildPhases = (
+				1DE417624A953DDEEA3D8C77 /* Sources */,
+				07B312CBBAACC1091BED9519 /* Resources */,
+				558025709BE19B3851FFDC5B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A8B4B1AE8E5D02B0C70012E /* PBXTargetDependency */,
+				499C21194210190617728F6A /* PBXTargetDependency */,
+				C5F8E85BD71716495CAB893A /* PBXTargetDependency */,
+				4C15C25F1DC991489192C288 /* PBXTargetDependency */,
+			);
+			name = IMQACore;
+			packageProductDependencies = (
+				5DBE2688BF028A186EFDD893 /* OpenTelemetryApi */,
+				11E761A2AEA60861D6C4C293 /* OpenTelemetrySdk */,
+				B33181DE9D4F2E0EFF4C733F /* OpenTelemetryProtocolExporterHTTP */,
+				9B6306E346A5D6512D5B64CD /* ResourceExtension */,
+				C90F102500A2306126D28043 /* Installations */,
+			);
+			productName = IMQACore;
+			productReference = 43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		83DA8DE0BABB59470E478459 /* IMQAOtelInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD74D1CC940B09AE0E92637 /* Build configuration list for PBXNativeTarget "IMQAOtelInternal" */;
+			buildPhases = (
+				DED0F1273E63DDF2A33DE445 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IMQAOtelInternal;
+			productName = IMQAOtelInternal;
+			productReference = A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9E2CBC47D01351A078FAF83C /* IMQACommonInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 320F1AA6C2FFCB5E40CCFF59 /* Build configuration list for PBXNativeTarget "IMQACommonInternal" */;
+			buildPhases = (
+				BA28959061530DF79EE61019 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IMQACommonInternal;
+			productName = IMQACommonInternal;
+			productReference = 936A3039949BADA9639F6700 /* IMQACommonInternal.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BF2ED532F6619574599978F7 /* IMQAObjCUtilsInternal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76ACBA70E2AEB9541BFAAD32 /* Build configuration list for PBXNativeTarget "IMQAObjCUtilsInternal" */;
+			buildPhases = (
+				400891C2B3C562A055053EF7 /* Headers */,
+				4535C68C91BE2A7D3503DD55 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IMQAObjCUtilsInternal;
+			productName = IMQAObjCUtilsInternal;
+			productReference = B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C5FA60650335BB31C8F1D957 /* IMQACollectDeviceInfo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 322625BD4F339478BDD1F8C3 /* Build configuration list for PBXNativeTarget "IMQACollectDeviceInfo" */;
+			buildPhases = (
+				F4E2554EC5176948D5500158 /* Headers */,
+				EC12BB93F0DA67CC23CFC8BF /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IMQACollectDeviceInfo;
+			productName = IMQACollectDeviceInfo;
+			productReference = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD9F54D580C9280374413622 /* IMQAIO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 150B21E953B1504032FBE722 /* Build configuration list for PBXNativeTarget "IMQAIO" */;
+			buildPhases = (
+				30540D3BB666A5E5CE848F65 /* Sources */,
+				694A3579A8E61CF93E045F88 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6C9FA6FF49BD47B0533B5C8 /* PBXTargetDependency */,
+			);
+			name = IMQAIO;
+			productName = IMQAIO;
+			productReference = D3C556AC30EF97761279DF97 /* IMQAIO.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		270BB016BDA4EED5623FB1F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 859806B7F6A475B0A5644161 /* Build configuration list for PBXProject "IMQAIO" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AD6B6D994C25797E6F7B6348;
+			packageReferences = (
+				B5AAC85D1968B7C721D9863B /* XCRemoteSwiftPackageReference "KSCrash" */,
+				22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5FA60650335BB31C8F1D957 /* IMQACollectDeviceInfo */,
+				9E2CBC47D01351A078FAF83C /* IMQACommonInternal */,
+				611FF66040FC870AF0608EEE /* IMQACore */,
+				CD9F54D580C9280374413622 /* IMQAIO */,
+				BF2ED532F6619574599978F7 /* IMQAObjCUtilsInternal */,
+				83DA8DE0BABB59470E478459 /* IMQAOtelInternal */,
+				5A0B0570C13B80AAD9E39C41 /* MMKV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07B312CBBAACC1091BED9519 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B16ED51C732787C3E70D475 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DE417624A953DDEEA3D8C77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D801C0ADC08723A6FFFA16 /* AsyncOperation.swift in Sources */,
+				2A49A07534146BCF14058CCD /* BatteryModel.swift in Sources */,
+				F350808073519D2F642EDC48 /* CaptureService+Helpers.swift in Sources */,
+				8F8A2BFF9741D31A53A3702B /* CaptureService.swift in Sources */,
+				06BF789CA21EE1F5822807B7 /* CaptureServiceBuilder.swift in Sources */,
+				16CF9067ED3E5C77D3DA53D5 /* CaptureServiceFactory.swift in Sources */,
+				BBA4E5DF885AFA6E65094E4C /* CaptureServiceState.swift in Sources */,
+				327FF168C5E445FEA97D5040 /* CaptureServices+UIViewController.swift in Sources */,
+				7B954187FB727E18FBF2CD0B /* CaptureServices.swift in Sources */,
+				47B711F58786BE37DA90EAFE /* CarrierModel.swift in Sources */,
+				608B5F5485712116A011CD5C /* Collection+LogDataValidator.swift in Sources */,
+				BF4ED00F068C4FB88964E803 /* Collection+SpanDataValidator.swift in Sources */,
+				C5EE84393FDFB326BF8C5349 /* CpuManager.swift in Sources */,
+				9D279DE9B5783A7106E69D99 /* CpuModel.swift in Sources */,
+				B8D57BACE73B3F7B89242E5A /* CrashError.swift in Sources */,
+				A3B17A30A49D97676BEFDE3A /* CrashReporter.swift in Sources */,
+				7DF4DAB4C526E7F65715BAAD /* CrashReporterContext.swift in Sources */,
+				8A8EF09BC5F7C30F7D807043 /* CrashlyticsReporter.swift in Sources */,
+				699D7C2BDD6C13EAEDFBAF39 /* CrashlyticsWrapper.swift in Sources */,
+				A7533CB24B982502CB567BFA /* DefaultIMQALogSharedState.swift in Sources */,
+				D8DCF6795F010AE18126A073 /* DefaultIMQALoggerConfig.swift in Sources */,
+				0D008A1FD79961F3234F9559 /* DefaultInternalLogger.swift in Sources */,
+				2E043E1BD2742A9D0A91F680 /* DefaultLogBatcher.swift in Sources */,
+				015271C8A1E8843A9E53E7A5 /* DeviceIdentifier+Persistence.swift in Sources */,
+				95DA72807C08083D6E94F553 /* DeviceModel.swift in Sources */,
+				6AF8BB8E2CB04A7F9FDB6504 /* EncryptedNetworkPayload.swift in Sources */,
+				C5C4821FCC64775676D640C6 /* EncryptionHelper.swift in Sources */,
+				5AE3A4BDA374AD197FB446F9 /* FilePathProvider.swift in Sources */,
+				D0AC86F8ADC8BD0B5356509E /* IMQA+EndPoints.swift in Sources */,
+				F36E702C83C0BAEFFE4671C8 /* IMQA+OTEL.swift in Sources */,
+				65455FA115BF6BD47D9B2F38 /* IMQA+Options.swift in Sources */,
+				C6DF6BD2E76BF3B31FC79562 /* IMQA+Setup.swift in Sources */,
+				009C04FDB8587A7298A88F28 /* IMQA.swift in Sources */,
+				53C61BD35F109A3B9C567440 /* IMQACrashReporter.swift in Sources */,
+				596BA8F488CD2DDAD2B9EF47 /* IMQAFilePathProvider.swift in Sources */,
+				23BEDEDB3638387206CB5885 /* IMQAFileSystem.swift in Sources */,
+				722DC240D331DCBA2B2A0DE3 /* IMQALogAttributesBuilder.swift in Sources */,
+				D6C4BF4FE0DB91CE69FB6E1B /* IMQALogRecordBuilder.swift in Sources */,
+				A1F9C5B78EACB900F851BD53 /* IMQALogRecordProcessor.swift in Sources */,
+				646B6B9FF61E59957C1420FF /* IMQALogSharedState.swift in Sources */,
+				58128D61D990DDDFEC63BFA9 /* IMQALogger.swift in Sources */,
+				247355A2AC32708D9B9911D0 /* IMQALoggerBuilder.swift in Sources */,
+				2EA6D365F2C8BF19B4F8866F /* IMQALoggerConfig.swift in Sources */,
+				AE660E29A63BCC390FE590F7 /* IMQALoggerProvider.swift in Sources */,
+				755EA3302F73DDD72B390231 /* IMQAMuti.swift in Sources */,
+				00FFFC1C22302B3F74C864BF /* IMQANotification.swift in Sources */,
+				90442B9D54904042A703DE19 /* IMQAOTel.swift in Sources */,
+				D6A15CB0C13BF05099C089AE /* IMQAOpenTelemetry.swift in Sources */,
+				68E832B767273E32D9058DBA /* IMQAReachabilityMonitor.swift in Sources */,
+				FE589643DDB8BD98DA1A71BC /* IMQAResource.swift in Sources */,
+				880C7AFBDEB0AFD24D34F327 /* IMQAResourceProvider.swift in Sources */,
+				7E9F1E7DD0B2D422C02E4C05 /* IMQASingle.swift in Sources */,
+				9D803098E29D02DA89D56921 /* IMQASpanProcessor+Setup.swift in Sources */,
+				A945C1FBCD2CF2D981FF17E8 /* IMQAStorage+Metadata.swift in Sources */,
+				0D6C0AEA940298F0A8C1E14B /* IMQAStorage+Options.swift in Sources */,
+				8C4A6CFC9EDE30AFDB59DBCD /* IMQAStorage+Sampler.swift in Sources */,
+				8DFD728469DB0D8FBF12AC97 /* IMQAStorage+Session.swift in Sources */,
+				967F9647C9A7C517EEDF4F56 /* IMQAStorage+Span.swift in Sources */,
+				CFDB0B66A03E9AE320897BEE /* IMQAStorage.swift in Sources */,
+				A296CBC0C5BC0D1FBA427881 /* IMQAStorageError.swift in Sources */,
+				C695A039ECB0821CE7D8F342 /* IMQAStorageMetadataFetcher.swift in Sources */,
+				5A72DEE8D2F23D7010CE00B3 /* IMQAStorageUnit.swift in Sources */,
+				CF911BA8DF9CDB69BCF4C4C0 /* IMQAUpload+CacheOptions.swift in Sources */,
+				0BCCE7CED7FCC680256BA62E /* IMQAUpload+EndpointOptions.swift in Sources */,
+				779B1EF192FA35484A108A47 /* IMQAUpload+MetadataOptions.swift in Sources */,
+				7CB164AE28BE20473B2C4E0B /* IMQAUpload+Options.swift in Sources */,
+				D5917ACE5F188940504E0EA5 /* IMQAUpload+RedundancyOptions.swift in Sources */,
+				F0646784BCBEF2A1CC143E04 /* IMQAUpload.swift in Sources */,
+				A0E14DC7E76CCBCCE8160734 /* IMQAUploadCache.swift in Sources */,
+				8C694525A908E1E484009FF8 /* IMQAUploadError.swift in Sources */,
+				0D460942CE239524CBDF567E /* IMQAUploadOperation.swift in Sources */,
+				421598DBEEA296B190DF1A8D /* IMQAUploadType.swift in Sources */,
+				81C1A7C8C702B3130492B213 /* IMQAViewControllerCustomization.swift in Sources */,
+				0A8912F0C55B99F601C32230 /* InstrumentableViewController.swift in Sources */,
+				A5B04E06BE2EC9CEC9A05A1D /* InteractableViewController.swift in Sources */,
+				66DF191618A6560980ED4412 /* InternalLogger.swift in Sources */,
+				9A3EC1AF5B50F1231E0A65F3 /* LengthOfBodyValidator.swift in Sources */,
+				2A8F9111DBEDE327B826FCE8 /* LogBatchLimits.swift in Sources */,
+				51429988C717D4245099E889 /* LogController.swift in Sources */,
+				096CB53C17CA96CE996B1794 /* LogDataValidation.swift in Sources */,
+				CD973E3C3C9DCB545D981D1F /* LogPayload.swift in Sources */,
+				7AC0311FEE0F7403E64629BF /* LogPayloadBuilder.swift in Sources */,
+				EE7AFA6A91046600535CD9A8 /* LogRecord.swift in Sources */,
+				1C231D92EA459F30D8C19357 /* LogRepository.swift in Sources */,
+				B560741C822CDB2A87E79A67 /* LogsBatch.swift in Sources */,
+				840248A23605F18AEC57226B /* LowMemoryWarningCaptureService.swift in Sources */,
+				7BB4A8556A0BF39F17849E62 /* LowPowerModeCaptureService.swift in Sources */,
+				05F9F88E8CA49821715BB6AA /* MemoryModel.swift in Sources */,
+				A356AA46C3DC70CB9A5012FD /* MetadataPayload.swift in Sources */,
+				49FA9C1D9ACDA4B63AC1EC33 /* MetadataRecord.swift in Sources */,
+				A4D6A48132242635794B1D50 /* NetworkInfoManager.swift in Sources */,
+				4C335FE0106DDC56AC7DABBA /* NetworkModel.swift in Sources */,
+				76B4F394A68B4FA07C40928C /* NetworkPayloadCaptureHandler.swift in Sources */,
+				628B21DA5B158CE1880C8C8D /* NetworkPayloadCaptureRule.swift in Sources */,
+				10A2A3A1F2698E2DBFB1E7D1 /* OpenTelemetryExport.swift in Sources */,
+				674765415CA92AFECDC346A1 /* OpenTelemetryManager+Span.swift in Sources */,
+				6DA527F848D3ADDE59350F25 /* PayloadEnvelope.swift in Sources */,
+				A4A6A9521BCA7F10E866D0BF /* PayloadUtils.swift in Sources */,
+				247BC77BB9ABB2DFB92FACC7 /* PowerModeProvider.swift in Sources */,
+				29FCF9C9F44DC8AAE860B3BB /* ProcessMetadata.swift in Sources */,
+				3807EBD5DBCFF27EE248C0F6 /* ProcessModel.swift in Sources */,
+				E46039664ECF9D7D8BA4B499 /* PushNotificationCaptureService+Options.swift in Sources */,
+				555E7F48D7BF999BA70D94F5 /* PushNotificationCaptureService.swift in Sources */,
+				3B0529E96B77BE763B5823E1 /* PushNotificationError.swift in Sources */,
+				1F4E445A8721410B1967ADE6 /* PushNotificationEvent.swift in Sources */,
+				1D13D6D8B4F1908F4DABAC83 /* Reachability.swift in Sources */,
+				D25B95C6C425D35A22C7A984 /* RecordingSpanEvent.swift in Sources */,
+				F1B08BECAB0D2D63EB5D2DC5 /* RequestLogPayload.swift in Sources */,
+				169DF89A5FBC9E4C6F9165D8 /* ResourceCaptureService.swift in Sources */,
+				8544CB13A63B5778D2BD3919 /* ResourcePayload.swift in Sources */,
+				7C52CC04CFA6E23D5DAD69DB /* ResourceStorageExporter.swift in Sources */,
+				94870F5CCC0B91A4B2C11D08 /* SessionBasedSampler.swift in Sources */,
+				2203A4B11A28765EEBDF3C67 /* SessionControllable.swift in Sources */,
+				4839BE89B903CB3D04B015A9 /* SessionController.swift in Sources */,
+				D5531CF22574C67400BDEC38 /* SessionLifecycle.swift in Sources */,
+				B35ACF5584EEA95BAAD0C795 /* SessionPayloadBuilder.swift in Sources */,
+				5A814C7511D88B5A3224C860 /* SessionRecord.swift in Sources */,
+				B6CE80041FF5068DA33424D5 /* Severity+LogSeverity.swift in Sources */,
+				16565968DE73F1F87D263C0D /* SingleLogRecordProcessor.swift in Sources */,
+				D74149ECD8AB135127461C6F /* SingleSpanProcessor.swift in Sources */,
+				1DD10BB6062EB95920984415 /* Span+IMQA.swift in Sources */,
+				307F58F956ACD849E0B99FDA /* SpanBuilder+Extension.swift in Sources */,
+				4A9DD20C8D78235E0BC98CAA /* SpanBuilder+IMQA.swift in Sources */,
+				1BFB70665314838D58EC7E43 /* SpanData+toJson.swift in Sources */,
+				D9065897EA74C2B03EE80983 /* SpanDataValidation.swift in Sources */,
+				2F010F4B4C71914D38AEBB17 /* SpanDataValidator.swift in Sources */,
+				4C36F7ED261444A3F037B637 /* SpanEvent.swift in Sources */,
+				AE8B2304F0B84AD5AAEB2E5B /* SpanEventPayload.swift in Sources */,
+				090D4D345357AC9BCB65B1CE /* SpanLink.swift in Sources */,
+				4D54DF0A040D3EB3B9CC81CA /* SpanLinkPayload.swift in Sources */,
+				99CDB888B2A89DB92401DE31 /* SpanPayload.swift in Sources */,
+				C65C38A5A8597756FFEFBD3D /* SpanRecord.swift in Sources */,
+				B045475BBA87401AEC431FA0 /* SpanUtils.swift in Sources */,
+				7EFCAD1EA57C4003F60B2704 /* SpansPayloadBuilder.swift in Sources */,
+				0C67E426FA1ED61559F428CD /* StorageIMQALogExporter.swift in Sources */,
+				853FC29DC01E4477B2701882 /* StorageSpanExporter+Options.swift in Sources */,
+				A88EE86EA88C3AB70444AE0A /* StorageSpanExporter.swift in Sources */,
+				62A144E0499AB1A6946006E5 /* TapCaptureService+Options.swift in Sources */,
+				CC64B22E5F41B79688A2C1FC /* TapCaptureService.swift in Sources */,
+				AB694AA0232DB35EAEA51AFF /* TapCaptureServiceDelegate.swift in Sources */,
+				FA801A2BC33E6B3A995EE101 /* UIViewController+IMQA.swift in Sources */,
+				94B538C0828600C9F2985A69 /* UIViewControllerHandler.swift in Sources */,
+				9A9CCFB6822A191CE3ECD63D /* UNUserNotificationCenterDelegateProxy.swift in Sources */,
+				76485D5B3A65B44BD2B5CB64 /* URLRequest+Extension.swift in Sources */,
+				10269D25FBE42F0D0B610F7F /* URLSessionCaptureService+Options.swift in Sources */,
+				26346F4549AF3CDF5B086215 /* URLSessionCaptureService.swift in Sources */,
+				205395BD9206003CB044EFD3 /* URLSessionDelegateProxy+DataDelegate.swift in Sources */,
+				C5BB5F47C5736B0C6707410F /* URLSessionDelegateProxy+DownloadDelegate.swift in Sources */,
+				698BEB7B36C1DC9F7E2A0673 /* URLSessionDelegateProxy+StreamDelegate.swift in Sources */,
+				52EDE74BEB898E63C57D7D06 /* URLSessionDelegateProxy+TaskDelegate.swift in Sources */,
+				832CFF51E308012C368CDC38 /* URLSessionDelegateProxy.swift in Sources */,
+				1AB4B9098C62F4F7E5049D95 /* URLSessionRequestsDataSource.swift in Sources */,
+				A94CB1BEB62E823E5C6719CB /* URLSessionSwizzlerProvider.swift in Sources */,
+				C3656C6A2A3BB2005EB63072 /* URLSessionTask+Extension.swift in Sources */,
+				DC1C896C49A64E800F9E3612 /* URLSessionTaskCaptureRule.swift in Sources */,
+				2B78E6A3DC5C2613E4B16A45 /* URLSessionTaskHandler.swift in Sources */,
+				61791B8B4145F06EFA786B82 /* UnsentDataHandler.swift in Sources */,
+				BD2191FF8773BF3C9C83EC7C /* UploadDataRecord.swift in Sources */,
+				7BCAEF3819EDFD8711B305F8 /* UserModel.swift in Sources */,
+				2BEC2EA466FE1F789BF65DAE /* VVIdenti.swift in Sources */,
+				C19DF514D12A373EC966E348 /* ViewCaptureService+Options.swift in Sources */,
+				06CFC6CD120EC9D91D080A3C /* ViewCaptureService.swift in Sources */,
+				CF37F68978A6C3352364876D /* ViewCaptureServiceError.swift in Sources */,
+				321A06B93BB9009F4166470C /* W3C.swift in Sources */,
+				DCEF3591CC1436B9E58F95A6 /* WKNavigationDelegateProxy.swift in Sources */,
+				9EC13A49AB90C6D2285B0787 /* WebViewCaptureService+Options.swift in Sources */,
+				599995F690099480192BE749 /* WebViewCaptureService.swift in Sources */,
+				76717DEF9E829E9EA4ACD832 /* iOSSessionLifecycle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30540D3BB666A5E5CE848F65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF23355188C1B62FADEC7B85 /* IMQACore+Export.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4535C68C91BE2A7D3503DD55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832113822CCC15FED3E872E8 /* IMQABinaryImageProvider.m in Sources */,
+				57B7760508E86FEBF1B56158 /* IMQAStackTraceProccessor.m in Sources */,
+				52F9682ABB7210E7966F4059 /* IMQAURLSessionDelegateForwarder.m in Sources */,
+				0FE6D72A2547699328BFA011 /* NSURLSessionTask+IMQA.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2310DFCAF9E8EBED4876D5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA28959061530DF79EE61019 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EB4D04996855107747CC8FF /* Bundle+Extension.swift in Sources */,
+				242750C060FF3D55FC66D68E /* CGPoint+toString.swift in Sources */,
+				546118A70AAA6F1390E1D38D /* Data+Gzip.swift in Sources */,
+				B98B1EE21FD81204C617EA7F /* Date+Extension.swift in Sources */,
+				5A9D4EE707BCA27322FC22D4 /* DefaultKeychainInterface.swift in Sources */,
+				1C7958C13D2801318D9F454F /* DeviceIdentifier.swift in Sources */,
+				21F0A3C8DBBAD382CCB6B12C /* DispatchQueue+Extension.swift in Sources */,
+				30C6B922BCD8DCAE8681B2FF /* DispatchableQueue.swift in Sources */,
+				FFA035FC7BB56AE6B5E55771 /* Encodable+Extension.swift in Sources */,
+				3E9BF72AA15E2D2E4957FDE1 /* ErrorCode.swift in Sources */,
+				85EBEA770A4D963DF6C0AFDC /* IMQASwizzableError.swift in Sources */,
+				BAE000F38BCC3DFB70DA09F2 /* KeychainAccess.swift in Sources */,
+				FA305665578B575AB84E2D9E /* LogIdentifier.swift in Sources */,
+				9829495338F5521D6AB0899F /* PersistableValue.swift in Sources */,
+				9A4A3048E8FE5B6E6EE96A7F /* ProcessIdentifier.swift in Sources */,
+				604D08FA08B82BA899911EC4 /* SessionHeartbeat.swift in Sources */,
+				C705A8C521B06CFFE09C21AA /* SessionIdentifier.swift in Sources */,
+				6F1F217CBFE156B962A8A01E /* SessionState.swift in Sources */,
+				107EEB8AA62D657291F57A0B /* StackTraceBehavior.swift in Sources */,
+				C64984F82791C0B5467DC5B6 /* Swizzlable.swift in Sources */,
+				0D4C06E2AD3484780F53C77A /* SwizzleCache.swift in Sources */,
+				FD50B1311ECBE34EEE60E229 /* ThreadSafe.swift in Sources */,
+				C028D9FA009A9270EE637BB2 /* UIView+Extension.swift in Sources */,
+				079C63FCBF6AA742C0C9BCCA /* UUID+WithoutHyphen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DED0F1273E63DDF2A33DE445 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93C60D3524F26D440BAF259A /* IMQALogType.swift in Sources */,
+				88D837FF6846ABCA0E7B25B8 /* IMQAMeta.swift in Sources */,
+				F0AFAE72761D913A4B7F1A43 /* IMQAScreen.swift in Sources */,
+				C8B9ADBCDB2C9B52D6247E17 /* IMQASetupError.swift in Sources */,
+				AD84B02CD7D385DB7C9C48A9 /* IMQASpanType.swift in Sources */,
+				9E0259CF8EE62722406D9CE0 /* LogLevel.swift in Sources */,
+				08453F128709F37999A6F6CC /* LogSeverity.swift in Sources */,
+				CB5EDDE775C53F6B53755256 /* ProcessInfo+Extension.swift in Sources */,
+				372ED198FCB26EC1D5B72B6A /* ResourceSemantics.swift in Sources */,
+				6459C48037CB3268B107E3E7 /* SpanSemantics.swift in Sources */,
+				A3F10B26BE9D3C5E0B8C04F8 /* URL+Extension.swift in Sources */,
+				25834AAB18ADA2137E8DD9FD /* UserSemantics.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC12BB93F0DA67CC23CFC8BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				792283A6A5AE79D4C68FE387 /* FSCPUUsage.m in Sources */,
+				6DC34B76754C98131D5104E3 /* FSHardcodeDeviceInfo.m in Sources */,
+				FD0D1D83D0CDB7445C04063D /* FSRAMUsage.m in Sources */,
+				83C1D169C621BE93494B972B /* IMQADevice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		499C21194210190617728F6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5FA60650335BB31C8F1D957 /* IMQACollectDeviceInfo */;
+			targetProxy = 83D0726A97747D4105605E7D /* PBXContainerItemProxy */;
+		};
+		4C15C25F1DC991489192C288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E2CBC47D01351A078FAF83C /* IMQACommonInternal */;
+			targetProxy = 2899767BDD0A0452ED37DA94 /* PBXContainerItemProxy */;
+		};
+		7A8B4B1AE8E5D02B0C70012E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83DA8DE0BABB59470E478459 /* IMQAOtelInternal */;
+			targetProxy = B5D6A780DCD1E96A50474B91 /* PBXContainerItemProxy */;
+		};
+		C5F8E85BD71716495CAB893A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF2ED532F6619574599978F7 /* IMQAObjCUtilsInternal */;
+			targetProxy = ACD73C5C1BDE5FF3E5EB5C1E /* PBXContainerItemProxy */;
+		};
+		F6C9FA6FF49BD47B0533B5C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 611FF66040FC870AF0608EEE /* IMQACore */;
+			targetProxy = 475D3FEDF47564252791F9DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		072CE2261C0632A4FD3DA8D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAObjCUtilsInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		30899CEAE39AADD5A9B785AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		3235EA3819BAF2B203202A69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Sources/Frameworks\"",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.MMKV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		557B10BD9454BB47F1AE4A7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACollectDeviceInfo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		6DA46F101DA9522D9448A61E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Sources/Frameworks\"",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.MMKV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		7929E76CE689C96E43C9E0DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAOtelInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		7E0E72BC616A27ACC68B4AA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		83C7CFB544BCB897306E2778 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Sources/Frameworks\"",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		891F5E3A7379B8C5CBDBE078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Sources/Frameworks\"",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		93FBBD4B622D58C0C2F3BC43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAIO;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		A9FBE43D564A1F4ECD640EA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACommonInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		AE4B08E1A9CFAD284F62B491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACommonInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D353673F03B28B0DBB23AC89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAObjCUtilsInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		E0A8FB3C4ABE0297C9779C1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACollectDeviceInfo;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		E7AAD681A7FCEC96CC1E62D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAOtelInternal;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		F12A62F7601A8CAC1DAD5B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAIO;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		150B21E953B1504032FBE722 /* Build configuration list for PBXNativeTarget "IMQAIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93FBBD4B622D58C0C2F3BC43 /* Debug */,
+				F12A62F7601A8CAC1DAD5B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		320F1AA6C2FFCB5E40CCFF59 /* Build configuration list for PBXNativeTarget "IMQACommonInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9FBE43D564A1F4ECD640EA9 /* Debug */,
+				AE4B08E1A9CFAD284F62B491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		322625BD4F339478BDD1F8C3 /* Build configuration list for PBXNativeTarget "IMQACollectDeviceInfo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				557B10BD9454BB47F1AE4A7C /* Debug */,
+				E0A8FB3C4ABE0297C9779C1F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		76ACBA70E2AEB9541BFAAD32 /* Build configuration list for PBXNativeTarget "IMQAObjCUtilsInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D353673F03B28B0DBB23AC89 /* Debug */,
+				072CE2261C0632A4FD3DA8D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		859806B7F6A475B0A5644161 /* Build configuration list for PBXProject "IMQAIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E0E72BC616A27ACC68B4AA3 /* Debug */,
+				30899CEAE39AADD5A9B785AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9AA4D8F073DE5110D97E21AD /* Build configuration list for PBXNativeTarget "IMQACore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				891F5E3A7379B8C5CBDBE078 /* Debug */,
+				83C7CFB544BCB897306E2778 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F4CA0F03CE23ACC5DADB137D /* Build configuration list for PBXNativeTarget "MMKV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6DA46F101DA9522D9448A61E /* Debug */,
+				3235EA3819BAF2B203202A69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FBD74D1CC940B09AE0E92637 /* Build configuration list for PBXNativeTarget "IMQAOtelInternal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7AAD681A7FCEC96CC1E62D2 /* Debug */,
+				7929E76CE689C96E43C9E0DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/open-telemetry/opentelemetry-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 1.12.1;
+			};
+		};
+		B5AAC85D1968B7C721D9863B /* XCRemoteSwiftPackageReference "KSCrash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kstenerud/KSCrash.git";
+			requirement = {
+				kind = exactVersion;
+				version = "2.0.0-rc.8";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11E761A2AEA60861D6C4C293 /* OpenTelemetrySdk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */;
+			productName = OpenTelemetrySdk;
+		};
+		5DBE2688BF028A186EFDD893 /* OpenTelemetryApi */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */;
+			productName = OpenTelemetryApi;
+		};
+		9B6306E346A5D6512D5B64CD /* ResourceExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */;
+			productName = ResourceExtension;
+		};
+		B33181DE9D4F2E0EFF4C733F /* OpenTelemetryProtocolExporterHTTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */;
+			productName = OpenTelemetryProtocolExporterHTTP;
+		};
+		C90F102500A2306126D28043 /* Installations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5AAC85D1968B7C721D9863B /* XCRemoteSwiftPackageReference "KSCrash" */;
+			productName = Installations;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 270BB016BDA4EED5623FB1F1 /* Project object */;
+}

@@ -8,11 +8,11 @@
 import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
-import ResourceExtension
+internal import ResourceExtension
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import OpenTelemetryProtocolExporterHttp
-import OpenTelemetryProtocolExporterCommon
+internal import OpenTelemetryProtocolExporterHttp
+internal import OpenTelemetryProtocolExporterCommon
 import IMQACollectDeviceInfo
 
 
@@ -181,7 +181,7 @@ public class IMQAOTel{
             return
         }
         
-        let tracerExporter:CustomOtlpHttpTraceExporter? = nil//OtlpHttpTraceExporter(endpoint: tracerUrl)
+        let tracerExporter = OtlpHttpTraceExporter(endpoint: tracerUrl)
         
         //logs
         let logsUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.logs(uploadUrl).baseUrl()
@@ -250,7 +250,7 @@ extension IMQAOTel{
         return result
     }
 
-    public func buildSpan(
+    internal func buildSpan(
         name: String,
         type: IMQASpanType,
         attributes: [String: String] = [:]
@@ -307,7 +307,7 @@ extension IMQAOTel{
             .emit()
     }
     
-    public func log(
+    internal func log(
         _ message: String,
         severity: LogSeverity,
         spanContext: SpanContext,
@@ -330,14 +330,14 @@ extension IMQAOTel{
 
 extension IMQAOTel{
     
-    public func propagators(spanContext: SpanContext){
+    func propagators(spanContext: SpanContext){
         // 将 Span 的上下文注入到 HTTP 请求头中
         propagators.textMapPropagator.inject(spanContext: spanContext,
                                              carrier: &carrier,
                                              setter: setter)
     }
     
-    public func baggage(key: String, value: String, metadata:String?) -> Baggage?{
+    func baggage(key: String, value: String, metadata:String?) -> Baggage?{
         guard let key = EntryKey(name: key) else { return  nil}
         guard let value = EntryValue(string: value) else { return nil }
         let metadata = EntryMetadata(metadata: metadata)

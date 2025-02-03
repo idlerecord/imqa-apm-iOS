@@ -11,7 +11,7 @@ import OpenTelemetrySdk
 
 /// A really simple implementation of the SpanProcessor that converts the ExportableSpan to SpanData
 /// and passes it to the configured exporter in both `onStart` and `onEnd`
-public struct SingleSpanProcessor: SpanProcessor {
+struct SingleSpanProcessor: SpanProcessor {
 
     let spanExporter: SpanExporter
     private let processorQueue = DispatchQueue(label: "io.imqa.spanprocessor", qos: .utility)

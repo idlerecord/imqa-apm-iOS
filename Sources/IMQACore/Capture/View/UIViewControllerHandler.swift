@@ -7,7 +7,6 @@
 import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQACommonInternal
-import IMQACaptureService
 import Foundation
 
 #if canImport(UIKit) && !os(watchOS)

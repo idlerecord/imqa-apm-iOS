@@ -13,11 +13,11 @@ import IMQAOtelInternal
 extension Span {
 
 
-    public func end(errorCode: ErrorCode? = nil, time: Date = Date()) {
+    internal func end(errorCode: ErrorCode? = nil, time: Date = Date()) {
         end(error: nil, errorCode: errorCode, time: time)
     }
 
-    public func end(error: Error?, errorCode: ErrorCode? = nil, time: Date = Date()) {
+    internal func end(error: Error?, errorCode: ErrorCode? = nil, time: Date = Date()) {
         var errorCode = errorCode
 
 /*
@@ -45,7 +45,7 @@ extension Span {
 }
 
 extension Span {
-    public func add(events: [SpanEvent]) {
+    internal func add(events: [SpanEvent]) {
         events.forEach { event in
             addEvent(name: event.name, attributes: event.attributes, timestamp: event.timestamp)
         }

@@ -22,7 +22,7 @@ public protocol InstrumentableViewController{
 }
 #endif
 
-public extension InstrumentableViewController {
+internal extension InstrumentableViewController {
 
     /// Method used to build a span to be included as a child span to the parent span being handled by the `ViewCaptureService`.
     /// - Parameters:

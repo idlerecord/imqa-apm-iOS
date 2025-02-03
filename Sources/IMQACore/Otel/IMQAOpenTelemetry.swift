@@ -7,8 +7,9 @@
 import Foundation
 import OpenTelemetryApi
 import IMQACommonInternal
+import IMQAOtelInternal
 
-public protocol IMQAOpenTelemetry: AnyObject {
+protocol IMQAOpenTelemetry: AnyObject {
     func buildSpan(name: String,
                    type: IMQASpanType,
                    attributes: [String: String]) -> SpanBuilder

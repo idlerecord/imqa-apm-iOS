@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol KeychainInterface {
+public protocol KeychainInterface {
     func valueFor(service: CFString, account: CFString) -> (value: String?, status: OSStatus)
     func setValue(service: CFString, account: CFString, value: String) -> OSStatus
     func deleteValue(service: CFString, account: CFString) -> OSStatus
 }
 
-class DefaultKeychainInterface: KeychainInterface {
-    func valueFor(service: CFString, account: CFString) -> (value: String?, status: OSStatus) {
+public class DefaultKeychainInterface: KeychainInterface {
+    public func valueFor(service: CFString, account: CFString) -> (value: String?, status: OSStatus) {
         let keychainQuery: NSMutableDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
@@ -39,7 +39,7 @@ class DefaultKeychainInterface: KeychainInterface {
         return (contentsOfKeychain, status)
     }
 
-    func setValue(service: CFString, account: CFString, value: String) -> OSStatus {
+    public func setValue(service: CFString, account: CFString, value: String) -> OSStatus {
         guard let dataFromString = value.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
             return errSecParam
         }
@@ -55,7 +55,7 @@ class DefaultKeychainInterface: KeychainInterface {
         return SecItemAdd( querry, nil)
     }
 
-    func deleteValue(service: CFString, account: CFString) -> OSStatus {
+    public func deleteValue(service: CFString, account: CFString) -> OSStatus {
         let keychainQuery: NSMutableDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,

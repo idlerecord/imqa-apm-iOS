@@ -7,7 +7,7 @@
 
 import OpenTelemetrySdk
 
-public extension Array where Element == any LogRecordProcessor {
+extension Array where Element == any LogRecordProcessor {
     static func `default`(
         withExporters exporters: [LogRecordExporter]
     ) -> [LogRecordProcessor] {

@@ -11,7 +11,7 @@ import IMQACommonInternal
 import IMQAOtelInternal
 
 
-public struct SpanAttributesUtils {
+internal struct SpanAttributesUtils {
     public static var spanCommonAttributes:[String: AttributeValue] = [:]
     
     public static func updateCommonAttributes(key: String, value: AttributeValue){

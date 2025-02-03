@@ -11,7 +11,7 @@ import OpenTelemetryApi
 import IMQACommonInternal
 import IMQAOtelInternal
 
-public struct LogRecord: Codable, VVIdenti {
+internal struct LogRecord: Codable, VVIdenti {
     public var identifier: LogIdentifier
     public var processIdentifier: ProcessIdentifier
     public var severity: LogSeverity

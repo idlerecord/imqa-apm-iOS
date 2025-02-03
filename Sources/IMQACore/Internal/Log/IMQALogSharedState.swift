@@ -11,7 +11,7 @@ import OpenTelemetryApi
 import OpenTelemetrySdk
 
 
-public protocol IMQALogSharedState {
+internal protocol IMQALogSharedState {
     var processors: [LogRecordProcessor] { get }
     var config: any IMQALoggerConfig { get }
     var resourceProvider: IMQAResourceProvider { get }

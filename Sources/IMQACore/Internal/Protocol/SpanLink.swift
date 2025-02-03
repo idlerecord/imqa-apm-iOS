@@ -8,7 +8,7 @@
 import OpenTelemetryApi
 import OpenTelemetrySdk
 
-public protocol SpanLink {
+internal protocol SpanLink {
     var context: SpanContext { get }
     var attributes: [String: AttributeValue] { get }
 }

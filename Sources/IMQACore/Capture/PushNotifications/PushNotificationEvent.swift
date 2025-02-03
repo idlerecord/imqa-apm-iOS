@@ -14,7 +14,7 @@ import IMQAOtelInternal
 /// Usage example:
 /// `Embrace.client?.add(.push(userInfo: apsDictionary))`
 @objc(IMQAPushNotificationEvent)
-public class PushNotificationEvent: NSObject, SpanEvent {
+internal class PushNotificationEvent: NSObject, SpanEvent {
     public let name: String
     public let timestamp: Date
     public private(set) var attributes: [String: AttributeValue]
@@ -144,7 +144,7 @@ public class PushNotificationEvent: NSObject, SpanEvent {
     }
 }
 
-public extension SpanEvent where Self == PushNotificationEvent {
+internal extension SpanEvent where Self == PushNotificationEvent {
     static func push(notification: UNNotification, properties: [String: String] = [:]) throws -> SpanEvent {
         let otelAttributes = properties.reduce(into: [String: AttributeValue]()) {
             $0[$1.key] = AttributeValue.string($1.value)

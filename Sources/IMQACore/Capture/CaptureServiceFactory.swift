@@ -4,7 +4,6 @@
 //
 //  Created by Hunta on 2024/11/4.
 //
-import IMQACaptureService
 
 public enum CaptureServiceFactory { }
 

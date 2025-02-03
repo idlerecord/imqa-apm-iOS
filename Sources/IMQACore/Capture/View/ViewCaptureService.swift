@@ -5,7 +5,6 @@
 //  Created by Hunta Park on 12/13/24.
 //
 import OpenTelemetryApi
-import IMQACaptureService
 import IMQACommonInternal
 import Foundation
 
@@ -15,7 +14,7 @@ import UIKit
 
 /// Service that generates OpenTelemetry spans for `UIViewControllers`.
 @objc(IMQAViewCaptureService)
-public final class ViewCaptureService: CaptureService, UIViewControllerHandlerDataSource {
+internal final class ViewCaptureService: CaptureService, UIViewControllerHandlerDataSource {
 
     public let options: ViewCaptureService.Options
     private var lock: NSLocking

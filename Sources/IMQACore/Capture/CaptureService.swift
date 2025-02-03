@@ -23,7 +23,7 @@ import IMQACommonInternal
 /// This base class provides the necessary functionality and structure that should be used
 /// by all capture services.
 
-open class CaptureService: NSObject {
+internal class CaptureService: NSObject {
 
     /// Getter for the OTel handler used by the capture service.
     private(set) public weak var otel: IMQAOpenTelemetry?
@@ -95,7 +95,7 @@ extension CaptureService {
     ///   - type: Type of the span.
     ///   - attributes: Attributes of the span.
     /// - Returns: The newly created `SpanBuilder` instance, or `nil` if the capture service is not active.
-    public func buildSpan(name: String, type: IMQASpanType, attributes: [String: String]) -> SpanBuilder? {
+    func buildSpan(name: String, type: IMQASpanType, attributes: [String: String]) -> SpanBuilder? {
         guard state == .active else {
             return nil
         }
@@ -134,12 +134,12 @@ extension CaptureService {
     }
     
     
-    public func addPropagators(spanContext: SpanContext){
+    func addPropagators(spanContext: SpanContext){
         otel?.propagators(spanContext: spanContext)
     }
     
     @discardableResult
-    public func addBaggage(key: String, value: String, metadata:String?) -> Baggage?{
+    func addBaggage(key: String, value: String, metadata:String?) -> Baggage?{
         return otel?.baggage(key: key, value: value, metadata: metadata)
     }
     

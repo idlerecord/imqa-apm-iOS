@@ -8,7 +8,6 @@
 import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQACommonInternal
-import IMQACaptureService
 import Foundation
 
 
@@ -19,7 +18,7 @@ import UIKit
 /// Service that generates OpenTelemetry span events for taps on the screen.
 /// Note that any taps done on a keyboard view will be automatically ignored.
 @objc(IMQATapCaptureService)
-public final class TapCaptureService: CaptureService {
+internal final class TapCaptureService: CaptureService {
 #if canImport(UIKit) && !os(watchOS)
 
     public let options: TapCaptureService.Options

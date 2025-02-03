@@ -6,7 +6,6 @@
 //
 
 import OpenTelemetryApi
-import IMQACaptureService
 import IMQAOtelInternal
 import IMQACommonInternal
 

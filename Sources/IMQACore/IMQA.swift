@@ -7,12 +7,11 @@
 
 import Foundation
 import IMQACommonInternal
-import IMQACaptureService
 import IMQAOtelInternal
 
-public class IMQA: NSObject {
+@objc public class IMQA: NSObject {
     
-    public static var client: IMQA?
+    @objc public static var client: IMQA?
         
     static let logger: DefaultInternalLogger = DefaultInternalLogger()
     
@@ -88,7 +87,7 @@ public class IMQA: NSObject {
 
 extension IMQA{
     @discardableResult
-    public func start() throws -> IMQA{
+    @objc public func start() throws -> IMQA{
         guard Thread.isMainThread else {
             throw IMQASetupError.invalidThread("IMQA must be started on the main thread")
         }
@@ -135,7 +134,7 @@ extension IMQA{
     }
     
     @discardableResult
-    public static func setup(options: IMQA.Options) throws -> IMQA {
+    @objc public static func setup(options: IMQA.Options) throws -> IMQA {
         //network  status
         NetworkInfoManager.sharedInstance
 

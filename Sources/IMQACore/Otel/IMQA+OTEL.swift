@@ -9,7 +9,6 @@ import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
 import IMQAOtelInternal
-import IMQACaptureService
 import IMQACommonInternal
 
 extension IMQA: IMQAOpenTelemetry {
@@ -25,7 +24,7 @@ extension IMQA: IMQAOpenTelemetry {
     /// - Parameters:
     ///     - instrumentationName: The name of the instrumentation library requesting the tracer.
     /// - Returns: An OpenTelemetry Tracer so callers can use interface directly
-    public func tracer(instrumentationName: String) -> Tracer {
+    internal func tracer(instrumentationName: String) -> Tracer {
         return otel.tracer
     }
 
@@ -35,7 +34,7 @@ extension IMQA: IMQAOpenTelemetry {
     ///     - type: The type of the span. Will be set as the `emb.type` attribute
     ///     - attributes: A dictionary of attributes to set on the span
     /// - Returns: An OpenTelemetry SpanBuilder
-    public func buildSpan(
+    internal func buildSpan(
         name: String,
         type: IMQASpanType,
         attributes: [String: String] = [:]
@@ -53,7 +52,7 @@ extension IMQA: IMQAOpenTelemetry {
     ///     - attributes: A dictionary of attributes to set on the span. Defaults to an empty dictionary
     ///     - events: An array of events to add to the span. Defaults to an empty array
     ///     - errorCode: The error code of the span. Defaults to `noError`
-    public func recordCompletedSpan(
+    internal func recordCompletedSpan(
         name: String,
         type: IMQASpanType,
         parent: Span?,
@@ -80,7 +79,7 @@ extension IMQA: IMQAOpenTelemetry {
     /// Adds a list of SpanEvent objects to the current session span
     /// If there is no current session, this event will be dropped
     /// - Parameter events: An array of SpanEvent objects
-    public func add(events: [SpanEvent]) {
+    internal func add(events: [SpanEvent]) {
         #warning("if you want to create another session to control, please fix me")
         guard let span = sessionController.currentSessionSpan else {
             IMQA.logger.debug("\(#function) failed: No current session span")
@@ -95,14 +94,14 @@ extension IMQA: IMQAOpenTelemetry {
     /// Adds a single SpanEvent object to the current session span
     /// If there is no current session, this event will be dropped
     /// - Parameter event: A SpanEvent object
-    public func add(event: SpanEvent) {
+    internal func add(event: SpanEvent) {
         add(events: [event])
     }
 
     /// Flushes the given ReadableSpan compliant Span to disk
     /// This is intended to save changes on long running spans.
     /// - Parameter span: A `Span` object that implements `ReadableSpan`
-    public func flush(_ span: Span) {
+    internal func flush(_ span: Span) {
         if let span = span as? ReadableSpan {
             _ = exporter.export(spans: [span.toSpanData()])
         } else {
@@ -171,7 +170,7 @@ extension IMQA: IMQAOpenTelemetry {
     }
     
     
-    public func log(
+     func log(
         _ message: String,
         severity: LogSeverity,
         type: IMQALogType,
@@ -220,7 +219,7 @@ extension IMQA { // MARK: Static methods
     ///
     /// - Note This method validates the presence of the IMQA client and will call the block with a nil span if the client is not present
     ///                 It is recommended you use this method in order to be sure the block is run correctly.
-    public static func recordSpan<T>(
+    internal static func recordSpan<T>(
         name: String,
         parent: Span? = nil,
         type: IMQASpanType,
@@ -244,11 +243,11 @@ extension IMQA { // MARK: Static methods
 
 extension IMQA {
     
-    public func propagators(spanContext: OpenTelemetryApi.SpanContext) {
+    internal func propagators(spanContext: OpenTelemetryApi.SpanContext) {
         otel.propagators(spanContext: spanContext)
     }
     
-    public func baggage(key: String, value: String, metadata: String?) -> (any OpenTelemetryApi.Baggage)? {
+    internal func baggage(key: String, value: String, metadata: String?) -> (any OpenTelemetryApi.Baggage)? {
         otel.baggage(key: key, value: value, metadata: metadata)
     }
 
