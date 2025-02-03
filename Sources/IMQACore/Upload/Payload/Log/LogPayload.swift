@@ -7,7 +7,7 @@
 
 import Foundation
 import OpenTelemetrySdk
-internal import OpenTelemetryProtocolExporterCommon
+import OpenTelemetryProtocolExporterCommon
 
 struct LogPayload: Codable {
     var timeUnixNano: String

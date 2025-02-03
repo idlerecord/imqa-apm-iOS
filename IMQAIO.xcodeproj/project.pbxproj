@@ -10,7 +10,6 @@
 		009C04FDB8587A7298A88F28 /* IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E972B202C498B29337C8DAFA /* IMQA.swift */; };
 		00FFFC1C22302B3F74C864BF /* IMQANotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E0840DABF1FB63E319BD4 /* IMQANotification.swift */; };
 		015271C8A1E8843A9E53E7A5 /* DeviceIdentifier+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903D66F6A347BF9A99FEBBC2 /* DeviceIdentifier+Persistence.swift */; };
-		01DAB79664135170190DE916 /* MMKV.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF20AA802EE342446AF317D /* MMKV.xcframework */; };
 		0441714A74C2C32D46303417 /* OpenTelemetryProtocolExporterHTTP in Frameworks */ = {isa = PBXBuildFile; productRef = B33181DE9D4F2E0EFF4C733F /* OpenTelemetryProtocolExporterHTTP */; };
 		05F9F88E8CA49821715BB6AA /* MemoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F292FBB10C13E84756A3861 /* MemoryModel.swift */; };
 		06BF789CA21EE1F5822807B7 /* CaptureServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C7D80E73F25E5FD8752A9D /* CaptureServiceBuilder.swift */; };
@@ -82,7 +81,6 @@
 		546118A70AAA6F1390E1D38D /* Data+Gzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F3D624F844AA0B807BA55A /* Data+Gzip.swift */; };
 		555E7F48D7BF999BA70D94F5 /* PushNotificationCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B703A482AF9F676FD8E7A4E /* PushNotificationCaptureService.swift */; };
 		57B7760508E86FEBF1B56158 /* IMQAStackTraceProccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 44AB6D7B645B3AD823E852D8 /* IMQAStackTraceProccessor.m */; };
-		57C0592229AD4B6EA58ACEE5 /* IMQACollectDeviceInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */; };
 		58128D61D990DDDFEC63BFA9 /* IMQALogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBF67AE0B108F8C166545BB /* IMQALogger.swift */; };
 		596BA8F488CD2DDAD2B9EF47 /* IMQAFilePathProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C534C15620D0590BD72AC /* IMQAFilePathProvider.swift */; };
 		599995F690099480192BE749 /* WebViewCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2483B2F5014AE092FAE2A112 /* WebViewCaptureService.swift */; };
@@ -102,6 +100,7 @@
 		65455FA115BF6BD47D9B2F38 /* IMQA+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419A4C88E6D77178CD25C61C /* IMQA+Options.swift */; };
 		66DF191618A6560980ED4412 /* InternalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E7481E071057AB5196EC0 /* InternalLogger.swift */; };
 		674765415CA92AFECDC346A1 /* OpenTelemetryManager+Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B84C7C2088DF27E955A554C /* OpenTelemetryManager+Span.swift */; };
+		67B1152611CA2D67BDED47AA /* Pods_IMQACore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135451832C8DE9B57583183C /* Pods_IMQACore.framework */; };
 		68E832B767273E32D9058DBA /* IMQAReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0530020AE959E35B1206794 /* IMQAReachabilityMonitor.swift */; };
 		698BEB7B36C1DC9F7E2A0673 /* URLSessionDelegateProxy+StreamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3F4E6011F292C174254C0 /* URLSessionDelegateProxy+StreamDelegate.swift */; };
 		699D7C2BDD6C13EAEDFBAF39 /* CrashlyticsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22585FDB996D27C2F00BEAB /* CrashlyticsWrapper.swift */; };
@@ -112,6 +111,7 @@
 		6F1F217CBFE156B962A8A01E /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449654B2D1E7731E827A2827 /* SessionState.swift */; };
 		71C299B34AFAB232C29A5C70 /* IMQABinaryImageProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 7067BB9C2219237FBFE58604 /* IMQABinaryImageProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		722DC240D331DCBA2B2A0DE3 /* IMQALogAttributesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D722E3037F93C222CB0C9 /* IMQALogAttributesBuilder.swift */; };
+		73B4A8F9835077CF7A3395B5 /* Pods_IMQAObjCUtilsInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C19AFEE839F9C48C07F13864 /* Pods_IMQAObjCUtilsInternal.framework */; };
 		755EA3302F73DDD72B390231 /* IMQAMuti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DDE5644D5FE7F4B4310D1A /* IMQAMuti.swift */; };
 		76485D5B3A65B44BD2B5CB64 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258DCA0FDDDAFD311B1DB20 /* URLRequest+Extension.swift */; };
 		76717DEF9E829E9EA4ACD832 /* iOSSessionLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D7AF9B8A89F8A086D42948 /* iOSSessionLifecycle.swift */; };
@@ -119,7 +119,6 @@
 		76E79961B7ADFACC1454CE9C /* OpenTelemetryApi in Frameworks */ = {isa = PBXBuildFile; productRef = 5DBE2688BF028A186EFDD893 /* OpenTelemetryApi */; };
 		779B1EF192FA35484A108A47 /* IMQAUpload+MetadataOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B828ADB4ABBF81BE952C67 /* IMQAUpload+MetadataOptions.swift */; };
 		792283A6A5AE79D4C68FE387 /* FSCPUUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B4C9817C163F29CBF8E375 /* FSCPUUsage.m */; };
-		7ABCC298044AE8D4677ABBC9 /* IMQACommonInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936A3039949BADA9639F6700 /* IMQACommonInternal.framework */; };
 		7AC0311FEE0F7403E64629BF /* LogPayloadBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380A4B00FBB2590D0D79466 /* LogPayloadBuilder.swift */; };
 		7B954187FB727E18FBF2CD0B /* CaptureServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFFEAED97285863B894E40F /* CaptureServices.swift */; };
 		7BB4A8556A0BF39F17849E62 /* LowPowerModeCaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CEB934B04A2D31E2683A37 /* LowPowerModeCaptureService.swift */; };
@@ -152,12 +151,13 @@
 		94B538C0828600C9F2985A69 /* UIViewControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D0B310BECFCAFE97869F54 /* UIViewControllerHandler.swift */; };
 		95DA72807C08083D6E94F553 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72631B51C53073B5D33310F0 /* DeviceModel.swift */; };
 		967F9647C9A7C517EEDF4F56 /* IMQAStorage+Span.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532CFD73FB68F21469F7C771 /* IMQAStorage+Span.swift */; };
+		97BD2597D8D7C3B46B2C7A1B /* Pods_IMQACollectDeviceInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7C3C68BDE395788491C06A7 /* Pods_IMQACollectDeviceInfo.framework */; };
 		9829495338F5521D6AB0899F /* PersistableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604325148034C2DF2AC10625 /* PersistableValue.swift */; };
+		982FB538107B2DF828A3E04E /* Pods_IMQACommonInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE4BAA47FEDFD4494991323E /* Pods_IMQACommonInternal.framework */; };
 		99CDB888B2A89DB92401DE31 /* SpanPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADA93F0AED68249E015B8C /* SpanPayload.swift */; };
 		9A3EC1AF5B50F1231E0A65F3 /* LengthOfBodyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8697B7B809A6FA908B83B45E /* LengthOfBodyValidator.swift */; };
 		9A4A3048E8FE5B6E6EE96A7F /* ProcessIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130154A4E6353F9235B0EC /* ProcessIdentifier.swift */; };
 		9A9CCFB6822A191CE3ECD63D /* UNUserNotificationCenterDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6453DBD8EF0D2A29A0677B15 /* UNUserNotificationCenterDelegateProxy.swift */; };
-		9ACB60A46064BC4B0E82BC95 /* IMQAObjCUtilsInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */; };
 		9D279DE9B5783A7106E69D99 /* CpuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7EFBBDA3BB702C28CCEAE /* CpuModel.swift */; };
 		9D803098E29D02DA89D56921 /* IMQASpanProcessor+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A3E51D87C3F0868A2E22FA /* IMQASpanProcessor+Setup.swift */; };
 		9E0259CF8EE62722406D9CE0 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458396DC5426E9556086B46 /* LogLevel.swift */; };
@@ -168,6 +168,14 @@
 		A356AA46C3DC70CB9A5012FD /* MetadataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737DEAFD3E5FA2880F06C398 /* MetadataPayload.swift */; };
 		A3B17A30A49D97676BEFDE3A /* CrashReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A3FBB8F713F3955DD0CF4 /* CrashReporter.swift */; };
 		A3F10B26BE9D3C5E0B8C04F8 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158D05C588DFA7E3BB8CB755 /* URL+Extension.swift */; };
+		A414A01E2D509F840057EDE0 /* IMQACollectDeviceInfo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */; };
+		A414A01F2D509F840057EDE0 /* IMQACollectDeviceInfo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A414A0212D509F850057EDE0 /* IMQACommonInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936A3039949BADA9639F6700 /* IMQACommonInternal.framework */; };
+		A414A0222D509F850057EDE0 /* IMQACommonInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 936A3039949BADA9639F6700 /* IMQACommonInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A414A0232D509F860057EDE0 /* IMQAObjCUtilsInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */; };
+		A414A0242D509F860057EDE0 /* IMQAObjCUtilsInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A414A0252D509F880057EDE0 /* IMQAOtelInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */; };
+		A414A0262D509F880057EDE0 /* IMQAOtelInternal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4A6A9521BCA7F10E866D0BF /* PayloadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CE16CE974F0FFD69F53A85 /* PayloadUtils.swift */; };
 		A4D6A48132242635794B1D50 /* NetworkInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB25D04315218286FFB8C64F /* NetworkInfoManager.swift */; };
 		A5B04E06BE2EC9CEC9A05A1D /* InteractableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5EDBF5F1074794E95EE659 /* InteractableViewController.swift */; };
@@ -220,9 +228,7 @@
 		D9065897EA74C2B03EE80983 /* SpanDataValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB63990A95CBE20540B1DAD /* SpanDataValidation.swift */; };
 		DC1C896C49A64E800F9E3612 /* URLSessionTaskCaptureRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F6160D3C0923F4F1B7DE6 /* URLSessionTaskCaptureRule.swift */; };
 		DCEF3591CC1436B9E58F95A6 /* WKNavigationDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2F53CA70094AC25AC0C6C /* WKNavigationDelegateProxy.swift */; };
-		DE82FB22AE427EEC70240335 /* MMKV.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF20AA802EE342446AF317D /* MMKV.xcframework */; };
 		DFAD44A2321165DE7B6842AF /* IMQAObjCUtilsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 918AD6AFDE9209E43D60661A /* IMQAObjCUtilsInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E0616CC589AEB92C088ED2DF /* IMQAOtelInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */; };
 		E46039664ECF9D7D8BA4B499 /* PushNotificationCaptureService+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A73B60164C2AE0BAC53D099 /* PushNotificationCaptureService+Options.swift */; };
 		E6717588F9F4B212B53CB013 /* FSRAMUsage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D5832E8B042558C881C14D7 /* FSRAMUsage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7D801C0ADC08723A6FFFA16 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6BE0D00E1EA80CC02362FE /* AsyncOperation.swift */; };
@@ -235,13 +241,12 @@
 		F1B08BECAB0D2D63EB5D2DC5 /* RequestLogPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E92685579A9CBFE1D5981E8 /* RequestLogPayload.swift */; };
 		F350808073519D2F642EDC48 /* CaptureService+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36D1ACD561EC129A43034EA /* CaptureService+Helpers.swift */; };
 		F36E702C83C0BAEFFE4671C8 /* IMQA+OTEL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346A24B2602E5DD00190E22E /* IMQA+OTEL.swift */; };
-		F8AA211E1B5CE115EC297F32 /* IMQACore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */; };
 		FA305665578B575AB84E2D9E /* LogIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB2E25012529AB9A09AB9B7 /* LogIdentifier.swift */; };
 		FA801A2BC33E6B3A995EE101 /* UIViewController+IMQA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2647F4321A25AB0ACF9E91E /* UIViewController+IMQA.swift */; };
+		FD0AB4A89D5FBB9847F7DFC7 /* Pods_IMQAOtelInternal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EE5F281AD852570C953A1A /* Pods_IMQAOtelInternal.framework */; };
 		FD0D1D83D0CDB7445C04063D /* FSRAMUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4C1D9E2B2CAE9092F4236 /* FSRAMUsage.m */; };
 		FD50B1311ECBE34EEE60E229 /* ThreadSafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAC7FCEDCA164F42AB2FDC5 /* ThreadSafe.swift */; };
 		FE589643DDB8BD98DA1A71BC /* IMQAResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D8D3396EF838041C66EAC9 /* IMQAResource.swift */; };
-		FF23355188C1B62FADEC7B85 /* IMQACore+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */; };
 		FFA035FC7BB56AE6B5E55771 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B9DBC4F4D33329644A871A /* Encodable+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -252,13 +257,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9E2CBC47D01351A078FAF83C;
 			remoteInfo = IMQACommonInternal;
-		};
-		475D3FEDF47564252791F9DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 270BB016BDA4EED5623FB1F1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 611FF66040FC870AF0608EEE;
-			remoteInfo = IMQACore;
 		};
 		83D0726A97747D4105605E7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -283,6 +281,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A414A0202D509F840057EDE0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A414A0242D509F860057EDE0 /* IMQAObjCUtilsInternal.framework in Embed Frameworks */,
+				A414A0222D509F850057EDE0 /* IMQACommonInternal.framework in Embed Frameworks */,
+				A414A01F2D509F840057EDE0 /* IMQACollectDeviceInfo.framework in Embed Frameworks */,
+				A414A0262D509F880057EDE0 /* IMQAOtelInternal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		01426B775923C9FF336D8DE1 /* NSURLSessionTask+IMQA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLSessionTask+IMQA.m"; sourceTree = "<group>"; };
 		025849290ACBD544F1CE2A5E /* TapCaptureService+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapCaptureService+Options.swift"; sourceTree = "<group>"; };
@@ -300,7 +315,9 @@
 		0F933CFC06CA9BA6FDEA7BDC /* SessionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIdentifier.swift; sourceTree = "<group>"; };
 		10B4092E87C948605B46B85B /* IMQAUpload+EndpointOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+EndpointOptions.swift"; sourceTree = "<group>"; };
 		12C7D80E73F25E5FD8752A9D /* CaptureServiceBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceBuilder.swift; sourceTree = "<group>"; };
+		12D3A76C1F2DCDB07FE91AC1 /* Pods-MMKV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMKV.release.xcconfig"; path = "Target Support Files/Pods-MMKV/Pods-MMKV.release.xcconfig"; sourceTree = "<group>"; };
 		12FD38E487C36658EBEE776D /* MetadataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataRecord.swift; sourceTree = "<group>"; };
+		135451832C8DE9B57583183C /* Pods_IMQACore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMQACore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13DDE5644D5FE7F4B4310D1A /* IMQAMuti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAMuti.swift; sourceTree = "<group>"; };
 		1466147F7A57FFA395A7440A /* IMQASetupError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASetupError.swift; sourceTree = "<group>"; };
 		148C534C15620D0590BD72AC /* IMQAFilePathProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAFilePathProvider.swift; sourceTree = "<group>"; };
@@ -309,6 +326,7 @@
 		183D20E2EBA56D4D4A445048 /* FSHardcodeDeviceInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSHardcodeDeviceInfo.m; sourceTree = "<group>"; };
 		18923F7B5B91116B8308DB2A /* IMQAMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAMeta.swift; sourceTree = "<group>"; };
 		1A6A9B1915BC76EBF26358CC /* SpanUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanUtils.swift; sourceTree = "<group>"; };
+		1AE8C622D85D1154649E910E /* Pods-MMKV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMKV.debug.xcconfig"; path = "Target Support Files/Pods-MMKV/Pods-MMKV.debug.xcconfig"; sourceTree = "<group>"; };
 		1CF5E3DDA68EB959EBE11311 /* ResourcePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcePayload.swift; sourceTree = "<group>"; };
 		1DBCBE2B9E2DAD469F5C5FD6 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		1EF4E42173AB3F4D189C8351 /* KeychainAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccess.swift; sourceTree = "<group>"; };
@@ -330,6 +348,7 @@
 		2F00B79BCE917C5C33EC318F /* ViewCaptureServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCaptureServiceError.swift; sourceTree = "<group>"; };
 		2F9C6949B694367A77BE748F /* IMQASwizzableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASwizzableError.swift; sourceTree = "<group>"; };
 		301FEADCAD05CF2A36B9E1D3 /* EncryptionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionHelper.swift; sourceTree = "<group>"; };
+		30790DE5A870EBC4E78B906D /* Pods-IMQAOtelInternal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQAOtelInternal.release.xcconfig"; path = "Target Support Files/Pods-IMQAOtelInternal/Pods-IMQAOtelInternal.release.xcconfig"; sourceTree = "<group>"; };
 		30BFC1DFAF7C642ECBF3C991 /* URLSessionTaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionTaskHandler.swift; sourceTree = "<group>"; };
 		311D6D80EDC564C922605112 /* SpanBuilder+IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanBuilder+IMQA.swift"; sourceTree = "<group>"; };
 		315B7106642A44146C6F62A6 /* LogsBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsBatch.swift; sourceTree = "<group>"; };
@@ -351,6 +370,7 @@
 		427C4B373D071E283BABE669 /* StorageIMQALogExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageIMQALogExporter.swift; sourceTree = "<group>"; };
 		43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQACollectDeviceInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQACore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EE5F281AD852570C953A1A /* Pods_IMQAOtelInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMQAOtelInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4458396DC5426E9556086B46 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		449654B2D1E7731E827A2827 /* SessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		44AB6D7B645B3AD823E852D8 /* IMQAStackTraceProccessor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQAStackTraceProccessor.m; sourceTree = "<group>"; };
@@ -368,6 +388,7 @@
 		5550C371E06A5318FAD0CD24 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		55D1684830469C0F9C93E6CF /* IMQAStorage+Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Session.swift"; sourceTree = "<group>"; };
 		55D7AF9B8A89F8A086D42948 /* iOSSessionLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSessionLifecycle.swift; sourceTree = "<group>"; };
+		565946E90C207B4552DF7A47 /* Pods-IMQACommonInternal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACommonInternal.debug.xcconfig"; path = "Target Support Files/Pods-IMQACommonInternal/Pods-IMQACommonInternal.debug.xcconfig"; sourceTree = "<group>"; };
 		573905B8357BE5990B3C59DB /* ResourceCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCaptureService.swift; sourceTree = "<group>"; };
 		57F07941263A39AC9F741024 /* URLSessionDelegateProxy+TaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDelegateProxy+TaskDelegate.swift"; sourceTree = "<group>"; };
 		5AC1B43D66EF1E2BF11A668C /* SingleLogRecordProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLogRecordProcessor.swift; sourceTree = "<group>"; };
@@ -393,6 +414,7 @@
 		6EC1C09FF148DAA3A5AD7816 /* ResourceStorageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStorageExporter.swift; sourceTree = "<group>"; };
 		6EF0C737CBE6A044C0C8B957 /* PowerModeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerModeProvider.swift; sourceTree = "<group>"; };
 		7067BB9C2219237FBFE58604 /* IMQABinaryImageProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMQABinaryImageProvider.h; sourceTree = "<group>"; };
+		710EE84DE86C160F9DC4F607 /* Pods-IMQACore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACore.debug.xcconfig"; path = "Target Support Files/Pods-IMQACore/Pods-IMQACore.debug.xcconfig"; sourceTree = "<group>"; };
 		714DBAB8EFC9EB589694BA33 /* IMQALogRecordProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogRecordProcessor.swift; sourceTree = "<group>"; };
 		71A4C1D9E2B2CAE9092F4236 /* FSRAMUsage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSRAMUsage.m; sourceTree = "<group>"; };
 		724734FC03F9486AD05C556C /* CpuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuManager.swift; sourceTree = "<group>"; };
@@ -401,12 +423,12 @@
 		769E59E64BBC325BB7038E98 /* SpanEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanEvent.swift; sourceTree = "<group>"; };
 		770F781642D57E81917A6F55 /* UUID+WithoutHyphen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+WithoutHyphen.swift"; sourceTree = "<group>"; };
 		7715EF6809B264F2A2088DB3 /* CaptureServices+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureServices+UIViewController.swift"; sourceTree = "<group>"; };
+		77D56578991B4615BDC78CD1 /* Pods-IMQAObjCUtilsInternal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQAObjCUtilsInternal.release.xcconfig"; path = "Target Support Files/Pods-IMQAObjCUtilsInternal/Pods-IMQAObjCUtilsInternal.release.xcconfig"; sourceTree = "<group>"; };
 		78CB2C41B6541AB4B84719B0 /* LogBatchLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBatchLimits.swift; sourceTree = "<group>"; };
 		7916E0BA89178432CE6FFF42 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		7984AD7F784D245B40E50A4D /* FSCPUUsage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSCPUUsage.h; sourceTree = "<group>"; };
 		7A4D97DCA15CC241D5A41691 /* UserSemantics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSemantics.swift; sourceTree = "<group>"; };
 		7C6256796D24A2ED83070D40 /* Swizzlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzlable.swift; sourceTree = "<group>"; };
-		7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQACore+Export.swift"; sourceTree = "<group>"; };
 		7CF3DF0360750880A27F4B39 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		7D03E2EC3C0EC8812BFAC597 /* SessionControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionControllable.swift; sourceTree = "<group>"; };
 		7D5533C6C9986F0B17577D41 /* IMQABinaryImageProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQABinaryImageProvider.m; sourceTree = "<group>"; };
@@ -415,6 +437,7 @@
 		8697B7B809A6FA908B83B45E /* LengthOfBodyValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthOfBodyValidator.swift; sourceTree = "<group>"; };
 		872869A3DDFD939A8FBD4203 /* IMQAStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Metadata.swift"; sourceTree = "<group>"; };
 		88A3FAD8E13E3AD74C3D9C40 /* IMQAUploadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAUploadError.swift; sourceTree = "<group>"; };
+		8A25FA518BC952B5D1CA8D9E /* Pods-IMQACollectDeviceInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACollectDeviceInfo.release.xcconfig"; path = "Target Support Files/Pods-IMQACollectDeviceInfo/Pods-IMQACollectDeviceInfo.release.xcconfig"; sourceTree = "<group>"; };
 		8B7B342D3C4E43D12E5C739C /* SpanDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanDataValidator.swift; sourceTree = "<group>"; };
 		8DBF67AE0B108F8C166545BB /* IMQALogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALogger.swift; sourceTree = "<group>"; };
 		8EEC404BBA3402FE945364DA /* IMQA+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQA+Setup.swift"; sourceTree = "<group>"; };
@@ -443,6 +466,7 @@
 		A60DBD635943DE4A2E8A9985 /* IMQAUpload+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+Options.swift"; sourceTree = "<group>"; };
 		A636725FF150F65D921D1484 /* IMQAURLSessionDelegateForwarder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQAURLSessionDelegateForwarder.m; sourceTree = "<group>"; };
 		A65A3FBB8F713F3955DD0CF4 /* CrashReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReporter.swift; sourceTree = "<group>"; };
+		A67DAA77416DBED8771AA410 /* Pods-IMQAObjCUtilsInternal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQAObjCUtilsInternal.debug.xcconfig"; path = "Target Support Files/Pods-IMQAObjCUtilsInternal/Pods-IMQAObjCUtilsInternal.debug.xcconfig"; sourceTree = "<group>"; };
 		A708CA56BF4F14B0FF47502E /* UploadDataRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataRecord.swift; sourceTree = "<group>"; };
 		A8B828ADB4ABBF81BE952C67 /* IMQAUpload+MetadataOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAUpload+MetadataOptions.swift"; sourceTree = "<group>"; };
 		A93C725F7ACE2C7DD73A8481 /* DefaultKeychainInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeychainInterface.swift; sourceTree = "<group>"; };
@@ -452,19 +476,23 @@
 		ADF6008B6FE8F6FCD4FCB543 /* IMQASingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASingle.swift; sourceTree = "<group>"; };
 		AEAB9844F06C234A583AFC71 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B04E7481E071057AB5196EC0 /* InternalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalLogger.swift; sourceTree = "<group>"; };
+		B0FA0BF241C4A531B48E27F4 /* Pods-IMQACollectDeviceInfo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACollectDeviceInfo.debug.xcconfig"; path = "Target Support Files/Pods-IMQACollectDeviceInfo/Pods-IMQACollectDeviceInfo.debug.xcconfig"; sourceTree = "<group>"; };
 		B1C95C325145D4CBBE4334AA /* IMQADevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMQADevice.m; sourceTree = "<group>"; };
 		B1E213CF3D5F85ED45B2271E /* NSURLSessionTask+IMQA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLSessionTask+IMQA.h"; sourceTree = "<group>"; };
 		B295D0FE76829B0129922CB3 /* IMQAStorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAStorageError.swift; sourceTree = "<group>"; };
 		B3AAD773FBD0A3017FB3F059 /* TapCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapCaptureService.swift; sourceTree = "<group>"; };
 		B531B48A6FDE70271A4F047C /* SpanSemantics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanSemantics.swift; sourceTree = "<group>"; };
+		B7C3C68BDE395788491C06A7 /* Pods_IMQACollectDeviceInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMQACollectDeviceInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B840B89B1B3C4E544300851A /* SwizzleCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwizzleCache.swift; sourceTree = "<group>"; };
 		B8ADA93F0AED68249E015B8C /* SpanPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanPayload.swift; sourceTree = "<group>"; };
 		B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQAObjCUtilsInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B9DBC4F4D33329644A871A /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		BADD5240B7B620997355A281 /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
+		BE4BAA47FEDFD4494991323E /* Pods_IMQACommonInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMQACommonInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEAD422ADD47F8978C33763B /* IMQALoggerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQALoggerProvider.swift; sourceTree = "<group>"; };
 		BFF20AA802EE342446AF317D /* MMKV.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MMKV.xcframework; path = Sources/Frameworks/MMKV.xcframework; sourceTree = "<group>"; };
 		C0530020AE959E35B1206794 /* IMQAReachabilityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAReachabilityMonitor.swift; sourceTree = "<group>"; };
+		C19AFEE839F9C48C07F13864 /* Pods_IMQAObjCUtilsInternal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IMQAObjCUtilsInternal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C209B7F7D2C5C13A078F928A /* StackTraceBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackTraceBehavior.swift; sourceTree = "<group>"; };
 		C441F3B62E78D72F7E2A8D9B /* CaptureServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureServiceFactory.swift; sourceTree = "<group>"; };
 		C5CEB934B04A2D31E2683A37 /* LowPowerModeCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPowerModeCaptureService.swift; sourceTree = "<group>"; };
@@ -479,7 +507,6 @@
 		D1BD0189660D41123A0CDE61 /* SessionBasedSampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBasedSampler.swift; sourceTree = "<group>"; };
 		D22585FDB996D27C2F00BEAB /* CrashlyticsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsWrapper.swift; sourceTree = "<group>"; };
 		D2B935AB85882A1B5E648915 /* ViewCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCaptureService.swift; sourceTree = "<group>"; };
-		D3C556AC30EF97761279DF97 /* IMQAIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IMQAIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58D7B0E1EE82C09E6C6513D /* IMQASpanType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQASpanType.swift; sourceTree = "<group>"; };
 		D67941F2EC1A42B38D6F8CE7 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		D693E1CE0AB29A2C5EC51D5E /* Collection+LogDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+LogDataValidator.swift"; sourceTree = "<group>"; };
@@ -491,7 +518,6 @@
 		DB25D04315218286FFB8C64F /* NetworkInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfoManager.swift; sourceTree = "<group>"; };
 		DC4CD25E9C0C62E914AAB608 /* LogSeverity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSeverity.swift; sourceTree = "<group>"; };
 		DCB1A39146013D76464C6703 /* SpanData+toJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanData+toJson.swift"; sourceTree = "<group>"; };
-		DCF75507939DA61BDC2C8390 /* MMKV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMKV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1F71A264881AE86CE30F37 /* SingleSpanProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSpanProcessor.swift; sourceTree = "<group>"; };
 		E044A052A3582773366AF105 /* PayloadEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadEnvelope.swift; sourceTree = "<group>"; };
 		E258DCA0FDDDAFD311B1DB20 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
@@ -502,9 +528,11 @@
 		E66452CA8DED98E742434879 /* LogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRecord.swift; sourceTree = "<group>"; };
 		E6D4F883F0F3F6627E4CB673 /* SpanBuilder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpanBuilder+Extension.swift"; sourceTree = "<group>"; };
 		E778E632BF52E95986112C05 /* CrashError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashError.swift; sourceTree = "<group>"; };
+		E7A92F396E28281BDD8B0C5A /* Pods-IMQACommonInternal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACommonInternal.release.xcconfig"; path = "Target Support Files/Pods-IMQACommonInternal/Pods-IMQACommonInternal.release.xcconfig"; sourceTree = "<group>"; };
 		E972B202C498B29337C8DAFA /* IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQA.swift; sourceTree = "<group>"; };
 		EDEC443A5D9F38B2A8178FA0 /* IMQAStorage+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Options.swift"; sourceTree = "<group>"; };
 		EEAC7FCEDCA164F42AB2FDC5 /* ThreadSafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafe.swift; sourceTree = "<group>"; };
+		EEE2907A83B37153AE21B9AE /* Pods-IMQAOtelInternal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQAOtelInternal.debug.xcconfig"; path = "Target Support Files/Pods-IMQAOtelInternal/Pods-IMQAOtelInternal.debug.xcconfig"; sourceTree = "<group>"; };
 		EF4A70B44B4E2CF3BF585922 /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
 		F1B4C9817C163F29CBF8E375 /* FSCPUUsage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSCPUUsage.m; sourceTree = "<group>"; };
 		F2647F4321A25AB0ACF9E91E /* UIViewController+IMQA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+IMQA.swift"; sourceTree = "<group>"; };
@@ -512,45 +540,63 @@
 		F7D8D3396EF838041C66EAC9 /* IMQAResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMQAResource.swift; sourceTree = "<group>"; };
 		F9A9072C95EFCAA898E2E69F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		F9D8FC3EE9846EAF72E1B1B3 /* IMQAStorage+Sampler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMQAStorage+Sampler.swift"; sourceTree = "<group>"; };
+		FB2F166D2AA64F534F6BEC25 /* Pods_MMKV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MMKV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7D242C396F8EA32064E4BD /* LowMemoryWarningCaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowMemoryWarningCaptureService.swift; sourceTree = "<group>"; };
 		FB9FD34D66AA5D9B2FC51947 /* DefaultInternalLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultInternalLogger.swift; sourceTree = "<group>"; };
 		FBE8D16095FA4E10DFFF64FF /* CarrierModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierModel.swift; sourceTree = "<group>"; };
 		FCAD5014EA60CADB13453BE0 /* InstrumentableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentableViewController.swift; sourceTree = "<group>"; };
+		FCB1EF9BBBD93502E85D1713 /* Pods-IMQACore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMQACore.release.xcconfig"; path = "Target Support Files/Pods-IMQACore/Pods-IMQACore.release.xcconfig"; sourceTree = "<group>"; };
 		FD2FFEBC2039ECD592A29247 /* EncryptedNetworkPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptedNetworkPayload.swift; sourceTree = "<group>"; };
 		FD79D780E5E9D0E0001F5D5D /* SpanEventPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpanEventPayload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		11CEC36E3251283C35663DB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD0AB4A89D5FBB9847F7DFC7 /* Pods_IMQAOtelInternal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		558025709BE19B3851FFDC5B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0616CC589AEB92C088ED2DF /* IMQAOtelInternal.framework in Frameworks */,
-				57C0592229AD4B6EA58ACEE5 /* IMQACollectDeviceInfo.framework in Frameworks */,
-				9ACB60A46064BC4B0E82BC95 /* IMQAObjCUtilsInternal.framework in Frameworks */,
-				7ABCC298044AE8D4677ABBC9 /* IMQACommonInternal.framework in Frameworks */,
-				01DAB79664135170190DE916 /* MMKV.xcframework in Frameworks */,
+				A414A0212D509F850057EDE0 /* IMQACommonInternal.framework in Frameworks */,
 				76E79961B7ADFACC1454CE9C /* OpenTelemetryApi in Frameworks */,
 				3A44EB47C9A02348438DB6BE /* OpenTelemetrySdk in Frameworks */,
+				A414A0232D509F860057EDE0 /* IMQAObjCUtilsInternal.framework in Frameworks */,
 				0441714A74C2C32D46303417 /* OpenTelemetryProtocolExporterHTTP in Frameworks */,
+				A414A01E2D509F840057EDE0 /* IMQACollectDeviceInfo.framework in Frameworks */,
 				EB38C2E5517A1D7C68C5371C /* ResourceExtension in Frameworks */,
 				61EF1E381E50E020F14615EA /* Installations in Frameworks */,
+				67B1152611CA2D67BDED47AA /* Pods_IMQACore.framework in Frameworks */,
+				A414A0252D509F880057EDE0 /* IMQAOtelInternal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		694A3579A8E61CF93E045F88 /* Frameworks */ = {
+		83096A87C5C54FA58FE619A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8AA211E1B5CE115EC297F32 /* IMQACore.framework in Frameworks */,
+				73B4A8F9835077CF7A3395B5 /* Pods_IMQAObjCUtilsInternal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F9E2523E9908AC1012D807F5 /* Frameworks */ = {
+		D909DEEB7EED78EB70F24951 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE82FB22AE427EEC70240335 /* MMKV.xcframework in Frameworks */,
+				97BD2597D8D7C3B46B2C7A1B /* Pods_IMQACollectDeviceInfo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFC0E2F4F05E724267C5B202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				982FB538107B2DF828A3E04E /* Pods_IMQACommonInternal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,10 +884,8 @@
 				43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */,
 				936A3039949BADA9639F6700 /* IMQACommonInternal.framework */,
 				43D2D9FDA351F68B2DABF8EA /* IMQACore.framework */,
-				D3C556AC30EF97761279DF97 /* IMQAIO.framework */,
 				B91EB354BB8684A94CED97C6 /* IMQAObjCUtilsInternal.framework */,
 				A1C2D7BB4D95083AA3ED5C64 /* IMQAOtelInternal.framework */,
-				DCF75507939DA61BDC2C8390 /* MMKV.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1010,6 +1054,12 @@
 			isa = PBXGroup;
 			children = (
 				BFF20AA802EE342446AF317D /* MMKV.xcframework */,
+				B7C3C68BDE395788491C06A7 /* Pods_IMQACollectDeviceInfo.framework */,
+				BE4BAA47FEDFD4494991323E /* Pods_IMQACommonInternal.framework */,
+				135451832C8DE9B57583183C /* Pods_IMQACore.framework */,
+				C19AFEE839F9C48C07F13864 /* Pods_IMQAObjCUtilsInternal.framework */,
+				43EE5F281AD852570C953A1A /* Pods_IMQAOtelInternal.framework */,
+				FB2F166D2AA64F534F6BEC25 /* Pods_MMKV.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1036,17 +1086,36 @@
 			path = Payload;
 			sourceTree = "<group>";
 		};
+		ACCFB54CA67F9758E961D674 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0FA0BF241C4A531B48E27F4 /* Pods-IMQACollectDeviceInfo.debug.xcconfig */,
+				8A25FA518BC952B5D1CA8D9E /* Pods-IMQACollectDeviceInfo.release.xcconfig */,
+				565946E90C207B4552DF7A47 /* Pods-IMQACommonInternal.debug.xcconfig */,
+				E7A92F396E28281BDD8B0C5A /* Pods-IMQACommonInternal.release.xcconfig */,
+				710EE84DE86C160F9DC4F607 /* Pods-IMQACore.debug.xcconfig */,
+				FCB1EF9BBBD93502E85D1713 /* Pods-IMQACore.release.xcconfig */,
+				A67DAA77416DBED8771AA410 /* Pods-IMQAObjCUtilsInternal.debug.xcconfig */,
+				77D56578991B4615BDC78CD1 /* Pods-IMQAObjCUtilsInternal.release.xcconfig */,
+				EEE2907A83B37153AE21B9AE /* Pods-IMQAOtelInternal.debug.xcconfig */,
+				30790DE5A870EBC4E78B906D /* Pods-IMQAOtelInternal.release.xcconfig */,
+				1AE8C622D85D1154649E910E /* Pods-MMKV.debug.xcconfig */,
+				12D3A76C1F2DCDB07FE91AC1 /* Pods-MMKV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AD6B6D994C25797E6F7B6348 = {
 			isa = PBXGroup;
 			children = (
 				D9BF9C1C842B0B461012340A /* IMQACollectDeviceInfo */,
 				28BA66DF90C7B386643E9E1F /* IMQACommonInternal */,
 				03FFE0DBA7AA3EAF1FBD4EE2 /* IMQACore */,
-				BA7D912CFF94D25DD6A4A541 /* IMQAIO */,
 				DF5D40CE1043E50284B34C17 /* IMQAObjCUtilsInternal */,
 				CA13BC01272C3CFE555237E6 /* IMQAOtelInternal */,
 				9E8638B4DB50C383A32E8385 /* Frameworks */,
 				66AC6A340898CCC6C77DD15B /* Products */,
+				ACCFB54CA67F9758E961D674 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1107,15 +1176,6 @@
 				7F5FA102D3EE18BEBE8B9F23 /* WebView */,
 			);
 			path = Capture;
-			sourceTree = "<group>";
-		};
-		BA7D912CFF94D25DD6A4A541 /* IMQAIO */ = {
-			isa = PBXGroup;
-			children = (
-				7C7ADCBDDB12A16C7078CE83 /* IMQACore+Export.swift */,
-			);
-			name = IMQAIO;
-			path = Sources/IMQAIO;
 			sourceTree = "<group>";
 		};
 		BA9CD36CBE5DADD58306F4A6 /* include */ = {
@@ -1401,29 +1461,15 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5A0B0570C13B80AAD9E39C41 /* MMKV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F4CA0F03CE23ACC5DADB137D /* Build configuration list for PBXNativeTarget "MMKV" */;
-			buildPhases = (
-				B2310DFCAF9E8EBED4876D5B /* Sources */,
-				F9E2523E9908AC1012D807F5 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MMKV;
-			productName = MMKV;
-			productReference = DCF75507939DA61BDC2C8390 /* MMKV.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		611FF66040FC870AF0608EEE /* IMQACore */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AA4D8F073DE5110D97E21AD /* Build configuration list for PBXNativeTarget "IMQACore" */;
 			buildPhases = (
+				5F02437B35AC25FF080CBB38 /* [CP] Check Pods Manifest.lock */,
 				1DE417624A953DDEEA3D8C77 /* Sources */,
 				07B312CBBAACC1091BED9519 /* Resources */,
 				558025709BE19B3851FFDC5B /* Frameworks */,
+				A414A0202D509F840057EDE0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1449,7 +1495,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FBD74D1CC940B09AE0E92637 /* Build configuration list for PBXNativeTarget "IMQAOtelInternal" */;
 			buildPhases = (
+				177F37FFD48EDE6D9B4BD934 /* [CP] Check Pods Manifest.lock */,
 				DED0F1273E63DDF2A33DE445 /* Sources */,
+				11CEC36E3251283C35663DB4 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1464,7 +1512,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 320F1AA6C2FFCB5E40CCFF59 /* Build configuration list for PBXNativeTarget "IMQACommonInternal" */;
 			buildPhases = (
+				1E2515DE11929AF58A63A2F0 /* [CP] Check Pods Manifest.lock */,
 				BA28959061530DF79EE61019 /* Sources */,
+				FFC0E2F4F05E724267C5B202 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1479,8 +1529,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76ACBA70E2AEB9541BFAAD32 /* Build configuration list for PBXNativeTarget "IMQAObjCUtilsInternal" */;
 			buildPhases = (
+				32C0F86ACB8B0E167CB522E2 /* [CP] Check Pods Manifest.lock */,
 				400891C2B3C562A055053EF7 /* Headers */,
 				4535C68C91BE2A7D3503DD55 /* Sources */,
+				83096A87C5C54FA58FE619A8 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1495,8 +1547,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 322625BD4F339478BDD1F8C3 /* Build configuration list for PBXNativeTarget "IMQACollectDeviceInfo" */;
 			buildPhases = (
+				954959E6DF8C9AE7E97EA2FE /* [CP] Check Pods Manifest.lock */,
 				F4E2554EC5176948D5500158 /* Headers */,
 				EC12BB93F0DA67CC23CFC8BF /* Sources */,
+				D909DEEB7EED78EB70F24951 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1505,23 +1559,6 @@
 			name = IMQACollectDeviceInfo;
 			productName = IMQACollectDeviceInfo;
 			productReference = 43146C5E6B1610552A74D368 /* IMQACollectDeviceInfo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CD9F54D580C9280374413622 /* IMQAIO */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 150B21E953B1504032FBE722 /* Build configuration list for PBXNativeTarget "IMQAIO" */;
-			buildPhases = (
-				30540D3BB666A5E5CE848F65 /* Sources */,
-				694A3579A8E61CF93E045F88 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F6C9FA6FF49BD47B0533B5C8 /* PBXTargetDependency */,
-			);
-			name = IMQAIO;
-			productName = IMQAIO;
-			productReference = D3C556AC30EF97761279DF97 /* IMQAIO.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1546,16 +1583,15 @@
 				B5AAC85D1968B7C721D9863B /* XCRemoteSwiftPackageReference "KSCrash" */,
 				22B96105BC1617D1156DEC01 /* XCRemoteSwiftPackageReference "opentelemetry-swift" */,
 			);
+			productRefGroup = 66AC6A340898CCC6C77DD15B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C5FA60650335BB31C8F1D957 /* IMQACollectDeviceInfo */,
 				9E2CBC47D01351A078FAF83C /* IMQACommonInternal */,
 				611FF66040FC870AF0608EEE /* IMQACore */,
-				CD9F54D580C9280374413622 /* IMQAIO */,
 				BF2ED532F6619574599978F7 /* IMQAObjCUtilsInternal */,
 				83DA8DE0BABB59470E478459 /* IMQAOtelInternal */,
-				5A0B0570C13B80AAD9E39C41 /* MMKV */,
 			);
 		};
 /* End PBXProject section */
@@ -1570,6 +1606,119 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		177F37FFD48EDE6D9B4BD934 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IMQAOtelInternal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E2515DE11929AF58A63A2F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IMQACommonInternal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32C0F86ACB8B0E167CB522E2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IMQAObjCUtilsInternal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F02437B35AC25FF080CBB38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IMQACore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		954959E6DF8C9AE7E97EA2FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IMQACollectDeviceInfo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1DE417624A953DDEEA3D8C77 /* Sources */ = {
@@ -1747,14 +1896,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30540D3BB666A5E5CE848F65 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF23355188C1B62FADEC7B85 /* IMQACore+Export.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4535C68C91BE2A7D3503DD55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1763,13 +1904,6 @@
 				57B7760508E86FEBF1B56158 /* IMQAStackTraceProccessor.m in Sources */,
 				52F9682ABB7210E7966F4059 /* IMQAURLSessionDelegateForwarder.m in Sources */,
 				0FE6D72A2547699328BFA011 /* NSURLSessionTask+IMQA.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2310DFCAF9E8EBED4876D5B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1857,19 +1991,16 @@
 			target = BF2ED532F6619574599978F7 /* IMQAObjCUtilsInternal */;
 			targetProxy = ACD73C5C1BDE5FF3E5EB5C1E /* PBXContainerItemProxy */;
 		};
-		F6C9FA6FF49BD47B0533B5C8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 611FF66040FC870AF0608EEE /* IMQACore */;
-			targetProxy = 475D3FEDF47564252791F9DB /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		072CE2261C0632A4FD3DA8D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77D56578991B4615BDC78CD1 /* Pods-IMQAObjCUtilsInternal.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1879,6 +2010,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAObjCUtilsInternal;
 				SDKROOT = iphoneos;
@@ -1923,7 +2055,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1938,7 +2069,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1951,37 +2081,13 @@
 			};
 			name = Release;
 		};
-		3235EA3819BAF2B203202A69 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Sources/Frameworks\"",
-				);
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.MMKV;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
 		557B10BD9454BB47F1AE4A7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0FA0BF241C4A531B48E27F4 /* Pods-IMQACollectDeviceInfo.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1991,34 +2097,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACollectDeviceInfo;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		6DA46F101DA9522D9448A61E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Sources/Frameworks\"",
-				);
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.MMKV;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2028,9 +2110,11 @@
 		};
 		7929E76CE689C96E43C9E0DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30790DE5A870EBC4E78B906D /* Pods-IMQAOtelInternal.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2040,6 +2124,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAOtelInternal;
 				SDKROOT = iphoneos;
@@ -2084,7 +2169,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2105,11 +2189,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -2121,9 +2204,12 @@
 		};
 		83C7CFB544BCB897306E2778 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCB1EF9BBBD93502E85D1713 /* Pods-IMQACore.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2137,6 +2223,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACore;
 				SDKROOT = iphoneos;
@@ -2148,9 +2235,12 @@
 		};
 		891F5E3A7379B8C5CBDBE078 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 710EE84DE86C160F9DC4F607 /* Pods-IMQACore.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2164,31 +2254,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACore;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		93FBBD4B622D58C0C2F3BC43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAIO;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2198,9 +2267,11 @@
 		};
 		A9FBE43D564A1F4ECD640EA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 565946E90C207B4552DF7A47 /* Pods-IMQACommonInternal.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2210,7 +2281,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACommonInternal;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2221,9 +2294,11 @@
 		};
 		AE4B08E1A9CFAD284F62B491 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7A92F396E28281BDD8B0C5A /* Pods-IMQACommonInternal.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2233,6 +2308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACommonInternal;
 				SDKROOT = iphoneos;
@@ -2244,9 +2320,11 @@
 		};
 		D353673F03B28B0DBB23AC89 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A67DAA77416DBED8771AA410 /* Pods-IMQAObjCUtilsInternal.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2256,7 +2334,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAObjCUtilsInternal;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2267,9 +2347,11 @@
 		};
 		E0A8FB3C4ABE0297C9779C1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A25FA518BC952B5D1CA8D9E /* Pods-IMQACollectDeviceInfo.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2279,6 +2361,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQACollectDeviceInfo;
 				SDKROOT = iphoneos;
@@ -2290,9 +2373,11 @@
 		};
 		E7AAD681A7FCEC96CC1E62D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEE2907A83B37153AE21B9AE /* Pods-IMQAOtelInternal.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2302,7 +2387,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAOtelInternal;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2311,41 +2398,9 @@
 			};
 			name = Debug;
 		};
-		F12A62F7601A8CAC1DAD5B4F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				PRODUCT_BUNDLE_IDENTIFIER = com.onycom.IMQAIO;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		150B21E953B1504032FBE722 /* Build configuration list for PBXNativeTarget "IMQAIO" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				93FBBD4B622D58C0C2F3BC43 /* Debug */,
-				F12A62F7601A8CAC1DAD5B4F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		320F1AA6C2FFCB5E40CCFF59 /* Build configuration list for PBXNativeTarget "IMQACommonInternal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2387,15 +2442,6 @@
 			buildConfigurations = (
 				891F5E3A7379B8C5CBDBE078 /* Debug */,
 				83C7CFB544BCB897306E2778 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		F4CA0F03CE23ACC5DADB137D /* Build configuration list for PBXNativeTarget "MMKV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6DA46F101DA9522D9448A61E /* Debug */,
-				3235EA3819BAF2B203202A69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

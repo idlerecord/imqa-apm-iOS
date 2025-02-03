@@ -139,6 +139,14 @@ extension IMQAStorage {
         }
         return Array(filterRecords[0..<count])
     }
+    
+    func deleteSpans(spanIds: [String]) {
+        let storage = IMQAMuti<SpanRecord>()
+        let records = storage.get()
+        let filters = records.filter{!spanIds.contains($0.id)}
+        storage.save(filters)
+        let spanids = storage.get().map{$0.id}
+    }
 }
 
 // MARK: - Database operations
@@ -187,10 +195,10 @@ fileprivate extension IMQAStorage {
         return filters
     }
     
-    func deleteSpans(spanIds: [String]) {
-        let storage = IMQAMuti<SpanRecord>()
-        let records = storage.get()
-        let filters = records.filter{!spanIds.contains($0.id)}
-        storage.save(filters)
-    }
+//    func deleteSpans(spanIds: [String]) {
+//        let storage = IMQAMuti<SpanRecord>()
+//        let records = storage.get()
+//        let filters = records.filter{!spanIds.contains($0.id)}
+//        storage.save(filters)
+//    }
 }

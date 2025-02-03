@@ -6,7 +6,7 @@
 //
 
 import Foundation
-internal import OpenTelemetryProtocolExporterCommon
+import OpenTelemetryProtocolExporterCommon
 import IMQAOtelInternal
 
 struct SpanEventPayload: Encodable {

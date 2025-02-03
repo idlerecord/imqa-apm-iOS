@@ -15,7 +15,7 @@ import UIKit
 
 internal typealias Storage = IMQAStorageMetadataFetcher & LogRepository
 
-internal class IMQAStorage: Storage{
+public class IMQAStorage: Storage{
     
     public private(set) var options: Options
     public private(set) var appId: String

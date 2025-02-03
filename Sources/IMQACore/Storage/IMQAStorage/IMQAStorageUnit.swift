@@ -73,6 +73,8 @@ extension MMKV {
     public static func custom(mmkvID: String? = "default", cryptKey: Data?, mode: MMKVMode = .singleProcess) -> MMKV {
         initializeMMKV()
         if let mmkvID = mmkvID, let mmkv = MMKV(mmapID: mmkvID, cryptKey: cryptKey, mode: mode) {
+//        if let mmkvID = mmkvID {
+//            let mmkv = MMKV.init(mmapID: mmkvID, cryptKey: cryptKey, rootPath: currentSubDir, mode: .multiProcess, expectedCapacity: 0)
             return mmkv
         } else {
             return MMKV.default()!

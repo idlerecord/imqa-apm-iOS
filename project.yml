@@ -16,16 +16,6 @@ settings:
     SWIFT_VERSION: 5.9
 
 targets:
-  IMQAIO:
-    type: framework
-    platform: iOS
-    sources: [Sources/IMQAIO]
-    dependencies:
-      - target: IMQACore
-    settings:
-      base:
-        MACH_O_TYPE: mh_dylib
-
   IMQACore:
     type: framework
     platform: iOS
@@ -50,7 +40,6 @@ targets:
         product: Installations
     settings:
         base:
-        OTHER_LDFLAGS: ["-lopentelemetry", "-lkscrash"]  # 将 opentelemetry 和 kscrash 动态库链接到静态库中
         MACH_O_TYPE: "staticlib"  # 关键！让 framework 变成静态库
 
   IMQAObjCUtilsInternal:

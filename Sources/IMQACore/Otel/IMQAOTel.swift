@@ -8,11 +8,11 @@
 import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
-internal import ResourceExtension
+import ResourceExtension
 import OpenTelemetryApi
 import OpenTelemetrySdk
-internal import OpenTelemetryProtocolExporterHttp
-internal import OpenTelemetryProtocolExporterCommon
+import OpenTelemetryProtocolExporterHttp
+import OpenTelemetryProtocolExporterCommon
 import IMQACollectDeviceInfo
 
 
@@ -181,14 +181,15 @@ public class IMQAOTel{
             return
         }
         
-        let tracerExporter = OtlpHttpTraceExporter(endpoint: tracerUrl)
+        let tracerExporter = CustomOtlpHttpTraceExporter(endpoint: tracerUrl, storage: storage)
         
         //logs
         let logsUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.logs(uploadUrl).baseUrl()
         guard let logsUrl = URL(string: logsUrlStr) else{
             return
         }
-        let logsExporter = OtlpHttpLogExporter(endpoint: logsUrl)
+        
+        let logsExporter = CustomOtlpHttpLogExporter(endpoint: logsUrl)
 
         
         let opentelemetryExporter = OpenTelemetryExport(spanExporter: tracerExporter,

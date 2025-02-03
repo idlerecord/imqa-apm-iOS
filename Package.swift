@@ -11,7 +11,7 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "IMQAIO", type: .dynamic, targets: ["IMQAIO"])
+        .library(name: "IMQAIO", type: .static, targets: ["IMQACore"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -23,11 +23,6 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "IMQAIO",
-            dependencies: [
-                "IMQACore"
-            ]),
         
         // core service -----------------------------------------------------------
             .target(name: "IMQACore",
