@@ -8,7 +8,7 @@
 import Foundation
 
 /// Class used to build the list of `CaptureServices` to be used by the `Embrace` instance.
-internal class CaptureServiceBuilder: NSObject {
+public class CaptureServiceBuilder: NSObject {
     private var services: [CaptureService] = []
 
     /// Returns the list of `CaptureServices` generated with this builder.

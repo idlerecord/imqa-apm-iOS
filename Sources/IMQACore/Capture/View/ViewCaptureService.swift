@@ -14,7 +14,7 @@ import UIKit
 
 /// Service that generates OpenTelemetry spans for `UIViewControllers`.
 @objc(IMQAViewCaptureService)
-internal final class ViewCaptureService: CaptureService, UIViewControllerHandlerDataSource {
+public final class ViewCaptureService: CaptureService, UIViewControllerHandlerDataSource {
 
     public let options: ViewCaptureService.Options
     private var lock: NSLocking

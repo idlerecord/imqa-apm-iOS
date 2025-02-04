@@ -197,6 +197,17 @@ class UnsentDataHandler {
         for (key, value) in attributes {
             if case let .string(stringValue) = value {
                 stringAttributes[key] = stringValue
+            }else if case let .array(arrayValue) = value {
+                let values:[String] = arrayValue.values.map{
+                    if case let .string(stringValue) = $0{
+                        return stringValue
+                    }
+                    else{
+                        return ""
+                    }
+                }
+                let valueString = values.joined(separator: ",")
+                stringAttributes[key] = valueString
             }
         }
         IMQA.logger.traceLog(message: exceptionType,
@@ -282,7 +293,7 @@ class UnsentDataHandler {
             .addApplicationProperties()
             .addApplicationState()
             .addCrashReportProperties()
-            .addTag(tag: "SDKInitializer")
+//            .addTag(tag: "SDKInitializer")
             .build()
 
         return attributes

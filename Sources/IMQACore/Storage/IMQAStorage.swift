@@ -101,7 +101,7 @@ extension IMQAStorage{
         storage.save(log)
     }
 
-    internal func fetchAll(excludingProcessIdentifier processIdentifier: ProcessIdentifier) throws -> [LogRecord] {
+    public func fetchAll(excludingProcessIdentifier processIdentifier: ProcessIdentifier) throws -> [LogRecord] {
         let storage = IMQAMuti<LogRecord>()
         return storage.get().filter{$0.processIdentifier.value != processIdentifier.value}
     }
@@ -111,19 +111,19 @@ extension IMQAStorage{
         storage.remove()
     }
 
-    internal func remove(logs: [LogRecord]) {
+    public func remove(logs: [LogRecord]) {
         let storage = IMQAMuti<LogRecord>()
         logs.forEach { reocord in
             storage.remove(reocord.vvid)
         }
     }
 
-    internal func getAll() -> [LogRecord] {
+    public func getAll() -> [LogRecord] {
         let storage = IMQAMuti<LogRecord>()
         return storage.get()
     }
 
-    internal func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void) {
+    public func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void) {
         do {
             try writeLog(log)
             completion(.success(log))

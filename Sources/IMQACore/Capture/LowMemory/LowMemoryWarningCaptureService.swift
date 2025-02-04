@@ -13,7 +13,7 @@ import IMQACommonInternal
 
 /// Service that generates OpenTelemetry span events when the application receives a low memory warning.
 @objc(IMQALowMemoryWarningCaptureService)
-internal class LowMemoryWarningCaptureService: CaptureService {
+public class LowMemoryWarningCaptureService: CaptureService {
 
     public var onWarningCaptured: (() -> Void)?
 

@@ -101,10 +101,10 @@ class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
                 self?.exporterLock.lock()
                 self?.pendingLogRecords.append(contentsOf: sendingLogRecords)
                 self?.exporterLock.unlock()
-                print(error)
                 
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
                 self?.exporterMetrics?.addSuccess(value: sendingLogRecords.count)
+//                print("CustomOtlpHttpLogExporter:::::Success")
             } else {
                 self?.exporterMetrics?.addFailed(value: sendingLogRecords.count)
                 self?.exporterLock.lock()

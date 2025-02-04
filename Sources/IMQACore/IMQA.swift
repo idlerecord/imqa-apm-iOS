@@ -175,6 +175,9 @@ public extension IMQA {
     static func setUserId(id: String?) {
         UserModel.setUserId(id)
     }
+    static func getUserId() -> String? {
+        return UserModel.id
+    }
 }
 
 

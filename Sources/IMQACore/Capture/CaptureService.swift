@@ -23,7 +23,7 @@ import IMQACommonInternal
 /// This base class provides the necessary functionality and structure that should be used
 /// by all capture services.
 
-internal class CaptureService: NSObject {
+open class CaptureService: NSObject {
 
     /// Getter for the OTel handler used by the capture service.
     private(set) public weak var otel: IMQAOpenTelemetry?

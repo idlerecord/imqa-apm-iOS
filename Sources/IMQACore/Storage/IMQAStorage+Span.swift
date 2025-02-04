@@ -145,33 +145,13 @@ extension IMQAStorage {
         let records = storage.get()
         let filters = records.filter{!spanIds.contains($0.id)}
         storage.save(filters)
-        let spanids = storage.get().map{$0.id}
+//        let spanids = storage.get().map{$0.id}
+//        print("reminded spanids: \(spanids)")
     }
 }
 
 // MARK: - Database operations
 fileprivate extension IMQAStorage {
-    func upsertSpan(span: SpanRecord) {
-        // update if its already stored
-        
-        let storage = IMQAMuti<SpanRecord>()
-        if storage.exist(span.id){
-            storage.save(span)
-            return
-        }
-
-        // check limit and delete if necessary
-        // default to 1500 if limit is not set
-        let limit = options.spanLimits[span.type, default: Self.defaultSpanLimitByType]
-
-        let count = spanCount(type: span.type)
-        var records = requestSpans(of: span.type)
-        if count >= limit {
-            records = Array(records[(count - limit + 1)..<count])
-            
-        }
-        records.append(span)
-    }
 
     func requestSpans(of type: IMQASpanType) -> [SpanRecord] {
         let storage = IMQAMuti<SpanRecord>()

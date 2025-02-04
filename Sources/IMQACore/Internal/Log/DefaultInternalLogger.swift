@@ -29,7 +29,6 @@ extension DefaultInternalLogger{
             return false
         }
 
-        print(message)
         return true
     }
     

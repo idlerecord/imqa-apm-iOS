@@ -12,10 +12,10 @@ import OpenTelemetrySdk
 import Foundation
 
 public class OpenTelemetryExport: NSObject{
-    internal let spanExporter: SpanExporter?
-    internal let logExporter: LogRecordExporter?
+    public let spanExporter: SpanExporter?
+    public let logExporter: LogRecordExporter?
     
-    internal init(spanExporter: SpanExporter? = nil, logExporter: LogRecordExporter? = nil) {
+    public init(spanExporter: SpanExporter? = nil, logExporter: LogRecordExporter? = nil) {
         self.spanExporter = spanExporter
         self.logExporter = logExporter
     }

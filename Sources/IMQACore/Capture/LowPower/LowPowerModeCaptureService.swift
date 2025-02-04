@@ -12,7 +12,7 @@ import IMQACommonInternal
 
 /// Service that generates OpenTelemetry spans when the phone is running in low power mode.
 @objc(IMQALowPowerModeCaptureService)
-internal class LowPowerModeCaptureService: CaptureService {
+public class LowPowerModeCaptureService: CaptureService {
     public let provider: PowerModeProvider
 
     @ThreadSafe var wasLowPowerModeEnabled = false

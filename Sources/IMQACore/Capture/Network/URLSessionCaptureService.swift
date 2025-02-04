@@ -17,7 +17,7 @@ protocol URLSessionSwizzler: Swizzlable {
 
 /// Service that generates OpenTelemetry spans for network requests that use `URLSession`.
 @objc(IMQAURLSessionCaptureService)
-internal final class URLSessionCaptureService: CaptureService, URLSessionTaskHandlerDataSource {
+public final class URLSessionCaptureService: CaptureService, URLSessionTaskHandlerDataSource {
 
     public let options: URLSessionCaptureService.Options
     private let lock: NSLocking

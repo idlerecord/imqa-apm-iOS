@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc internal extension CaptureService {
+@objc public extension CaptureService {
     /// Returns a `URLSessionCaptureService` with the given `URLSessionCaptureService.Options`.
     /// - Parameter options: `URLSessionCaptureService.Options` used to configure the service.
     static func urlSession(

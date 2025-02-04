@@ -24,7 +24,7 @@ extension IMQA: IMQAOpenTelemetry {
     /// - Parameters:
     ///     - instrumentationName: The name of the instrumentation library requesting the tracer.
     /// - Returns: An OpenTelemetry Tracer so callers can use interface directly
-    internal func tracer(instrumentationName: String) -> Tracer {
+    public func tracer(instrumentationName: String) -> Tracer {
         return otel.tracer
     }
 
@@ -34,7 +34,7 @@ extension IMQA: IMQAOpenTelemetry {
     ///     - type: The type of the span. Will be set as the `emb.type` attribute
     ///     - attributes: A dictionary of attributes to set on the span
     /// - Returns: An OpenTelemetry SpanBuilder
-    internal func buildSpan(
+    public func buildSpan(
         name: String,
         type: IMQASpanType,
         attributes: [String: String] = [:]
@@ -52,7 +52,7 @@ extension IMQA: IMQAOpenTelemetry {
     ///     - attributes: A dictionary of attributes to set on the span. Defaults to an empty dictionary
     ///     - events: An array of events to add to the span. Defaults to an empty array
     ///     - errorCode: The error code of the span. Defaults to `noError`
-    internal func recordCompletedSpan(
+    public func recordCompletedSpan(
         name: String,
         type: IMQASpanType,
         parent: Span?,
@@ -79,7 +79,7 @@ extension IMQA: IMQAOpenTelemetry {
     /// Adds a list of SpanEvent objects to the current session span
     /// If there is no current session, this event will be dropped
     /// - Parameter events: An array of SpanEvent objects
-    internal func add(events: [SpanEvent]) {
+    public func add(events: [SpanEvent]) {
         #warning("if you want to create another session to control, please fix me")
         guard let span = sessionController.currentSessionSpan else {
             IMQA.logger.debug("\(#function) failed: No current session span")
@@ -94,14 +94,14 @@ extension IMQA: IMQAOpenTelemetry {
     /// Adds a single SpanEvent object to the current session span
     /// If there is no current session, this event will be dropped
     /// - Parameter event: A SpanEvent object
-    internal func add(event: SpanEvent) {
+    public func add(event: SpanEvent) {
         add(events: [event])
     }
 
     /// Flushes the given ReadableSpan compliant Span to disk
     /// This is intended to save changes on long running spans.
     /// - Parameter span: A `Span` object that implements `ReadableSpan`
-    internal func flush(_ span: Span) {
+    public func flush(_ span: Span) {
         if let span = span as? ReadableSpan {
             _ = exporter.export(spans: [span.toSpanData()])
         } else {
@@ -169,8 +169,7 @@ extension IMQA: IMQAOpenTelemetry {
         otel.log(message, severity: severity, attributes: finalAttributes)
     }
     
-    
-     func log(
+     public func log(
         _ message: String,
         severity: LogSeverity,
         type: IMQALogType,
@@ -241,13 +240,13 @@ extension IMQA { // MARK: Static methods
     }
 }
 
-extension IMQA {
+public extension IMQA {
     
-    internal func propagators(spanContext: OpenTelemetryApi.SpanContext) {
+    func propagators(spanContext: OpenTelemetryApi.SpanContext) {
         otel.propagators(spanContext: spanContext)
     }
     
-    internal func baggage(key: String, value: String, metadata: String?) -> (any OpenTelemetryApi.Baggage)? {
+    func baggage(key: String, value: String, metadata: String?) -> (any OpenTelemetryApi.Baggage)? {
         otel.baggage(key: key, value: value, metadata: metadata)
     }
 

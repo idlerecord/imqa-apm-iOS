@@ -10,7 +10,7 @@ import UserNotifications
 import IMQACommonInternal
 
 /// Service that generates OpenTelemetry span events when notifications are received through the `UNUserNotificationCenter`.
-@objc internal final class PushNotificationCaptureService: CaptureService {
+@objc public final class PushNotificationCaptureService: CaptureService {
 
     @objc public let options: PushNotificationCaptureService.Options
     private let lock: NSLocking
