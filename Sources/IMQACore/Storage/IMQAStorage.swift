@@ -13,7 +13,7 @@ import IMQACommonInternal
 import UIKit
 #endif
 
-internal typealias Storage = IMQAStorageMetadataFetcher & LogRepository
+public typealias Storage = IMQAStorageMetadataFetcher & LogRepository
 
 public class IMQAStorage: Storage{
     

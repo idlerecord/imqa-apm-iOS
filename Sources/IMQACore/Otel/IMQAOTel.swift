@@ -251,7 +251,7 @@ extension IMQAOTel{
         return result
     }
 
-    internal func buildSpan(
+    public func buildSpan(
         name: String,
         type: IMQASpanType,
         attributes: [String: String] = [:]
@@ -308,7 +308,7 @@ extension IMQAOTel{
             .emit()
     }
     
-    internal func log(
+    public func log(
         _ message: String,
         severity: LogSeverity,
         spanContext: SpanContext,

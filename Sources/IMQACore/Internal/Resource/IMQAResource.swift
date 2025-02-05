@@ -10,11 +10,11 @@ import OpenTelemetrySdk
 
 /// Typealias created to abstract away the `AttributeValue` from `OpenTelemetryApi`,
 /// reducing the dependency exposure to dependents.
-internal typealias ResourceValue = AttributeValue
+public typealias ResourceValue = AttributeValue
 
 // This representation of the `Resource` concept was necessary because
 // some entities (like `LogReadableRecord`) needs it.
-internal protocol IMQAResource {
+public protocol IMQAResource {
     var key: String { get }
     var value: ResourceValue { get }
 }

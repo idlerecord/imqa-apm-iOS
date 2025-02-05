@@ -22,7 +22,7 @@ target 'IMQACore' do
   use_frameworks!
 
   # Pods for IMQACore
-  pod 'MMKV', '~> 2.0.2'
+  #  pod 'MMKV', '~> 2.0.2'
 end
 
 target 'IMQAObjCUtilsInternal' do

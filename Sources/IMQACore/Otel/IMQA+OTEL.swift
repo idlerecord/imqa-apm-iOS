@@ -218,7 +218,7 @@ extension IMQA { // MARK: Static methods
     ///
     /// - Note This method validates the presence of the IMQA client and will call the block with a nil span if the client is not present
     ///                 It is recommended you use this method in order to be sure the block is run correctly.
-    internal static func recordSpan<T>(
+    public static func recordSpan<T>(
         name: String,
         parent: Span? = nil,
         type: IMQASpanType,

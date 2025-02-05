@@ -6,7 +6,7 @@
 //
 import IMQACommonInternal
 
-internal protocol LogRepository {
+public protocol LogRepository {
     func create(_ log: LogRecord, completion: (Result<LogRecord, Error>) -> Void)
     func fetchAll(excludingProcessIdentifier processIdentifier: ProcessIdentifier) throws -> [LogRecord]
     func remove(logs: [LogRecord]) throws

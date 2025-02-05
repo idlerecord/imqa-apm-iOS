@@ -9,7 +9,7 @@ import IMQAOtelInternal
 import OpenTelemetryApi
 
 
-internal extension SpanBuilder{
+extension SpanBuilder{
     @discardableResult
     func setAttributes(attributes: [String: AttributeValue]) -> SpanBuilder{
         for (key, value) in attributes {

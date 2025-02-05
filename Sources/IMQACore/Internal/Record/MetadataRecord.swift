@@ -34,7 +34,7 @@ public enum MetadataRecordLifespan: String, Codable {
     case permanent
 }
 
-internal struct MetadataRecord: Codable, VVIdenti {
+public struct MetadataRecord: Codable, VVIdenti {
     public var vvid: String{
         return lifespanId
     }

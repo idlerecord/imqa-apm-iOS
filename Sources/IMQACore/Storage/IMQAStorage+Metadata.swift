@@ -14,7 +14,7 @@ extension IMQAStorage {
     /// Adds a new `MetadataRecord` with the given values.
     /// Fails and returns nil if the metadata limit was reached.
     @discardableResult
-    internal func addMetadata(
+    public func addMetadata(
         key: String,
         value: String,
         type: MetadataRecordType,
@@ -39,7 +39,7 @@ extension IMQAStorage {
 
     /// Adds a new `MetadataRecord`.
     /// Fails and returns nil if the metadata limit was reached.
-    internal func addMetadata(_ metadata: MetadataRecord) -> Bool {
+    public func addMetadata(_ metadata: MetadataRecord) -> Bool {
         let storage = IMQAMuti<MetadataRecord>()
         if metadata.type == .requiredResource {
             storage.save(metadata)
@@ -91,7 +91,7 @@ extension IMQAStorage {
     }
 
     /// Updates the given `MetadataRecord`.
-    internal func updateMetadata(_ record: MetadataRecord) throws {
+    public func updateMetadata(_ record: MetadataRecord) throws {
         let storage = IMQAMuti<MetadataRecord>()
         storage.save(record)
     }
@@ -192,7 +192,7 @@ extension IMQAStorage {
     }
 
     /// Returns the `MetadataRecord` for the given values.
-    internal func fetchMetadata(
+    public func fetchMetadata(
         key: String,
         type: MetadataRecordType,
         lifespan: MetadataRecordLifespan,
@@ -206,12 +206,12 @@ extension IMQAStorage {
     }
 
     /// Returns the permanent required resource for the given key.
-    internal func fetchRequiredPermanentResource(key: String) -> MetadataRecord? {
+    public func fetchRequiredPermanentResource(key: String) -> MetadataRecord? {
         return fetchMetadata(key: key, type: .requiredResource, lifespan: .permanent)
     }
 
     /// Returns all records with types `.requiredResource` or `.resource`
-    internal func fetchAllResources() -> [MetadataRecord] {
+    public func fetchAllResources() -> [MetadataRecord] {
         let storage = IMQAMuti<MetadataRecord>()
         let filterRecords: [MetadataRecord] = storage.get().filter{
             ($0.type == MetadataRecordType.requiredResource) ||
@@ -221,7 +221,7 @@ extension IMQAStorage {
     }
 
     /// Returns all records with types `.requiredResource` or `.resource` that are tied to a given session id
-    internal func fetchResourcesForSessionId(_ sessionId: SessionIdentifier) -> [MetadataRecord] {
+    public func fetchResourcesForSessionId(_ sessionId: SessionIdentifier) -> [MetadataRecord] {
         let sessionRecordStorage = IMQAMuti<SessionRecord>()
         let session = sessionRecordStorage.fetch(sessionId.toString)
         guard let session = session else { return [] }
@@ -241,7 +241,7 @@ extension IMQAStorage {
     }
 
     /// Returns all records with types `.requiredResource` or `.resource` that are tied to a given process id
-    internal func fetchResourcesForProcessId(_ processId: ProcessIdentifier) -> [MetadataRecord] {
+    public func fetchResourcesForProcessId(_ processId: ProcessIdentifier) -> [MetadataRecord] {
         let metadataRecordStorage = IMQAMuti<MetadataRecord>()
         return metadataRecordStorage.get().filter{
             ((
@@ -255,7 +255,7 @@ extension IMQAStorage {
     }
 
     /// Returns all records of the `.customProperty` type that are tied to a given session id
-    internal func fetchCustomPropertiesForSessionId(_ sessionId: SessionIdentifier) -> [MetadataRecord] {
+    public func fetchCustomPropertiesForSessionId(_ sessionId: SessionIdentifier) -> [MetadataRecord] {
         let sessionRecordStorage = IMQAMuti<SessionRecord>()
         guard let session = sessionRecordStorage.fetch(sessionId.toString) else{
             return []
@@ -276,7 +276,7 @@ extension IMQAStorage {
     }
 
     /// Returns all records of the `.personaTag` type that are tied to a given session id
-    internal func fetchPersonaTagsForSessionId(_ sessionId: SessionIdentifier) throws -> [MetadataRecord] {
+    public func fetchPersonaTagsForSessionId(_ sessionId: SessionIdentifier) throws -> [MetadataRecord] {
         
         let storage = IMQAMuti<SessionRecord>()
         guard let session = storage.fetch(sessionId.toString) else{return []}
@@ -293,7 +293,7 @@ extension IMQAStorage {
     }
 
     /// Returns all records of the `.personaTag` type that are tied to a given process id
-    internal func fetchPersonaTagsForProcessId(_ processId: ProcessIdentifier) throws -> [MetadataRecord] {
+    public func fetchPersonaTagsForProcessId(_ processId: ProcessIdentifier) throws -> [MetadataRecord] {
         let storage = IMQAMuti<MetadataRecord>()
         return storage.get().filter{
             ((

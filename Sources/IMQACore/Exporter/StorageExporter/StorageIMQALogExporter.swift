@@ -52,7 +52,7 @@ class StorageIMQALogExporter: LogRecordExporter {
 
         for var log in logRecords where validation.execute(log: &log) {
 
-//            // do not export crash logs
+            // do not export crash logs
 //            guard !log.isImqaType(LogType.crash) else {
 //                continue
 //            }

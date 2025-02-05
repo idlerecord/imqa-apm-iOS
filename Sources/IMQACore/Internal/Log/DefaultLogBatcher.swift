@@ -51,7 +51,7 @@ class DefaultLogBatcher: LogBatcher {
     }
 }
 
-internal extension DefaultLogBatcher {
+extension DefaultLogBatcher {
     func renewBatch(withLogs logRecords: [LogRecord] = []) {
         processorQueue.async {
             guard let batch = self.batch else {

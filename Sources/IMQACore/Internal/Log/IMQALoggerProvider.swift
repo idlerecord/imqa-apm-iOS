@@ -9,7 +9,7 @@ import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
 
-internal protocol IMQALoggerProvider: LoggerProvider {
+public protocol IMQALoggerProvider: LoggerProvider {
     func get() -> Logger
     func update(_ config: any IMQALoggerConfig)
 }

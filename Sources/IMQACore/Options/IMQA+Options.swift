@@ -12,7 +12,7 @@ extension IMQA {
     public final class Options: NSObject {
         public let serviceKey: String
         public let endpoints: IMQA.Endpoints?
-        internal let services: [CaptureService]
+        public let services: [CaptureService]
         public let crashReporter: CrashReporter?
         public var sampleRate: Double = 1.0
         
@@ -30,7 +30,7 @@ extension IMQA {
     }
 }
 
-internal extension Array where Element == CaptureService {
+public extension Array where Element == CaptureService {
     static var all: [CaptureService] {
         return CaptureServiceBuilder()
             .addAll()

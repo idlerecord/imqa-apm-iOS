@@ -9,7 +9,7 @@ import IMQACommonInternal
 import IMQAOtelInternal
 
 
-internal protocol IMQAStorageMetadataFetcher: AnyObject {
+public protocol IMQAStorageMetadataFetcher: AnyObject {
     func fetchAllResources() throws -> [MetadataRecord]
     func fetchResourcesForSessionId(_ sessionId: SessionIdentifier) throws -> [MetadataRecord]
     func fetchResourcesForProcessId(_ processId: ProcessIdentifier) throws -> [MetadataRecord]

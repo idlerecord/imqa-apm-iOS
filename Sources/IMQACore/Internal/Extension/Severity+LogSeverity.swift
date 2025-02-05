@@ -9,14 +9,14 @@ import OpenTelemetryApi
 import IMQAOtelInternal
 
 
-extension Severity {
+public extension Severity {
     /// Transforms `OpenTelemetryApi.Severity` to `IMQACommon.LogSeverity`
     /// - Returns: a `IMQACommon.LogSeverity`. The transformation could fail, that's why it's an `Optional`
-    internal func toLogSeverity() -> LogSeverity? {
+    func toLogSeverity() -> LogSeverity? {
         LogSeverity(rawValue: self.rawValue)
     }
 
-    static internal func fromLogSeverity(_ logSeverity: LogSeverity) -> Severity? {
+    static func fromLogSeverity(_ logSeverity: LogSeverity) -> Severity? {
         Severity(rawValue: logSeverity.number)
     }
 }

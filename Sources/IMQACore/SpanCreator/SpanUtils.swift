@@ -11,7 +11,7 @@ import IMQACommonInternal
 import IMQAOtelInternal
 
 
-internal struct SpanAttributesUtils {
+struct SpanAttributesUtils {
     @ThreadSafe
     public static var spanCommonAttributes:[String: AttributeValue] = [:]
     

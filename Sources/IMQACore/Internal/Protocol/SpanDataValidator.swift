@@ -8,6 +8,6 @@
 import Foundation
 import OpenTelemetrySdk
 
-internal protocol SpanDataValidator {
+protocol SpanDataValidator {
     func validate(data: inout SpanData) -> Bool
 }
