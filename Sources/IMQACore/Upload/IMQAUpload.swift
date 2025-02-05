@@ -148,7 +148,7 @@ public class IMQAUpload: IMQALogUploader {
             case .log:
                 ()
             case .crash:
-                isProtobuf = false
+                ()
             }
         // upload operation
         let uploadOperation = IMQAUploadOperation(

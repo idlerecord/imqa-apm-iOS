@@ -61,7 +61,7 @@ class UnsentDataHandler {
 
             // link session with crash report if possible
             var session: SessionRecord?
-
+            var exceptionObj: IMQACrashError = IMQACrashError(message: "", type: "", stackTrace: [])
             if let sessionId = SessionIdentifier(string: report.sessionId) {
                 session = storage.fetchSession(id: sessionId)
                 if let session = session {
@@ -73,7 +73,9 @@ class UnsentDataHandler {
                     
                     storage.update(session: session)
                 }
-                recordCrashSpan(report: report, sessionId: sessionId.toString)
+                recordCrashSpan(report: report,
+                                sessionId: sessionId.toString,
+                                exceptionObj: &exceptionObj)
             }
 
             
@@ -84,7 +86,8 @@ class UnsentDataHandler {
                 session: session,
                 storage: storage,
                 upload: upload,
-                otel: otel
+                otel: otel,
+                exceptionObj: exceptionObj
             )
         }
 
@@ -125,7 +128,9 @@ class UnsentDataHandler {
     }
 
     
-    static public func recordCrashSpan(report:CrashReport, sessionId: String){
+    static public func recordCrashSpan(report:CrashReport,
+                                       sessionId: String,
+                                       exceptionObj: inout IMQACrashError){
         var exceptionMessage: String = ""
         var exceptionType: String = ""
         var stackTrace: [String] = []
@@ -193,29 +198,31 @@ class UnsentDataHandler {
         span.status = .error(description: exceptionMessage)
         span.end()
         
-        var stringAttributes: [String: String] = [:]
-        for (key, value) in attributes {
-            if case let .string(stringValue) = value {
-                stringAttributes[key] = stringValue
-            }else if case let .array(arrayValue) = value {
-                let values:[String] = arrayValue.values.map{
-                    if case let .string(stringValue) = $0{
-                        return stringValue
-                    }
-                    else{
-                        return ""
-                    }
-                }
-                let valueString = values.joined(separator: ",")
-                stringAttributes[key] = valueString
-            }
-        }
-        IMQA.logger.traceLog(message: exceptionType,
-                             spanContext: span.context,
-                             logType: .CRASH,
-                             attributes: stringAttributes,
-                             severity: .error)
-
+//        var stringAttributes: [String: String] = [:]
+//        for (key, value) in attributes {
+//            if case let .string(stringValue) = value {
+//                stringAttributes[key] = stringValue
+//            }else if case let .array(arrayValue) = value {
+//                let values:[String] = arrayValue.values.map{
+//                    if case let .string(stringValue) = $0{
+//                        return stringValue
+//                    }
+//                    else{
+//                        return ""
+//                    }
+//                }
+//                let valueString = values.joined(separator: ",")
+//                stringAttributes[key] = valueString
+//            }
+//        }
+//        IMQA.logger.traceLog(message: exceptionType,
+//                             spanContext: span.context,
+//                             logType: .CRASH,
+//                             attributes: stringAttributes,
+//                             severity: .error)
+        exceptionObj.message = spanException.message
+        exceptionObj.type = spanException.type
+        exceptionObj.stackTrace = spanException.stackTrace
     }
 
     static public func sendCrashLog(
@@ -224,36 +231,49 @@ class UnsentDataHandler {
         session: SessionRecord?,
         storage: IMQAStorage?,
         upload: IMQAUpload?,
-        otel: IMQAOpenTelemetry?
+        otel: IMQAOpenTelemetry?,
+        exceptionObj: IMQACrashError?
     ) {
         let timestamp = (report.timestamp ?? session?.lastHeartbeatTime) ?? Date()
-
-        // send otel log
-        let attributes = createLogCrashAttributes(
-            otel: otel,
-            report: report,
-            session: session,
-            timestamp: timestamp
-        )
-
         guard let upload = upload else {
             return
         }
-
+        guard let exceptionObj = exceptionObj,
+        ((exceptionObj.message?.count ?? 0 > 0) ||
+                (exceptionObj.type.count > 0)) else {
+            return
+        }
         // upload crash log
         do {
-            let payload = LogPayloadBuilder.build(
-                timestamp: timestamp,
-                severity: LogSeverity.fatal,
-                body: "",
-                attributes: attributes,
-                storage: storage,
-                sessionId: session?.id
-            )
+            var attributes:[String: PersistableValue] = [:]
+            attributes[SemanticAttributes.exceptionType.rawValue] = .string(exceptionObj.type)
+            attributes[SemanticAttributes.exceptionMessage.rawValue] = .string(exceptionObj.message ?? "")
+            attributes[SemanticAttributes.exceptionStacktrace.rawValue] = .string(exceptionObj.stackTrace?.joined(separator: "\n") ?? "")
+            attributes[SpanSemantics.Common.sessionId] = .string(session?.id.toString ?? "")
+            attributes[SpanSemantics.Common.traceId] = .string(report.spanRecord?.traceId ?? "")
+            attributes[SpanSemantics.Common.spanId] = .string(report.spanRecord?.id ?? "")
+            if let userId = UserModel.id {
+                attributes[SpanSemantics.Common.userId] = .string(userId)
+            }
+            if let areaCode = AreaCodeModel.areaCode {
+                attributes[SpanSemantics.Common.areaCode] = .string(areaCode)
+            }
+
+            let logRecord:LogRecord = LogRecord(identifier: LogIdentifier(),
+                                                processIdentifier: ProcessIdentifier.current,
+                                                severity: LogSeverity.error,
+                                                body: exceptionObj.type,
+                                                attributes: attributes,
+                                                timestamp: timestamp,
+                                                spanContext: nil)
             
-            let payloadData = try JSONEncoder().encode(payload).gzipped()
             
-            upload.uploadCrash(id: report.id.uuidString, data: payloadData) { result in
+            let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])
+                        
+            let data = PayloadEnvelope<LogPayload>.requestLogProtobufData(logRecords: [readableLog])
+            guard let envelopeData = data else{ return }
+
+            upload.uploadCrash(id: report.id.uuidString, data: envelopeData) { result in
                 switch result {
                 case .success:
                     // remove crash report

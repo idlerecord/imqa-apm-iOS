@@ -48,7 +48,8 @@ final class CaptureServices {
                     session: nil,
                     storage: storage,
                     upload: upload,
-                    otel: IMQA.client
+                    otel: IMQA.client,
+                    exceptionObj: nil
                 )
             }
         }

@@ -53,9 +53,7 @@ extension LogController {
             guard let sessionId = sessionController?.currentSession?.id, logs.count > 0 else {
                 return
             }
-            let resourcePayload = try createResourcePayload(sessionId: sessionId)
-            let metadataPayload = try createMetadataPayload(sessionId: sessionId)
-            send(logs: logs, resourcePayload: resourcePayload, metadataPayload: metadataPayload)
+            send(logs: logs)
         } catch let exception {
             Error.couldntCreatePayload(reason: exception.localizedDescription).log()
         }
@@ -82,33 +80,14 @@ private extension LogController{
                 // and assume all of them come from the same session.
                 //
                 // If we can't find a sessionId, we use the processId instead
-
-                var sessionId: SessionIdentifier?
-                if let log = batch.logs.first(where: { $0.attributes[SpanSemantics.Session.keyId] != nil }) {
-                    sessionId = SessionIdentifier(string: log.attributes[SpanSemantics.Session.keyId]?.description)
-                }
-
-                let processId = batch.logs[0].processIdentifier
-
-                let resourcePayload = try createResourcePayload(sessionId: sessionId, processId: processId)
-                let metadataPayload = try createMetadataPayload(sessionId: sessionId, processId: processId)
-
-                send(
-                    logs: batch.logs,
-                    resourcePayload: resourcePayload,
-                    metadataPayload: metadataPayload
-                )
+                send(logs: batch.logs)
             } catch let exception {
                 Error.couldntCreatePayload(reason: exception.localizedDescription).log()
             }
         }
     }
 
-    func send(
-        logs: [LogRecord],
-        resourcePayload: ResourcePayload,
-        metadataPayload: MetadataPayload
-    ) {
+    func send(logs: [LogRecord]) {
         guard let upload = upload else {
             return
         }
@@ -155,45 +134,6 @@ private extension LogController{
             batches.append(batch)
         }
         return batches
-    }
-
-    func createResourcePayload(sessionId: SessionIdentifier?,
-                               processId: ProcessIdentifier = ProcessIdentifier.current
-    ) throws -> ResourcePayload {
-        guard let storage = storage else {
-            throw Error.couldntAccessStorageModule
-        }
-
-        var resources: [MetadataRecord] = []
-
-//        if let sessionId = sessionId {
-//            resources = try storage.fetchResourcesForSessionId(sessionId)
-//        } else {
-//            resources = try storage.fetchResourcesForProcessId(processId)
-//        }
-
-        return ResourcePayload(from: resources)
-    }
-
-    func createMetadataPayload(sessionId: SessionIdentifier?,
-                               processId: ProcessIdentifier = ProcessIdentifier.current
-    ) throws -> MetadataPayload {
-        guard let storage = storage else {
-            throw Error.couldntAccessStorageModule
-        }
-
-        var metadata: [MetadataRecord] = []
-
-//        if let sessionId = sessionId {
-//            let properties = try storage.fetchCustomPropertiesForSessionId(sessionId)
-//            let tags = try storage.fetchPersonaTagsForSessionId(sessionId)
-//            metadata.append(contentsOf: properties)
-//            metadata.append(contentsOf: tags)
-//        } else {
-//            metadata = try storage.fetchPersonaTagsForProcessId(processId)
-//        }
-
-        return MetadataPayload(from: metadata)
     }
 }
 

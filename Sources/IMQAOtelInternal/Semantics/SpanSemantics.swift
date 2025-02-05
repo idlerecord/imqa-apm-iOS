@@ -42,6 +42,11 @@ public struct SpanSemantics{
     public struct Common {
         /// span에 공동으로 들러가는 session id
         public static let sessionId = "session.id"
+        
+        public static let traceId = "trace.id"
+        
+        public static let spanId = "span.id"
+        
         ///파블릭 아이피
         public static let sourceAddress = "source.address"
         /// 화면의 class이름
