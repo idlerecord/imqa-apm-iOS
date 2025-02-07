@@ -5,27 +5,19 @@
 //  Created by Hunta Park on 2/3/25.
 //
 
-#if canImport(Compression)
-import DataCompression
-#endif
 import Foundation
 import SwiftProtobuf
-import OpenTelemetryProtocolExporterCommon
-import OpenTelemetryProtocolExporterHttp
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
 
 public class CustomOtlpHttpExporterBase {
     let endpoint: URL
     let envVarHeaders : [(String,String)]?
-    let config : OtlpConfiguration
+    let config : CustomOtlpConfiguration
 
   public init(
     endpoint: URL,
-    config: OtlpConfiguration = OtlpConfiguration(),
+    config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
     useSession: URLSession? = nil,
-    envVarHeaders: [(String,String)]? = EnvVarHeaders.attributes
+    envVarHeaders: [(String,String)]? = CustomEnvVarHeaders.attributes
   ) {
       self.envVarHeaders = envVarHeaders
       self.endpoint = endpoint
@@ -38,7 +30,7 @@ public class CustomOtlpHttpExporterBase {
         do {
             let rawData = try body.serializedData()
             request.httpMethod = "POST"
-            request.setValue(Headers.getUserAgentHeader(), forHTTPHeaderField: Constants.HTTP.userAgent)
+            request.setValue("IMQA-iOS-SDK", forHTTPHeaderField: "User-Agent")
             request.setValue("application/x-protobuf", forHTTPHeaderField: "Content-Type")
             
             var compressedData = rawData

@@ -5,7 +5,6 @@
 //  Created by Hunta Park on 1/13/25.
 //
 import OpenTelemetryApi
-import ResourceExtension
 import Foundation
 import OpenTelemetrySdk
 import IMQAOtelInternal

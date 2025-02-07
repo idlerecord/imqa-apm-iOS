@@ -9,7 +9,7 @@
 import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import OpenTelemetryProtocolExporterCommon
+//import OpenTelemetryProtocolExporterCommon
 import IMQAOtelInternal
 
 
@@ -115,7 +115,7 @@ class IMQAUploadOperation: AsyncOperation {
 
         if isProtobuf {
             request.setValue("application/x-protobuf", forHTTPHeaderField: "Content-Type")
-            request.setValue(Headers.getUserAgentHeader(), forHTTPHeaderField: Constants.HTTP.userAgent)
+            request.setValue(metadataOptions.userAgent, forHTTPHeaderField: "User-Agent")
         }else{
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")

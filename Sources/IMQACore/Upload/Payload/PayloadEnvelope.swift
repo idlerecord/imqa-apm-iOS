@@ -7,8 +7,8 @@
 
 
 import Foundation
-import OpenTelemetryProtocolExporterCommon
 import OpenTelemetrySdk
+import SwiftProtobuf
 
 struct PayloadEnvelope<T: Encodable>: Encodable {
     var resource: ResourcePayload
@@ -21,7 +21,7 @@ struct PayloadEnvelope<T: Encodable>: Encodable {
 extension PayloadEnvelope{
     static func requestLogProtobufData(logRecords:[ReadableLogRecord]) -> Data?{
         let exportRequest = Opentelemetry_Proto_Collector_Logs_V1_ExportLogsServiceRequest.with {
-            $0.resourceLogs = LogRecordAdapter.toProtoResourceRecordLog(logRecordList: logRecords)
+            $0.resourceLogs = CustomLogRecordAdapter.toProtoResourceRecordLog(logRecordList: logRecords)
         }
         do {
             let data = try exportRequest.serializedData()
@@ -34,7 +34,7 @@ extension PayloadEnvelope{
     
     static func requestSpanProtobufData(spans: [SpanData]) -> Data?{
         let exportRequest = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest.with {
-            $0.resourceSpans = SpanAdapter.toProtoResourceSpans(spanDataList: spans)
+            $0.resourceSpans = CustomSpanAdapter.toProtoResourceSpans(spanDataList: spans)
         }
         do {
             let data = try exportRequest.serializedData()
@@ -54,12 +54,12 @@ extension PayloadEnvelope{
     
     static func requestSpanPayloadJsonData(spans: [SpanData]) -> Data?{
         let exportRequest = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest.with {
-          $0.resourceSpans = SpanAdapter.toProtoResourceSpans(spanDataList: spans)
+          $0.resourceSpans = CustomSpanAdapter.toProtoResourceSpans(spanDataList: spans)
         }
         
         do {
             let jsonData = try exportRequest.jsonUTF8Data()
-            let span = try JSONDecoder().decode(OtlpSpan.self, from: jsonData)
+            let span = try JSONDecoder().decode(CustomOtlpSpan.self, from: jsonData)
             let envelopeData = try JSONEncoder().encode(span).gzipped()
             return envelopeData
         } catch {

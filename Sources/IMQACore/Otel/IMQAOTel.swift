@@ -8,11 +8,10 @@
 import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
-import ResourceExtension
 import OpenTelemetryApi
 import OpenTelemetrySdk
-import OpenTelemetryProtocolExporterHttp
-import OpenTelemetryProtocolExporterCommon
+//import OpenTelemetryProtocolExporterHttp
+//import OpenTelemetryProtocolExporterCommon
 import IMQACollectDeviceInfo
 
 
@@ -182,7 +181,7 @@ public class IMQAOTel{
         }
         
         let tracerExporter = CustomOtlpHttpTraceExporter(endpoint: tracerUrl, storage: storage)
-        
+
         //logs
         let logsUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.logs(uploadUrl).baseUrl()
         guard let logsUrl = URL(string: logsUrlStr) else{
@@ -192,7 +191,7 @@ public class IMQAOTel{
         let logsExporter = CustomOtlpHttpLogExporter(endpoint: logsUrl)
 
         
-        let opentelemetryExporter = OpenTelemetryExport(spanExporter: tracerExporter,
+        let opentelemetryExporter = OpenTelemetryExporter(spanExporter: tracerExporter,
                                                         logExporter: logsExporter)
         
         let sampler = SessionBasedSampler(probability: option.sampleRate, storage: storage)
@@ -214,18 +213,18 @@ public class IMQAOTel{
 
                         
         //metric
-        let metricUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.metric(uploadUrl).baseUrl()
-        guard let metricUrl = URL(string: metricUrlStr) else{
-            return
-        }
-        let metricExporter = StableOtlpHTTPMetricExporter(endpoint: metricUrl)
-        let reader = StablePeriodicMetricReaderBuilder(exporter: metricExporter).setInterval(timeInterval: 60).build()
-        
-        let metricProvider = StableMeterProviderBuilder()
-            .setResource(resource: resource)
-            .registerMetricReader(reader: reader)
-            .build()
-        OpenTelemetryApi.OpenTelemetry.registerStableMeterProvider(meterProvider: metricProvider)
+//        let metricUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.metric(uploadUrl).baseUrl()
+//        guard let metricUrl = URL(string: metricUrlStr) else{
+//            return
+//        }
+//        let metricExporter = StableOtlpHTTPMetricExporter(endpoint: metricUrl)
+//        let reader = StablePeriodicMetricReaderBuilder(exporter: metricExporter).setInterval(timeInterval: 60).build()
+//        
+//        let metricProvider = StableMeterProviderBuilder()
+//            .setResource(resource: resource)
+//            .registerMetricReader(reader: reader)
+//            .build()
+//        OpenTelemetryApi.OpenTelemetry.registerStableMeterProvider(meterProvider: metricProvider)
 
         
         // 同时使用W3C Trace Context、B3、Jaeger三种Trace透传格式。

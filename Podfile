@@ -19,10 +19,14 @@ end
 
 target 'IMQACore' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  use_frameworks! :linkage => :static
 
   # Pods for IMQACore
-  #  pod 'MMKV', '~> 2.0.2'
+  pod 'KSCrash', '2.0.0-rc.8'
+  pod 'OpenTelemetry-Swift-Sdk', '~> 1.12.1'
+  pod 'OpenTelemetry-Swift-Api', '~> 1.12.1'
+  pod 'SwiftProtobuf', '~> 1.28.2'
+  pod 'MMKV', '~> 2.0.2'
 end
 
 target 'IMQAObjCUtilsInternal' do

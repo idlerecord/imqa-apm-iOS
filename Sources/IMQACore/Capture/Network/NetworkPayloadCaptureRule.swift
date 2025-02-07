@@ -8,7 +8,7 @@
 import Foundation
 
 @objc
-public final class NetworkPayloadCaptureRule: NSObject {
+public final class NetworkPayloadCaptureRule: NSObject ,Decodable{
     public let id: String
     public let urlRegex: String
     public let statusCodes: [Int]?
@@ -37,7 +37,7 @@ public final class NetworkPayloadCaptureRule: NSObject {
     }
 }
 
-extension NetworkPayloadCaptureRule: Decodable {
+extension NetworkPayloadCaptureRule {
     enum CodingKeys: String, CodingKey {
         case id
         case urlRegex = "url"

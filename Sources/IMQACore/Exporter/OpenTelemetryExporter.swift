@@ -11,7 +11,7 @@
 import OpenTelemetrySdk
 import Foundation
 
-public class OpenTelemetryExport: NSObject{
+public class OpenTelemetryExporter: NSObject{
     public let spanExporter: SpanExporter?
     public let logExporter: LogRecordExporter?
     

@@ -11,21 +11,23 @@ let package = Package(
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "IMQAIO", type: .static, targets: ["IMQACore"])
+        .library(name: "IMQAIO", type: .static, targets: ["IMQAIO"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
                  exact: "1.12.1"
                 ),
         .package(url: "https://github.com/kstenerud/KSCrash.git",
-                 exact: "2.0.0-rc.8")
+                 exact: "2.0.0-rc.8"),
+        //package에 다운로드 되는 버전으로 setting하세요.
+        .package(url: "https://github.com/apple/swift-protobuf.git", exact: "1.28.2"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         
         // core service -----------------------------------------------------------
-            .target(name: "IMQACore",
+            .target(name: "IMQAIO",
                     dependencies: [
                         "IMQAOtelInternal",
                         "IMQACollectDeviceInfo",
@@ -34,9 +36,8 @@ let package = Package(
                         "IMQACommonInternal",
                         .product(name: "OpenTelemetryApi", package: "opentelemetry-swift"),
                         .product(name: "OpenTelemetrySdk", package: "opentelemetry-swift"),
-                        .product(name: "Installations", package: "KSCrash"),
-                        .product(name: "OpenTelemetryProtocolExporterHTTP", package: "opentelemetry-swift"),
-                        .product(name: "ResourceExtension", package: "opentelemetry-swift"),
+                        .product(name: "Recording", package: "KSCrash"),
+                        .product(name: "SwiftProtobuf", package: "swift-protobuf")
                     ],
                     path: "./Sources/IMQACore",
                     resources: [
@@ -58,11 +59,9 @@ let package = Package(
                 path: "./Sources/IMQAOtelInternal"
                ),
         
-        
-        
         // IMQACommonInternal  -----------------------------------------------------------
-        .target(name: "IMQACommonInternal"
-//                path: "./Sources/IMQACommonInternal"
+        .target(name: "IMQACommonInternal",
+                path: "./Sources/IMQACommonInternal"
                ),
         
         // MMKV  -----------------------------------------------------------

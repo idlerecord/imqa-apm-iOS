@@ -6,78 +6,32 @@
 //
 
 import Foundation
-import OpenTelemetryProtocolExporterCommon
+//import OpenTelemetryProtocolExporterCommon
 import OpenTelemetrySdk
 import OpenTelemetryApi
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
+import SwiftProtobuf
+//import OpenTelemetryProtocolExporterCommon
 
 public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExporter {
     var pendingSpans: [SpanData] = []
     
     private let exporterLock = NSLock()
-    private var exporterMetrics: ExporterMetrics?
     private(set) weak var storage: IMQAStorage?
 
-    override
-    public init(
-        endpoint: URL = URL(string: "http://localhost:4318/v1/traces")!,
-        config: OtlpConfiguration = OtlpConfiguration(),
-        useSession: URLSession? = nil,
-        envVarHeaders: [(String, String)]? = EnvVarHeaders.attributes
-    ) {
-        super.init(
+    
+    
+    public convenience init(endpoint: URL,
+                config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
+                useSession: URLSession? = nil,
+                envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes,
+                storage:IMQAStorage) {
+        self.init(
             endpoint: endpoint,
             config: config,
             useSession: useSession,
             envVarHeaders: envVarHeaders
         )
-    }
-
-    /// A `convenience` constructor to provide support for exporter metric using`StableMeterProvider` type
-    /// - Parameters:
-    ///    - endpoint: Exporter endpoint injected as dependency
-    ///    - config: Exporter configuration including type of exporter
-    ///    - meterProvider: Injected `StableMeterProvider` for metric
-    ///    - useSession: Overridden `URLSession` if any
-    ///    - envVarHeaders: Extra header key-values
-    convenience public init(
-        endpoint: URL = URL(string: "http://localhost:4318/v1/traces")!,
-        config: OtlpConfiguration = OtlpConfiguration(),
-        useSession: URLSession? = nil,
-        envVarHeaders: [(String, String)]? = EnvVarHeaders.attributes,
-        storage: IMQAStorage
-    ) {
-        self.init(endpoint: endpoint, config: config, useSession: useSession, envVarHeaders: envVarHeaders)
-
         self.storage = storage
-    }
-
-    
-    /// A `convenience` constructor to provide support for exporter metric using`StableMeterProvider` type
-    /// - Parameters:
-    ///    - endpoint: Exporter endpoint injected as dependency
-    ///    - config: Exporter configuration including type of exporter
-    ///    - meterProvider: Injected `StableMeterProvider` for metric
-    ///    - useSession: Overridden `URLSession` if any
-    ///    - envVarHeaders: Extra header key-values
-    convenience public init(
-        endpoint: URL,
-        config: OtlpConfiguration,
-        meterProvider: StableMeterProvider,
-        useSession: URLSession? = nil,
-        envVarHeaders: [(String, String)]? = EnvVarHeaders.attributes
-    ) {
-        self.init(endpoint: endpoint, config: config, useSession: useSession, envVarHeaders: envVarHeaders)
-        exporterMetrics = ExporterMetrics(
-            type: "otlp",
-            meterProvider: meterProvider,
-            exporterName: "span",
-            transportName: config.exportAsJson ?
-                ExporterMetrics.TransporterType.httpJson :
-                ExporterMetrics.TransporterType.grpc
-        )
     }
     
     public func export(spans: [SpanData], explicitTimeout: TimeInterval? = nil) -> SpanExporterResultCode {
@@ -89,7 +43,7 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
         exporterLock.unlock()
 
         let body = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest.with {
-            $0.resourceSpans = SpanAdapter.toProtoResourceSpans(spanDataList: sendingSpans)
+            $0.resourceSpans = CustomSpanAdapter.toProtoResourceSpans(spanDataList: sendingSpans)
         }
         var request = createRequest(body: body, endpoint: endpoint)
         if let headers = envVarHeaders {
@@ -102,33 +56,20 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
                 request.addValue(value, forHTTPHeaderField: key)
             }
         }
-        exporterMetrics?.addSeen(value: sendingSpans.count)
-//        httpClient.send(request: request) { [weak self] result in
-//            switch result {
-//            case .success:
-//                self?.exporterMetrics?.addSuccess(value: sendingSpans.count)
-//                break
-//            case let .failure(error):
-//                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
-//                self?.exporterLock.withLockVoid {
-//                    self?.pendingSpans.append(contentsOf: sendingSpans)
-//                }
-//                print(error)
-//            }
-//        }
+//        exporterMetrics?.addSeen(value: sendingSpans.count)
         URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
             if let error = error {
-                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
-                print(error)
+//                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
+//                print(error)
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
                 let spanIds = sendingSpans.map {
                     return $0.spanId.hexString
                 }
                 self?.storage?.deleteSpans(spanIds: spanIds)
-                self?.exporterMetrics?.addSuccess(value: sendingSpans.count)
+//                self?.exporterMetrics?.addSuccess(value: sendingSpans.count)
                 
             } else {
-                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
+//                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
             }
         }.resume()
 
@@ -144,34 +85,21 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
         exporterLock.unlock()
         if !pendingSpans.isEmpty {
             let body = Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest.with {
-                $0.resourceSpans = SpanAdapter.toProtoResourceSpans(spanDataList: pendingSpans)
+                $0.resourceSpans = CustomSpanAdapter.toProtoResourceSpans(spanDataList: pendingSpans)
             }
             let semaphore = DispatchSemaphore(value: 0)
             let request = createRequest(body: body, endpoint: endpoint)
 
-//            httpClient.send(request: request) { [weak self] result in
-//                switch result {
-//                case .success:
-//                    self?.exporterMetrics?.addSuccess(value: pendingSpans.count)
-//                    break
-//                case let .failure(error):
-//                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
-//                    print(error)
-//                    resultValue = .failure
-//                }
-//                semaphore.signal()
-//            }
-//            semaphore.wait()
             
             URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
                 if let error = error {
-                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
+//                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
                     print(error)
                     resultValue = .failure
                 } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-                    self?.exporterMetrics?.addSuccess(value: pendingSpans.count)
+//                    self?.exporterMetrics?.addSuccess(value: pendingSpans.count)
                 } else {
-                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
+//                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
                 }
                 semaphore.signal() // 释放信号量，继续执行后续代码
             }.resume()
@@ -180,5 +108,61 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
             semaphore.wait()
         }
         return resultValue
+    }
+}
+
+
+public struct CustomEnvVarHeaders {
+    private static let labelListSplitter = Character(",")
+    private static let labelKeyValueSplitter = Character("=")
+
+    ///  This resource information is loaded from the
+    ///  environment variable.
+    public static let attributes: [(String, String)]? = CustomEnvVarHeaders.attributes()
+
+    public static func attributes(for rawEnvAttributes: String? = ProcessInfo.processInfo.environment["OTEL_EXPORTER_OTLP_HEADERS"]) -> [(String, String)]? {
+        parseAttributes(rawEnvAttributes: rawEnvAttributes)
+    }
+
+    private init() {}
+
+    private static func isKey(token: String) -> Bool {
+        let alpha = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        let digit = CharacterSet(charactersIn: "0123456789")
+        let special = CharacterSet(charactersIn: "!#$%&'*+-.^_`|~")
+        let tchar = special.union(alpha).union(digit)
+        return tchar.isSuperset(of: CharacterSet(charactersIn: token))
+    }
+
+    private static func isValue(baggage: String) -> Bool {
+        let asciiSet = CharacterSet(charactersIn: UnicodeScalar(0) ..< UnicodeScalar(0x80))
+        let special = CharacterSet(charactersIn: "^\"|\"$")
+        let baggageOctet = asciiSet.subtracting(.controlCharacters).subtracting(.whitespaces).union(special)
+        return baggageOctet.isSuperset(of: CharacterSet(charactersIn: baggage))
+    }
+
+    /// Creates a label map from the environment variable string.
+    /// - Parameter rawEnvLabels: the comma-separated list of labels
+    /// NOTE: Parsing does not fully match W3C Correlation-Context
+    private static func parseAttributes(rawEnvAttributes: String?) -> [(String, String)]? {
+        guard let rawEnvLabels = rawEnvAttributes else { return nil }
+
+        var labels = [(String, String)]()
+
+        rawEnvLabels.split(separator: labelListSplitter).forEach {
+            let split = $0.split(separator: labelKeyValueSplitter)
+            if split.count != 2 {
+                return
+            }
+
+            let key = split[0].trimmingCharacters(in: .whitespaces)
+            guard isKey(token: key) else { return }
+
+            let value = split[1].trimmingCharacters(in: .whitespaces)
+            guard isValue(baggage: value) else { return }
+
+            labels.append((key, value))
+        }
+        return labels.count > 0 ? labels : nil
     }
 }
