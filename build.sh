@@ -5,7 +5,22 @@ BUILD_DIR="./Build"
 SIMULATOR_DIR="$BUILD_DIR/Release-iphonesimulator"
 DEVICE_DIR="$BUILD_DIR/Release-iphoneos"
 OUTPUT_DIR="$BUILD_DIR/xcframework"
-TARGET_DIR="$1"
+TARGET_DIR="$2"
+VERSION="$1"
+
+# 目标文件路径
+FILE_PATH="./Sources/IMQAOtelInternal/Version/IMQAMeta.swift"
+
+# 检查文件是否存在
+if [ ! -f "$FILE_PATH" ]; then
+    echo "❌ 文件 $FILE_PATH 不存在"
+    exit 1
+fi
+
+# 使用 sed 替换 version 的值
+sed -i '' "s/public static let sdkVersion = \".*\"/public static let sdkVersion = \"$VERSION\"/" "$FILE_PATH"
+
+echo "✅ 版本号已更新为 $VERSION"
 
 # 检查文件夹是否存在
 if [ -d "$SIMULATOR_DIR" ] && [ -d "$DEVICE_DIR" ]; then
@@ -64,6 +79,38 @@ for FRAMEWORK in $SIMULATOR_FRAMEWORKS; do
             -output "$OUTPUT_DIR/${FRAMEWORK_NAME%.framework}.xcframework"
             
         echo "✅ Created: $OUTPUT_DIR/${FRAMEWORK_NAME%.framework}.xcframework"
+        
+        # 如果没有标签，默认为1.0.0
+        if [ -z "$VERSION" ]; then
+            VERSION="1.0.0"
+        fi
+
+        # 修改 XCFramework 内部的 Info.plist 的版本号
+        XCFRAMEWORK_PATH="$OUTPUT_DIR/${FRAMEWORK_NAME%.framework}.xcframework"
+        INFO_PLIST_XCFRAMEWORK="$XCFRAMEWORK_PATH/Info.plist"
+        INFO_PLIST_DEVICE="$XCFRAMEWORK_PATH/ios-arm64/$(basename "$FRAMEWORK_NAME")/Info.plist"
+        INFO_PLIST_SIMULATOR="$XCFRAMEWORK_PATH/ios-arm64_x86_64-simulator/$(basename "$FRAMEWORK_NAME")/Info.plist"
+
+        if [ -f "$INFO_PLIST_XCFRAMEWORK" ]; then
+            echo "Modifying version in Info.plist for $FRAMEWORK_NAME..."
+            /usr/libexec/PlistBuddy -c "Set :XCFrameworkFormatVersion $VERSION" "$INFO_PLIST_XCFRAMEWORK"
+            echo "✅ Version updated to $VERSION in $INFO_PLIST_XCFRAMEWORK"
+        fi
+
+        if [ -f "$INFO_PLIST_DEVICE" ]; then
+            echo "Modifying version in Info.plist for $FRAMEWORK_NAME..."
+            /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$INFO_PLIST_DEVICE"
+#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_DEVICE"
+#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(($(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$INFO_PLIST_DEVICE") + 1))" "$INFO_PLIST_DEVICE"
+            echo "✅ Version updated to $VERSION in $INFO_PLIST_DEVICE"
+        fi
+        
+        if [ -f "$INFO_PLIST_SIMULATOR" ]; then
+            echo "Modifying version in Info.plist for $FRAMEWORK_NAME..."
+            /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$INFO_PLIST_SIMULATOR"
+#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_SIMULATOR"
+            echo "✅ Version updated to $VERSION in $INFO_PLIST_SIMULATOR"
+        fi
     fi
 done
 

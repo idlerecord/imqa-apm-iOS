@@ -2,8 +2,7 @@ import ProjectDescription
 
 let settings = Settings.settings(
     base: [
-        "SWIFT_VERSION": "5.9"//,
-//        "OTHER_LDFLAGS": "$(inherited) -ObjC"
+        "SWIFT_VERSION": "5.9"
           ]
 )
 
