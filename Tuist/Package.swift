@@ -39,7 +39,7 @@ let package = Package(
                         .product(name: "Recording", package: "KSCrash"),
                         .product(name: "SwiftProtobuf", package: "swift-protobuf")
                     ],
-                    path: "./Sources/IMQACore",
+                    path: "../Sources/IMQACore",
                     resources: [
                         .copy("PrivacyInfo.xcprivacy")
                     ]
@@ -47,27 +47,27 @@ let package = Package(
                     
         // IMQAObjCUtilsInternal -----------------------------------------------------------
         .target(name: "IMQAObjCUtilsInternal",
-                path: "./Sources/IMQAObjCUtilsInternal"
+                path: "../Sources/IMQAObjCUtilsInternal"
                ),
         
         .target(name: "IMQACollectDeviceInfo",
-                path: "./Sources/IMQACollectDeviceInfo"
+                path: "../Sources/IMQACollectDeviceInfo"
                ),
         
         // IMQAOtelInternal  -----------------------------------------------------------
         .target(name: "IMQAOtelInternal",
-                path: "./Sources/IMQAOtelInternal"
+                path: "../Sources/IMQAOtelInternal"
                ),
         
         // IMQACommonInternal  -----------------------------------------------------------
         .target(name: "IMQACommonInternal",
-                path: "./Sources/IMQACommonInternal"
+                path: "../Sources/IMQACommonInternal"
                ),
         
         // MMKV  -----------------------------------------------------------
         .binaryTarget(
             name: "MMKV",
-            path: "./Sources/Frameworks/MMKV.xcframework" )
+            path: "../Sources/Frameworks/MMKV.xcframework" )
     ]
     //,swiftLanguageVersions: [.version("5.9")]
 )

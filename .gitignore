@@ -2,3 +2,7 @@
 build
 Pods
 Podfile.lock
+Derived
+mise.toml
+IMQACore.xcodeproj
+IMQACore.xcworkspace

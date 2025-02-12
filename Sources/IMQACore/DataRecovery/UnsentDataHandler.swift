@@ -177,52 +177,10 @@ class UnsentDataHandler {
                 }
             }
         }
-        let spanException = IMQACrashError(message: exceptionMessage, type: exceptionType, stackTrace: stackTrace)
-        var attributes:[String: AttributeValue] = [:]
         
-        attributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(spanException.type)
-        if let message = spanException.message{
-            attributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(message)
-        }
-        if let stackTrace = spanException.stackTrace{
-            attributes[SemanticAttributes.exceptionStacktrace.rawValue] = AttributeValue(stackTrace)
-        }
-        attributes[SpanSemantics.Common.sessionId] = AttributeValue(sessionId)
-
-        let span = SpanUtils.span(name: exceptionType,
-                                  startTime: Date(),
-                                  type: .CRASH,
-                                  attributes: attributes)
-        span.recordException(spanException, attributes: [:], timestamp: Date())
-        
-        span.status = .error(description: exceptionMessage)
-        span.end()
-        
-//        var stringAttributes: [String: String] = [:]
-//        for (key, value) in attributes {
-//            if case let .string(stringValue) = value {
-//                stringAttributes[key] = stringValue
-//            }else if case let .array(arrayValue) = value {
-//                let values:[String] = arrayValue.values.map{
-//                    if case let .string(stringValue) = $0{
-//                        return stringValue
-//                    }
-//                    else{
-//                        return ""
-//                    }
-//                }
-//                let valueString = values.joined(separator: ",")
-//                stringAttributes[key] = valueString
-//            }
-//        }
-//        IMQA.logger.traceLog(message: exceptionType,
-//                             spanContext: span.context,
-//                             logType: .CRASH,
-//                             attributes: stringAttributes,
-//                             severity: .error)
-        exceptionObj.message = spanException.message
-        exceptionObj.type = spanException.type
-        exceptionObj.stackTrace = spanException.stackTrace
+        exceptionObj.message = exceptionMessage
+        exceptionObj.type = exceptionType
+        exceptionObj.stackTrace = stackTrace
     }
 
     static public func sendCrashLog(
@@ -245,6 +203,33 @@ class UnsentDataHandler {
         }
         // upload crash log
         do {
+            
+            //span 기록
+            let spanException = IMQACrashError(message: exceptionObj.message ?? "",
+                                               type: exceptionObj.type,
+                                               stackTrace: exceptionObj.stackTrace)
+            
+            var spanAttributes:[String: AttributeValue] = [:]
+            
+            spanAttributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(spanException.type)
+            if let message = spanException.message{
+                spanAttributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(message)
+            }
+            if let stackTrace = spanException.stackTrace{
+                spanAttributes[SemanticAttributes.exceptionStacktrace.rawValue] = AttributeValue(stackTrace)
+            }
+            spanAttributes[SpanSemantics.Common.sessionId] = AttributeValue(session?.id.toString ?? "")
+
+            let span = SpanUtils.span(name: spanException.type,
+                                      startTime: Date(),
+                                      type: .CRASH,
+                                      attributes: spanAttributes)
+            span.recordException(spanException, attributes: [:], timestamp: Date())
+            span.status = .error(description: spanException.message ?? "")
+            span.end()
+
+            
+            //log기록
             var attributes:[String: PersistableValue] = [:]
             attributes[SemanticAttributes.exceptionType.rawValue] = .string(exceptionObj.type)
             attributes[SemanticAttributes.exceptionMessage.rawValue] = .string(exceptionObj.message ?? "")
@@ -258,14 +243,15 @@ class UnsentDataHandler {
             if let areaCode = AreaCodeModel.areaCode {
                 attributes[SpanSemantics.Common.areaCode] = .string(areaCode)
             }
-
+                        
+            
             let logRecord:LogRecord = LogRecord(identifier: LogIdentifier(),
                                                 processIdentifier: ProcessIdentifier.current,
                                                 severity: LogSeverity.error,
                                                 body: exceptionObj.type,
                                                 attributes: attributes,
                                                 timestamp: timestamp,
-                                                spanContext: nil)
+                                                spanContext: span.context)
             
             
             let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])

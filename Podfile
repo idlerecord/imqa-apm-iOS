@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '13.0'
+platform :ios, '13.0'
 
 target 'IMQACollectDeviceInfo' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -18,7 +18,6 @@ target 'IMQACommonInternal' do
 end
 
 target 'IMQACore' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks! :linkage => :static
 
   # Pods for IMQACore
@@ -45,10 +44,11 @@ target 'IMQAOtelInternal' do
 
 end
 
-target 'MMKV' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for MMKV
-
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['BUILD_DIR'] = '../Build'
+      config.build_settings['OTHER_LDFLAGS'] = '$(inherited) -ObjC'
+    end
+  end
 end
