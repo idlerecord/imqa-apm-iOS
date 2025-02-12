@@ -100,15 +100,14 @@ for FRAMEWORK in $SIMULATOR_FRAMEWORKS; do
         if [ -f "$INFO_PLIST_DEVICE" ]; then
             echo "Modifying version in Info.plist for $FRAMEWORK_NAME..."
             /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$INFO_PLIST_DEVICE"
-#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_DEVICE"
-#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(($(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$INFO_PLIST_DEVICE") + 1))" "$INFO_PLIST_DEVICE"
+            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_DEVICE"
             echo "✅ Version updated to $VERSION in $INFO_PLIST_DEVICE"
         fi
         
         if [ -f "$INFO_PLIST_SIMULATOR" ]; then
             echo "Modifying version in Info.plist for $FRAMEWORK_NAME..."
             /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$INFO_PLIST_SIMULATOR"
-#            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_SIMULATOR"
+            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $VERSION" "$INFO_PLIST_SIMULATOR"
             echo "✅ Version updated to $VERSION in $INFO_PLIST_SIMULATOR"
         fi
     fi
