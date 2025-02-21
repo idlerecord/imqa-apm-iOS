@@ -159,6 +159,7 @@ public class IMQAOTel{
     
     static func setUp(option: IMQA.Options,
                       storage: IMQAStorage,
+                      cache: IMQAUploadCache,
                       logController: LogControllable){
         
         //Resource Setting
@@ -179,7 +180,9 @@ public class IMQAOTel{
             return
         }
         
-        let tracerExporter = CustomOtlpHttpTraceExporter(endpoint: tracerUrl, storage: storage)
+        let tracerExporter = CustomOtlpHttpTraceExporter(endpoint: tracerUrl,
+                                                         storage: storage,
+                                                         uploadCache: cache)
 
         //logs
         let logsUrlStr = IMQA.Endpoints.OpentelemetryBaseUrl.logs(uploadUrl).baseUrl()

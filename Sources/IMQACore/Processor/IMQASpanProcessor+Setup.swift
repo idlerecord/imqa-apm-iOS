@@ -11,12 +11,12 @@ import OpenTelemetrySdk
 extension Collection where Element == SpanProcessor {
     static func processors(for storage: IMQAStorage, export: OpenTelemetryExporter?) -> [SpanProcessor] {
         var processors: [SpanProcessor] = [
-            SingleSpanProcessor(
-                spanExporter: StorageSpanExporter(
-                    options: .init(storage: storage),
-                    logger: IMQA.logger
-                )
-            )
+//            SingleSpanProcessor(
+//                spanExporter: StorageSpanExporter(
+//                    options: .init(storage: storage),
+//                    logger: IMQA.logger
+//                )
+//            )
         ]
 
         if let external = export?.spanExporter {

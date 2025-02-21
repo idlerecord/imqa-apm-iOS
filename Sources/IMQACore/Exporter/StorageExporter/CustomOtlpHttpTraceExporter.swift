@@ -13,19 +13,20 @@ import SwiftProtobuf
 //import OpenTelemetryProtocolExporterCommon
 
 public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExporter {
-    static var num:Int = 0
     var pendingSpans: [SpanData] = []
     
     private let exporterLock = NSLock()
-    private(set) weak var storage: IMQAStorage?
-
     
+    private(set) weak var storage: IMQAStorage?
+    
+    private(set) weak var uploadCache:IMQAUploadCache?
     
     public convenience init(endpoint: URL,
                 config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
                 useSession: URLSession? = nil,
                 envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes,
-                storage:IMQAStorage) {
+                            storage:IMQAStorage,
+                            uploadCache:IMQAUploadCache) {
         self.init(
             endpoint: endpoint,
             config: config,
@@ -33,9 +34,11 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
             envVarHeaders: envVarHeaders
         )
         self.storage = storage
+        self.uploadCache = uploadCache
     }
     
     public func export(spans: [SpanData], explicitTimeout: TimeInterval? = nil) -> SpanExporterResultCode {
+        var resultValue: SpanExporterResultCode = .success
         var sendingSpans: [SpanData] = []
         exporterLock.lock()
         pendingSpans.append(contentsOf: spans)
@@ -57,25 +60,26 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
                 request.addValue(value, forHTTPHeaderField: key)
             }
         }
-//        exporterMetrics?.addSeen(value: sendingSpans.count)
+        let recordId = UUID().uuidString
+        self.uploadCache?.saveUploadData(id: recordId,
+                                         type: .spans,
+                                         data: request.httpBody!)
+        
         URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
             if let error = error {
-//                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
-//                print(error)
+                resultValue = .failure
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-                let spanIds = sendingSpans.map {
-                    CustomOtlpHttpTraceExporter.num = CustomOtlpHttpTraceExporter.num + 1
-                    let text = "SessionId:\(IMQAOTel.sessionId.toString) || TraceId:\($0.traceId)|| SpanId:\($0.spanId.hexString)|| ParentSpanId:\($0.parentSpanId?.hexString ?? "") || num \(CustomOtlpHttpTraceExporter.num)"
-                    LogFileManager.shared.recordToFile(text: text)
-                    return $0.spanId.hexString
-                }
-                
-                self?.storage?.deleteSpans(spanIds: spanIds)
-//                self?.exporterMetrics?.addSuccess(value: sendingSpans.count)
-                
+                resultValue = .success
             } else {
-//                self?.exporterMetrics?.addFailed(value: sendingSpans.count)
+                resultValue = .failure
             }
+            
+            if resultValue == .success {
+                //record data
+                self?.uploadCache?.deleteUploadData(id: recordId,
+                                                    type: .spans)
+            }
+
         }.resume()
 
         
@@ -95,27 +99,25 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
             let semaphore = DispatchSemaphore(value: 0)
             let request = createRequest(body: body, endpoint: endpoint)
 
-            
             URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
                 if let error = error {
-//                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
-                    print(error)
                     resultValue = .failure
                 } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-//                    self?.exporterMetrics?.addSuccess(value: pendingSpans.count)
+                    resultValue = .success
                 } else {
-//                    self?.exporterMetrics?.addFailed(value: pendingSpans.count)
+                    resultValue = .failure
+                }
+                if resultValue == .failure {
+                    //record data
                 }
                 semaphore.signal() // 释放信号量，继续执行后续代码
             }.resume()
 
-            
             semaphore.wait()
         }
         return resultValue
     }
 }
-
 
 public struct CustomEnvVarHeaders {
     private static let labelListSplitter = Character(",")
@@ -169,5 +171,25 @@ public struct CustomEnvVarHeaders {
             labels.append((key, value))
         }
         return labels.count > 0 ? labels : nil
+    }
+}
+
+extension CustomOtlpHttpTraceExporter {
+    private func buildRecord(from spanData: SpanData) -> SpanRecord? {
+        guard let data = try? spanData.toJSON() else {
+            return nil
+        }
+
+        // spanData endTime is non-optional and will be set during `toSpanData()`
+        let endTime = spanData.hasEnded ? spanData.endTime : nil
+
+        return SpanRecord(
+            id: spanData.spanId.hexString,
+            name: spanData.name,
+            traceId: spanData.traceId.hexString,
+            type: spanData.spanType,
+            data: data,
+            startTime: spanData.startTime,
+            endTime: endTime )
     }
 }

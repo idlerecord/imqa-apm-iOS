@@ -6,7 +6,7 @@
 //
 //import GRDB
 
-enum IMQAUploadType: Int {
+public enum IMQAUploadType: Int {
     case spans = 0
     case log
     case crash

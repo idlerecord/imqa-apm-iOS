@@ -80,6 +80,7 @@ import IMQAOtelInternal
         
         IMQAOTel.setUp(option: options,
                        storage: storage,
+                       cache: self.upload!.cache,
                        logController: logController) //꼭 실행해야함니다.
         IMQA.logger.otel = self
     }
@@ -98,37 +99,28 @@ extension IMQA{
                 IMQA.logger.warning("IMQA was already started!")
                 return
             }
-//            guard config == nil || config?.isSDKEnabled == true else {
-//                IMQA.logger.warning("IMQA was already started!")
-//                return
-//            }
-
-            let processStartSpan = createProcessStartSpan()
-            defer{processStartSpan.end()}
-
-//            recordSpan(name: "Session", parent: processStartSpan, type: .SESSION) { _ in
-                started = true
+            started = true
+            
+            //lifecycle start
+            sessionLifecycle.start()
+            //tap view xhr crash 잡는 서비스 start
+            captureServices.start()
+            
+            processingQueue.async {[weak self] in
+                // fetch crash reports and link them to sessions
+                // then upload them
+                UnsentDataHandler.sendUnsentData(
+                    storage: self?.storage,
+                    upload: self?.upload,
+                    otel: self,
+                    logController: self?.logController,
+                    currentSessionId: self?.sessionController.currentSession?.id,
+                    crashReporter: self?.captureServices.crashReporter
+                )
                 
-                sessionLifecycle.start()
-                captureServices.start()
-
-                
-                processingQueue.async {[weak self] in
-                    // fetch crash reports and link them to sessions
-                    // then upload them
-                    UnsentDataHandler.sendUnsentData(
-                        storage: self?.storage,
-                        upload: self?.upload,
-                        otel: self,
-                        logController: self?.logController,
-                        currentSessionId: self?.sessionController.currentSession?.id,
-                        crashReporter: self?.captureServices.crashReporter
-                    )
-
-                    // retry any remaining cached upload data
-                    self?.upload?.retryCachedData()
-                }
-//            }
+                // retry any remaining cached upload data
+                self?.upload?.retryCachedData()
+            }
         }
         return self
     }
@@ -146,7 +138,6 @@ extension IMQA{
             throw IMQASetupError.initializationNotAllowed("IMQA cannot be initialized on SwiftUI Previews")
         }
         
-        let startTime = Date()
         return try IMQA.synchronizationQueue.sync{
             if let client = client {
                 IMQA.logger.debug("IMQA was already initialized!")
@@ -166,17 +157,25 @@ extension IMQA{
 }
 
 public extension IMQA {
-    static func customLog(level: LogLevel, message: String){
-        IMQA.logger.log(level: level, message: message, attributes: [:])
-    }
-}
-
-public extension IMQA {
+    
+    /// UserId 저장
+    /// - Parameter id: id
     static func setUserId(id: String?) {
         UserModel.setUserId(id)
     }
+    
+    /// UserId 회득
+    /// - Returns: id
     static func getUserId() -> String? {
         return UserModel.id
+    }
+    
+    /// customlog직는 방법
+    /// - Parameters:
+    ///   - level: 레별
+    ///   - message: 찍으려는 로그메세지
+    static func customLog(level: LogLevel, message: String){
+        IMQA.logger.log(level: level, message: message, attributes: [:])
     }
 }
 
@@ -187,11 +186,6 @@ extension IMQA{
     }
     
     @objc public func currentSessionId() -> String? {
-//        guard config == nil || config?.isSDKEnabled == true else {
-//            return nil
-//        }
-
         return sessionController.currentSession?.id.toString
     }
-
 }

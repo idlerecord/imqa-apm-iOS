@@ -8,7 +8,7 @@
 import Foundation
 import IMQAOtelInternal
 
-class IMQAUploadCache {
+public class IMQAUploadCache {
     private(set) var options: IMQAUpload.CacheOptions
     
     let logger: InternalLogger
@@ -58,16 +58,7 @@ class IMQAUploadCache {
                 let deleteCount = recordsToDelete.count
 
                 if deleteCount > 0 {
-        //            let span = IMQAOTel().buildSpan(
-        //                name: "imqa-upload-cache-vacuum",
-        //                type: .performance,
-        //                attributes: ["removed": "\(deleteCount)"])
-        //                .markAsPrivate()
-        //            span.setStartTime(time: Date())
-        //            let startedSpan = span.startSpan()
                     deleteRecords(recordIDs: recordsToDelete)
-        //            startedSpan.end()
-
                     return UInt(deleteCount)
                 }
                 return 0
@@ -83,9 +74,10 @@ class IMQAUploadCache {
     ///   - type: Type of the data
     ///   - data: Data to cache
     /// - Returns: The newly cached `UploadDataRecord`
-    @discardableResult func saveUploadData(id: String,
-                                           type: IMQAUploadType,
-                                           data: Data) -> UploadDataRecord {
+    @discardableResult
+    func saveUploadData(id: String,
+                        type: IMQAUploadType,
+                        data: Data) -> UploadDataRecord {
         let record = UploadDataRecord(id: id,
                                       type: type.rawValue,
                                       data: data,
@@ -97,7 +89,7 @@ class IMQAUploadCache {
             logger.debug("Failed to save upload data:\(error)")
         }
         return record
-    
+        
     }
 
     /// Saves the given `UploadDataRecord` to the cache.
@@ -105,21 +97,6 @@ class IMQAUploadCache {
     func saveUploadData(_ record: UploadDataRecord) {
         return queue.sync {
             let storage =  IMQAMuti<UploadDataRecord>()
-            if storage.exist(record.vvid) {
-                storage.save(record)
-                return
-            }
-            let limit = self.options.cacheLimit
-            if limit > 0 {
-                let count = storage.get().count
-                if count >= limit {
-                    let redundant = count - Int(limit)
-                    let removeRecords = storage.get().suffix(redundant)
-                    removeRecords.forEach{
-                        storage.remove($0.vvid)
-                    }
-                }
-            }
             storage.save(record)
         }
     }
@@ -129,12 +106,12 @@ class IMQAUploadCache {
     ///   - id: Identifier of the data
     ///   - type: Type of the data
     /// - Returns: Boolean indicating if the data was successfully deleted
-    @discardableResult func deleteUploadData(id: String, type: IMQAUploadType) -> Bool {
+    @discardableResult
+    func deleteUploadData(id: String, type: IMQAUploadType) -> Bool {
         do{
             guard let uploadData = fetchUploadData(id: id, type: type) else {
                 return false
             }
-
             return try deleteUploadData(uploadData)
         }catch{
             logger.debug("deleteUploadData error \(error)")
@@ -165,13 +142,12 @@ class IMQAUploadCache {
     ) {
         return queue.sync {
             let storage = IMQAMuti<UploadDataRecord>()
-            let filterRecords = storage.get().filter{
+            let filterRecord = storage.get().filter{
                 $0.id == id && $0.type == type.rawValue
             }
-            filterRecords.forEach{
-                $0.attemptCount = attemptCount
-            }
-            storage.save(filterRecords)
+            if filterRecord.isEmpty { return }
+            filterRecord.first!.attemptCount = attemptCount
+            storage.save(filterRecord.first!)
         }
     }
 
@@ -182,10 +158,13 @@ class IMQAUploadCache {
     func fetchRecordsToDeleteBasedOnSize(maxSize: UInt) -> [String] {
         return queue.sync {
             let storage = IMQAMuti<UploadDataRecord>()
-            storage.size()
-            var result: [String] = []
-    #warning("fix me please")
-            return result
+            var result: [String] = storage.get().map{$0.id}
+            if result.count > maxSize {
+                let removeCount = result.count - Int(maxSize)
+                return Array(result[(result.count - removeCount)..<(result.count)])
+            }else{
+                return []
+            }
 
         }
     }
