@@ -92,10 +92,9 @@ public class IMQAOTel{
         SpanAttributesUtils.updateCommonAttributes(key: SpanSemantics.Common.sourceAddress,
                                                    value: AttributeValue(NetworkInfoManager.sharedInstance.publicIP))
         
-        //screen.name
-        let screenName = IMQAScreen.name ?? SpanSemantics.CommonValue.noScreenValue
+
         SpanAttributesUtils.updateCommonAttributes(key: SpanSemantics.Common.screenName,
-                                                   value: AttributeValue(screenName))
+                                                   value: AttributeValue(IMQAScreen.name ?? SpanSemantics.CommonValue.noScreenValue))
         
         //screen.type
         SpanAttributesUtils.updateCommonAttributes(key: SpanSemantics.Common.screenType,

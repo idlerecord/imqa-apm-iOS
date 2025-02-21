@@ -33,6 +33,11 @@ class UIViewControllerHandler{
     
     @ThreadSafe var uiReadySpans:[String: Span] = [:]
     @ThreadSafe var alreadyFinishedUiReadyIds: Set<String> = []
+    var shouldNotBeCollectedClass: [String]{
+        return ["UIEditingOverlayViewController",
+                "UIInputWindowController",
+                "UIAlertController"]
+    }
     
     init() {
         
@@ -71,7 +76,7 @@ class UIViewControllerHandler{
     }
     
     func onViewDidLoadStart(_ vc: UIViewController){
-        IMQAScreen.name = vc.className
+        guard !shouldNotBeCollectedClass.contains(vc.className) else{return}
         let id = UUID().uuidString
         vc.imqa_identifier = id
 
@@ -88,6 +93,9 @@ class UIViewControllerHandler{
     }
     
     func onViewWillAppearStart(_ vc: UIViewController){
+        guard !shouldNotBeCollectedClass.contains(vc.className) else{return}
+        IMQAScreen.name = vc.className
+        
         queue.async {
             guard let id = vc.imqa_identifier else{
                 return
@@ -96,15 +104,19 @@ class UIViewControllerHandler{
             let className = vc.className
             let parentSpan = SpanUtils.span(name: className,
                                           startTime: Date(),
-                                          type: IMQASpanType.RENDER)
+                                          type: IMQASpanType.RENDER,
+                                            attributes: [SpanSemantics.Common.screenName:.string(className)])
             
             let viewWillAppearSpanName = "\(className)[viewWillAppear]"
             let span = SpanUtils.span(name: viewWillAppearSpanName,
-                                                 parentSpan: parentSpan,
-                                                 startTime: Date(),
-                                                 type: IMQASpanType.RENDER)
+                                      parentSpan: parentSpan,
+                                      startTime: Date(),
+                                      type: IMQASpanType.RENDER,
+                                      attributes: [SpanSemantics.Common.screenName:.string(className)])
             self.parentSpans[id] = parentSpan
             self.viewWillAppearSpans[id] = span
+//            print("parent:\(className)[parentStart]")
+//            print("child:\(className)[viewWillAppearStart]")
         }
     }
     
@@ -116,12 +128,14 @@ class UIViewControllerHandler{
             }
 
             span.end()
+//            print("child:\(vc.className ?? "")[viewWillAppearEnd]")
         }
     }
     
     func onViewDidAppearStart(_ vc: UIViewController){
+        guard !shouldNotBeCollectedClass.contains(vc.className) else{return}
+
         queue.async {
-            IMQAScreen.name = vc.className
             guard let id = vc.imqa_identifier,
                   let parentSpan = self.parentSpans[id] else{
                 return
@@ -131,10 +145,13 @@ class UIViewControllerHandler{
             let className = vc.className
             let viewDidAppearSpanName = "\(className)[viewDidAppear]"
             let span = SpanUtils.span(name: viewDidAppearSpanName,
-                                                 parentSpan: parentSpan,
-                                                 startTime: Date(),
-                                                 type: IMQASpanType.RENDER)
+                                      parentSpan: parentSpan,
+                                      startTime: Date(),
+                                      type: IMQASpanType.RENDER,
+                                      attributes: [SpanSemantics.Common.screenName:.string(className)])
             self.viewDidAppearSpans[id] = span
+//            print("child:\(className)[viewDidAppearStart]")
+
         }
     }
     
@@ -147,12 +164,19 @@ class UIViewControllerHandler{
             let now = Date()
             if let span = self.viewDidAppearSpans.removeValue(forKey: id){
                 span.end(time: now)
+//                print("child:\(vc.className ?? "")[ViewDidAppearEnd]")
             }
             guard let parentSpan = self.parentSpans[id] else{
                 return
             }
             parentSpan.end(time: Date())
+//            print("parent:\(vc.className ?? "")[parentEnd]")
             self.parentSpans[id] = nil
+//            print("***********************\n")
+//            print(self.parentSpans)
+//            print("\(vc.className)")
+//            print("***********************\n")
+
         }
     }
     

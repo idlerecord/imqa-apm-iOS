@@ -45,9 +45,9 @@ extension SpanBuilder{
 
         
         
-        let vcName = IMQAScreen.name ?? SpanSemantics.CommonValue.noScreenValue
         SpanAttributesUtils.updateCommonAttributes(key: SpanSemantics.Common.screenName,
-                                                value: AttributeValue(vcName))
+                                                value: AttributeValue(IMQAScreen.name ?? SpanSemantics.CommonValue.noScreenValue))
+        
         
         return setAttributes(attributes: attributes)
     }

@@ -13,6 +13,7 @@ import SwiftProtobuf
 //import OpenTelemetryProtocolExporterCommon
 
 public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExporter {
+    static var num:Int = 0
     var pendingSpans: [SpanData] = []
     
     private let exporterLock = NSLock()
@@ -63,8 +64,12 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
 //                print(error)
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
                 let spanIds = sendingSpans.map {
+                    CustomOtlpHttpTraceExporter.num = CustomOtlpHttpTraceExporter.num + 1
+                    let text = "SessionId:\(IMQAOTel.sessionId.toString) || TraceId:\($0.traceId)|| SpanId:\($0.spanId.hexString)|| ParentSpanId:\($0.parentSpanId?.hexString ?? "") || num \(CustomOtlpHttpTraceExporter.num)"
+                    LogFileManager.shared.recordToFile(text: text)
                     return $0.spanId.hexString
                 }
+                
                 self?.storage?.deleteSpans(spanIds: spanIds)
 //                self?.exporterMetrics?.addSuccess(value: sendingSpans.count)
                 
