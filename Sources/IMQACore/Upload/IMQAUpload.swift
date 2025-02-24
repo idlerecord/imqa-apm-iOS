@@ -202,6 +202,7 @@ public class IMQAUpload: IMQALogUploader {
                         attemptCount: count,
                         error: error
                     )
+                    completion()
                     self?.cleanCacheFromStaleData()
                 }
             }

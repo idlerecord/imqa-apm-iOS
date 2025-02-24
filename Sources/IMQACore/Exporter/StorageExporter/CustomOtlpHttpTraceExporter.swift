@@ -41,6 +41,7 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
         var resultValue: SpanExporterResultCode = .success
         var sendingSpans: [SpanData] = []
         exporterLock.lock()
+        pendingSpans = []
         pendingSpans.append(contentsOf: spans)
         sendingSpans = pendingSpans
         pendingSpans = []

@@ -114,8 +114,10 @@ class IMQAUploadOperation: AsyncOperation {
 
 
         if isProtobuf {
+            request.httpMethod = "POST"
+            request.setValue("IMQA-iOS-SDK", forHTTPHeaderField: "User-Agent")
             request.setValue("application/x-protobuf", forHTTPHeaderField: "Content-Type")
-            request.setValue(metadataOptions.userAgent, forHTTPHeaderField: "User-Agent")
+            request.setValue("gzip", forHTTPHeaderField: "Content-Encoding")
         }else{
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -136,7 +138,7 @@ class IMQAUploadOperation: AsyncOperation {
         }
 
         var request = r
-        request.setValue(String(attemptCount - 1), forHTTPHeaderField: "x-imqa-retry-count")
+//        request.setValue(String(attemptCount - 1), forHTTPHeaderField: "x-imqa-retry-count")
 
         return request
     }
