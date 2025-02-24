@@ -137,6 +137,7 @@ class NetworkInfoManager: NSObject {
     }
         
     func fetchPublicIPAddress(completion: @escaping (String?) -> Void) {
+        TapCaptureService.tapSpan = nil
         guard let url = URL(string: "https://api.ipify.org?format=json") else{
             completion(nil)
             return
