@@ -12,37 +12,29 @@ import OpenTelemetryApi
 class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
     var pendingLogRecords: [ReadableLogRecord] = []
     private let exporterLock = NSLock()
-    private(set) weak var storage: IMQAStorage?
+    private(set) weak var uploadCache:IMQAUploadCache?
     
-    override init(
+    public convenience init(
         endpoint: URL = URL(string: "http://localhost:4318/v1/logs")!,
         config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
         useSession: URLSession? = nil,
-        envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes
+        envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes,
+        uploadCache:IMQAUploadCache
     ) {
-        super.init(
+        self.init(
             endpoint: endpoint,
             config: config,
             useSession: useSession,
             envVarHeaders: envVarHeaders
         )
+        self.uploadCache = uploadCache
     }
-    
-    convenience public init(
-        endpoint: URL = URL(string: "http://localhost:4318/v1/logs")!,
-        config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
-        useSession: URLSession? = nil,
-        envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes,
-        storage: IMQAStorage
-    ) {
-        self.init(endpoint: endpoint, config: config, useSession: useSession, envVarHeaders: envVarHeaders)
-        self.storage = storage
-    }
-
     
     public func export(logRecords: [OpenTelemetrySdk.ReadableLogRecord], explicitTimeout: TimeInterval? = nil) -> OpenTelemetrySdk.ExportResult {
+        var resultValue: SpanExporterResultCode = .success
         var sendingLogRecords: [ReadableLogRecord] = []
         exporterLock.lock()
+        pendingLogRecords = []
         pendingLogRecords.append(contentsOf: logRecords)
         sendingLogRecords = pendingLogRecords
         pendingLogRecords = []
@@ -63,23 +55,26 @@ class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
                 request.addValue(value, forHTTPHeaderField: key)
             }
         }
-//        exporterMetrics?.addSeen(value: sendingLogRecords.count)
+        let recordId = UUID().uuidString
+        self.uploadCache?.saveUploadData(id: recordId,
+                                         type: .logs,
+                                         data: request.httpBody!)
         request.timeoutInterval = min(explicitTimeout ?? TimeInterval.greatestFiniteMagnitude, config.timeout)
         URLSession.shared.dataTask(with: request) {[weak self] data, response, error  in
             if let error = error {
-//                self?.exporterMetrics?.addFailed(value: sendingLogRecords.count)
-                self?.exporterLock.lock()
-                self?.pendingLogRecords.append(contentsOf: sendingLogRecords)
-                self?.exporterLock.unlock()
-                
+                resultValue = .failure
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-//                self?.exporterMetrics?.addSuccess(value: sendingLogRecords.count)
+                resultValue = .success
             } else {
-//                self?.exporterMetrics?.addFailed(value: sendingLogRecords.count)
-                self?.exporterLock.lock()
-                self?.pendingLogRecords.append(contentsOf: sendingLogRecords)
-                self?.exporterLock.unlock()
+                resultValue = .failure
             }
+            
+            if resultValue == .success {
+                //record data
+                self?.uploadCache?.deleteUploadData(id: recordId,
+                                                    type: .logs)
+            }
+            
         }.resume()
 
         return .success
@@ -114,16 +109,24 @@ class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
                 }
             }
             
+            let recordId = UUID().uuidString
+            self.uploadCache?.saveUploadData(id: recordId,
+                                             type: .logs,
+                                             data: request.httpBody!)
+
             URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
                 if let error = error {
-//                    self?.exporterMetrics?.addFailed(value: pendingLogRecords.count)
                     exporterResult = ExportResult.failure
                 } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-//                    self?.exporterMetrics?.addSuccess(value: pendingLogRecords.count)
                     exporterResult = ExportResult.success
                 } else {
-//                    self?.exporterMetrics?.addFailed(value: pendingLogRecords.count)
                     exporterResult = ExportResult.failure
+                }
+                
+                if exporterResult == .success {
+                    //record data
+                    self?.uploadCache?.deleteUploadData(id: recordId,
+                                                        type: .logs)
                 }
             }.resume()
             

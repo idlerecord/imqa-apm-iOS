@@ -16,16 +16,13 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
     var pendingSpans: [SpanData] = []
     
     private let exporterLock = NSLock()
-    
-    private(set) weak var storage: IMQAStorage?
-    
+        
     private(set) weak var uploadCache:IMQAUploadCache?
     
     public convenience init(endpoint: URL,
                 config: CustomOtlpConfiguration = CustomOtlpConfiguration(),
                 useSession: URLSession? = nil,
                 envVarHeaders: [(String, String)]? = CustomEnvVarHeaders.attributes,
-                            storage:IMQAStorage,
                             uploadCache:IMQAUploadCache) {
         self.init(
             endpoint: endpoint,
@@ -33,7 +30,6 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
             useSession: useSession,
             envVarHeaders: envVarHeaders
         )
-        self.storage = storage
         self.uploadCache = uploadCache
     }
     

@@ -35,13 +35,13 @@ extension DefaultIMQALogSharedState {
         exporter: LogRecordExporter? = nil
     ) -> DefaultIMQALogSharedState {
         var exporters: [LogRecordExporter] = [
-            StorageIMQALogExporter(
-                logBatcher: DefaultLogBatcher(
-                    repository: storage,
-                    logLimits: .init(),
-                    delegate: controller
-                )
-            )
+//            StorageIMQALogExporter(
+//                logBatcher: DefaultLogBatcher(
+//                    repository: storage,
+//                    logLimits: .init(),
+//                    delegate: controller
+//                )
+//            )
         ]
 
         if let exporter = exporter {

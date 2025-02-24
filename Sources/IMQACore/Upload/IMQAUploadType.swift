@@ -8,7 +8,7 @@
 
 public enum IMQAUploadType: Int {
     case spans = 0
-    case log
+    case logs
     case crash
 }
 

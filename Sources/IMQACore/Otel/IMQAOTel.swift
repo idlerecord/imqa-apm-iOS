@@ -181,7 +181,6 @@ public class IMQAOTel{
         }
         
         let tracerExporter = CustomOtlpHttpTraceExporter(endpoint: tracerUrl,
-                                                         storage: storage,
                                                          uploadCache: cache)
 
         //logs
@@ -190,7 +189,8 @@ public class IMQAOTel{
             return
         }
         
-        let logsExporter = CustomOtlpHttpLogExporter(endpoint: logsUrl)
+        let logsExporter = CustomOtlpHttpLogExporter(endpoint: logsUrl,
+                                                     uploadCache: cache)
 
         
         let opentelemetryExporter = OpenTelemetryExporter(spanExporter: tracerExporter,
@@ -208,7 +208,7 @@ public class IMQAOTel{
         let logSharedState = DefaultIMQALogSharedState.create(
             storage: storage,
             controller: logController,
-            exporter: nil//logsExporter
+            exporter: logsExporter
         )
         
         OpenTelemetry.registerLoggerProvider(loggerProvider: DefaultIMQALoggerProvider(sharedState: logSharedState))

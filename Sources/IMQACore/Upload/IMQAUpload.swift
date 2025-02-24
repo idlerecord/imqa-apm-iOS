@@ -101,7 +101,7 @@ public class IMQAUpload: IMQALogUploader {
     ///   - completion: Completion block called when the data is successfully cached, or when an `Error` occurs
     public func uploadLog(id: String, data: Data, completion: ((Result<(), Error>) -> Void)?) {
         queue.async { [weak self] in
-            self?.uploadData(id: id, data: data, type: .log, completion: completion)
+            self?.uploadData(id: id, data: data, type: .logs, completion: completion)
         }
     }
     
@@ -145,7 +145,7 @@ public class IMQAUpload: IMQALogUploader {
             switch type {
             case .spans:
                 ()
-            case .log:
+            case .logs:
                 ()
             case .crash:
                 ()
@@ -254,7 +254,7 @@ public class IMQAUpload: IMQALogUploader {
     private func endpoint(for type: IMQAUploadType) -> URL {
         switch type {
         case .spans: return options.endpoints.spansURL
-        case .log: return options.endpoints.logsURL
+        case .logs: return options.endpoints.logsURL
         case .crash: return options.endpoints.logsURL
         }
     }

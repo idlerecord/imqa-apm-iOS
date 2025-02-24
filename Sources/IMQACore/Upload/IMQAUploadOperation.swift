@@ -88,7 +88,7 @@ class IMQAUploadOperation: AsyncOperation {
 
             // check success
             if let response = response as? HTTPURLResponse {
-                self?.logger?.debug("Upload operation complete. Status: \(response.statusCode) URL: \(String(describing: response.url))")
+//                self?.logger?.debug("Upload operation complete. Status: \(response.statusCode) URL: \(String(describing: response.url))")
                 if response.statusCode >= 200 && response.statusCode < 300 {
                     self?.completion?(false, self?.attemptCount ?? 0, nil)
                 } else {
