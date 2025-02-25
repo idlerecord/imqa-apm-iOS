@@ -25,7 +25,7 @@ extension PayloadEnvelope{
         }
         do {
             let data = try exportRequest.serializedData()
-            return data
+            return data.gzip()
         } catch {
             IMQA.logger.warning("Function::requestLogProbufData::serializedData Convert Error")
             return nil
