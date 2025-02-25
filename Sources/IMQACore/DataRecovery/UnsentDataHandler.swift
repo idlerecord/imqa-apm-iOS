@@ -27,8 +27,7 @@ class UnsentDataHandler {
             return
         }
 
-        // send any logs in storage first before we clean up the resources
-        logController?.uploadAllPersistedLogs()
+        // send any logs in storage first before we clean up the resources//        logController?.uploadAllPersistedLogs()
 
         // if we have a crash reporter, we fetch the unsent crash reports first
         // and save their identifiers to the corresponding sessions
@@ -220,13 +219,34 @@ class UnsentDataHandler {
             }
             spanAttributes[SpanSemantics.Common.sessionId] = AttributeValue(session?.id.toString ?? "")
 
-            let span = SpanUtils.span(name: spanException.type,
-                                      startTime: Date(),
-                                      type: .CRASH,
-                                      attributes: spanAttributes)
-            span.recordException(spanException, attributes: [:], timestamp: Date())
-            span.status = .error(description: spanException.message ?? "")
-            span.end()
+
+            var beforeSpan:Span? = nil
+            if let spanRecord = report.spanRecord {
+                
+                let beforeCrashSpan = SpanUtils.span(name: spanRecord.name,
+                                                     startTime: spanRecord.startTime,
+                                                     type: spanRecord.type,
+                                                     attributes: [SpanSemantics.Common.sessionId: AttributeValue(session?.id.toString ?? "")])
+                
+                if let endTime = spanRecord.endTime {
+                    beforeCrashSpan.end(time: endTime)
+                }else{
+                    beforeCrashSpan.end(time: timestamp)
+                }
+
+                var spanStartTime = (spanRecord.endTime != nil) ? spanRecord.endTime : timestamp
+
+                
+                let span = SpanUtils.span(name: spanException.type,
+                                          startTime: spanStartTime!,
+                                          type: .CRASH,
+                                          attributes: spanAttributes)
+                span.recordException(spanException, attributes: [:], timestamp: Date())
+                span.status = .error(description: spanException.message ?? "")
+                span.end(time: timestamp)
+                beforeSpan = span
+            }
+            
 
             
             //log기록
@@ -251,7 +271,7 @@ class UnsentDataHandler {
                                                 body: exceptionObj.type,
                                                 attributes: attributes,
                                                 timestamp: timestamp,
-                                                spanContext: span.context)
+                                                spanContext: beforeSpan?.context)
             
             
             let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])
@@ -281,29 +301,6 @@ class UnsentDataHandler {
         }
     }
 
-    static private func createLogCrashAttributes(
-        otel: IMQAOpenTelemetry?,
-        report: CrashReport,
-        session: SessionRecord?,
-        timestamp: Date
-    ) -> [String: String] {
-
-        let attributesBuilder = IMQALogAttributesBuilder(
-            session: session,
-            crashReport: report,
-            initialAttributes: [:]
-        )
-        
-        let attributes = attributesBuilder
-            .addLogType(IMQALogType.CRASH)
-            .addApplicationProperties()
-            .addApplicationState()
-            .addCrashReportProperties()
-//            .addTag(tag: "SDKInitializer")
-            .build()
-
-        return attributes
-    }
 
     static private func sendSessions(
         storage: IMQAStorage,
@@ -331,7 +328,9 @@ class UnsentDataHandler {
                 continue
             }
 
-            sendSession(session, storage: storage, upload: upload, performCleanUp: false)
+            try storage.delete(session: session)
+
+//            sendSession(session, storage: storage, upload: upload, performCleanUp: false)
         }
 
         // remove old metadata

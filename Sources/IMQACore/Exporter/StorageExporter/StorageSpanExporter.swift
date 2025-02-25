@@ -63,9 +63,6 @@ extension StorageSpanExporter {
             return nil
         }
 
-        // spanData endTime is non-optional and will be set during `toSpanData()`
-        let endTime = spanData.hasEnded ? spanData.endTime : nil
-
         return SpanRecord(
             id: spanData.spanId.hexString,
             name: spanData.name,
@@ -73,6 +70,6 @@ extension StorageSpanExporter {
             type: spanData.spanType,
             data: data,
             startTime: spanData.startTime,
-            endTime: endTime )
+            endTime: spanData.endTime )
     }
 }
