@@ -4,14 +4,14 @@
 @preconcurrency import PackageDescription
 
 let package = Package(
-    name: "IMQAIO",
+    name: "IMQACore",
     platforms: [
         .iOS(.v13),
         .macOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(name: "IMQAIO", type: .static, targets: ["IMQAIO"])
+        .library(name: "IMQACore", type: .static, targets: ["IMQACore"])
     ],
     dependencies: [
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift",
@@ -27,7 +27,7 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         
         // core service -----------------------------------------------------------
-            .target(name: "IMQAIO",
+            .target(name: "IMQACore",
                     dependencies: [
                         "IMQAOtelInternal",
                         "IMQACollectDeviceInfo",
