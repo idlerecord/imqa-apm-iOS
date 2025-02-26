@@ -6,7 +6,7 @@
 //
 
 public class IMQAMeta {
-    public static let sdkVersion = "1.0.5"
+    public static let sdkVersion = "1.0.3"
 }
 
 extension IMQAMeta {

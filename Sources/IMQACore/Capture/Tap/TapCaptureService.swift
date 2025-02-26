@@ -118,7 +118,8 @@ public final class TapCaptureService: CaptureService {
                                        startTime: Date(),
                                        type: IMQASpanType.EVENT,
                                        attributes: attributes)
-        clickSpan.end()        
+        clickSpan.status = .ok
+        clickSpan.end()
         TapCaptureService.tapSpan = clickSpan
     }
     

@@ -241,7 +241,6 @@ class UnsentDataHandler {
                                           startTime: spanStartTime!,
                                           type: .CRASH,
                                           attributes: spanAttributes)
-                span.recordException(spanException, attributes: [:], timestamp: Date())
                 span.status = .error(description: spanException.message ?? "")
                 span.end(time: timestamp)
                 beforeSpan = span
@@ -289,6 +288,7 @@ class UnsentDataHandler {
                             return
                         }
                         reporter.deleteCrashReport(id: internalId)
+                        IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
                     }
 
                 case .failure(let error):
@@ -328,8 +328,7 @@ class UnsentDataHandler {
                 continue
             }
 
-            try storage.delete(session: session)
-
+//            try storage.delete(session: session)
 //            sendSession(session, storage: storage, upload: upload, performCleanUp: false)
         }
 

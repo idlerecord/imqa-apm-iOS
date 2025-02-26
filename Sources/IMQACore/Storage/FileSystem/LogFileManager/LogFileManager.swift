@@ -7,8 +7,8 @@
 
 import Foundation
 
-class LogFileManager {
-    static let shared = LogFileManager()
+public class LogFileManager {
+    public static let shared = LogFileManager()
     let fileName = "log.txt"
     let fileManager = FileManager.default
     
@@ -23,8 +23,9 @@ class LogFileManager {
     private init() {
         
     }
-    func recordToFile(text: String){
-
+    
+    public func recordToFile(text: String){
+#if DEBUG
         let newText = text + "\n" // 每条数据换行
         let data = newText.data(using: .utf8)!
         
@@ -39,6 +40,7 @@ class LogFileManager {
             // 文件不存在，创建新文件并写入
             try? data.write(to: fileURL, options: .atomic)
         }
+#endif
 
     }
     

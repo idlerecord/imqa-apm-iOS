@@ -181,8 +181,21 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                     key: SemanticAttributes.httpResponseStatusCode.rawValue,
                     value: response.statusCode
                 )
-            }
+                
+                if !((200..<300).contains(response.statusCode)){
+                    let errorMessage = NetworkStatusCode.errorMessage(code: response.statusCode)
+                    span.setAttribute(key: SemanticAttributes.exceptionType.rawValue,
+                                      value: .string("\(response.statusCode)"))
 
+                    span.setAttribute(key: SemanticAttributes.exceptionMessage.rawValue,
+                                      value: .string(errorMessage))
+                    
+                    span.status = .error(description: errorMessage)
+                }else{
+                    span.status = .ok
+                }
+            }
+            
             if let error = error ?? task.error {
                 // Should this be something else?
                 let nsError = error as NSError
@@ -190,10 +203,17 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                     key: SpanSemantics.XHR.errorType,
                     value: nsError.domain
                 )
+                
+                span.setAttribute(key: SemanticAttributes.exceptionType.rawValue,
+                                  value: .string(nsError.domain))
+
+                span.setAttribute(key: SemanticAttributes.exceptionMessage.rawValue,
+                                  value: .string(error.localizedDescription))
+                
+                
                 span.status = .error(description: error.localizedDescription)
-            }else{
-                span.status = .ok
             }
+            
             span.end()
 
             // internal notification with the captured request
@@ -247,3 +267,34 @@ extension DefaultURLSessionTaskHandler{
     }
 }
 
+struct NetworkStatusCode{
+    static func errorMessage(code: Int) -> String{
+        switch code {
+        case 301:
+            return "Resource permanently redirected"
+        case 302:
+            return "Resource temporarily redirected"
+        case 304:
+            return "Not modified (resource unchanged)"
+        case 400:
+            return "Bad request (invalid format)"
+        case 401:
+            return "Unauthorized (invalid token)"
+        case 403:
+            return "Forbidden (access denied)"
+        case 404:
+            return "Not found (resource not found)"
+        case 405:
+            return "Method not allowed (request method not supported)"
+        case 500:
+            return "Internal server error (server problem)"
+        case 502:
+            return "Bad gateway (proxy problem)"
+        case 503:
+            return "Service unavailable (server overloaded)"
+        default:
+            return "\(code)"
+        }
+    }
+    
+}

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-//import KSCrashRecording
-import KSCrash
+import KSCrashRecording
+//import KSCrash
 import OpenTelemetryApi
 import IMQACommonInternal
 import IMQAOtelInternal
@@ -99,15 +99,15 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
         configuration.installPath = basePath
         configuration.reportStoreConfiguration.appName = bundleName
         configuration.crashNotifyCallback = { [weak self] writerPointer in
-            let storage = IMQAMuti<SpanRecord>()
-            let latestRecord = storage.get().first
-            if let spanData = try? JSONEncoder().encode(latestRecord),
-               let spanJSONString = String(data: spanData, encoding: .utf8) {
-                // 使用低级 API 写入崩溃报告
-                writerPointer.withMemoryRebound(to: ReportWriter.self, capacity: 1) { writer in
-                    writer.pointee.addJSONElement(writer, UserInfoKey.crashSpan, spanJSONString, true)
-                }
-            }
+//            let storage = IMQAMuti<SpanRecord>()
+//            let latestRecord = storage.get().first
+//            if let spanData = try? JSONEncoder().encode(latestRecord),
+//               let spanJSONString = String(data: spanData, encoding: .utf8) {
+//                // 使用低级 API 写入崩溃报告
+//                writerPointer.withMemoryRebound(to: ReportWriter.self, capacity: 1) { writer in
+//                    writer.pointee.addJSONElement(writer, UserInfoKey.crashSpan, spanJSONString, true)
+//                }
+//            }
         }
         updateKSCrashInfo()
         
@@ -116,6 +116,7 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
         } catch  {
             logger.debug("crash install \(error.localizedDescription)")
         }
+        LogFileManager.shared.recordToFile(text: "initialize IMQAKSCRASH\(Date())")
     }
 
     /// Fetches all saved `CrashReports`.
@@ -165,12 +166,9 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
                 if let userDict = report["user"] as? [AnyHashable: Any] {
                     if let value = userDict[UserInfoKey.sessionId] as? String {
                         sessionId = SessionIdentifier(string: value)
-                    }
-                    if let info = userDict[UserInfoKey.crashSpan] as? [AnyHashable: Any]{
-                        if let data = try? JSONSerialization.data(withJSONObject: info, options: []),
-                            let span = try? JSONDecoder().decode(SpanRecord.self, from: data) {
-                            crashSpan =  span
-                        }
+                        
+                        let crashStorage = IMQAMuti<CrashSpanRecord>()
+                        crashSpan = crashStorage.fetch(sessionId!.toString)?.toSpanRecord()
                     }
                 }
 
@@ -178,9 +176,7 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
                    let rawTimestamp = reportDict["timestamp"] as? String {
                     timestamp = IMQACrashReporter.dateFormatter.date(from: rawTimestamp)
                 }
-                
-                
-
+                                
                 // add report
                 let crashReport = CrashReport(
                     payload: payload,
@@ -220,3 +216,9 @@ extension IMQACrashReporter: ExtendableCrashReporter {
     }
 }
 
+public extension IMQACrashReporter{
+    public static func removeCrashSpanRecord(sessionId: String){
+        let crashStorage = IMQAMuti<CrashSpanRecord>()
+        crashStorage.remove(sessionId)
+    }
+}
