@@ -34,20 +34,6 @@ class StorageSpanExporter: SpanExporter {
             if isValid, let record = buildRecord(from: spanData) {
                 do {
                     try storage.upsertSpan(record)
-
-                    //record before crash span
-                    let crashStorage = IMQAMuti<CrashSpanRecord>()
-                    let crashRecord: CrashSpanRecord = CrashSpanRecord(id: record.id,
-                                                                       name: record.name,
-                                                                       traceId: record.traceId,
-                                                                       type: record.type,
-                                                                       data: record.data,
-                                                                       startTime: record.startTime,
-                                                                       endTime: record.endTime,
-                                                                       processIdentifier: record.processIdentifier,
-                                                                       sessionId: IMQAOTel.sessionId.toString)
-                    crashStorage.save(crashRecord)
-
                 } catch let exception {
                     self.logger?.error(exception.localizedDescription)
                     result = .failure

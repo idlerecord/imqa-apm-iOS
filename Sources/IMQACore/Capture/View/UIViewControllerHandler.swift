@@ -30,6 +30,9 @@ class UIViewControllerHandler{
     @ThreadSafe var viewWillAppearSpans:[String: Span] = [:]
     @ThreadSafe var viewDidAppearSpans:[String: Span] = [:]
     @ThreadSafe var visibilitySpans:[String: Span] = [:]
+    @ThreadSafe var viewdidLoadStartTimes: [String: Date] = [:]
+    @ThreadSafe var viewdidLoadEndTimes: [String: Date] = [:]
+
     
     @ThreadSafe var uiReadySpans:[String: Span] = [:]
     @ThreadSafe var alreadyFinishedUiReadyIds: Set<String> = []
@@ -85,30 +88,16 @@ class UIViewControllerHandler{
             TapCaptureService.tapSpan = nil
             
             let className = vc.className
-            let parentSpan = SpanUtils.span(name: className,
-                                          startTime: Date(),
-                                          type: IMQASpanType.RENDER,
-                                            attributes: [SpanSemantics.Common.screenName:.string(className)])
-            self.parentSpans[id] = parentSpan
-            
-            let viewDidLoadSpanName = "\(className)[viewDidLoad]"
-            let span = SpanUtils.span(name: viewDidLoadSpanName,
-                                      parentSpan: parentSpan,
-                                      startTime: Date(),
-                                      type: IMQASpanType.RENDER,
-                                      attributes: [SpanSemantics.Common.screenName:.string(className)])
-            self.viewDidLoadSpans[id] = span
+            self.viewdidLoadStartTimes[id] = Date()
         }
     }
     
     func onViewDidLoadEnd(_ vc: UIViewController){
         queue.async {
-            guard let id = vc.imqa_identifier,
-                  let span = self.viewDidLoadSpans.removeValue(forKey: id) else {
+            guard let id = vc.imqa_identifier else {
                 return
             }
-
-            span.end()
+            self.viewdidLoadEndTimes[id] = Date()
         }
     }
     
@@ -117,22 +106,18 @@ class UIViewControllerHandler{
         IMQAScreen.name = vc.className
         
         queue.async {
-            guard let id = vc.imqa_identifier,
-                    var parentSpan = self.parentSpans[id] else{
+            guard let id = vc.imqa_identifier else{
                 return
             }
             
             let className = vc.className
             
-            if !parentSpan.isRecording{
-                self.parentSpans[id] = nil
-                let reCreatedParentSpan = SpanUtils.span(name: className,
-                                              startTime: Date(),
-                                              type: IMQASpanType.RENDER,
-                                                attributes: [SpanSemantics.Common.screenName:.string(className)])
-                self.parentSpans[id] = reCreatedParentSpan
-                parentSpan = reCreatedParentSpan
-            }
+            let startTime = self.viewdidLoadStartTimes[id] ?? Date()
+            let parentSpan = SpanUtils.span(name: className,
+                                          startTime: startTime,
+                                          type: IMQASpanType.RENDER,
+                                            attributes: [SpanSemantics.Common.screenName:.string(className)])
+            self.parentSpans[id] = parentSpan
             
             let viewWillAppearSpanName = "\(className)[viewWillAppear]"
             let span = SpanUtils.span(name: viewWillAppearSpanName,
@@ -156,6 +141,7 @@ class UIViewControllerHandler{
     }
     
     func onViewDidAppearStart(_ vc: UIViewController){
+//        print("\(vc)onViewDidAppearStart")
         guard !shouldNotBeCollectedClass.contains(vc.className) else{return}
 
         queue.async {
@@ -181,16 +167,30 @@ class UIViewControllerHandler{
             guard let id = vc.imqa_identifier else{
                 return
             }
+            let className = vc.className
             
-            let now = Date()
             if let span = self.viewDidAppearSpans.removeValue(forKey: id){
-                span.end(time: now)
+                span.end(time: Date())
             }
-            guard let parentSpan = self.parentSpans[id] else{
+            guard let parentSpan = self.parentSpans.removeValue(forKey: id) else{
                 return
             }
-            parentSpan.end(time: Date())
 
+
+            if let startTime = self.viewdidLoadStartTimes[id],
+                let endTime = self.viewdidLoadEndTimes[id]{
+                
+                let viewDidLoadSpanName = "\(className)[viewDidLoad]"
+                let viewDidLoadSpan = SpanUtils.span(name: viewDidLoadSpanName,
+                                          parentSpan: parentSpan,
+                                          startTime: startTime ?? Date(),
+                                          type: IMQASpanType.RENDER,
+                                          attributes: [SpanSemantics.Common.screenName:.string(className)])
+                viewDidLoadSpan.end(time: endTime ?? Date())
+                self.viewdidLoadStartTimes[id] = nil
+                self.viewdidLoadEndTimes[id] = nil
+            }
+            parentSpan.end(time: Date())
         }
     }
     
@@ -201,7 +201,9 @@ class UIViewControllerHandler{
     }
     
     func onViewBecameInteractive(_ vc: UIViewController) {
-
+        queue.async {
+            
+        }
     }
     
     private func forcefullyEndSpans(id: String, time: Date) {

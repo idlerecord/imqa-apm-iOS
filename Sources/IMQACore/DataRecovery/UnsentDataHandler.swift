@@ -72,7 +72,7 @@ class UnsentDataHandler {
                     
                     storage.update(session: session)
                 }
-                recordCrashSpan(report: report,
+                parseReport(report: report,
                                 sessionId: sessionId.toString,
                                 exceptionObj: &exceptionObj)
             }
@@ -126,10 +126,9 @@ class UnsentDataHandler {
         return nil
     }
 
-    
-    static public func recordCrashSpan(report:CrashReport,
-                                       sessionId: String,
-                                       exceptionObj: inout IMQACrashError){
+    static public func parseReport(report:CrashReport,
+                                   sessionId: String,
+                                   exceptionObj: inout IMQACrashError){
         var exceptionMessage: String = ""
         var exceptionType: String = ""
         var stackTrace: [String] = []
@@ -204,46 +203,70 @@ class UnsentDataHandler {
         do {
             
             //span 기록
-            let spanException = IMQACrashError(message: exceptionObj.message ?? "",
-                                               type: exceptionObj.type,
-                                               stackTrace: exceptionObj.stackTrace)
-            
             var spanAttributes:[String: AttributeValue] = [:]
             
-            spanAttributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(spanException.type)
-            if let message = spanException.message{
+            spanAttributes[SemanticAttributes.exceptionType.rawValue] = AttributeValue(exceptionObj.type)
+            if let message = exceptionObj.message{
                 spanAttributes[SemanticAttributes.exceptionMessage.rawValue] = AttributeValue(message)
             }
-            if let stackTrace = spanException.stackTrace{
+            if let stackTrace = exceptionObj.stackTrace{
                 spanAttributes[SemanticAttributes.exceptionStacktrace.rawValue] = AttributeValue(stackTrace)
             }
             spanAttributes[SpanSemantics.Common.sessionId] = AttributeValue(session?.id.toString ?? "")
 
 
             var beforeSpan:Span? = nil
+            //start 하고 end하면 app이 아주 빨리 종료시 Batchprocess에서 export 로 못가는 사이 crash하면 data 날라간다
             if let spanRecord = report.spanRecord {
                 
+                //beforeCrashSpanData
                 let beforeCrashSpan = SpanUtils.span(name: spanRecord.name,
                                                      startTime: spanRecord.startTime,
                                                      type: spanRecord.type,
                                                      attributes: [SpanSemantics.Common.sessionId: AttributeValue(session?.id.toString ?? "")])
                 
+                var beforeCrashSpanData = (beforeCrashSpan as! ReadableSpan).toSpanData()
                 if let endTime = spanRecord.endTime {
-                    beforeCrashSpan.end(time: endTime)
+                    beforeCrashSpanData.settingEndTime(endTime)
                 }else{
-                    beforeCrashSpan.end(time: timestamp)
+                    beforeCrashSpanData.settingEndTime(timestamp)
                 }
-
-                var spanStartTime = (spanRecord.endTime != nil) ? spanRecord.endTime : timestamp
+//                beforeCrashSpanData.settingResource(IMQAOTel.resources ?? Resource(attributes: [:]))
 
                 
-                let span = SpanUtils.span(name: spanException.type,
+                var spanStartTime = (spanRecord.endTime != nil) ? spanRecord.endTime : timestamp
+
+                //crashSpanData
+                let crashSpan = SpanUtils.span(name: exceptionObj.type,
                                           startTime: spanStartTime!,
                                           type: .CRASH,
                                           attributes: spanAttributes)
-                span.status = .error(description: spanException.message ?? "")
-                span.end(time: timestamp)
-                beforeSpan = span
+                crashSpan.status = .error(description: exceptionObj.message ?? "")
+                var crashSpanData = (crashSpan as! ReadableSpan).toSpanData()
+                crashSpanData.settingEndTime(spanStartTime!)
+//                crashSpanData.settingResource(IMQAOTel.resources ?? Resource(attributes: [:]))
+                
+                beforeSpan = crashSpan
+                
+                let data = PayloadEnvelope<SpanPayload>.requestSpanProtobufData(spans: [beforeCrashSpanData, crashSpanData])
+                guard let envelopeData = data else{ return }
+                upload.uploadSpans(id: report.id.uuidString, data: envelopeData){ result in
+                    switch result {
+                    case .success:
+                        // remove crash report
+                        // we can remove this immediately because the upload module will cache it until the upload succeeds
+                        if let internalId = report.internalId {
+                            guard let reporter = reporter else {
+                                return
+                            }
+//                            reporter.deleteCrashReport(id: internalId)
+//                            IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
+                        }
+
+                    case .failure(let error):
+                        IMQA.logger.warning("Error trying to upload crash report \(report.id):\n\(error.localizedDescription)")
+                    }
+                }
             }
             
 
@@ -271,7 +294,6 @@ class UnsentDataHandler {
                                                 attributes: attributes,
                                                 timestamp: timestamp,
                                                 spanContext: beforeSpan?.context)
-            
             
             let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])
                         
@@ -307,7 +329,7 @@ class UnsentDataHandler {
         upload: IMQAUpload,
         currentSessionId: SessionIdentifier?
     ) {
-
+//        return
         // clean up old spans + close open spans
         cleanOldSpans(storage: storage)
         closeOpenSpans(storage: storage, currentSessionId: currentSessionId)
@@ -333,7 +355,7 @@ class UnsentDataHandler {
         }
 
         // remove old metadata
-        cleanMetadata(storage: storage, currentSessionId: currentSessionId?.toString)
+//        cleanMetadata(storage: storage, currentSessionId: currentSessionId?.toString)
     }
 
     static public func sendSession(

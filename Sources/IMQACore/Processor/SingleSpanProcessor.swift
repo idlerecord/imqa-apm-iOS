@@ -31,6 +31,20 @@ struct SingleSpanProcessor: SpanProcessor {
         let exporter = self.spanExporter
 
         let data = span.toSpanData()
+        //record before crash span
+        if let record = buildRecord(from: data){
+            let crashStorage = IMQAMuti<CrashSpanRecord>()
+            let crashRecord: CrashSpanRecord = CrashSpanRecord(id: record.id,
+                                                               name: record.name,
+                                                               traceId: record.traceId,
+                                                               type: record.type,
+                                                               data: record.data,
+                                                               startTime: record.startTime,
+                                                               endTime: record.endTime,
+                                                               processIdentifier: record.processIdentifier,
+                                                               sessionId: IMQAOTel.sessionId.toString)
+            crashStorage.save(crashRecord)
+        }
 
         processorQueue.async {
             _ = exporter.export(spans: [data])
@@ -41,6 +55,21 @@ struct SingleSpanProcessor: SpanProcessor {
         let exporter = self.spanExporter
 
         var data = span.toSpanData()
+//        if let record = buildRecord(from: data){
+//            let crashStorage = IMQAMuti<CrashSpanRecord>()
+//            let crashRecord: CrashSpanRecord = CrashSpanRecord(id: record.id,
+//                                                               name: record.name,
+//                                                               traceId: record.traceId,
+//                                                               type: record.type,
+//                                                               data: record.data,
+//                                                               startTime: record.startTime,
+//                                                               endTime: record.endTime,
+//                                                               processIdentifier: record.processIdentifier,
+//                                                               sessionId: IMQAOTel.sessionId.toString)
+//            crashStorage.save(crashRecord)
+//        }
+//
+//        
         if data.hasEnded && data.status == .unset {
             if let errorCode = data.errorCode {
                 data.settingStatus(.error(description: errorCode.rawValue))
@@ -64,3 +93,20 @@ struct SingleSpanProcessor: SpanProcessor {
         }
     }
 }
+extension SingleSpanProcessor {
+    private func buildRecord(from spanData: SpanData) -> SpanRecord? {
+        guard let data = try? spanData.toJSON() else {
+            return nil
+        }
+
+        return SpanRecord(
+            id: spanData.spanId.hexString,
+            name: spanData.name,
+            traceId: spanData.traceId.hexString,
+            type: spanData.spanType,
+            data: data,
+            startTime: spanData.startTime,
+            endTime: spanData.endTime )
+    }
+}
+

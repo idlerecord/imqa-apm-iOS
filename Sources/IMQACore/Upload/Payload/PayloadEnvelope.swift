@@ -38,7 +38,7 @@ extension PayloadEnvelope{
         }
         do {
             let data = try exportRequest.serializedData()
-            return data
+            return data.gzip()
         } catch {
             IMQA.logger.warning("Function::requestSpanProbufData::serializedData Convert Error")
             return nil
@@ -87,20 +87,3 @@ extension PayloadEnvelope<[SpanPayload]> {
         self.metadata = metadata
     }
 }
-
-
-//        let attrbute1 = LogAttribute(key: "service.name", value: LogAttribute.Value(stringValue: Bundle.appName))
-//        let attrbute2 = LogAttribute(key: "http.user_agent", value: LogAttribute.Value(stringValue: "IMQA.swift"))
-//        let attrbute3 = LogAttribute(key: "service.name", value: LogAttribute.Value(stringValue: Bundle.appName))
-//        var resource:LogResource = LogResource(attributes: [attrbute1,
-//                                                            attrbute2,
-//                                                            attrbute3],
-//                                               droppedAttributesCount: 0)
-//        let logPayloads = logs.map { LogPayloadBuilder.build(log: $0) }
-//        let scopeLog = ScopeLog(scope: InstrumentationScopeInfo(name: Bundle.appName,
-//                                                                version: IMQAMeta.sdkVersion),
-//                                logRecords: logPayloads)
-//
-//        let resourceLogs = [ResourceLog(resource: resource,
-//                                       scopeLogs: [scopeLog])]
-//        let payload = RequestLogPayload(resourceLogs: resourceLogs)
