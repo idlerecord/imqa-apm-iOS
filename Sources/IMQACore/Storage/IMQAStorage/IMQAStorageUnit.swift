@@ -19,14 +19,15 @@ class IMQAStorageUnit {
     var mmkvID: String = ""
     
     static var currentVersion: String = IMQAMeta.sdkVersion
-    static var savedVersionKey: String = "savedVersion"
+    static var savedSDKVersionKey: String = "savedSDKVersion"
+    static var savedAppVersionKey: String = "savedAppVersion"
     
     public var mmkv: MMKV!
     
     var suitName:String = Bundle.appIdentifier + ".userdefault"
 
     static let rootDir = IMQAStorageUnit.path.appending("/IMQA")
-    static let currentSubDir = IMQAStorageUnit.rootDir.appending("/\(IMQAStorageUnit.currentVersion)")
+    static let currentSubDir = IMQAStorageUnit.rootDir.appending("/App_\(Bundle.appVersion)/sdk_\(IMQAStorageUnit.currentVersion)")
     private static let didInitialize = false
     
     static let path: String = {
@@ -42,14 +43,29 @@ class IMQAStorageUnit {
                 logger: InternalLogger) {
         
         mmkv = IMQAStorageUnit.custom(mmkvID: mmkvID, cryptKey: cryptKey, mode: mode)
-        guard let savedVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedVersionKey) else{
-            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedVersionKey)
-            UserDefaults(suiteName: suitName)?.synchronize()
-            return
-        }
-        if savedVersion != IMQAStorageUnit.currentVersion{
-            clear(path: IMQAStorageUnit.rootDir.appending("/\(savedVersion)"))
-            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedVersionKey)
+        
+        
+        //app  버전있을때
+        if let savedAppVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedAppVersionKey) {
+            //app 버전 다를때
+            if savedAppVersion != Bundle.appVersion {
+                removeFolder(path: IMQAStorageUnit.rootDir.appending("/App_\(savedAppVersion)/"))
+                UserDefaults(suiteName: suitName)?.set(Bundle.appVersion, forKey: IMQAStorageUnit.savedAppVersionKey)
+                UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
+                UserDefaults(suiteName: suitName)?.synchronize()
+        //app 버전 같을때
+            }else{
+                if let savedSDKVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedSDKVersionKey) {
+                    if savedSDKVersion != IMQAStorageUnit.currentVersion{
+                        clear(path: IMQAStorageUnit.rootDir.appending("/App_\(Bundle.appVersion)/sdk_\(savedSDKVersion)/"))
+                        UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
+                        UserDefaults(suiteName: suitName)?.synchronize()
+                    }
+                }
+            }
+        }else{
+            UserDefaults(suiteName: suitName)?.set(Bundle.appVersion, forKey: IMQAStorageUnit.savedAppVersionKey)
+            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
             UserDefaults(suiteName: suitName)?.synchronize()
         }
     }
@@ -66,12 +82,21 @@ class IMQAStorageUnit {
         }
     }
     
+    func removeFolder(path:String) {
+        let manager = FileManager.default
+        if manager.fileExists(atPath: path) {
+            do {
+                try manager.removeItem(atPath: path)
+            } catch let error {
+                IMQA.logger.debug("removeFolder error: \(error)")
+            }
+        }
+    }
+    
 
-    public static func custom(mmkvID: String? = "default", cryptKey: Data?, mode: MMKVMode = .singleProcess) -> MMKV {
+    public static func custom(mmkvID: String? = "default", cryptKey: Data?, mode: MMKVMode = .multiProcess) -> MMKV {
         initializeMMKV()
         if let mmkvID = mmkvID, let mmkv = MMKV(mmapID: mmkvID, cryptKey: cryptKey, mode: mode) {
-//        if let mmkvID = mmkvID {
-//            let mmkv = MMKV.init(mmapID: mmkvID, cryptKey: cryptKey, rootPath: currentSubDir, mode: .multiProcess, expectedCapacity: 0)
             return mmkv
         } else {
             return MMKV.default()!
@@ -83,7 +108,12 @@ class IMQAStorageUnit {
             return
         }
 
-        try? FileManager.default.createDirectory(atPath: currentSubDir, withIntermediateDirectories: true)
+        do {
+            try? FileManager.default.createDirectory(atPath: currentSubDir, withIntermediateDirectories: true)
+        } catch let error {
+            
+        }
+        
         MMKV.initialize(rootDir: currentSubDir, logLevel: .none)
     }
 }
