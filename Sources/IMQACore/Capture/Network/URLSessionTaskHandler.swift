@@ -9,6 +9,7 @@ import Foundation
 import OpenTelemetryApi
 import IMQAOtelInternal
 import IMQAObjCUtilsInternal
+import IMQACommonInternal
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 #endif
@@ -36,7 +37,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
     private var spans: [URLSessionTask: Span] = [:]
     
     
-    private let queue: DispatchQueue
+    private let queue: DispatchableQueue
     private let payloadCaptureHandler: NetworkPayloadCaptureHandler
     weak var dataSource: URLSessionTaskHandlerDataSource?
 
@@ -94,18 +95,25 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
             }
             
             //header record
-            if request.allHTTPHeaderFields != nil {
-                if let jsonData = try? JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields, options: .prettyPrinted),
-                   let jsonString = String(data: jsonData, encoding: .utf8) {
+            if request.allHTTPHeaderFields != nil, JSONSerialization.isValidJSONObject(request.allHTTPHeaderFields) {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: request.allHTTPHeaderFields, options: .prettyPrinted)
+                    let jsonString = String(data: jsonData, encoding: .utf8)
                     attributes[SpanSemantics.XHR.httpRequestHeaders] = jsonString
+
+                } catch let error {
+                    IMQA.logger.error("Failed to serialize HTTP headers: \(error)")
                 }
             }
             
             //body record
-            if request.httpBody != nil {
-                if let jsonData = try? JSONSerialization.data(withJSONObject: request.httpBody, options: .prettyPrinted),
-                   let jsonString = String(data: jsonData, encoding: .utf8) {
+            if request.httpBody != nil, JSONSerialization.isValidJSONObject(request.httpBody) {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: request.httpBody, options: .prettyPrinted)
+                    let jsonString = String(data: jsonData, encoding: .utf8)
                     attributes[SpanSemantics.XHR.httpRequestBody] = jsonString
+                } catch let error {
+                    IMQA.logger.error("Failed to serialize HTTP body: \(error)")
                 }
             }
             
