@@ -86,7 +86,8 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
             // Probably this could be moved to a separate class
             var attributes: [String: String] = [:]
             //url.full record
-            attributes[SemanticAttributes.urlFull.rawValue] = request.url?.absoluteString ?? "N/A"
+//            attributes[SemanticAttributes.urlFull.rawValue] = request.url?.absoluteString ?? "N/A"
+            attributes[SemanticAttributes.httpUrl.rawValue] = request.url?.absoluteString ?? "N/A"
             if #available(iOS 16.0, *) {
                 attributes[SpanSemantics.XHR.httpHost] = request.url?.host(percentEncoded: false) ?? "N/A"
             } else {

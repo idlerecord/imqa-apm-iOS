@@ -25,7 +25,7 @@ public struct SpanSemantics{
         public static let httpRequestHeaders = "http.request.headers"
         public static let httpRequestBody = "http.request.body"
         public static let errorType = "error.type"
-        public static let httpHost = "http.request.header.host"
+        public static let httpHost = "http.host"//"http.request.header.host"
     }
 
     public struct Session {

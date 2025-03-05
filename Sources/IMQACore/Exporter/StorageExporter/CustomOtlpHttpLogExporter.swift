@@ -31,7 +31,6 @@ class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
     }
     
     public func export(logRecords: [OpenTelemetrySdk.ReadableLogRecord], explicitTimeout: TimeInterval? = nil) -> OpenTelemetrySdk.ExportResult {
-        var resultValue: SpanExporterResultCode = .success
         var sendingLogRecords: [ReadableLogRecord] = []
         exporterLock.lock()
         pendingLogRecords = []
@@ -61,6 +60,7 @@ class CustomOtlpHttpLogExporter: CustomOtlpHttpExporterBase, LogRecordExporter{
                                          data: request.httpBody!)
         request.timeoutInterval = min(explicitTimeout ?? TimeInterval.greatestFiniteMagnitude, config.timeout)
         URLSession.shared.dataTask(with: request) {[weak self] data, response, error  in
+            var resultValue: SpanExporterResultCode = .success
             if let error = error {
                 resultValue = .failure
             } else if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
