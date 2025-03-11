@@ -120,7 +120,9 @@ public final class TapCaptureService: CaptureService {
                                        attributes: attributes)
         clickSpan.status = .ok
         clickSpan.end()
-        TapCaptureService.tapSpan = clickSpan
+        if (target is UIButton) {
+            TapCaptureService.tapSpan = clickSpan
+        }
     }
     
     func shouldRecordCoordinates(from target: UIView) -> Bool {
