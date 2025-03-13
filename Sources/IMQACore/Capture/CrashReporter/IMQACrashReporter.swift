@@ -6,8 +6,8 @@
 //
 
 import Foundation
-//import KSCrashRecording
-import KSCrash
+import KSCrashRecording
+//import KSCrash
 import OpenTelemetryApi
 import IMQACommonInternal
 import IMQAOtelInternal
@@ -135,6 +135,7 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
 
             // get all report ids
             var crashReports: [CrashReport] = []
+            var deleteReports: [Int64] = []
             for reportId in reports {
                 let id = reportId
 
@@ -163,13 +164,20 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
                 var sessionId: SessionIdentifier?
                 var timestamp: Date?
                 var crashSpan: SpanRecord?
+                //kscrash sdk는 system level의 crash시 user를 기록하지 못합니다.
                 if let userDict = report["user"] as? [AnyHashable: Any] {
                     if let value = userDict[UserInfoKey.sessionId] as? String {
                         sessionId = SessionIdentifier(string: value)
                         
                         let crashStorage = IMQAMuti<CrashSpanRecord>()
                         crashSpan = crashStorage.fetch(sessionId!.toString)?.toSpanRecord()
+                    }else{
+                        deleteReports.append(id.int64Value)
+                        continue
                     }
+                }else{
+                    deleteReports.append(id.int64Value)
+                    continue
                 }
 
                 if let reportDict = report["report"] as? [AnyHashable: Any],
@@ -191,6 +199,10 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
             }
 
             completion(crashReports)
+            
+            deleteReports.map{
+                self?.ksCrash?.reportStore?.deleteReport(with: $0)
+            }
         }
     }
 
