@@ -191,17 +191,3 @@ extension SessionController {
         currentSessionSpan = nil
     }
 }
-
-
-extension Span{
-    func toJsonData() -> Data {
-        do {
-            let spanData = (self as? ReadableSpan)?.toSpanData()
-            let jsonData = try JSONEncoder().encode(spanData)
-            return jsonData
-        } catch {
-            IMQA.logger.error("Span to JsonData Error")
-        }
-        return Data()
-    }
-}

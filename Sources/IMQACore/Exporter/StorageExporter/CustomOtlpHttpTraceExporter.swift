@@ -95,6 +95,11 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
             }
             let semaphore = DispatchSemaphore(value: 0)
             let request = createRequest(body: body, endpoint: endpoint)
+            
+            let recordId = UUID().uuidString
+            self.uploadCache?.saveUploadData(id: recordId,
+                                             type: .spans,
+                                             data: request.httpBody!)
 
             URLSession.shared.dataTask(with: request) {[weak self] data, response, error in
                 if let error = error {
@@ -104,9 +109,12 @@ public class CustomOtlpHttpTraceExporter: CustomOtlpHttpExporterBase, SpanExport
                 } else {
                     resultValue = .failure
                 }
-                if resultValue == .failure {
+                if resultValue == .success {
                     //record data
+                    self?.uploadCache?.deleteUploadData(id: recordId,
+                                                        type: .spans)
                 }
+                
                 semaphore.signal() // 释放信号量，继续执行后续代码
             }.resume()
 
