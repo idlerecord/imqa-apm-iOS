@@ -11,6 +11,8 @@ VERSION="$1"
 # 目标文件路径
 FILE_PATH="./Sources/IMQAOtelInternal/Version/IMQAMeta.swift"
 
+set -e
+
 # 检查文件是否存在
 if [ ! -f "$FILE_PATH" ]; then
     echo "❌ 文件 $FILE_PATH 不存在"
@@ -77,7 +79,10 @@ for FRAMEWORK in $SIMULATOR_FRAMEWORKS; do
             -framework "$FRAMEWORK" \
             -framework "$DEVICE_FRAMEWORK_PATH" \
             -output "$OUTPUT_DIR/${FRAMEWORK_NAME%.framework}.xcframework"
-            
+        if [ $? -ne 0 ]; then
+            echo "❌ xcodebuild Failed，Shell Exit！" >&2
+            exit 1
+        fi
         echo "✅ Created: $OUTPUT_DIR/${FRAMEWORK_NAME%.framework}.xcframework"
         
         # 如果没有标签，默认为1.0.0
