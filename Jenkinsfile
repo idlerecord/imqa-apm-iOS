@@ -71,28 +71,30 @@ pipeline {
         stage('Clean Project') {
             // Project clean 작업
             steps {
-                //DevrivedData 삭제
-                sh 'echo "✅DevivedData 삭제"'
-                sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
-                
-                
-                //.xcodeproj .xcworkspace삭제
-                sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
-                sh 'rm -rf *xcodeproj *xcworkspace'
-                
-                withEnv(["PATH+BREW=/opt/homebrew/bin"]){
-                    //tuist 삭제
-                    sh 'echo "✅Tuist clean"'
-                    sh 'tuist clean'
+                script{
+                    withEnv(["PATH+BREW=/opt/homebrew/bin"]){
+                        //DevrivedData 삭제
+                        sh 'echo "✅DevivedData 삭제"'
+                        sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 
-                    sh 'echo "✅Tuist generate"'
-                    sh 'tuist generate'
-                    
-                    sh 'echo "✅pod install"'
-                    sh 'pod install'
+
+                        //.xcodeproj .xcworkspace삭제
+                        sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
+                        sh 'rm -rf *xcodeproj *xcworkspace'
+
+
+                        //tuist 삭제
+                        sh 'echo "✅Tuist clean"'
+                        sh 'tuist clean'
+
+                        sh 'echo "✅Tuist generate"'
+                        sh 'tuist generate'
+
+                        sh 'echo "✅pod install"'
+                        sh 'pod install'
+                        sh 'echo "🎉setup completed"'
+                    }
                 }
-                
-                sh 'echo "🎉setup completed"'
             }
         }/**/
         /*stage('Test') {
