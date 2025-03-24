@@ -19,39 +19,39 @@ pipeline {
         }
         stage('Install Tools') {
             steps {
-		script{
-		//install Homebrew
-		sh '''
-		if ! Command -v brew &> /dev/null; then
-			echo "HomeBrew is not installed. Installing with Homebrew..."
-			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		fi
-		'''
+                script{
+                    //install Homebrew
+                    sh '''
+                    if ! Command -v brew &> /dev/null; then
+                        echo "HomeBrew is not installed. Installing with Homebrew..."
+                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                    fi
+                    '''
 
-		//install mise
-		sh '''
-		if ! Command -v miss &> /dev/null; then
-			echo "Mise is not installed. Installing with Mise..."
-			brew install mise
-		fi
-		'''
+                    //install mise
+                    sh '''
+                    if ! Command -v miss &> /dev/null; then
+                        echo "Mise is not installed. Installing with Mise..."
+                        brew install mise
+                    fi
+                    '''
 
-		//install tuist
-		sh '''
-		if ! Command -v tuist &> /dev/null; then
-			echo "Tuist is not installed. Installing with Tuist..."
-			mise install tuist
-		fi
-		'''
+                    //install tuist
+                    sh '''
+                    if ! Command -v tuist &> /dev/null; then
+                        echo "Tuist is not installed. Installing with Tuist..."
+                        mise install tuist
+                    fi
+                    '''
 
-		//install Cocoapods
-		sh '''
-		if ! Command -v pod &> /dev/null; then
-			echo "Cocoapods is not installed. Installing with Cocoapods..."
-			brew install cocoapods
-		fi
-		'''
-		}
+                    //install Cocoapods
+                    sh '''
+                    if ! Command -v pod &> /dev/null; then
+                        echo "Cocoapods is not installed. Installing with Cocoapods..."
+                        brew install cocoapods
+                    fi
+                    '''
+                }
             }
         }
         stage('Clean Project') {
