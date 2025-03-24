@@ -76,6 +76,8 @@ pipeline {
 
                         sh 'echo "✅Tuist Clean"'
                         sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist clean'
+                        
+                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist install'
 
                         sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist generate'
 
