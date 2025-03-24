@@ -24,7 +24,9 @@ pipeline {
                     def hombrew_installed = sh(script: "which brew", returnStatus: true)
                     if(hombrew_installed != 0){
                         echo "Installing with Homebrew..."
-                        sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                        sh """
+                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                        """
                     }else{
                         echo "Homebrew is already installed."
                     }
