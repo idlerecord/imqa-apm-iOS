@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
-    environment {
+    /*environment {
         // 定义环境变量
         SERVER_IP = your-server-ip        					// 服务器IP地址
         SERVER_USER = your-username    					// 服务器用户名
         TARGET_DIR = you-jarFileDir                  // 服务器上的目标目录
         JAR_FILE = your-jarFileName                // 打包后的文件名
-    }
+    }*/
 
     stages {
         stage('Clone Source Code') {
