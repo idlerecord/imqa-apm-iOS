@@ -57,7 +57,7 @@ pipeline {
                 }
             }
         }
-        stage('Clean Project') {
+        /*stage('Clean Project') {
             // Project clean 작업
             steps {
                 //DevrivedData 삭제
@@ -69,7 +69,7 @@ pipeline {
                 //.xcodeproj .xcworkspace삭제
                 sh 'rm -rf *xcodeproj *xcworkspace'
             }
-        }
+        }*/
         /*stage('Test') {
             steps {
                 // 运行测试
