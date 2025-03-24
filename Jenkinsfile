@@ -59,17 +59,14 @@ pipeline {
                             echo "Installing Tuist..."
                             sh 'mise install tuist'
 
-                            // 添加 tuist 到 PATH 中，确保后续可以使用
-                            echo "Adding Tuist to PATH"
-                            sh '''#!/bin/bash
-                            export PATH="$PATH:/opt/homebrew/bin"
-                            '''
                             // 重新加载环境变量
                             sh 'mise use tuist@latest'
                         }else{
                             echo "Tuist is already installed."
                         }
                         
+                    }
+                    
                         sh 'echo "✅DevivedData 삭제"'
                         sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 
@@ -77,15 +74,17 @@ pipeline {
                         sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
-                        sh 'echo "✅Tuist Clean"'
-                        sh 'tuist clean'
+                        withEnv(["PATH+TUIST=~/.local/share/mise/installs/tuist/4.44.3/bin/tuist"]){
+                            sh 'echo "✅Tuist Clean"'
+                            sh 'tuist clean'
 
-                        sh 'tuist generate'
+                            sh 'tuist generate'
+                        }
                         
                         sh 'echo "✅pod install"'
                         sh 'pod install'
                         sh 'echo "🎉setup completed"'
-                    }
+
                 }
             }
         }
