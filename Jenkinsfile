@@ -24,7 +24,7 @@ pipeline {
                     sh '''
                     if ! Command -v brew &> /dev/null; then
                         echo "HomeBrew is not installed. Installing with Homebrew..."
-                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                        sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
                     fi
                     '''
 
