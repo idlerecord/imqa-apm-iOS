@@ -29,15 +29,15 @@ pipeline {
                         echo "Homebrew is already installed."
                     }
                     
-                    /*
-                    //install mise
-                    sh '''
-                    if ! Command -v miss &> /dev/null; then
-                        echo "Mise is not installed. Installing with Mise..."
+                    def mise_installed = sh(script: "which mise", returnStatus: true)
+                    if(mise_installed != 0){
+                        echo "Installing with Mise..."
                         brew install mise
-                    fi
-                    '''
+                    }else{
+                        echo "Mise is already installed."
+                    }
 
+                    /*
                     //install tuist
                     sh '''
                     if ! Command -v tuist &> /dev/null; then
