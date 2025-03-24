@@ -52,17 +52,17 @@ pipeline {
                             echo "Cocoapods is already installed."
                         }
 
+                        //Tuist 安装
+                        echo "Tuist 安装检查"
+                        def tuist_installed = sh(script: "which tuist", returnStatus: true)
+                        if(tuist_installed != 0){
+                            echo "Installing with Tuist..."
+                            sh 'mise install tuist'
+                        }else{
+                            echo "Tuist is already installed."
+                        }
                     }
 
-                    //Tuist 安装
-                    echo "Tuist 安装检查"
-                    def tuist_installed = sh(script: "which tuist", returnStatus: true)
-                    if(tuist_installed != 0){
-                        echo "Installing with Tuist..."
-                        sh 'mise install tuist'
-                    }else{
-                        echo "Tuist is already installed."
-                    }
                 }
             }
         }
