@@ -61,8 +61,9 @@ pipeline {
                         }else{
                             echo "Tuist is already installed."
                         }
+                        echo "use mise"
+                        sh 'mise use tuist@latest'
                     }
-
                 }
             }
         }
