@@ -84,11 +84,15 @@ pipeline {
 
 
                         //tuist 삭제
-                        sh 'echo "✅Tuist clean"'
-                        sh 'tuist clean'
-
-                        sh 'echo "✅Tuist generate"'
-                        sh 'tuist generate'
+                        sh '''#!/bin/bash
+                        if which tuist > /dev/null; then
+                          echo "✅Tuist is installed. Running clean and generate..."
+                          tuist clean
+                          tuist generate
+                        else
+                          echo "Tuist is not installed. Skipping clean and generate."
+                        fi
+                        '''
 
                         sh 'echo "✅pod install"'
                         sh 'pod install'
