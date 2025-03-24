@@ -56,17 +56,19 @@ pipeline {
                         echo "Tuist 安装检查"
                         def tuist_installed = sh(script: "which tuist", returnStatus: true)
                         if(tuist_installed != 0){
-                            echo "Installing with Tuist..."
+                            echo "Installing Tuist..."
                             sh 'mise install tuist'
-                            
-                            echo "Using Tuist"
-                            sh 'mise use tuist@latest'
-                            sh 'tuist clean'
 
+                            // 添加 tuist 到 PATH 中，确保后续可以使用
+                            echo "Adding Tuist to PATH"
+                            sh '''#!/bin/bash
+                            export PATH="$PATH:/opt/homebrew/bin"
+                            '''
+                            // 重新加载环境变量
+                            sh 'mise use tuist@latest'
                         }else{
                             echo "Tuist is already installed."
                         }
-                        
                         
                         sh 'echo "✅DevivedData 삭제"'
                         sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
@@ -75,51 +77,19 @@ pipeline {
                         sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
-                        //sh 'echo "✅Tuist Clean"'
-                                                //sh 'tuist clean'
+                        sh 'echo "✅Tuist Clean"'
+                        sh 'tuist clean'
+
+                        sh 'tuist generate'
                         
-                                                //sh 'tuist generate'
-                        
-                        //sh 'echo "✅pod install"'
-                        //sh 'pod install'
+                        sh 'echo "✅pod install"'
+                        sh 'pod install'
                         sh 'echo "🎉setup completed"'
                     }
                 }
             }
         }
-        
-        /*stage('Test') {
-            steps {
-                // 运行测试
-                sh 'mvn test'
-            }
-        }
-        stage('Deploy') {
-            // 部署到远程服务器
-            steps {
-                script {
-                    // StrictHostKeyChecking=no 表示不检查远程主机的公钥 建议配置好ssh的免密登录
-                    // Step 1: 传输文件到远程服务器 scp -v 可以查看文件传输的进度
-                    sh """
-                        scp -v -o StrictHostKeyChecking=no target/${JAR_FILE} ${SERVER_USER}@${SERVER_IP}:${TARGET_DIR}
-                    """
-
-                    // Step 2: 杀死已存在的进程
-                    def killStatus = sh(script: """
-                        ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} 'pgrep -f ${JAR_FILE} | xargs kill -9 || true'
-                    """, returnStatus: true)
-
-                    echo "Kill process exit status: ${killStatus}"
-
-                    // Step 3: 启动新的进程
-                    sh """
-                        ssh -o StrictHostKeyChecking=no ${SERVER_USER}@${SERVER_IP} 'nohup java -jar ${TARGET_DIR}/${JAR_FILE} > /dev/null 2>&1 &'
-                    """
-                }
-            }
-        }*/
-    }
-
+    
     /*post {
         always {
             // 每次构建结束后清理工作目录
