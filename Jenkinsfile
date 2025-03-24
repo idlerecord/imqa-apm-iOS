@@ -83,11 +83,13 @@ pipeline {
                 sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                 sh 'rm -rf *xcodeproj *xcworkspace'
                 
-                sh 'echo "✅Tuist generate"'
-                sh 'tuist generate'
-                
-                sh 'echo "✅pod install"'
-                sh 'pod install'
+                withEnv(["PATH+BREW=/opt/homebrew/bin"]){
+                    sh 'echo "✅Tuist generate"'
+                    sh 'tuist generate'
+                    
+                    sh 'echo "✅pod install"'
+                    sh 'pod install'
+                }
                 
                 sh 'echo "🎉setup completed"'
             }
