@@ -14,7 +14,7 @@ pipeline {
             steps {
                 // 拉取项目源码
                 //注意: 这里根据自己的需求选择合适的分支以及仓库地址（ssh或https）
-                git branch: 'master', url: 'your-repository-url'
+                git branch: 'main', url: 'git@github.com:idlerecord/Imqa-sdk-ios.git'
             }
         }
         /*stage('Build Project') {
