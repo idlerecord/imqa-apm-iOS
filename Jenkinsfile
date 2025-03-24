@@ -58,16 +58,17 @@ pipeline {
                         if(tuist_installed != 0){
                             echo "Installing with Tuist..."
                             sh 'mise install tuist'
+                            
+                            echo "Using Tuist"
+                            sh 'mise use tuist@latest'
+
+                            echo 'eval "$(~/.local/share/mise/installs/tuist/4.44.3/bin/tuist activate zsh)"' >> ~/.zshrc
+                            source ~/.zshrc
+
                         }else{
                             echo "Tuist is already installed."
                         }
-                        //echo "use mise"
-                                                //sh 'mise use tuist@latest'
-                        withEnv(["PATH+TUIST=/opt/homebrew/bin"]) {
-                            echo "Using Tuist"
-                            sh 'mise use tuist@latest'
-                        }
-
+                        
                         
                         sh 'echo "✅DevivedData 삭제"'
                         sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
