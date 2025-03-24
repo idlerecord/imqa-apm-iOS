@@ -23,7 +23,7 @@ pipeline {
                     
                     // 确保 Homebrew 路径已添加到环境变量 PATH 中
                      withEnv(["PATH+BREW=/opt/homebrew/bin"]){
-                        //install Homebrew
+                        echo "Home 安装检查"
                         def hombrew_installed = sh(script: "brew --version", returnStatus: true)
                         if(hombrew_installed != 0){
                             echo "Installing with Homebrew..."
@@ -33,8 +33,8 @@ pipeline {
                         }else{
                             echo "Homebrew is already installed."
                         }
-
                      
+                        echo "Mise 安装检查"
                         def mise_installed = sh(script: "mise --version", returnStatus: true)
                         if(mise_installed != 0){
                             echo "Installing with Mise..."
@@ -43,33 +43,26 @@ pipeline {
                             echo "Mise is already installed."
                         }
                         
+                        echo "Cocoapods 安装检查"
                         def cocoapods_installed = sh(script: "pod --version", returnStatus: true)
                         if(cocoapods_installed != 0){
-                            echo "Installing with cocoapods..."
+                            echo "Installing with Cocoapods..."
                             sh 'brew install cocoapods'
                         }else{
-                            echo "cocoapods is already installed."
+                            echo "Cocoapods is already installed."
                         }
 
                     }
 
-                    //install tuist
-                    sh '''
-                    if ! Command -v tuist &> /dev/null; then
-                        echo "Tuist is not installed. Installing with Tuist..."
-                        mise install tuist
-                    fi
-                    '''
-                    
-                    /*
-                    //install Cocoapods
-                    sh '''
-                    if ! Command -v pod &> /dev/null; then
-                        echo "Cocoapods is not installed. Installing with Cocoapods..."
-                        brew install cocoapods
-                    fi
-                    '''
-                    */
+                    //Tuist 安装
+                    echo "Tuist 安装检查"
+                    def tuist_installed = sh(script: "which tuist", returnStatus: true)
+                    if(tuist_installed != 0){
+                        echo "Installing with Tuist..."
+                        sh 'mise install tuist'
+                    }else{
+                        echo "Tuist is already installed."
+                    }
                 }
             }
         }
