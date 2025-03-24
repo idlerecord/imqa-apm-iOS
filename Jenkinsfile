@@ -90,17 +90,6 @@ pipeline {
             }
         }
     
-    /*post {
-        always {
-            // 每次构建结束后清理工作目录
-            cleanWs()
-        }
-        success {
-            echo 'Deployment finished successfully'
-        }
-        failure {
-            echo 'Deployment failed'
-        }
-    }*/
-}
+    }
 
+}
