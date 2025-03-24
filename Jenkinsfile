@@ -74,13 +74,11 @@ pipeline {
                         sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
-                        withEnv(["PATH+TUIST=~/.local/share/mise/installs/tuist/4.44.3/bin/tuist"]){
-                            sh 'echo "✅Tuist Clean"'
-                            sh 'tuist clean'
+                        sh 'echo "✅Tuist Clean"'
+                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist clean'
 
-                            sh 'tuist generate'
-                        }
-                        
+                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist generate'
+
                         sh 'echo "✅pod install"'
                         sh 'pod install'
                         sh 'echo "🎉setup completed"'
