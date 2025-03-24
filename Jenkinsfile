@@ -54,13 +54,20 @@ pipeline {
 		}
             }
         }
-        /*stage('Verify Build Output') {
-            // 验证构建结果
+        stage('Clean Project') {
+            // Project clean 작업
             steps {
-                sh 'ls -l target/'
+                //DevrivedData 삭제
+                sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
+                
+                //tuist 삭제
+                sh 'tuist clean'
+                
+                //.xcodeproj .xcworkspace삭제
+                sh 'rm -rf *xcodeproj *xcworkspace'
             }
         }
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 // 运行测试
                 sh 'mvn test'
