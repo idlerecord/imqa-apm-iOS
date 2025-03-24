@@ -32,7 +32,7 @@ pipeline {
                     def mise_installed = sh(script: "which mise", returnStatus: true)
                     if(mise_installed != 0){
                         echo "Installing with Mise..."
-                        brew install mise
+                        sh 'brew install mise'
                     }else{
                         echo "Mise is already installed."
                     }
