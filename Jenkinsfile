@@ -60,10 +60,8 @@ pipeline {
                             sh 'mise install tuist'
                             
                             echo "Using Tuist"
-                            sh 'mise use tuist@latest'
-
-                            echo 'eval "$(~/.local/share/mise/installs/tuist/4.44.3/bin/tuist activate zsh)"' >> ~/.zshrc
-                            source ~/.zshrc
+                            mise use tuist@latest
+                            tuist clean
 
                         }else{
                             echo "Tuist is already installed."
@@ -77,13 +75,13 @@ pipeline {
                         sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
-                        sh 'echo "✅Tuist Clean"'
-                        sh 'tuist clean'
+                        //sh 'echo "✅Tuist Clean"'
+                                                //sh 'tuist clean'
                         
-                        sh 'tuist generate'
+                                                //sh 'tuist generate'
                         
-                        sh 'echo "✅pod install"'
-                        sh 'pod install'
+                        //sh 'echo "✅pod install"'
+                        //sh 'pod install'
                         sh 'echo "🎉setup completed"'
                     }
                 }
