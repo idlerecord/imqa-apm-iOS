@@ -42,9 +42,17 @@ pipeline {
                         }else{
                             echo "Mise is already installed."
                         }
+                        
+                        def cocoapods_installed = sh(script: "pod --version", returnStatus: true)
+                        if(cocoapods_installed != 0){
+                            echo "Installing with cocoapods..."
+                            sh 'brew install cocoapods'
+                        }else{
+                            echo "cocoapods is already installed."
+                        }
+
                     }
 
-                    /*
                     //install tuist
                     sh '''
                     if ! Command -v tuist &> /dev/null; then
@@ -52,7 +60,8 @@ pipeline {
                         mise install tuist
                     fi
                     '''
-
+                    
+                    /*
                     //install Cocoapods
                     sh '''
                     if ! Command -v pod &> /dev/null; then
