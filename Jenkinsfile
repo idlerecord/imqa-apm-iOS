@@ -61,8 +61,13 @@ pipeline {
                         }else{
                             echo "Tuist is already installed."
                         }
-                        echo "use mise"
-                        sh 'mise use tuist@latest'
+                        //echo "use mise"
+                                                //sh 'mise use tuist@latest'
+                        withEnv(["PATH+TUIST=/opt/homebrew/bin"]) {
+                            echo "Using Tuist"
+                            sh 'mise use tuist@latest'
+                        }
+
                         
                         sh 'echo "✅DevivedData 삭제"'
                         sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
