@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script{
                     //install Homebrew
-                    def hombrew_installed = sh(script: "which brew", returnStatus: true)
+                    def hombrew_installed = sh(script: "brew --version", returnStatus: true)
                     if(hombrew_installed != 0){
                         echo "Installing with Homebrew..."
                         sh 'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
@@ -29,7 +29,7 @@ pipeline {
                         echo "Homebrew is already installed."
                     }
                     
-                    def mise_installed = sh(script: "which mise", returnStatus: true)
+                    def mise_installed = sh(script: "mise --version", returnStatus: true)
                     if(mise_installed != 0){
                         echo "Installing with Mise..."
                         sh 'brew install mise'
