@@ -31,13 +31,17 @@ pipeline {
                         echo "Homebrew is already installed."
                     }
                     
-                    def mise_installed = sh(script: "mise --version", returnStatus: true)
-                    if(mise_installed != 0){
-                        echo "Installing with Mise..."
-                        sh 'brew install mise'
-                    }else{
-                        echo "Mise is already installed."
+                    // 确保 Homebrew 路径已添加到环境变量 PATH 中
+                     withEnv(["PATH+BREW=/opt/homebrew/bin"]){
+                        def mise_installed = sh(script: "mise --version", returnStatus: true)
+                        if(mise_installed != 0){
+                            echo "Installing with Mise..."
+                            sh 'brew install mise'
+                        }else{
+                            echo "Mise is already installed."
+                        }
                     }
+                    
 
                     /*
                     //install tuist
