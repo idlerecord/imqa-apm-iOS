@@ -17,7 +17,7 @@ pipeline {
                 git branch: 'main', url: 'git@github.com:idlerecord/Imqa-sdk-ios.git'
             }
         }
-        stage('Install Tools') {
+        stage('Install Tools&initialize') {
             steps {
                 script{
                     
@@ -63,44 +63,27 @@ pipeline {
                         }
                         echo "use mise"
                         sh 'mise use tuist@latest'
-                        sh 'pwd'
-                    }
-                }
-            }
-        }
-        stage('Clean Project') {
-            // Project clean 작업
-            steps {
-                script{
-                    withEnv(["PATH+BREW=/opt/homebrew/bin"]){
-                        //DevrivedData 삭제
+                        
                         sh 'echo "✅DevivedData 삭제"'
                         sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
-
 
                         //.xcodeproj .xcworkspace삭제
                         sh 'echo "✅Delete .xcodeproj,.xcworkspace"'
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
-
-                        //tuist 삭제
-                        sh '''#!/bin/bash
-                        if which tuist > /dev/null; then
-                          echo "✅Tuist is installed. Running clean and generate..."
-                          tuist clean
-                          tuist generate
-                        else
-                          echo "Tuist is not installed. Skipping clean and generate."
-                        fi
-                        '''
-
+                        sh 'echo "✅Tuist Clean"'
+                        sh 'tuist clean'
+                        
+                        sh 'tuist generate'
+                        
                         sh 'echo "✅pod install"'
                         sh 'pod install'
                         sh 'echo "🎉setup completed"'
                     }
                 }
             }
-        }/**/
+        }
+        
         /*stage('Test') {
             steps {
                 // 运行测试
