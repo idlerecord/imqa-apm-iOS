@@ -20,19 +20,21 @@ pipeline {
         stage('Install Tools') {
             steps {
                 script{
-                    //install Homebrew
-                    def hombrew_installed = sh(script: "brew --version", returnStatus: true)
-                    if(hombrew_installed != 0){
-                        echo "Installing with Homebrew..."
-                        sh '''#!/bin/bash
-                        curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-                        '''
-                    }else{
-                        echo "Homebrew is already installed."
-                    }
                     
                     // 确保 Homebrew 路径已添加到环境变量 PATH 中
                      withEnv(["PATH+BREW=/opt/homebrew/bin"]){
+                        //install Homebrew
+                        def hombrew_installed = sh(script: "brew --version", returnStatus: true)
+                        if(hombrew_installed != 0){
+                            echo "Installing with Homebrew..."
+                            sh '''#!/bin/bash
+                            curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+                            '''
+                        }else{
+                            echo "Homebrew is already installed."
+                        }
+
+                     
                         def mise_installed = sh(script: "mise --version", returnStatus: true)
                         if(mise_installed != 0){
                             echo "Installing with Mise..."
@@ -41,7 +43,6 @@ pipeline {
                             echo "Mise is already installed."
                         }
                     }
-                    
 
                     /*
                     //install tuist
