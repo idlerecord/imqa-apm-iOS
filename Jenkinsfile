@@ -21,13 +21,15 @@ pipeline {
             steps {
                 script{
                     //install Homebrew
-                    sh '''
-                    if ! Command -v brew &> /dev/null; then
-                        echo "HomeBrew is not installed. Installing with Homebrew..."
+                    def hombrew_installed = sh(script: "which brew", returnStatus: true)
+                    if(hombrew_installed != 0){
+                        echo "Installing with Homebrew..."
                         sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-                    fi
-                    '''
-
+                    }else{
+                        echo "Homebrew is already installed."
+                    }
+                    
+                    /*
                     //install mise
                     sh '''
                     if ! Command -v miss &> /dev/null; then
@@ -51,6 +53,7 @@ pipeline {
                         brew install cocoapods
                     fi
                     '''
+                    */
                 }
             }
         }
