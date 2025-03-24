@@ -60,7 +60,7 @@ pipeline {
                             sh 'mise install tuist'
 
                             // 重新加载环境变量
-                            sh 'mise use tuist@latest'
+                            sh 'mise use tuist@4.41.0'
                         }else{
                             echo "Tuist is already installed."
                         }
@@ -75,11 +75,11 @@ pipeline {
                         sh 'rm -rf *xcodeproj *xcworkspace'
 
                         sh 'echo "✅Tuist Clean"'
-                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist clean'
+                        sh '~/.local/share/mise/installs/tuist/4.41.0/bin/tuist clean'
                         
-                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist install'
+                        sh '~/.local/share/mise/installs/tuist/4.41.0/bin/tuist install'
 
-                        sh '~/.local/share/mise/installs/tuist/4.44.3/bin/tuist generate'
+                        sh '~/.local/share/mise/installs/tuist/4.41.0/bin/tuist generate'
 
                         sh 'echo "✅pod install"'
                         sh 'pod install'
