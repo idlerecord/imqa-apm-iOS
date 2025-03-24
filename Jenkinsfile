@@ -60,8 +60,8 @@ pipeline {
                             sh 'mise install tuist'
                             
                             echo "Using Tuist"
-                            mise use tuist@latest
-                            tuist clean
+                            sh 'mise use tuist@latest'
+                            sh 'tuist clean'
 
                         }else{
                             echo "Tuist is already installed."
