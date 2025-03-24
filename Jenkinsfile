@@ -17,13 +17,44 @@ pipeline {
                 git branch: 'main', url: 'git@github.com:idlerecord/Imqa-sdk-ios.git'
             }
         }
-        /*stage('Build Project') {
+        stage('Install Tools') {
             steps {
-                // 使用 Maven 构建项目
-                sh 'mvn clean package -DskipTests'
+		script{
+		//install Homebrew
+		sh '''
+		if ! Command -v brew &> /dev/null; then
+			echo "HomeBrew is not installed. Installing with Homebrew..."
+			/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		fi
+		'''
+
+		//install mise
+		sh '''
+		if ! Command -v miss &> /dev/null; then
+			echo "Mise is not installed. Installing with Mise..."
+			brew install mise
+		fi
+		'''
+
+		//install tuist
+		sh '''
+		if ! Command -v tuist &> /dev/null; then
+			echo "Tuist is not installed. Installing with Tuist..."
+			mise install tuist
+		fi
+		'''
+
+		//install Cocoapods
+		sh '''
+		if ! Command -v pod &> /dev/null; then
+			echo "Cocoapods is not installed. Installing with Cocoapods..."
+			brew install cocoapods
+		fi
+		'''
+		}
             }
         }
-        stage('Verify Build Output') {
+        /*stage('Verify Build Output') {
             // 验证构建结果
             steps {
                 sh 'ls -l target/'
