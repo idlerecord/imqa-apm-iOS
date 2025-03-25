@@ -8,6 +8,10 @@ pipeline {
         TARGET_DIR = you-jarFileDir                  // 服务器上的目标目录
         JAR_FILE = your-jarFileName                // 打包后的文件名
     }*/
+    environment {
+        LANG = 'en_US.UTF-8'
+        LC_ALL = 'en_US.UTF-8'
+    }
 
     stages {
         stage('Clone Source Code') {
@@ -59,11 +63,11 @@ pipeline {
                             echo "Tuist 安装检查"
                             def tuist_installed = sh(script: "which tuist", returnStatus: true)
                             if(tuist_installed != 0){
-                                echo "Installing Tuist..."
+                                echo "✅Installing Tuist..."
                                 sh 'mise install tuist'
 
                                 // 重新加载环境变量
-                                sh 'mise use tuist@4.41.0'
+                                sh '✅mise use tuist@4.41.0'
                             }else{
                                 echo "Tuist is already installed."
                             }
