@@ -101,11 +101,24 @@ pipeline {
                         echo "🏗️Building the project version:${params.VERSION}"
                         ./build.sh ${params.VERSION}
                     """
+                    // 获取当前工作目录
+                    def currentDir = sh(script: 'pwd', returnStdout: true).trim()
                     
-                    sh 'archiveArtifacts artifacts: "./Build/Version/*.zip", allowEmptyArchive: true'
-
+                    def date = new Date().format("yyyyMMdd")
+                    def archiveName = "${params.VERSION}_${date}.zip"
+                    
+                    sh 'zip -r "${currentDir}/Build/Version/$archiveName" "${currentDir}/Build/xcframework/*.xcframework"'
+                    
                 }
             }
         }
     }
+    
+    post{
+        always{
+            archiveArtifacts artifacts: "${currentDir}/Build/Version/*.zip", allowEmptyArchive: true
+        }
+        
+    }
+    
 }
