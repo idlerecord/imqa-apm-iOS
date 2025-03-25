@@ -89,7 +89,7 @@ let project = Project(
                 deploymentTargets: .iOS("13.0"),
                 sources: ["Sources/IMQACore/**/*.swift"],
 //                resources: [.glob(pattern: Path.path("Sources/IMQACore/PrivacyInfo.xcprivacy"), excluding: [], tags: [], inclusionCondition: nil) ],
-                resources: ["PrivacyInfo.xcprivacy"],
+                resources: ["Sources/IMQACore/PrivacyInfo.xcprivacy"],
                 dependencies: [
                     .target(name: "IMQACollectDeviceInfo"),
                     .target(name: "IMQAObjCUtilsInternal"),
