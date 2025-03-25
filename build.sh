@@ -148,7 +148,7 @@ OUTPUT_FILE="${VERSION}_${DATE}.zip"
 
 # 检查 Version 目录是否存在，不存在则创建
 if [ ! -d "$VERSION_DIR" ]; then
-  mkdir "$VERSION_DIR"
+  mkdir -p "$VERSION_DIR"
   echo "Directory $VERSION_DIR created."
 fi
 
