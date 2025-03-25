@@ -93,7 +93,7 @@ pipeline {
             }
         }
         
-        stage('Build'){
+        stage('Build&Archieve'){
             steps{
                 script {
                     // 将版本号作为环境变量传递给 shell 脚本
@@ -101,7 +101,8 @@ pipeline {
                         echo "🏗️Building the project version:${params.VERSION}"
                         ./build.sh ${params.VERSION}
                     """
-                    archiveArtifacts artifacts: './Build/Version/*.zip', allowEmptyArchive: true
+                    
+                    sh 'archiveArtifacts artifacts: "./Build/Version/*.zip", allowEmptyArchive: true'
 
                 }
             }
