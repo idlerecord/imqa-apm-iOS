@@ -65,8 +65,6 @@ pipeline {
                                 echo "Tuist is already installed."
                             }
                             
-                        }
-                        
                             sh 'echo "✅DevivedData 삭제"'
                             sh 'rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 
@@ -83,8 +81,8 @@ pipeline {
 
                             sh 'echo "✅pod install"'
                             sh 'pod install'
-                            sh 'echo "🎉setup completed"'
-
+                            sh 'echo "🎉🎉🎉🎉🎉setup completed🎉🎉🎉🎉🎉"'
+                        }
                     }
                 }
             }
