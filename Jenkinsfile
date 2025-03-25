@@ -18,16 +18,16 @@ pipeline {
             steps {
                 // 拉取项目源码
                 //注意: 这里根据自己的需求选择合适的分支以及仓库地址（ssh或https）
+                echo "✅拉去代码"
                 git branch: 'main', url: 'git@github.com:idlerecord/imqa-apm-iOS.git'
             }
         }
             stage('Install Tools&initialize') {
                 steps {
                     script{
-                        
                         // 确保 Homebrew 路径已添加到环境变量 PATH 中
                          withEnv(["PATH+BREW=/opt/homebrew/bin"]){
-                            echo "Home 安装检查"
+                            echo "✅Homebrew 安装检查"
                             def hombrew_installed = sh(script: "brew --version", returnStatus: true)
                             if(hombrew_installed != 0){
                                 echo "Installing with Homebrew..."
@@ -38,7 +38,7 @@ pipeline {
                                 echo "Homebrew is already installed."
                             }
                          
-                            echo "Mise 安装检查"
+                            echo "✅Mise 安装检查"
                             def mise_installed = sh(script: "mise --version", returnStatus: true)
                             if(mise_installed != 0){
                                 echo "Installing with Mise..."
@@ -47,7 +47,7 @@ pipeline {
                                 echo "Mise is already installed."
                             }
                             
-                            echo "Cocoapods 安装检查"
+                            echo "✅Cocoapods 安装检查"
                             def cocoapods_installed = sh(script: "pod --version", returnStatus: true)
                             if(cocoapods_installed != 0){
                                 echo "Installing with Cocoapods..."
@@ -57,14 +57,14 @@ pipeline {
                             }
 
                             //Tuist 安装
-                            echo "Tuist 安装检查"
+                            echo "✅Tuist 安装检查"
                             def tuist_installed = sh(script: "which tuist", returnStatus: true)
                             if(tuist_installed != 0){
-                                echo "✅Installing Tuist..."
+                                echo "Installing Tuist..."
                                 sh 'mise install tuist'
 
                                 // 重新加载环境变量
-                                sh '✅mise use tuist@4.41.0'
+                                sh 'mise use tuist@4.41.0'
                             }else{
                                 echo "Tuist is already installed."
                             }
