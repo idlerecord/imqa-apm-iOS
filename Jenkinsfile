@@ -101,14 +101,21 @@ pipeline {
                         echo "🏗️Building the project version:${params.VERSION}"
                         ./build.sh ${params.VERSION}
                     """
+
                     // 获取当前工作目录
                     def currentDir = sh(script: 'pwd', returnStdout: true).trim()
-                    
+            
+                    // 获取当前日期
                     def date = new Date().format("yyyyMMdd")
                     def archiveName = "${params.VERSION}_${date}.zip"
-                    
-                    sh 'zip -r "${currentDir}/Build/Version/$archiveName" "${currentDir}/Build/xcframework/"'
-                    
+            
+                    // 确保 Build/Version 目录存在
+                    sh "mkdir -p ${currentDir}/Build/Version"
+            
+                    // 使用当前目录构建正确的路径
+                    sh """
+                        zip -r ${currentDir}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
+                    """
                 }
             }
         }
