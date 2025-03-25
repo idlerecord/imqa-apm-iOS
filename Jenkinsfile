@@ -90,12 +90,4 @@ pipeline {
             }
     
     }
-    
-    post {
-        always {
-            // cleanWs() 禁用，避免清理工作区
-            // cleanWs()
-        }
-    }
-
 }
