@@ -120,12 +120,4 @@ pipeline {
             }
         }
     }
-    
-    post{
-        always{
-            archiveArtifacts artifacts: "${currentDir}/Build/Version/*.zip", allowEmptyArchive: true
-        }
-        
-    }
-    
 }
