@@ -95,7 +95,7 @@ pipeline {
         
         stage('Build'){
             steps{
-                echo '🏗️Building the project version:${params.VERSION}"'
+                echo "🏗️Building the project version:${params.VERSION}"
                 sh  './build.sh  ${params.VERSION}'
             }
         }
