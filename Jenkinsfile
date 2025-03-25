@@ -13,7 +13,7 @@ pipeline {
         LANG = 'en_US.UTF-8'
         LC_ALL = 'en_US.UTF-8'
     }
-    
+    //opt/homebrew/opt/jenkins 更改iP地址来局域网访问， 有两个文件哦
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: 'The version of the project')
     }
@@ -125,7 +125,6 @@ pipeline {
                     sh "ls -l ./Build/Version/"
                     //单引号不解析里面内容 双引号解析里面内容
                     archiveArtifacts artifacts: "**/Version/*.zip"
-                                                    
                 }
             }
         }
