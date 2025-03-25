@@ -120,7 +120,7 @@ pipeline {
                     // 输出文件内容检查是否正确
                     sh "ls -l ${CURRENTDIR}/Build/xcframework/"
                     //单引号不解析里面内容 双引号解析里面内容
-                    archiveArtifacts artifacts: "${CURRENTDIR}/Build/xcframework/*.xcframework"
+                    archiveArtifacts artifacts: "**/xcframework/*.xcframework"， fingerprint: true
                 }
             }
         }
