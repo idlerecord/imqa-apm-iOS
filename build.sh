@@ -5,6 +5,7 @@ BUILD_DIR="./Build"
 SIMULATOR_DIR="$BUILD_DIR/Release-iphonesimulator"
 DEVICE_DIR="$BUILD_DIR/Release-iphoneos"
 OUTPUT_DIR="$BUILD_DIR/xcframework"
+VERSION_DIR=="$BUILD_DIR/Version"
 TARGET_DIR="$2"
 VERSION="$1"
 
@@ -137,6 +138,22 @@ if [ -f "$PRIVACY_FILE" ]; then
 else
     echo "❌ Error: PrivacyInfo.xcprivacy not found in $DEVICE_DIR"
 fi
+
+# 获取当前日期，格式为 年月日
+DATE=$(date +%Y%m%d)
+
+# 生成压缩文件的名称，格式为 version+年月日.zip
+OUTPUT_FILE="${VERSION}_${DATE}.zip"
+
+
+# 检查 Version 目录是否存在，不存在则创建
+if [ ! -d "$VERSION_DIR" ]; then
+  mkdir "$VERSION_DIR"
+  echo "Directory $VERSION_DIR created."
+fi
+
+# 执行压缩操作，将指定目录下的文件打包成 zip 格式
+zip -r "$VERSION_DIR/$OUTPUT_FILE" "$OUTPUT_DIR"
 
 
 # 📌 检查输出目录的 xcframework 是否存在
