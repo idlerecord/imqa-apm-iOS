@@ -12,7 +12,7 @@ pipeline {
     environment {
         LANG = 'en_US.UTF-8'
         LC_ALL = 'en_US.UTF-8'
-        CURRENTDIR = './Build'
+        CURRENTDIR = './'
     }
     
     parameters {
@@ -119,8 +119,8 @@ pipeline {
                     
                     // 输出文件内容检查是否正确
                     sh "ls -l ${CURRENTDIR}/Build/xcframework/"
-
-                    archiveArtifacts artifacts: '${CURRENTDIR}/Build/xcframework/*.xcframework'
+                    //单引号不解析里面内容 双引号解析里面内容
+                    archiveArtifacts artifacts: "${CURRENTDIR}/Build/xcframework/*.xcframework"
                 }
             }
         }
