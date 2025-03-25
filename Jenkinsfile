@@ -117,14 +117,10 @@ pipeline {
                     sh "mkdir -p ${CURRENTDIR}/Build/Version"
                     sh 'echo "Build Version Folder"'
                     
-            
-                /*
-                    // 使用当前目录构建正确的路径
-                    sh """
-                        zip -r ${CURRENTDIR}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
-                    """
-              */
-                    archiveArtifacts artifacts: '${CURRENTDIR}/Build/xcframework'
+                    // 输出文件内容检查是否正确
+                    sh "ls -l ${CURRENTDIR}/Build/xcframework/"
+
+                    archiveArtifacts artifacts: '${CURRENTDIR}/Build/xcframework/*.xcframework'
                 }
             }
         }
