@@ -124,7 +124,7 @@ pipeline {
                     // 输出文件内容检查是否正确
                     sh "ls -l ./Build/Version/"
                     //单引号不解析里面内容 双引号解析里面内容
-                    archiveArtifacts artifacts: "**/Version/*.zip"， fingerprint: true
+                    archiveArtifacts artifacts: "**/Version/*.zip"
                                                     
                 }
             }
