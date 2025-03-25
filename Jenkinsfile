@@ -49,7 +49,7 @@ pipeline {
                                 echo "Installing with Cocoapods..."
                                 sh 'brew install cocoapods'
                                 sh 'echo "export LANG=en_US.UTF-8" >> ~/.zshrc'
-                                sh 'echo "LC_ALL=en_US.UTF-8" >> ~/.zshrc'
+                                sh 'echo "export LC_ALL=en_US.UTF-8" >> ~/.zshrc'
                                 sh 'source ~/.zshrc'
                             }else{
                                 echo "Cocoapods is already installed."
