@@ -99,8 +99,10 @@ pipeline {
                     // 将版本号作为环境变量传递给 shell 脚本
                     sh """
                         echo "🏗️Building the project version:${params.VERSION}"
-                        ./build.sh VERSION=${params.VERSION}
+                        ./build.sh ${params.VERSION}
                     """
+                    
+                    archiveArtifacts './Build/Version/*.zip'
                 }
             }
         }
