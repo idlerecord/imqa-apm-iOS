@@ -12,7 +12,6 @@ pipeline {
     environment {
         LANG = 'en_US.UTF-8'
         LC_ALL = 'en_US.UTF-8'
-        CURRENTDIR = './'
     }
     
     parameters {
@@ -114,16 +113,16 @@ pipeline {
                     def archiveName = "${params.VERSION}_${date}.zip"
             
                     // 确保 Build/Version 目录存在
-                    sh "mkdir -p ${CURRENTDIR}/Build/Version"
+                    sh "mkdir -p ./Build/Version"
                     sh 'echo "Build Version Folder"'
                     
                     // 使用当前目录构建正确的路径
                     sh """
-                        zip -r ${CURRENTDIR}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
+                        zip -r ./Build/Version/${archiveName} ./Build/xcframework/
                     """
 
                     // 输出文件内容检查是否正确
-                    sh "ls -l ${CURRENTDIR}/Build/Version/"
+                    sh "ls -l ./Build/Version/"
                     //单引号不解析里面内容 双引号解析里面内容
                     archiveArtifacts artifacts: "**/Version/*.zip"， fingerprint: true
                                                     
