@@ -48,6 +48,9 @@ pipeline {
                             if(cocoapods_installed != 0){
                                 echo "Installing with Cocoapods..."
                                 sh 'brew install cocoapods'
+                                sh 'echo "export LANG=en_US.UTF-8" >> ~/.zshrc'
+                                sh 'echo "LC_ALL=en_US.UTF-8" >> ~/.zshrc'
+                                sh 'source ~/.zshrc'
                             }else{
                                 echo "Cocoapods is already installed."
                             }
@@ -80,7 +83,7 @@ pipeline {
                             sh '~/.local/share/mise/installs/tuist/4.41.0/bin/tuist generate'
 
                             sh 'echo "✅pod install"'
-                            sh 'pod install'
+                            pod install
                             sh 'echo "🎉🎉🎉🎉🎉setup completed🎉🎉🎉🎉🎉"'
                         }
                     }
