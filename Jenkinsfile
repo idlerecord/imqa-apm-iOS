@@ -8,15 +8,19 @@ pipeline {
         TARGET_DIR = you-jarFileDir                  // 服务器上的目标目录
         JAR_FILE = your-jarFileName                // 打包后的文件名
     }*/
+    
     environment {
         LANG = 'en_US.UTF-8'
         LC_ALL = 'en_US.UTF-8'
+        CURRENTDIR = './Build'
     }
+    
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: 'The version of the project')
     }
+    
     stages {
-        /*
+        
         stage('Clone Source Code') {
             steps {
                 // 拉取项目源码
@@ -94,7 +98,7 @@ pipeline {
                 }
             }
         }
-        */
+        
         
         stage('Build&Archieve'){
             steps{
@@ -104,36 +108,25 @@ pipeline {
                         echo "🏗️Building the project version:${params.VERSION}"
                         ./build.sh ${params.VERSION}
                     """
-
-                    // 获取当前工作目录
-                    def currentDir = sh(script: 'pwd', returnStdout: true).trim()
             
                     // 获取当前日期
                     def date = new Date().format("yyyyMMdd")
                     def archiveName = "${params.VERSION}_${date}.zip"
             
                     // 确保 Build/Version 目录存在
-                    sh "mkdir -p ${currentDir}/Build/Version"
+                    sh "mkdir -p ${CURRENTDIR}/Build/Version"
+                    sh 'echo "Build Version Folder"'
+                    
             
                 /*
                     // 使用当前目录构建正确的路径
                     sh """
-                        zip -r ${currentDir}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
+                        zip -r ${CURRENTDIR}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
                     """
               */
-                    archiveArtifacts artifacts: '${currentDir}/Build/xcframework'
+                    archiveArtifacts artifacts: '${CURRENTDIR}/Build/xcframework'
                 }
             }
         }
     }
-    
-    /*
-    post{
-        always{
-            archiveArtifacts artifacts: "${currentDir}/Build/Version/*.zip", allowEmptyArchive: true
-        }
-        
-    }
-    */
-
 }
