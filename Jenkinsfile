@@ -16,6 +16,7 @@ pipeline {
         string(name: 'VERSION', defaultValue: '1.0.0', description: 'The version of the project')
     }
     stages {
+        /*
         stage('Clone Source Code') {
             steps {
                 // 拉取项目源码
@@ -24,6 +25,7 @@ pipeline {
                 git branch: 'main', url: 'git@github.com:idlerecord/imqa-apm-iOS.git'
             }
         }
+        
         stage('Install Tools & initialize') {
             steps {
                 script{
@@ -92,6 +94,7 @@ pipeline {
                 }
             }
         }
+        */
         
         stage('Build&Archieve'){
             steps{
@@ -112,12 +115,25 @@ pipeline {
                     // 确保 Build/Version 目录存在
                     sh "mkdir -p ${currentDir}/Build/Version"
             
+                /*
                     // 使用当前目录构建正确的路径
                     sh """
                         zip -r ${currentDir}/Build/Version/${archiveName} ${currentDir}/Build/xcframework/
                     """
+              */
+                    archiveArtifacts artifacts: '${currentDir}/Build/xcframework'
                 }
             }
         }
     }
+    
+    /*
+    post{
+        always{
+            archiveArtifacts artifacts: "${currentDir}/Build/Version/*.zip", allowEmptyArchive: true
+        }
+        
+    }
+    */
+
 }

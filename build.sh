@@ -147,10 +147,10 @@ fi
 
 
 # 检查 Version 目录是否存在，不存在则创建
-if [ ! -d "$VERSION_DIR" ]; then
-  mkdir -p "$VERSION_DIR"
-  echo "Directory $VERSION_DIR created."
-fi
+#if [ ! -d "$VERSION_DIR" ]; then
+#  mkdir -p "$VERSION_DIR"
+#  echo "Directory $VERSION_DIR created."
+#fi
 
 ## 执行压缩操作，将指定目录下的文件打包成 zip 格式
 #zip -r "$VERSION_DIR/$OUTPUT_FILE" "$OUTPUT_DIR"
