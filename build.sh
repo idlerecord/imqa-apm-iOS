@@ -5,7 +5,7 @@ BUILD_DIR="./Build"
 SIMULATOR_DIR="$BUILD_DIR/Release-iphonesimulator"
 DEVICE_DIR="$BUILD_DIR/Release-iphoneos"
 OUTPUT_DIR="$BUILD_DIR/xcframework"
-VERSION_DIR=="$BUILD_DIR/Version"
+VERSION_DIR="$BUILD_DIR/Version"
 TARGET_DIR="$2"
 VERSION="$1"
 
