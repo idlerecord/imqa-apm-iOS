@@ -107,7 +107,7 @@ pipeline {
                     def date = new Date().format("yyyyMMdd")
                     def archiveName = "${params.VERSION}_${date}.zip"
                     
-                    sh 'zip -r "${currentDir}/Build/Version/$archiveName" "${currentDir}/Build/xcframework/*.xcframework"'
+                    sh 'zip -r "${currentDir}/Build/Version/$archiveName" "${currentDir}/Build/xcframework/"'
                     
                 }
             }
