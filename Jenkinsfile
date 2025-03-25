@@ -101,8 +101,8 @@ pipeline {
                         echo "🏗️Building the project version:${params.VERSION}"
                         ./build.sh ${params.VERSION}
                     """
-                    
-                    archiveArtifacts './Build/Version/*.zip'
+                    archiveArtifacts artifacts: './Build/Version/*.zip', allowEmptyArchive: true
+
                 }
             }
         }
