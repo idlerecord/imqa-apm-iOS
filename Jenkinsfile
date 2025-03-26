@@ -125,7 +125,25 @@ pipeline {
                     sh "ls -l ./Build/Version/"
                     //单引号不解析里面内容 双引号解析里面内容
                     archiveArtifacts artifacts: "**/Version/*.zip"
+                    
+                    //Build 和 Archieve 成功
+                    sh 'echo "🎉🎉🎉🎉🎉Build&Archieve completed🎉🎉🎉🎉🎉"'
                 }
+            }
+        }
+    }
+    
+    post{
+        success {
+            script{
+                sh """
+                    echo "🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+                """
+                sh """
+                    echo "Will Build PublishSDKOnCocoapods"
+                """
+                
+                build job: 'PublishSDKOnCocoapods'
             }
         }
     }
