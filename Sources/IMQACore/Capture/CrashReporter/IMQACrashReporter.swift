@@ -108,6 +108,8 @@ public final class IMQACrashReporter: NSObject, CrashReporter {
 //                    writer.pointee.addJSONElement(writer, UserInfoKey.crashSpan, spanJSONString, true)
 //                }
 //            }
+            LogFileManager.shared.recordToFile(text: "BEI DONG CRASH:\(Date())")
+
         }
         updateKSCrashInfo()
         

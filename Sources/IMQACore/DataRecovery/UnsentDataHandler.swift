@@ -311,6 +311,7 @@ class UnsentDataHandler {
                         }
                         reporter.deleteCrashReport(id: internalId)
                         IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
+                        LogFileManager.shared.recordToFile(text: "API CRASH LOG SEND")
                     }
 
                 case .failure(let error):

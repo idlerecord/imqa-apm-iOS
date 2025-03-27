@@ -18,7 +18,7 @@ class IMQAStorageUnit {
 
     var mmkvID: String = ""
     
-    static var currentVersion: String = IMQAMeta.sdkVersion
+    static var currentSDKVersion: String = IMQAMeta.sdkVersion
     static var savedSDKVersionKey: String = "savedSDKVersion"
     static var savedAppVersionKey: String = "savedAppVersion"
     
@@ -27,7 +27,7 @@ class IMQAStorageUnit {
     var suitName:String = Bundle.appIdentifier + ".userdefault"
 
     static let rootDir = IMQAStorageUnit.path.appending("/IMQA")
-    static let currentSubDir = IMQAStorageUnit.rootDir.appending("/App_\(Bundle.appVersion)/sdk_\(IMQAStorageUnit.currentVersion)")
+    static let currentSubDir = IMQAStorageUnit.rootDir.appending("/APP_\(Bundle.appVersion)/sdk_\(IMQAStorageUnit.currentSDKVersion)")
     private static let didInitialize = false
     
     static let path: String = {
@@ -49,23 +49,29 @@ class IMQAStorageUnit {
         if let savedAppVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedAppVersionKey) {
             //app 버전 다를때
             if savedAppVersion != Bundle.appVersion {
-                removeFolder(path: IMQAStorageUnit.rootDir.appending("/App_\(savedAppVersion)/"))
+                let exceptFolder: String = IMQAStorageUnit.rootDir.appending("/APP_\(Bundle.appVersion)")
+                let rootDir = IMQAStorageUnit.rootDir
+                deleteAllExcept(exceptFolder: exceptFolder, in: IMQAStorageUnit.rootDir)
+                
                 UserDefaults(suiteName: suitName)?.set(Bundle.appVersion, forKey: IMQAStorageUnit.savedAppVersionKey)
-                UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
+                UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentSDKVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
                 UserDefaults(suiteName: suitName)?.synchronize()
         //app 버전 같을때
             }else{
                 if let savedSDKVersion = UserDefaults(suiteName: suitName)?.string(forKey: IMQAStorageUnit.savedSDKVersionKey) {
-                    if savedSDKVersion != IMQAStorageUnit.currentVersion{
-                        clear(path: IMQAStorageUnit.rootDir.appending("/App_\(Bundle.appVersion)/sdk_\(savedSDKVersion)/"))
-                        UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
+                    if savedSDKVersion != IMQAStorageUnit.currentSDKVersion{
+                        let exceptFoler: String = IMQAStorageUnit.rootDir.appending("/APP_\(Bundle.appVersion)/sdk_\(IMQAStorageUnit.currentSDKVersion)")
+                        let rootDir = IMQAStorageUnit.rootDir.appending("/APP_\(Bundle.appVersion)")
+                        deleteAllExcept(exceptFolder: exceptFoler, in: rootDir)
+                        
+                        UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentSDKVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
                         UserDefaults(suiteName: suitName)?.synchronize()
                     }
                 }
             }
         }else{
             UserDefaults(suiteName: suitName)?.set(Bundle.appVersion, forKey: IMQAStorageUnit.savedAppVersionKey)
-            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
+            UserDefaults(suiteName: suitName)?.set(IMQAStorageUnit.currentSDKVersion, forKey: IMQAStorageUnit.savedSDKVersionKey)
             UserDefaults(suiteName: suitName)?.synchronize()
         }
     }
@@ -90,6 +96,31 @@ class IMQAStorageUnit {
             } catch let error {
                 IMQA.logger.debug("removeFolder error: \(error)")
             }
+        }
+    }
+    
+    func deleteAllExcept(exceptFolder: String, in directoryPath: String) {
+        let fileManager = FileManager.default
+
+        do {
+            // 获取当前目录下的所有文件和文件夹
+            let contents = try fileManager.contentsOfDirectory(atPath: directoryPath)
+
+            for item in contents {
+                let itemPath = (directoryPath as NSString).appendingPathComponent(item)
+
+                // 检查是否是要保留的文件夹
+                if item == exceptFolder {
+//                    print("Skipping: \(itemPath)")
+                    continue
+                }
+
+                // 删除文件或文件夹
+                try fileManager.removeItem(atPath: itemPath)
+//                print("Deleted: \(itemPath)")
+            }
+        } catch {
+//            print("Error deleting items: \(error.localizedDescription)")
         }
     }
     

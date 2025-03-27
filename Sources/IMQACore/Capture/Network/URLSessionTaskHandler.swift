@@ -196,7 +196,7 @@ final class DefaultURLSessionTaskHandler: URLSessionTaskHandler {
                     value: response.statusCode
                 )
                 
-                if !((200..<300).contains(response.statusCode)){
+                if !((200..<400).contains(response.statusCode)){
                     let errorMessage = NetworkStatusCode.errorMessage(code: response.statusCode)
                     span.setAttribute(key: SemanticAttributes.exceptionType.rawValue,
                                       value: .string("\(response.statusCode)"))
