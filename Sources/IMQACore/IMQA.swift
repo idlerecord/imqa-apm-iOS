@@ -9,7 +9,8 @@ import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
 
-@objc public class IMQA: NSObject {
+@objcMembers
+public class IMQA: NSObject {
     
     @objc public static var client: IMQA?
         

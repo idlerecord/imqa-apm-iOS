@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import KSCrashRecording
-//import KSCrash
+//import KSCrashRecording
+import KSCrash
 import OpenTelemetryApi
 import IMQACommonInternal
 import IMQAOtelInternal

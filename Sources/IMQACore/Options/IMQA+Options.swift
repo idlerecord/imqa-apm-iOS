@@ -16,7 +16,7 @@ extension IMQA {
         public let crashReporter: CrashReporter?
         public var sampleRate: Double = 1.0
         
-        public init(
+        @objc public init(
             serviceKey: String,
             endpoints: IMQA.Endpoints? = nil,
             sampleRate: Double = 1.0
