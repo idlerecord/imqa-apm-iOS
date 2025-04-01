@@ -162,6 +162,7 @@ public extension IMQA {
     /// - Parameter id: id
     static func setUserId(id: String?) {
         UserModel.setUserId(id)
+        IMQAOTel.setUpCommonSpanAttributeValues()
     }
     
     /// UserId 회득
