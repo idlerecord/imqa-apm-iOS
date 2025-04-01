@@ -143,7 +143,8 @@ pipeline {
                     echo "Will Build PublishSDKOnCocoapods"
                 """
                 
-                build job: 'PublishSDKOnCocoapods'
+                build job: 'PublishSDKOnCocoapods',
+                    parameters:[string(name:)]
             }
         }
     }

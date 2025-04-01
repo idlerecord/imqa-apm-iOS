@@ -268,9 +268,9 @@ extension WKWebView {
         config.userContentController.addUserScript(userScript)
 
         
-        let serviceNameScriptString = "window.__imqa_service_name = '\(IMQAOTel.serviceKey)';"
+        let serviceNameScriptString = "window.__imqa_service_name = '\(Bundle.appName)';"
         let serviceNameScript = WKUserScript(
-            source: sessionScriptString,
+            source: serviceNameScriptString,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         )
@@ -279,13 +279,14 @@ extension WKWebView {
         //
         let serviceVersionScriptString = "window.__imqa_service_version = '\(Bundle.appBuildVersion)';"
         let serviceVersionScript = WKUserScript(
-            source: sessionScriptString,
+            source: serviceVersionScriptString,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         )
         config.userContentController.addUserScript(serviceVersionScript)
-
-        //사용자 setting
+        
+        
+        //imqaSharedSession
         var imqaSharedSessionScriptString = ""
         if IMQAOTel.isSharedSession {
             imqaSharedSessionScriptString = "window.__imqa_shared_session = true;"
@@ -294,12 +295,23 @@ extension WKWebView {
         }
         
         let imqaSharedSessionScript = WKUserScript(
-            source: sessionScriptString,
+            source: imqaSharedSessionScriptString,
             injectionTime: .atDocumentStart,
             forMainFrameOnly: true
         )
         config.userContentController.addUserScript(imqaSharedSessionScript)
 
+        
+        //service Key
+        var serviceKeyScriptString = "window.__imqa_service_key = '\(IMQAOTel.serviceKey)';"
+        let serviceKeyScript = WKUserScript(
+            source: serviceKeyScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        config.userContentController.addUserScript(serviceKeyScript)
+
+        
         
         if !SessionBasedSampler.sampler {
             let deactivatedScriptString = "window.__imqa_deactivated = true;"
