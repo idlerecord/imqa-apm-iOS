@@ -268,6 +268,39 @@ extension WKWebView {
         config.userContentController.addUserScript(userScript)
 
         
+        let serviceNameScriptString = "window.__imqa_service_name = '\(IMQAOTel.serviceKey)';"
+        let serviceNameScript = WKUserScript(
+            source: sessionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        config.userContentController.addUserScript(serviceNameScript)
+                
+        //
+        let serviceVersionScriptString = "window.__imqa_service_version = '\(Bundle.appBuildVersion)';"
+        let serviceVersionScript = WKUserScript(
+            source: sessionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        config.userContentController.addUserScript(serviceVersionScript)
+
+        //사용자 setting
+        var imqaSharedSessionScriptString = ""
+        if IMQAOTel.isSharedSession {
+            imqaSharedSessionScriptString = "window.__imqa_shared_session = true;"
+        }else{
+            imqaSharedSessionScriptString = "window.__imqa_shared_session = false;"
+        }
+        
+        let imqaSharedSessionScript = WKUserScript(
+            source: sessionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        config.userContentController.addUserScript(imqaSharedSessionScript)
+
+        
         if !SessionBasedSampler.sampler {
             let deactivatedScriptString = "window.__imqa_deactivated = true;"
             let deactivatedScript = WKUserScript(

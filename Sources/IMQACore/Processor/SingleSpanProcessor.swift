@@ -8,6 +8,7 @@
 import Foundation
 import OpenTelemetryApi
 import OpenTelemetrySdk
+import IMQAOtelInternal
 
 /// A really simple implementation of the SpanProcessor that converts the ExportableSpan to SpanData
 /// and passes it to the configured exporter in both `onStart` and `onEnd`
@@ -44,6 +45,10 @@ struct SingleSpanProcessor: SpanProcessor {
                                                                processIdentifier: record.processIdentifier,
                                                                sessionId: IMQAOTel.sessionId.toString)
             crashStorage.save(crashRecord)
+        }
+        //crash일 때 한번더 올리게 된다.
+        if span.toSpanData().attributes[SpanSemantics.spanType] == .string(IMQASpanType.CRASH.rawValue) {
+            return
         }
 
         processorQueue.async {

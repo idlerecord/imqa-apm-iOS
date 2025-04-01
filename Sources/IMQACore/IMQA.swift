@@ -177,6 +177,13 @@ public extension IMQA {
     static func customLog(level: LogLevel, message: String){
         IMQA.logger.log(level: level, message: message, attributes: [:])
     }
+    
+    
+    /// session공용
+    /// - Parameter session:
+    static func setSharedSession(session: Bool){
+        IMQAOTel.isSharedSession = session
+    }
 }
 
 

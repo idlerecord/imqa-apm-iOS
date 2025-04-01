@@ -216,6 +216,7 @@ class UnsentDataHandler {
 
 
             var beforeSpan:Span? = nil
+            var logRequestBlock: (() -> Void)? = nil
             //start 하고 end하면 app이 아주 빨리 종료시 Batchprocess에서 export 로 못가는 사이 crash하면 data 날라간다
             if let spanRecord = report.spanRecord {
                 
@@ -253,14 +254,55 @@ class UnsentDataHandler {
                 upload.uploadSpans(id: report.id.uuidString, data: envelopeData){ result in
                     switch result {
                     case .success:
+                        logRequestBlock?()
+                    case .failure(let error):
+                        IMQA.logger.warning("Error trying to upload crash report \(report.id):\n\(error.localizedDescription)")
+                    }
+                }
+            }
+            
+            logRequestBlock = {
+                //log기록
+                var attributes:[String: PersistableValue] = [:]
+                attributes[SemanticAttributes.exceptionType.rawValue] = .string(exceptionObj.type)
+                attributes[SemanticAttributes.exceptionMessage.rawValue] = .string(exceptionObj.message ?? "")
+                attributes[SemanticAttributes.exceptionStacktrace.rawValue] = .string(exceptionObj.stackTrace?.joined(separator: "\n") ?? "")
+                attributes[SpanSemantics.Common.sessionId] = .string(session?.id.toString ?? "")
+                attributes[SpanSemantics.Common.traceId] = .string(report.spanRecord?.traceId ?? "")
+                attributes[SpanSemantics.Common.spanId] = .string(report.spanRecord?.id ?? "")
+                if let userId = UserModel.id {
+                    attributes[SpanSemantics.Common.userId] = .string(userId)
+                }
+                if let areaCode = AreaCodeModel.areaCode {
+                    attributes[SpanSemantics.Common.areaCode] = .string(areaCode)
+                }
+                            
+                
+                let logRecord:LogRecord = LogRecord(identifier: LogIdentifier(),
+                                                    processIdentifier: ProcessIdentifier.current,
+                                                    severity: LogSeverity.error,
+                                                    body: exceptionObj.type,
+                                                    attributes: attributes,
+                                                    timestamp: timestamp,
+                                                    spanContext: beforeSpan?.context)
+                
+                let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])
+                            
+                let data = PayloadEnvelope<LogPayload>.requestLogProtobufData(logRecords: [readableLog])
+                guard let envelopeData = data else{ return }
+
+                upload.uploadCrash(id: report.id.uuidString, data: envelopeData) { result in
+                    switch result {
+                    case .success:
                         // remove crash report
                         // we can remove this immediately because the upload module will cache it until the upload succeeds
                         if let internalId = report.internalId {
                             guard let reporter = reporter else {
                                 return
                             }
-//                            reporter.deleteCrashReport(id: internalId)
-//                            IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
+                            reporter.deleteCrashReport(id: internalId)
+                            IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
+                            LogFileManager.shared.recordToFile(text: "API CRASH LOG SEND")
                         }
 
                     case .failure(let error):
@@ -268,57 +310,6 @@ class UnsentDataHandler {
                     }
                 }
             }
-            
-
-            
-            //log기록
-            var attributes:[String: PersistableValue] = [:]
-            attributes[SemanticAttributes.exceptionType.rawValue] = .string(exceptionObj.type)
-            attributes[SemanticAttributes.exceptionMessage.rawValue] = .string(exceptionObj.message ?? "")
-            attributes[SemanticAttributes.exceptionStacktrace.rawValue] = .string(exceptionObj.stackTrace?.joined(separator: "\n") ?? "")
-            attributes[SpanSemantics.Common.sessionId] = .string(session?.id.toString ?? "")
-            attributes[SpanSemantics.Common.traceId] = .string(report.spanRecord?.traceId ?? "")
-            attributes[SpanSemantics.Common.spanId] = .string(report.spanRecord?.id ?? "")
-            if let userId = UserModel.id {
-                attributes[SpanSemantics.Common.userId] = .string(userId)
-            }
-            if let areaCode = AreaCodeModel.areaCode {
-                attributes[SpanSemantics.Common.areaCode] = .string(areaCode)
-            }
-                        
-            
-            let logRecord:LogRecord = LogRecord(identifier: LogIdentifier(),
-                                                processIdentifier: ProcessIdentifier.current,
-                                                severity: LogSeverity.error,
-                                                body: exceptionObj.type,
-                                                attributes: attributes,
-                                                timestamp: timestamp,
-                                                spanContext: beforeSpan?.context)
-            
-            let readableLog = LogPayloadBuilder.buildReadableLogRecord(log: logRecord, resource: [:])
-                        
-            let data = PayloadEnvelope<LogPayload>.requestLogProtobufData(logRecords: [readableLog])
-            guard let envelopeData = data else{ return }
-
-            upload.uploadCrash(id: report.id.uuidString, data: envelopeData) { result in
-                switch result {
-                case .success:
-                    // remove crash report
-                    // we can remove this immediately because the upload module will cache it until the upload succeeds
-                    if let internalId = report.internalId {
-                        guard let reporter = reporter else {
-                            return
-                        }
-                        reporter.deleteCrashReport(id: internalId)
-                        IMQACrashReporter.removeCrashSpanRecord(sessionId: session?.id.toString() ?? "")
-                        LogFileManager.shared.recordToFile(text: "API CRASH LOG SEND")
-                    }
-
-                case .failure(let error):
-                    IMQA.logger.warning("Error trying to upload crash report \(report.id):\n\(error.localizedDescription)")
-                }
-            }
-
         } catch {
             IMQA.logger.warning("Error encoding crash report \(report.id) for session \(String(describing: report.sessionId)):\n" + error.localizedDescription)
         }

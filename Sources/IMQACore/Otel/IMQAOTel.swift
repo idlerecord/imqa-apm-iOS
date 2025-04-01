@@ -19,6 +19,10 @@ import IMQACollectDeviceInfo
 public class IMQAOTel{
     static let sessionId: SessionIdentifier = SessionIdentifier.random
 
+    static var serviceKey: String = ""
+    
+    static var isSharedSession: Bool = false
+    
     private let serviceName: String = Bundle.appIdentifier
     
     private var serviceVersion: String = Bundle.appVersion
@@ -164,6 +168,7 @@ public class IMQAOTel{
         
         //Resource Setting
         let deviceId = DeviceIdentifier.retrieve(from: storage)
+        serviceKey = option.serviceKey
         let resource = setUpResource(serviceKey: option.serviceKey, deviceId: deviceId.hex)
         resources = resource
         
