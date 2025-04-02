@@ -277,7 +277,7 @@ extension WKWebView {
         config.userContentController.addUserScript(serviceNameScript)
                 
         //
-        let serviceVersionScriptString = "window.__imqa_service_version = '\(Bundle.appBuildVersion)';"
+        let serviceVersionScriptString = "window.__imqa_service_version = '\(Bundle.appVersion)';"
         let serviceVersionScript = WKUserScript(
             source: serviceVersionScriptString,
             injectionTime: .atDocumentStart,
