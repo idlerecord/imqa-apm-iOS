@@ -21,7 +21,7 @@ public class IMQAOTel{
 
     static var serviceKey: String = ""
     
-    static var isSharedSession: Bool = false
+    static var isSharedSession: Bool = true
     
     private let serviceName: String = Bundle.appIdentifier
     
