@@ -8,6 +8,7 @@
 import Foundation
 import IMQACommonInternal
 import IMQAOtelInternal
+import WebKit
 
 @objcMembers
 public class IMQA: NSObject {
@@ -185,6 +186,74 @@ public extension IMQA {
     /// - Parameter session:
     static func setSharedSession(session: Bool){
         IMQAOTel.isSharedSession = session
+    }
+    
+    
+    /// webview를 띄울때 꼭 호출해야 하는 함수
+    /// - Parameter configuration: configuration
+    static func setWebviewConfiguration(userContentController: WKUserContentController){
+        let sessionScriptString = "window.__imqa_session_id = '\(IMQAOTel.sessionId.toString)';"
+        let userScript = WKUserScript(
+            source: sessionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        userContentController.addUserScript(userScript)
+
+        
+        let serviceNameScriptString = "window.__imqa_service_name = '\(Bundle.appIdentifier)';"
+        let serviceNameScript = WKUserScript(
+            source: serviceNameScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        userContentController.addUserScript(serviceNameScript)
+                
+        //
+        let serviceVersionScriptString = "window.__imqa_service_version = '\(Bundle.appVersion)';"
+        let serviceVersionScript = WKUserScript(
+            source: serviceVersionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        userContentController.addUserScript(serviceVersionScript)
+        
+        
+        //imqaSharedSession
+        var imqaSharedSessionScriptString = ""
+        if IMQAOTel.isSharedSession {
+            imqaSharedSessionScriptString = "window.__imqa_shared_session = true;"
+        }else{
+            imqaSharedSessionScriptString = "window.__imqa_shared_session = false;"
+        }
+        
+        let imqaSharedSessionScript = WKUserScript(
+            source: imqaSharedSessionScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        userContentController.addUserScript(imqaSharedSessionScript)
+
+        
+        //service Key
+        var serviceKeyScriptString = "window.__imqa_service_key = '\(IMQAOTel.serviceKey)';"
+        let serviceKeyScript = WKUserScript(
+            source: serviceKeyScriptString,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: true
+        )
+        userContentController.addUserScript(serviceKeyScript)
+
+        
+        if !SessionBasedSampler.sampler {
+            let deactivatedScriptString = "window.__imqa_deactivated = true;"
+            let deactivatedScript = WKUserScript(
+                source: deactivatedScriptString,
+                injectionTime: .atDocumentStart,
+                forMainFrameOnly: true
+            )
+            userContentController.addUserScript(deactivatedScript)
+        }
     }
 }
 

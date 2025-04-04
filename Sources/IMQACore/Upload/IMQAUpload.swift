@@ -105,11 +105,6 @@ public class IMQAUpload: IMQALogUploader {
         }
     }
     
-    public func uploadCrash(id: String, data: Data, completion: ((Result<(), Error>) -> Void)?) {
-        queue.async { [weak self] in
-            self?.uploadData(id: id, data: data, type: .crash, completion: completion)
-        }
-    }
 
     // MARK: - Internal
     private func uploadData(
@@ -257,5 +252,73 @@ public class IMQAUpload: IMQALogUploader {
         case .logs: return options.endpoints.logsURL
         case .crash: return options.endpoints.logsURL
         }
+    }
+}
+
+
+//Crash data를 보낸다
+extension IMQAUpload {
+    public func uploadCrashLog(id: String, data: Data, completion: ((Result<(), Error>) -> Void)?) {
+        queue.async { [weak self] in
+            self?.uploadCrashLogAction(data: data, completion: completion)
+        }
+    }
+    
+    public func uploadCrashSpan(id: String, data: Data, completion: ((Result<(), Error>) -> Void)?){
+        queue.async { [weak self] in
+            self?.uploadCrashSpansAction(data: data, completion: completion)
+        }
+    }
+    
+    private func uploadCrashLogAction(data: Data, completion: ((Result<(), Error>) -> Void)?){
+        var request = URLRequest(url: options.endpoints.logsURL)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.setValue("IMQA-iOS-SDK", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/x-protobuf", forHTTPHeaderField: "Content-Type")
+        request.setValue("gzip", forHTTPHeaderField: "Content-Encoding")
+
+        let urlSession: URLSession = URLSession(configuration: options.urlSessionConfiguration)
+
+        let task = urlSession.dataTask(with: request) { data, response, error in
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode >= 200 && response.statusCode < 300 {
+                    completion?(.success(()))
+                } else {
+                    let returnError = IMQAUploadError.incorrectStatusCodeError(response.statusCode)
+                    completion?(.failure(returnError))
+                }
+            } else {
+                let returnError = IMQAUploadError.internalError(.valueConvertError)
+                completion?(.failure(returnError))
+            }
+        }
+        task.resume()
+    }
+    
+    private func uploadCrashSpansAction(data: Data, completion: ((Result<(), Error>) -> Void)?){
+        var request = URLRequest(url: options.endpoints.spansURL)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.setValue("IMQA-iOS-SDK", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/x-protobuf", forHTTPHeaderField: "Content-Type")
+        request.setValue("gzip", forHTTPHeaderField: "Content-Encoding")
+
+        let urlSession: URLSession = URLSession(configuration: options.urlSessionConfiguration)
+
+        let task = urlSession.dataTask(with: request) { data, response, error in
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode >= 200 && response.statusCode < 300 {
+                    completion?(.success(()))
+                } else {
+                    let returnError = IMQAUploadError.incorrectStatusCodeError(response.statusCode)
+                    completion?(.failure(returnError))
+                }
+            } else {
+                let returnError = IMQAUploadError.internalError(.valueConvertError)
+                completion?(.failure(returnError))
+            }
+        }
+        task.resume()
     }
 }

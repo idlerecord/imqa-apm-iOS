@@ -112,7 +112,6 @@ class IMQAUploadOperation: AsyncOperation {
         request.httpMethod = "POST"
         request.httpBody = data
 
-
         if isProtobuf {
             request.httpMethod = "POST"
             request.setValue("IMQA-iOS-SDK", forHTTPHeaderField: "User-Agent")
@@ -125,10 +124,6 @@ class IMQAUploadOperation: AsyncOperation {
             request.setValue(metadataOptions.userAgent, forHTTPHeaderField: "User-Agent")
         }
         
-
-//        request.setValue(metadataOptions.apiKey, forHTTPHeaderField: "x-imqa-AID")
-//        request.setValue(metadataOptions.deviceId, forHTTPHeaderField: "x-imqa-DID")
-
         return request
     }
 
@@ -138,8 +133,6 @@ class IMQAUploadOperation: AsyncOperation {
         }
 
         var request = r
-//        request.setValue(String(attemptCount - 1), forHTTPHeaderField: "x-imqa-retry-count")
-
         return request
     }
 }
