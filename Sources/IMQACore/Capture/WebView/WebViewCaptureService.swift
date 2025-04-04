@@ -268,7 +268,7 @@ extension WKWebView {
         config.userContentController.addUserScript(userScript)
 
         
-        let serviceNameScriptString = "window.__imqa_service_name = '\(Bundle.appName)';"
+        let serviceNameScriptString = "window.__imqa_service_name = '\(Bundle.appIdentifier)';"
         let serviceNameScript = WKUserScript(
             source: serviceNameScriptString,
             injectionTime: .atDocumentStart,
